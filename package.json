@@ -1,18 +1,24 @@
 {
   "name": "adaptive-software-book",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
-  "description": "《从代码到意图：构建会进化的自适应软件》—— 可发布到 GitHub Pages 与 GitBook 的开源书籍",
+  "description": "《从代码到意图：构建会进化的自适应软件》/ From Code to Intent — 中英双语、可发布到 GitHub Pages 与 GitBook 的开源书籍",
   "license": "CC-BY-SA-4.0",
   "scripts": {
-    "serve": "honkit serve",
-    "build": "honkit build . ./_book",
-    "pdf": "honkit pdf . ./adaptive-software.pdf",
+    "sync": "node tools/build-site.mjs --sync",
+    "serve": "node tools/build-site.mjs --serve zh",
+    "serve:en": "node tools/build-site.mjs --serve en",
+    "build": "node tools/build-site.mjs",
+    "pdf": "npx honkit pdf ./docs/zh ./adaptive-software-zh.pdf",
+    "pdf:en": "npx honkit pdf ./docs/en ./adaptive-software-en.pdf",
     "split": "node tools/split-book.mjs",
-    "check": "node tools/split-book.mjs --check",
+    "check": "node tools/split-book.mjs --check && node tools/check-diagrams.mjs --structure && node tools/check-i18n.mjs",
+    "structure": "node tools/check-diagrams.mjs --structure",
     "diagrams": "node tools/check-diagrams.mjs",
     "diagrams:list": "node tools/check-diagrams.mjs --list",
-    "structure": "node tools/check-diagrams.mjs --structure"
+    "i18n": "node tools/check-i18n.mjs --progress",
+    "i18n:check": "node tools/check-i18n.mjs",
+    "i18n:init": "node tools/init-en.mjs"
   },
   "devDependencies": {
     "honkit": "^5.0.1"

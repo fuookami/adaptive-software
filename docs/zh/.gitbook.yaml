@@ -1,0 +1,8 @@
+# GitBook space configuration for the Chinese edition.
+# 本目录由根目录 gitbook-docs.yaml 映射为一个 space（language: zh-Hans）。
+# 导航由本书根内的 SUMMARY.md 决定，落地页是 README.md；路径都相对本书根。
+root: ./
+
+structure:
+  readme: README.md
+  summary: SUMMARY.md

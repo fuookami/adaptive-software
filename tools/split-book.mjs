@@ -23,7 +23,10 @@ import process from 'node:process';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const DOCS = path.join(ROOT, 'docs');
+/** 中文版书根（SUMMARY.md 里的链接相对本书根解析） */
+const LANG = 'zh';
+const DOCS = path.join(ROOT, 'docs', LANG);
+const DOCS_REL = `docs/${LANG}`;
 const MANUSCRIPT = path.join(ROOT, 'manuscript');
 
 /** 卷 → 章节范围（18 章 5 卷） */
@@ -41,7 +44,7 @@ for (const [from, to, vol] of [
 const CN_DIGITS = { 一: 1, 二: 2, 三: 3, 四: 4, 五: 5, 六: 6, 七: 7, 八: 8, 九: 9, 十: 10 };
 
 /** 允许不出现在 SUMMARY.md 中的页面（前置材料，不参与正文导航） */
-const KNOWN_ORPHANS = new Set(['docs/title.md']);
+const KNOWN_ORPHANS = new Set([`${DOCS_REL}/title.md`]);
 
 const argv = process.argv.slice(2);
 const has = (flag) => argv.includes(flag);
@@ -217,21 +220,21 @@ function outPathFor(block, currentVolume) {
   const p = (n) => String(n).padStart(2, '0');
   switch (block.type) {
     case 'title':
-      return 'docs/title.md';
+      return `${DOCS_REL}/title.md`;
     case 'outline':
-      return 'docs/outline.md';
+      return `${DOCS_REL}/outline.md`;
     case 'preface':
-      return 'docs/preface.md';
+      return `${DOCS_REL}/preface.md`;
     case 'epilogue':
-      return 'docs/epilogue.md';
+      return `${DOCS_REL}/epilogue.md`;
     case 'chapter':
-      return `docs/chapter-${p(block.num)}.md`;
+      return `${DOCS_REL}/chapter-${p(block.num)}.md`;
     case 'part':
-      return `docs/part-${block.num}.md`;
+      return `${DOCS_REL}/part-${block.num}.md`;
     case 'part-summary': {
       const vol = currentVolume;
       if (!vol) throw new Error(`无法判定“${block.title}”所属卷，请检查它前面是否有章或卷标题。`);
-      return `docs/part-${vol}-summary.md`;
+      return `${DOCS_REL}/part-${vol}-summary.md`;
     }
     default:
       throw new Error(`未知块类型：${block.type}`);
@@ -254,15 +257,16 @@ function synthesizePart1(outlineText) {
   return `# ${title}\n\n${body.join('\n').trim()}\n`;
 }
 
-// ---------------------------------------------------------------------------
-// 5. --check：SUMMARY.md 与 docs/ 一致性
-// ---------------------------------------------------------------------------
+/**
+ * 5. --check：书根的 SUMMARY.md 与页面一致性
+ *    SUMMARY.md 里的链接相对书根解析（docs/zh/chapter-01.md → 链接写 chapter-01.md）。
+ */
 function check() {
   const problems = [];
-  const summaryPath = path.join(ROOT, 'SUMMARY.md');
-  if (!fs.existsSync(summaryPath)) problems.push('SUMMARY.md 不存在');
-  const docsDir = path.join(ROOT, 'docs');
-  if (!fs.existsSync(docsDir)) problems.push('docs/ 目录不存在，请先运行 node tools/split-book.mjs');
+  const summaryPath = path.join(DOCS, 'SUMMARY.md');
+  if (!fs.existsSync(summaryPath)) problems.push(`${DOCS_REL}/SUMMARY.md 不存在`);
+  if (!fs.existsSync(DOCS)) problems.push(`${DOCS_REL}/ 目录不存在，请先运行 node tools/split-book.mjs`);
+  if (!fs.existsSync(path.join(DOCS, 'README.md'))) problems.push(`${DOCS_REL}/README.md 缺失（book.json 的 structure.readme 指向它）`);
 
   const referenced = new Set();
   if (fs.existsSync(summaryPath)) {
@@ -270,24 +274,27 @@ function check() {
     for (const m of summary.matchAll(/\[([^\]]*)\]\(([^)\s]+)\)/g)) {
       const target = m[2];
       if (/^(https?:|#|mailto:)/i.test(target)) continue;
-      const abs = path.resolve(ROOT, decodeURI(target));
+      const abs = path.resolve(DOCS, decodeURI(target));
       if (!fs.existsSync(abs)) {
-        problems.push(`SUMMARY.md 链接指向不存在的文件：${target}`);
+        problems.push(`${DOCS_REL}/SUMMARY.md 链接指向不存在的文件：${target}`);
         continue;
       }
-      if (decodeURI(target).startsWith('docs/')) referenced.add(path.relative(ROOT, abs).split(path.sep).join('/'));
+      referenced.add(path.relative(ROOT, abs).split(path.sep).join('/'));
     }
   }
 
-  const pages = fs.existsSync(docsDir)
+  const pages = fs.existsSync(DOCS)
     ? fs
-        .readdirSync(docsDir)
-        .filter((f) => f.endsWith('.md'))
-        .map((f) => `docs/${f}`)
+        .readdirSync(DOCS)
+        .filter((f) => f.endsWith('.md') && f !== 'SUMMARY.md')
+        .map((f) => `${DOCS_REL}/${f}`)
     : [];
 
   for (const p of pages) {
-    if (!referenced.has(p) && !KNOWN_ORPHANS.has(p)) problems.push(`${p} 未被 SUMMARY.md 引用`);
+    // README.md 是书的空间落地页，由 book.json 指定，不必出现在导航里
+    if (!referenced.has(p) && !KNOWN_ORPHANS.has(p) && path.basename(p) !== 'README.md') {
+      problems.push(`${p} 未被 SUMMARY.md 引用`);
+    }
     const text = fs.readFileSync(path.join(ROOT, p), 'utf8');
     const state = { open: false, marker: null, len: 0 };
     let h1 = 0;
@@ -296,13 +303,13 @@ function check() {
       if (!state.open && /^#\s+\S/.test(line)) h1++;
     }
     if (h1 !== 1) problems.push(`${p} 应恰好有 1 个一级标题，实际 ${h1} 个`);
-    if (!text.startsWith('#')) problems.push(`${p} 未以标题开头`);
+    if (!text.startsWith('#') && !text.startsWith('<!--')) problems.push(`${p} 未以标题开头`);
     if (text.trimEnd().endsWith('---')) problems.push(`${p} 结尾残留 --- 分隔线`);
   }
 
   // 章文件完整性：chapter-01 … chapter-18
   for (let n = 1; n <= 18; n++) {
-    const f = `docs/chapter-${String(n).padStart(2, '0')}.md`;
+    const f = `${DOCS_REL}/chapter-${String(n).padStart(2, '0')}.md`;
     if (!pages.includes(f)) problems.push(`缺少章节页 ${f}`);
   }
 
@@ -312,7 +319,7 @@ function check() {
     process.exitCode = 1;
     return;
   }
-  console.log(`\n✓ 结构校验通过：docs/ 下 ${pages.length} 个页面全部被 SUMMARY.md 引用，且各含 1 个一级标题。`);
+  console.log(`\n✓ 结构校验通过：${DOCS_REL} 下 ${pages.length} 个页面全部被 SUMMARY.md 引用，且各含 1 个一级标题。`);
 }
 
 // ---------------------------------------------------------------------------
@@ -351,11 +358,11 @@ function main() {
   }
 
   // 第一卷导航页（手稿中第一卷没有独立卷首正文）
-  if (!planned.has('docs/part-1.md')) {
-    if (!outlineText) throw new Error('缺少大纲块，无法生成 docs/part-1.md');
-    planned.set('docs/part-1.md', synthesizePart1(outlineText));
-    order.unshift({ rel: 'docs/part-1.md', type: 'part', title: '第一卷（由大纲自动生成）', from: 'generated' });
-    console.log('\n→ 生成 docs/part-1.md（第一卷无卷首正文，用大纲中的卷标题与该卷目录）');
+  if (!planned.has(`${DOCS_REL}/part-1.md`)) {
+    if (!outlineText) throw new Error(`缺少大纲块，无法生成 ${DOCS_REL}/part-1.md`);
+    planned.set(`${DOCS_REL}/part-1.md`, synthesizePart1(outlineText));
+    order.unshift({ rel: `${DOCS_REL}/part-1.md`, type: 'part', title: '第一卷（由大纲自动生成）', from: 'generated' });
+    console.log(`\n→ 生成 ${DOCS_REL}/part-1.md（第一卷无卷首正文，用大纲中的卷标题与该卷目录）`);
   }
 
   if (dryRun) {
@@ -364,12 +371,12 @@ function main() {
     return;
   }
 
-  // 保护：docs/ 一旦被编辑，重新切分会覆盖手工修订，必须显式 --force
+  // 保护：正文一旦被编辑（含图示重绘、英文译稿），重新切分会覆盖手工修订，必须显式 --force
   if (!has('--force')) {
     const existing = [...planned.keys()].filter((rel) => fs.existsSync(path.join(ROOT, rel)));
     if (existing.length) {
       console.error(
-        `\n✗ docs/ 下已有 ${existing.length} 个页面会被覆盖，例如：\n` +
+        `\n✗ ${DOCS_REL} 下已有 ${existing.length} 个页面会被覆盖，例如：\n` +
           existing.slice(0, 5).map((r) => `    ${r}`).join('\n') +
           `\n确认要用 manuscript/ 手稿重置正文，请加 --force（注意：会一并回退已重绘的 HTML 图示）。`,
       );
@@ -384,7 +391,7 @@ function main() {
     fs.writeFileSync(path.join(ROOT, rel), text, 'utf8');
     bytes += Buffer.byteLength(text);
   }
-  console.log(`\n✓ 已写入 ${planned.size} 个页面到 docs/（约 ${(bytes / 1024).toFixed(1)} KB）`);
+  console.log(`\n✓ 已写入 ${planned.size} 个页面到 ${DOCS_REL}/（约 ${(bytes / 1024).toFixed(1)} KB）`);
 
   if (has('--move-sources')) {
     fs.mkdirSync(MANUSCRIPT, { recursive: true });

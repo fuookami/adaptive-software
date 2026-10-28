@@ -5,16 +5,18 @@ on:
     branches: [main]
     paths:
       - 'docs/**'
+      - 'i18n/**'
+      - 'styles/**'
       - 'README.md'
-      - 'SUMMARY.md'
-      - 'book.json'
+      - 'gitbook-docs.yaml'
       - 'package.json'
       - '.github/workflows/deploy.yml'
   pull_request:
     paths:
       - 'docs/**'
-      - 'SUMMARY.md'
-      - 'book.json'
+      - 'i18n/**'
+      - 'styles/**'
+      - 'gitbook-docs.yaml'
       - 'package.json'
   workflow_dispatch:
 
@@ -27,7 +29,7 @@ concurrency:
 
 jobs:
   build:
-    name: 用 Honkit 构建静态书籍
+    name: 校验并构建双语静态站（Honkit）
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -40,17 +42,17 @@ jobs:
       - name: 安装依赖
         run: npm install --no-audit --no-fund
 
-      - name: 校验书稿结构（SUMMARY.md ↔ docs/）
+      - name: 校验书稿结构（中文书根的 SUMMARY.md ↔ 页面）
         run: node tools/split-book.mjs --check
 
-      - name: 校验图示 HTML 结构（块闭合 / 无空行 / 无 Markdown 残留）
+      - name: 校验图示 HTML 结构（块闭合 / 无空行 / 顶格 / 无 Markdown 残留）
         run: node tools/check-diagrams.mjs --structure
 
-      - name: 构建站点
-        run: npx honkit build . ./_book
+      - name: 校验双语一致性（页面、导航、书根配置、站点映射）
+        run: node tools/check-i18n.mjs
 
-      - name: 写入 .nojekyll
-        run: touch ./_book/.nojekyll
+      - name: 构建 zh 与 en 两版站点
+        run: node tools/build-site.mjs
 
       - name: 上传 Pages 产物
         if: github.event_name != 'pull_request'

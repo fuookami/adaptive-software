@@ -1,0 +1,8 @@
+# Honkit 构建本站时的排除清单（路径相对本书根 docs/en/）
+# 注意：不要排除 styles/ —— book.json 的 styles.website 需要它进入站点输出。
+*.tmp
+.DS_Store
+.gitbook.yaml
+.bookignore
+.gitignore
+.vscode/

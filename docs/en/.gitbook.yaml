@@ -1,0 +1,7 @@
+# GitBook space configuration for the English edition.
+# 该目录被根目录 gitbook-docs.yaml 映射为一个 space（language: en）。
+root: ./
+
+structure:
+  readme: README.md
+  summary: SUMMARY.md

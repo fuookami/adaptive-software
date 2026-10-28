@@ -1,8 +1,11 @@
 # 构建产物
 /_book/
-/adaptive-software.pdf
-/adaptive-software.epub
-/adaptive-software.mobi
+/adaptive-software*.pdf
+/adaptive-software*.epub
+/adaptive-software*.mobi
+
+# 由 styles/website.css 同步到各书根的副本（构建前 npm run sync 生成）
+/docs/*/styles/
 
 # 依赖
 node_modules/

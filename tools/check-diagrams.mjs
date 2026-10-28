@@ -16,7 +16,7 @@ import { execSync } from 'node:child_process';
  */
 
 const ROOT = path.resolve(import.meta.dirname, '..');
-const DOCS = path.join(ROOT, 'docs');
+const DOCS_ROOT = path.join(ROOT, 'docs');
 const BOX = /[┌┐└┘├┤┬┴┼─━│║▏▎▍▌▋▊▉█▁▂▃▄▅▆▇▲▼◄►←→↔↕⇒➤╭╮╰╯═╠╣╦╩╬]/;
 
 const argv = process.argv.slice(2);
@@ -25,6 +25,18 @@ const getOpt = (name, fallback) => {
   return i >= 0 && argv[i + 1] ? argv[i + 1] : fallback;
 };
 const listOnly = argv.includes('--list');
+
+/** 保真校验针对某一语言书根（默认中文：只有它经历过「字符画 → HTML」的重绘） */
+const LANG = getOpt('--lang', 'zh');
+const DOCS = path.join(DOCS_ROOT, LANG);
+const DOCS_REL = `docs/${LANG}`;
+/** 结构自检覆盖所有语言书根（英文页以后也会有图） */
+const ALL_LANG_DIRS = fs.existsSync(DOCS_ROOT)
+  ? fs
+      .readdirSync(DOCS_ROOT, { withFileTypes: true })
+      .filter((d) => d.isDirectory())
+      .map((d) => `docs/${d.name}`)
+  : [];
 
 function baseRef() {
   const wanted = getOpt('--ref', null);
@@ -47,7 +59,12 @@ const REF = baseRef();
 
 function gitShow(ref, rel) {
   try {
-    return execSync(`git show ${ref}:${rel}`, { cwd: ROOT, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+    return execSync(`git show ${ref}:${rel}`, {
+      cwd: ROOT,
+      encoding: 'utf8',
+      maxBuffer: 64 * 1024 * 1024,
+      stdio: ['ignore', 'pipe', 'ignore'], // 探测性读取，基线里没有该路径时不要刷屏
+    });
   } catch {
     return null; // 基线里没有该文件
   }
@@ -129,17 +146,17 @@ const applyCorrections = (s) => CORRECTIONS.reduce((acc, c) => acc.replace(c.fro
  * 新增条目必须写清理由，防止“顺手加戏”混进来。
  */
 const AUTHORIZED_ADDITIONS = [
-  { tok: '任何机器学习校准或智能体适配均无权通过训练或提示词放宽硬约束', file: 'docs/chapter-08.md', why: '原字符画两列交错折行，连句还原' },
-  { tok: '罚系数转化为目标函数分项', file: 'docs/chapter-08.md', why: '原字符画跨行折行，连句还原' },
-  { tok: '新鲜度后激活为有效产能覆盖层', file: 'docs/chapter-13.md', why: '原字符画框内折行，连句还原' },
-  { tok: '基于冻结输入与当前参数版本产出运筹优化原始基准方案', file: 'docs/chapter-13.md', why: '原字符画框内折行，连句还原' },
-  { tok: '学习目标权重与软约束罚系数候选值', file: 'docs/chapter-13.md', why: '原字符画框内折行，连句还原' },
-  { tok: '使用批准冻结的新参数版本求解', file: 'docs/chapter-13.md', why: '原字符画框内折行，连句还原' },
-  { tok: '今天A和B线共用投料口', file: 'docs/chapter-14.md', why: '原字符画框内折行，连句还原' },
-  { tok: '结合元数据与上下文生成结构化候选方案', file: 'docs/chapter-14.md', why: '原字符画框内折行，连句还原' },
-  { tok: '符号引用', file: 'docs/chapter-14.md', why: '原稿被框宽截断为“符号引”，重绘时补全' },
-  { tok: '沉入平台标准核心', file: 'docs/chapter-17.md', why: '原稿被框宽截断为“平台标准核”，重绘时补全' },
-  { tok: '编译为查询/约束/流程', file: 'docs/chapter-03.md', why: '原稿被框宽截断为“约束/流”，重绘时补全' },
+  { tok: '任何机器学习校准或智能体适配均无权通过训练或提示词放宽硬约束', file: 'chapter-08.md', why: '原字符画两列交错折行，连句还原' },
+  { tok: '罚系数转化为目标函数分项', file: 'chapter-08.md', why: '原字符画跨行折行，连句还原' },
+  { tok: '新鲜度后激活为有效产能覆盖层', file: 'chapter-13.md', why: '原字符画框内折行，连句还原' },
+  { tok: '基于冻结输入与当前参数版本产出运筹优化原始基准方案', file: 'chapter-13.md', why: '原字符画框内折行，连句还原' },
+  { tok: '学习目标权重与软约束罚系数候选值', file: 'chapter-13.md', why: '原字符画框内折行，连句还原' },
+  { tok: '使用批准冻结的新参数版本求解', file: 'chapter-13.md', why: '原字符画框内折行，连句还原' },
+  { tok: '今天A和B线共用投料口', file: 'chapter-14.md', why: '原字符画框内折行，连句还原' },
+  { tok: '结合元数据与上下文生成结构化候选方案', file: 'chapter-14.md', why: '原字符画框内折行，连句还原' },
+  { tok: '符号引用', file: 'chapter-14.md', why: '原稿被框宽截断为“符号引”，重绘时补全' },
+  { tok: '沉入平台标准核心', file: 'chapter-17.md', why: '原稿被框宽截断为“平台标准核”，重绘时补全' },
+  { tok: '编译为查询/约束/流程', file: 'chapter-03.md', why: '原稿被框宽截断为“约束/流”，重绘时补全' },
 ];
 
 const norm = (s) =>
@@ -221,11 +238,25 @@ function structureProblems(text, rel) {
   return bad;
 }
 
+/** 同一页在基线里的历史路径（正文曾从 docs/ 迁到 docs/zh/） */
+function baselineText(ref, name) {
+  for (const cand of [`docs/${LANG}/${name}`, `docs/${name}`]) {
+    const t = gitShow(ref, cand);
+    if (t != null) return t;
+  }
+  return null;
+}
+
 function structureOnly() {
   const bad = [];
-  for (const f of fs.readdirSync(DOCS).filter((n) => n.endsWith('.md')).sort()) {
-    const text = fs.readFileSync(path.join(DOCS, f), 'utf8');
-    bad.push(...structureProblems(text, `docs/${f}`));
+  let pages = 0;
+  for (const dirRel of ALL_LANG_DIRS) {
+    const dir = path.join(ROOT, dirRel);
+    for (const f of fs.readdirSync(dir).filter((n) => n.endsWith('.md')).sort()) {
+      const text = fs.readFileSync(path.join(dir, f), 'utf8');
+      pages++;
+      bad.push(...structureProblems(text, `${dirRel}/${f}`));
+    }
   }
   if (bad.length) {
     console.error(`✗ 图示 HTML 结构问题（${bad.length} 处）：`);
@@ -233,8 +264,7 @@ function structureOnly() {
     process.exitCode = 1;
     return;
   }
-  const pages = fs.readdirSync(DOCS).filter((n) => n.endsWith('.md')).length;
-  console.log(`✓ 图示 HTML 结构自检通过（${pages} 个页面：块闭合、无空行、顶格、无 Markdown 残留）`);
+  console.log(`✓ 图示 HTML 结构自检通过（${ALL_LANG_DIRS.length} 个语言书根、${pages} 个页面：块闭合、无空行、顶格、无 Markdown 残留）`);
 }
 
 function main() {
@@ -249,8 +279,8 @@ function main() {
   const progress = [];
 
   for (const f of files) {
-    const rel = `docs/${f}`;
-    const oldText = gitShow(REF, rel);
+    const rel = `${DOCS_REL}/${f}`;
+    const oldText = baselineText(REF, f);
     if (oldText == null) continue;
     const newText = fs.readFileSync(path.join(DOCS, f), 'utf8');
     const newVisible = visible(newText);
@@ -300,11 +330,14 @@ function main() {
     return;
   }
 
-  // 结构自检（与丢字校验同级，始终执行）
+  // 结构自检（与丢字校验同级，始终执行，覆盖所有语言书根）
   const structural = [];
-  for (const f of files) {
-    const text = fs.readFileSync(path.join(DOCS, f), 'utf8');
-    structural.push(...structureProblems(text, `docs/${f}`));
+  for (const dirRel of ALL_LANG_DIRS) {
+    const dir = path.join(ROOT, dirRel);
+    for (const f of fs.readdirSync(dir).filter((n) => n.endsWith('.md')).sort()) {
+      const text = fs.readFileSync(path.join(dir, f), 'utf8');
+      structural.push(...structureProblems(text, `${dirRel}/${f}`));
+    }
   }
   if (structural.length) {
     console.error(`\n✗ 图示 HTML 结构问题（${structural.length} 处）：`);
@@ -315,21 +348,21 @@ function main() {
   }
 
   if (argv.includes('--strict')) {
-    const allowed = new Map(); // file -> Set<归一化词元>
+    const allowed = new Map(); // 基线文件名（basename）-> Set<归一化词元>
     for (const a of AUTHORIZED_ADDITIONS) {
       if (!allowed.has(a.file)) allowed.set(a.file, new Set());
       allowed.get(a.file).add(norm(a.tok));
     }
     const added = [];
     for (const f of files) {
-      const rel = `docs/${f}`;
-      const oldText = gitShow(REF, rel);
+      const rel = `${DOCS_REL}/${f}`;
+      const oldText = baselineText(REF, f);
       if (oldText == null) continue;
       const newText = fs.readFileSync(path.join(DOCS, f), 'utf8');
       // 基线的“可见文字大海”：词元只要能在其中作为连续片段找到，就不算新增
       // （字符画里一行常被折成两行、多列交错排版，连句后在原文件里本就不连续）
       const oldBlob = visible(applyCorrections(oldText));
-      const whitelist = allowed.get(rel) || new Set();
+      const whitelist = allowed.get(f) || new Set();
       for (const tok of tokensOf(newText)) {
         if (oldBlob.includes(tok) || whitelist.has(tok)) continue;
         added.push({ file: rel, tok });

@@ -26,6 +26,37 @@
 - `docs/chapter-17.md` 图示内繁体「基於」→「基于」。
 - 以上四处原文修正均在 `tools/check-diagrams.mjs` 的 `CORRECTIONS` / `AUTHORIZED_ADDITIONS` 白名单中登记了理由，避免被保真校验误报，也防止“顺手加戏”混入。
 
+## [0.2.0] - 2026-10-29
+
+### 新增
+
+- **中英双语**：`docs/zh/` 与 `docs/en/` 各为一本完整的书（独立 `book.json` / `SUMMARY.md` / `README.md` / `.gitbook.yaml`），
+  页面文件名与导航顺序一一对应。英文侧 30 个骨架页已就位，逐页用 `<!-- i18n-status: … -->` 标注翻译进度。
+- [gitbook-docs.yaml](gitbook-docs.yaml)：按 GitBook 官方 docs-as-code 规范声明“一个站点、两个语言空间”
+  （`content.directory` + `language`，`key` 上线后不可改）。
+- [i18n/glossary.md](i18n/glossary.md)：中英术语对照表（约 120 条，含“不要译成”负例），作为翻译契约；
+  [i18n/README.md](i18n/README.md)：页面状态约定与翻译流程。
+- `tools/init-en.mjs`：从中文侧生成/更新英文骨架页与英文 `SUMMARY.md`（不覆盖已有译文，`--force` 才重写）。
+- `tools/check-i18n.mjs`：双语一致性闸（页面集合、导航条目与层级、书根配置、站点映射；已标记 `translated`
+  的页面还要求图示数量不少于中文页）与进度统计。
+- `tools/build-site.mjs`：双语构建编排——同步样式真源到两个书根、分别 honkit 构建、生成根语言选择页 `_book/index.html`，
+  并在构建前清空旧输出。
+- npm 脚本：`serve` / `serve:en` / `build` / `check` / `sync` / `pdf` / `pdf:en` / `i18n` / `i18n:check` / `i18n:init`。
+
+### 变更
+
+- **正文从 `docs/` 迁到 `docs/zh/`**（`git mv` 保留历史）；`SUMMARY.md`、`book.json`、`.gitbook.yaml`、`.bookignore` 随书根下沉，
+  导航链接改为书根相对路径。`tools/split-book.mjs`、`tools/check-diagrams.mjs` 同步适配（保真校验仍能从
+  `ascii-baseline` 的旧路径 `docs/<name>` 读取基线）。
+- 站点输出改为 `_book/{zh,en}/` + 根语言选择页；CI 依次跑书稿结构、图示结构、双语一致性，再双语构建。
+- 英文拼写统一为美式（`optimization` / `modeling` / `Specialization` / `Frontend`），写进术语表。
+
+### 修复
+
+- `tools/build-site.mjs` 构建前清空 `_book`，否则旧版单语言产物会残留并被一起发布。
+- 各书根 `.bookignore` 补上 `.gitbook.yaml` / `.bookignore` / `.vscode/`，不再把它们当站点资源打进输出。
+- `tools/check-diagrams.mjs` 的 git 基线探测改为静默失败，不再刷屏；结构自检覆盖两个语言书根。
+
 ## [0.1.0] - 2026-10-28
 
 ### 新增

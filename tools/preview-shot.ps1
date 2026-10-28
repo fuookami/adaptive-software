@@ -2,11 +2,12 @@
 # 用法（仓库根目录）：
 #   npm run build
 #   powershell -ExecutionPolicy Bypass -File tools/preview-shot.ps1
-#   powershell -ExecutionPolicy Bypass -File tools/preview-shot.ps1 -Pages docs/chapter-09.html,docs/chapter-18.html -Height 4200
+#   powershell -ExecutionPolicy Bypass -File tools/preview-shot.ps1 -Pages zh/chapter-09.html,en/chapter-12.html -Height 4200
+#   （页面路径相对 _book/：中文版在 zh/、英文版在 en/，语言选择页是 index.html）
 # 图片输出到 .shots/（已在 .gitignore 中）。
 
 param(
-  [string[]]$Pages = @('docs/chapter-02.html'),
+  [string[]]$Pages = @('index.html', 'zh/chapter-02.html'),
   [int]$Width = 1160,
   [int]$Height = 2200
 )

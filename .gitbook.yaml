@@ -1,7 +1,0 @@
-# GitBook（gitbook.com）通过 Git 同步本仓库时读取的配置。
-# 正文位于 docs/，导航结构由 SUMMARY.md 定义，落地页为 README.md。
-root: ./
-
-structure:
-  readme: README.md
-  summary: SUMMARY.md
