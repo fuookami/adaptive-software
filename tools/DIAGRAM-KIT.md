@@ -67,6 +67,10 @@
 
 第 2、3 项尚未实现——是否要做，取决于你在 GitBook 空间里的实测结果。
 
+> **基线标签要一起推**：`npm run diagrams` 依赖 `ascii-baseline` 标签（字符画时代的快照）。
+> 首次推送时执行 `git push origin main --follow-tags`（或 `git push origin ascii-baseline`）；
+> 别人克隆后若没有该标签，脚本会自动退回 `HEAD` 并在无标签时给出提示。
+
 ## 六、自检与交付
 
 ```bash

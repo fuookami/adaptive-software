@@ -27,10 +27,14 @@ const getOpt = (name, fallback) => {
 const listOnly = argv.includes('--list');
 
 function baseRef() {
-  for (const candidate of [getOpt('--ref', null), 'ascii-baseline', 'HEAD']) {
+  const wanted = getOpt('--ref', null);
+  for (const candidate of [wanted, 'ascii-baseline', 'HEAD']) {
     if (!candidate) continue;
     try {
       execSync(`git rev-parse --verify ${candidate}`, { cwd: ROOT, stdio: 'ignore' });
+      if (candidate !== 'ascii-baseline' && !wanted) {
+        console.warn(`· 未找到 ascii-baseline 标签，改用 ${candidate} 作基线（git clone 默认会带标签；或用 --ref 指定）`);
+      }
       return candidate;
     } catch {
       /* 继续尝试下一个 */
