@@ -25,14 +25,19 @@
 
 无论是本地内存求解、分解组合求解还是远端算力求解，都必须统一返回包含以下核心正交维度的 `SolveReport`：
 
-```text
-                        【统一正交求解结果协议（SolveReport）】
-                                           │
-     ┌──────────────────┬──────────────────┼──────────────────┬──────────────────┐
-     ▼                  ▼                  ▼                  ▼                  ▼
-1. 问题数学状态    2. 求解终止原因    3. 当前解存在性    4. 目标与界指标    5. 血缘与尝试轨迹
-(problemStatus)  (terminationReason) (solutionPresence) (Objective & Gap) (Provenance & Trace)
-```
+<div class="dg" role="img" aria-label="统一正交求解结果协议（SolveReport）展开为五个正交维度：1. 问题数学状态 (problemStatus)、2. 求解终止原因 (terminationReason)、3. 当前解存在性 (solutionPresence)、4. 目标与界指标 (Objective &amp; Gap)、5. 血缘与尝试轨迹 (Provenance &amp; Trace)。">
+<div class="dg-col">
+<div class="dg-title">【统一正交求解结果协议（SolveReport）】</div>
+<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
+<div class="dg-row">
+<div class="dg-node dg-node--leaf"><span class="dg-t">1. 问题数学状态</span><span class="dg-s">(problemStatus)</span></div>
+<div class="dg-node dg-node--leaf"><span class="dg-t">2. 求解终止原因</span><span class="dg-s">(terminationReason)</span></div>
+<div class="dg-node dg-node--leaf"><span class="dg-t">3. 当前解存在性</span><span class="dg-s">(solutionPresence)</span></div>
+<div class="dg-node dg-node--leaf"><span class="dg-t">4. 目标与界指标</span><span class="dg-s">(Objective &amp; Gap)</span></div>
+<div class="dg-node dg-node--leaf"><span class="dg-t">5. 血缘与尝试轨迹</span><span class="dg-s">(Provenance &amp; Trace)</span></div>
+</div>
+</div>
+</div>
 
 1. **`problemStatus`（问题数学状态）**：描述数学模型本身的客观性质——是已证明最优（`Optimal`）、已证明不可行（`Infeasible`）、已证明无界（`Unbounded`），还是尚未完成最终证明（`Indeterminate` / `Feasible`）；
 2. **`terminationReason`（求解终止原因）**：描述求解器为什么停下来——是因为完成了数学收敛证明，还是触达了时间限制（`TimeLimit`）、节点数限制（`NodeLimit`）、迭代次数限制、用户主动取消（`Cancelled`），抑或是遭遇了数值病态、许可证失败或基础设施错误；
@@ -282,36 +287,17 @@ object OspfSolveReportBuilder {
 
 本书所定义的“自解释”，**绝不是让求解器吐出一堆日志，然后让大语言模型看着日志去编造一段看似通顺的借口**，而是建立一套权责分明的**四层自解释架构**——让每一层都严格基于上一层提供的结构化证据，完成本层职责范围内的解释转换：
 
-```text
-┌─────────────────────────────────────────────────────────────────────────┐
-│ 第一层：求解器与计算后端（Solver / Backend Layer）                      │
-│ • 产出原始求解状态、变量解值、目标值、上下界与底层数学证据（IIS/对偶等）│
-└───────────────────────────────────┬─────────────────────────────────────┘
-                                    │
-                                    ▼
-┌─────────────────────────────────────────────────────────────────────────┐
-│ 第二层：OSPF 基础框架层（Base Framework Layer）                         │
-│ • 封装统一正交的 SolveReport、稳定模型元素 ID、证据能力等级、           │
-│   数学模型指纹（Fingerprint）与组合求解尝试轨迹（Attempt Trace）        │
-│ • 边界：只懂通用数学报告与代数诊断，不知道“哪个订单延期”“哪台设备冲突”  │
-└───────────────────────────────────┬─────────────────────────────────────┘
-                                    │
-                                    ▼
-┌─────────────────────────────────────────────────────────────────────────┐
-│ 第三层：算法层与 APS/DOP 应用层（Algorithm & Application Layer）        │
-│ • 算法层：保留数学语义，将元素 ID 映射回领域变量、约束模板、目标与中间值│
-│ • 应用层：将数学证据绑定到具体业务对象（订单/产线/任务/库位）、         │
-│   冻结的版本快照、业务 KPI 对比结果与租户权限边界                       │
-└───────────────────────────────────┬─────────────────────────────────────┘
-                                    │
-                                    ▼
-┌─────────────────────────────────────────────────────────────────────────┐
-│ 第四层：工作台展示层与智能体层（Presentation & Agent Layer）            │
-│ • 在工作台可视化展示可行性、KPI 拆解、松弛量（Slack）与冲突约束集（IIS）│
-│ • 智能体基于已授权的结构化证据做归纳、多方案对比与本地化业务语言说明    │
-│ • 铁律：智能体严禁改写求解状态、严禁虚构 IIS、严禁用置信度覆盖硬约束！  │
-└─────────────────────────────────────────────────────────────────────────┘
-```
+<div class="dg" role="img" aria-label="四层自解释架构自上而下：第一层求解器与计算后端（Solver / Backend Layer）→ 第二层 OSPF 基础框架层（Base Framework Layer）→ 第三层算法层与 APS/DOP 应用层（Algorithm &amp; Application Layer）→ 第四层工作台展示层与智能体层（Presentation &amp; Agent Layer）。">
+<div class="dg-col">
+<div class="dg-node dg-node--layer"><span class="dg-t">第一层：求解器与计算后端（Solver / Backend Layer）</span><span class="dg-s">• 产出原始求解状态、变量解值、目标值、上下界与底层数学证据（IIS/对偶等）</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">第二层：OSPF 基础框架层（Base Framework Layer）</span><span class="dg-s">• 封装统一正交的 SolveReport、稳定模型元素 ID、证据能力等级、数学模型指纹（Fingerprint）与组合求解尝试轨迹（Attempt Trace）</span><span class="dg-s">• 边界：只懂通用数学报告与代数诊断，不知道“哪个订单延期”“哪台设备冲突”</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">第三层：算法层与 APS/DOP 应用层（Algorithm &amp; Application Layer）</span><span class="dg-s">• 算法层：保留数学语义，将元素 ID 映射回领域变量、约束模板、目标与中间值</span><span class="dg-s">• 应用层：将数学证据绑定到具体业务对象（订单/产线/任务/库位）、冻结的版本快照、业务 KPI 对比结果与租户权限边界</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer dg-node--key"><span class="dg-t">第四层：工作台展示层与智能体层（Presentation &amp; Agent Layer）</span><span class="dg-s">• 在工作台可视化展示可行性、KPI 拆解、松弛量（Slack）与冲突约束集（IIS）</span><span class="dg-s">• 智能体基于已授权的结构化证据做归纳、多方案对比与本地化业务语言说明</span><span class="dg-s">• 铁律：智能体严禁改写求解状态、严禁虚构 IIS、严禁用置信度覆盖硬约束！</span></div>
+</div>
+</div>
 
 让我们通过一个直观的例子，看一看当“共享投料口上限（1000 kg）”与“某紧急订单强制当日完工硬约束”发生冲突导致无解时，这四层架构是如何协同生成一份无懈可击的自解释报告的：
 

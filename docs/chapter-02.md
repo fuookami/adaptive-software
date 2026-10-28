@@ -8,12 +8,17 @@
 
 如果我们把企业软件的发展历程拉长来看，它依次经历了**信息化**、**自动化**、**前大语言模型时代的算法智能化**以及**大语言模型时代的智能化**四个阶段。
 
-```text
-┌──────────────────┐    ┌──────────────────┐    ┌──────────────────┐    ┌──────────────────┐
-│      信息化      │    │      自动化      │    │  前 LLM 智能化   │    │   LLM 智能化     │
-│ 把事情记录进系统 │ ──>│ 让系统按规则做事 │ ──>│ 让模型做特定判断 │ ──>│ 理解目标完成任务 │
-└──────────────────┘    └──────────────────┘    └──────────────────┘    └──────────────────┘
-```
+<div class="dg" role="img" aria-label="软件演进的四个阶段依次递进：信息化把事情记录进系统，自动化让系统按规则做事，前 LLM 智能化让模型做特定判断，LLM 智能化理解目标完成任务。">
+<div class="dg-row">
+<div class="dg-node"><span class="dg-t">信息化</span><span class="dg-s">把事情记录进系统</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node"><span class="dg-t">自动化</span><span class="dg-s">让系统按规则做事</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node"><span class="dg-t">前 LLM 智能化</span><span class="dg-s">让模型做特定判断</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--key"><span class="dg-t">LLM 智能化</span><span class="dg-s">理解目标完成任务</span></div>
+</div>
+</div>
 
 这四个阶段的本质区别，并不在于底层用了关系型数据库、工作流引擎、深度学习还是大语言模型，而在于**软件系统替人类承担了多少“认知与执行责任”**。
 
@@ -48,20 +53,49 @@
 
 在信息化、自动化乃至前大语言模型时代的算法智能化中，尽管系统越来越聪明，但“软件能力是如何被制造出来的”这一基本链路从未改变：
 
-```text
-【传统软件范式：能力形成于“发布之前”】
-业务需求 ──> 产品设计 / 研发排期 ──> 集成开发环境（IDE）中编码 ──> 测试 ──> 构建 ──> 版本发布 ──> 用户使用
-```
+<div class="dg" role="img" aria-label="传统软件范式：能力形成于发布之前。链路为业务需求、产品设计或研发排期、集成开发环境（IDE）中编码、测试、构建、版本发布、用户使用。">
+<div class="dg-title">传统软件范式：能力形成于“发布之前”</div>
+<div class="dg-row">
+<div class="dg-node dg-node--chip">业务需求</div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--chip">产品设计 / 研发排期</div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--chip">集成开发环境（IDE）中编码</div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--chip">测试</div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--chip">构建</div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--chip">版本发布</div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--chip">用户使用</div>
+</div>
+</div>
 
 在这条传统链路里，无论是写死一条数据库校验逻辑、配置一条自动化审批流，还是训练一个产能预测模型、编写一套混合整数线性规划（MILP）排产脚本，**软件能力的形成主要发生在“发布之前”的开发期或训练期**。一旦软件发布上线，它的能力边界就被冻结了；用户在运行现场只能使用研发团队预先设想好的功能。
 
 而在大语言模型时代，一部分“语义生产”与“能力塑造”第一次从开发期跨入到了用户真实使用的运行现场（Runtime）：
 
-```text
-【LLM 运行时范式：一部分能力形成于“使用之中”】
-用户真实使用 ──> LLM 理解并处理长尾需求 ──> 运行时采集行为与性能事实 ──> 识别高频稳定模式 
-──> 抽取语义中间表示（IR） ──> 语义编译与等价性验证 ──> 发布专用确定性能力 ──> 后续请求直接高效执行
-```
+<div class="dg" role="img" aria-label="LLM 运行时范式：一部分能力形成于使用之中。链路为用户真实使用、LLM 理解并处理长尾需求、运行时采集行为与性能事实、识别高频稳定模式、抽取语义中间表示（IR）、语义编译与等价性验证、发布专用确定性能力、后续请求直接高效执行。">
+<div class="dg-title">LLM 运行时范式：一部分能力形成于“使用之中”</div>
+<div class="dg-row">
+<div class="dg-node dg-node--chip">用户真实使用</div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--chip">LLM 理解并处理长尾需求</div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--chip">运行时采集行为与性能事实</div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--chip">识别高频稳定模式</div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--chip">抽取语义中间表示（IR）</div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--chip">语义编译与等价性验证</div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--chip">发布专用确定性能力</div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--chip">后续请求直接高效执行</div>
+</div>
+</div>
 
 如上图所示，当用户在生产现场提出一个过去系统里没有现成按钮的长尾诉求（如“今天 A 线和 B 线共用投料口，总投料量不超过 1000 公斤”）时，系统不再直接报错或让你去找研发提工单，而是先由大语言模型在运行现场理解意图、组织上下文并生成结构化候选方案，经安全验证后完成当次处理。紧接着，运行时持续观察这类需求是否在后续生产周期中被反复使用；一旦发现它是一个高频、稳定且收益明确的模式，系统便将其语义结构抽取出来，编译并验证为低成本、可复用的专用确定性能力，后续同类请求直接走专用高效路径执行。
 

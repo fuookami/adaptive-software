@@ -12,13 +12,19 @@
 
 因此，动态查询即时编译与动态约束专门化的第一条核心机制，就是**用“规范化语义形状（Normalized Semantic Shape）”聚合同类请求，而绝不用原始自然语言或具体字面量参数作为统计键**：
 
-```text
-┌────────────────────┐    ┌────────────────────┐    ┌────────────────────┐    ┌────────────────────┐    ┌────────────────────┐
-│    1. 通用路径     │    │    2. 运行画像     │    │    3. 能力提升     │    │   4. 构建与验证    │    │    5. 专用路径     │
-│  通用查询规划/执行 │───>│ 语义形状哈希+延迟  │───>│ 达到晋升阈值后进入 │───>│ 后台异步生成计划 + │───>│ 参数化查询计划 /   │
-│  或通用约束注入    │    │ +扫描行数/计算成本 │    │ 专门化编译候选队列 │    │ 影子验证与等价核验 │    │ 预编译约束模板执行 │
-└────────────────────┘    └────────────────────┘    └────────────────────┘    └────────────────────┘    └────────────────────┘
-```
+<div class="dg" role="img" aria-label="五阶段流程：1. 通用路径（通用查询规划/执行、或通用约束注入）→ 2. 运行画像（语义形状哈希+延迟、+扫描行数/计算成本）→ 3. 能力提升（达到晋升阈值后进入、专门化编译候选队列）→ 4. 构建与验证（后台异步生成计划 + 影子验证与等价核验）→ 5. 专用路径（参数化查询计划 / 预编译约束模板执行）。">
+<div class="dg-row">
+<div class="dg-node"><span class="dg-t">1. 通用路径</span><span class="dg-s">通用查询规划/执行</span><span class="dg-s">或通用约束注入</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node"><span class="dg-t">2. 运行画像</span><span class="dg-s">语义形状哈希+延迟</span><span class="dg-s">+扫描行数/计算成本</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node"><span class="dg-t">3. 能力提升</span><span class="dg-s">达到晋升阈值后进入</span><span class="dg-s">专门化编译候选队列</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node"><span class="dg-t">4. 构建与验证</span><span class="dg-s">后台异步生成计划 +</span><span class="dg-s">影子验证与等价核验</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node"><span class="dg-t">5. 专用路径</span><span class="dg-s">参数化查询计划 /</span><span class="dg-s">预编译约束模板执行</span></div>
+</div>
+</div>
 
 让我们结合上图，看一看“规范化语义形状”是如何把千变万化的现场表达收敛为稳定统计键的：
 
@@ -56,32 +62,15 @@
 
 系统在运行时构建了清晰的**三层专门化阶梯（Tiered Specialization Ladder）**：
 
-```text
-┌───────────────────────────────────────────────────────────────────────────────────┐
-│ 【第 0 层（Tier 0）：通用规划器与解释执行路径】                                   │
-│ • 适用对象：首次出现的未知需求、低频长尾探索、尚未达到晋升阈值的临时交互          │
-│ • 执行方式：LLM 语义前端生成候选 IR ──> 实时校验 ──> 通用查询规划器 / 通用约束注入│
-└─────────────────────────────────────────┬─────────────────────────────────────────┘
-                                          │ 画像达到第一级热点与稳定性阈值
-                                          ▼
-┌───────────────────────────────────────────────────────────────────────────────────┐
-│ 【第 1 层（Tier 1）：受控确定性计划与参数化模板（主力固化层，覆盖 90%+ 场景）】   │
-│ • 适用对象：高频重复的业务查询、周期性复现的动态排产约束、稳定的客户流程组合      │
-│ • 固化产物：                                                                      │
-│   - 高频查询 ──> 查询中间表示 + 参数化查询计划 / 预编译 SQL 语句（Prepared Plan） │
-│   - 高频规则 ──> 参数化 OSPF 动态约束模板（Constraint Template）                  │
-│   - 高频表达式 ──> 冻结符号顺序的高性能编译求值器（Compiled Evaluator）           │
-│   - 稳定流转 ──> 标准工作流执行计划与工具调用链模板（Flow Plan）                  │
-└─────────────────────────────────────────┬─────────────────────────────────────────┘
-                                          │ 唯有性能瓶颈极显著、收益充分且产品边界已高度稳定时
-                                          ▼
-┌───────────────────────────────────────────────────────────────────────────────────┐
-│ 【第 2 层（Tier 2）：受控代码制品与虚拟机插件（极致性能层）】                     │
-│ • 适用对象：超高吞吐要求的核心算子、复杂自定义求值器或高频专用查询接口            │
-│ • 固化产物：受控 JVM 编译查询接口插件 / 字节码制品 / WebAssembly (Wasm) 沙盒模块  │
-│ • 安全铁律：隔离构建进程、数字签名、依赖白名单、CPU/内存限制、独立类加载器/进程   │
-└─────────────────────────────────────────┘
-```
+<div class="dg" role="img" aria-label="三层专门化阶梯自上而下：【第 0 层（Tier 0）：通用规划器与解释执行路径】↓ 画像达到第一级热点与稳定性阈值 ↓【第 1 层（Tier 1）：受控确定性计划与参数化模板（主力固化层，覆盖 90%+ 场景）】↓ 唯有性能瓶颈极显著、收益充分且产品边界已高度稳定时 ↓【第 2 层（Tier 2）：受控代码制品与虚拟机插件（极致性能层）】。">
+<div class="dg-col">
+<div class="dg-node dg-node--layer"><span class="dg-t">【第 0 层（Tier 0）：通用规划器与解释执行路径】</span><span class="dg-s">适用对象：首次出现的未知需求、低频长尾探索、尚未达到晋升阈值的临时交互</span><span class="dg-s">执行方式：LLM 语义前端生成候选 IR → 实时校验 → 通用查询规划器 / 通用约束注入</span></div>
+<div class="dg-down">↓<span class="dg-lbl">画像达到第一级热点与稳定性阈值</span></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">【第 1 层（Tier 1）：受控确定性计划与参数化模板（主力固化层，覆盖 90%+ 场景）】</span><span class="dg-s">适用对象：高频重复的业务查询、周期性复现的动态排产约束、稳定的客户流程组合</span><span class="dg-s">固化产物：</span><span class="dg-s">高频查询 → 查询中间表示 + 参数化查询计划 / 预编译 SQL 语句（Prepared Plan）</span><span class="dg-s">高频规则 → 参数化 OSPF 动态约束模板（Constraint Template）</span><span class="dg-s">高频表达式 → 冻结符号顺序的高性能编译求值器（Compiled Evaluator）</span><span class="dg-s">稳定流转 → 标准工作流执行计划与工具调用链模板（Flow Plan）</span></div>
+<div class="dg-down">↓<span class="dg-lbl">唯有性能瓶颈极显著、收益充分且产品边界已高度稳定时</span></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">【第 2 层（Tier 2）：受控代码制品与虚拟机插件（极致性能层）】</span><span class="dg-s">适用对象：超高吞吐要求的核心算子、复杂自定义求值器或高频专用查询接口</span><span class="dg-s">固化产物：受控 JVM 编译查询接口插件 / 字节码制品 / WebAssembly (Wasm) 沙盒模块</span><span class="dg-s">安全铁律：隔离构建进程、数字签名、依赖白名单、CPU/内存限制、独立类加载器/进程</span></div>
+</div>
+</div>
 
 ---
 
@@ -93,29 +82,21 @@
 
 答案在于**计划与能力注册表（Plan & Capability Registry）的显式版本绑定与精确失效重建机制**：
 
-```text
-               【计划注册表（Plan Registry）的显式版本绑定结构】
-  ┌─────────────────────────────────────────────────────────────────────────┐
-  │ 专用计划 ID: plan_query_delay_shortage_v3   状态: ACTIVE                │
-  │ 语义形状哈希 (Shape Hash): sha256:4b9e...   专门化层级: Tier 1          │
-  ├─────────────────────────────────────────────────────────────────────────┤
-  │ 【绑定的有效性边界依赖版本指纹（Validity Boundary Dependencies）】      │
-  │ • 数据库结构版本 (DB Schema Version):       v_schema_20260901           │
-  │ • 领域字段与元数据目录版本 (Catalog Ver):   v_catalog_4.2               │
-  │ • 租户权限与安全策略版本 (Auth Policy Ver): v_policy_19                 │
-  │ • 语义编译器/生成器版本 (Generator Ver):    v_compiler_2.1              │
-  │ • 执行后端适配器版本 (Adapter Ver):         v_adapter_pg_1.4            │
-  └────────────────────────────────────┬────────────────────────────────────┘
-                                       │
-         [监听到底层变更事件：如字段目录升级为 v_catalog_4.3 或权限策略变更]
-                                       │
-                                       ▼
-  ┌─────────────────────────────────────────────────────────────────────────┐
-  │ 1. 精确标记失效 (Precise Invalidation)：将状态原子切换为 INVALIDATED    │
-  │ 2. 自动无感回退 (Instant Fallback)：当前请求立即走 Tier 0 通用路径执行  │
-  │ 3. 后台异步重建 (Async Re-compilation)：基于新目录重编译并重走影子验证  │
-  └─────────────────────────────────────────────────────────────────────────┘
-```
+<div class="dg" role="img" aria-label="【计划注册表（Plan Registry）的显式版本绑定结构】：专用计划 ID 与语义形状哈希、专门化层级，绑定【绑定的有效性边界依赖版本指纹（Validity Boundary Dependencies）】；↓ [监听到底层变更事件：如字段目录升级为 v_catalog_4.3 或权限策略变更] ↓ 1. 精确标记失效 → 2. 自动无感回退 → 3. 后台异步重建。">
+<div class="dg-col">
+<div class="dg-title">【计划注册表（Plan Registry）的显式版本绑定结构】</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">专用计划 ID: plan_query_delay_shortage_v3</span><span class="dg-t">状态: ACTIVE</span><span class="dg-s">语义形状哈希 (Shape Hash): sha256:4b9e...</span><span class="dg-s">专门化层级: Tier 1</span></div>
+<div class="dg-group"><div class="dg-gt">【绑定的有效性边界依赖版本指纹（Validity Boundary Dependencies）】</div>
+<div class="dg-node dg-node--chip">数据库结构版本 (DB Schema Version): v_schema_20260901</div>
+<div class="dg-node dg-node--chip">领域字段与元数据目录版本 (Catalog Ver): v_catalog_4.2</div>
+<div class="dg-node dg-node--chip">租户权限与安全策略版本 (Auth Policy Ver): v_policy_19</div>
+<div class="dg-node dg-node--chip">语义编译器/生成器版本 (Generator Ver): v_compiler_2.1</div>
+<div class="dg-node dg-node--chip">执行后端适配器版本 (Adapter Ver): v_adapter_pg_1.4</div>
+</div>
+<div class="dg-down">↓<span class="dg-lbl">[监听到底层变更事件：如字段目录升级为 v_catalog_4.3 或权限策略变更]</span></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">1. 精确标记失效 (Precise Invalidation)：将状态原子切换为 INVALIDATED</span><span class="dg-s">2. 自动无感回退 (Instant Fallback)：当前请求立即走 Tier 0 通用路径执行</span><span class="dg-s">3. 后台异步重建 (Async Re-compilation)：基于新目录重编译并重走影子验证</span></div>
+</div>
+</div>
 
 这套机制在工程上实现了完整的生命周期闭环：
 1. **显式绑定有效边界（Explicit Validity Boundary）**：任何一个专用计划、约束模板或编译求值器在注册表发布时，都强制同时绑定它所依赖的**数据库结构版本、领域字段目录版本、权限策略版本、模型/生成器版本以及后端适配器版本**的完整哈希指纹。

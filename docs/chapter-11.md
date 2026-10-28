@@ -25,47 +25,48 @@
 
 当我们把这 15 个点位的支撑与制约关系绘制成完整的架构依赖拓扑图时，整座大厦的力学结构便一目了然：
 
-```text
-                                 【第 8 点：形式化领域模型】
-                           （系统、运筹、机器学习、智能体共享领域概念）
-                                              │
-        ┌──────────────────┬──────────────────┼──────────────────┬──────────────────┐
-        ▼                  ▼                  ▼                  ▼                  ▼
-    [第 5 点]          [第 6 点]          [第 7 点]         [第 12 点]         [第 15 点]
- 算法与系统口径一致   动态约束安全注入     中间值透明可查    数字孪生动态推演   智能体业务推理
-                           │                  │                  │      (反向强化第 1 点与第 8 点)
-                           └────────┬─────────┘                  │
-                                    ▼                            │
-                    【第 4 点：算法可被应用层白盒编排】          │
-                      （避免只暴露不透明的黑盒服务接口）         │
-                                    │                            │
-                    ┌───────────────┴───────────────┐            │
-                    ▼                               ▼            │
-                [第 10 点]                    [第 6 / 7 点]      │
-              轻量高频可仿真性                 得以工程实现      │
-                    ▲                                            │
-                    │                                            ▼
-                    └─────────────── 【第 11 点】 ───────────────┘
-                              计划 / 预计 / 实际 + 版本快照
-                                    │
-                    ┌───────────────┼───────────────┐
-                    ▼               ▼               ▼
-                [第 10 点]      [第 12 点]      [第 13 点]
-                 仿真对比      数字孪生推演   滚动排产与流程编排
-                                                    │
-                                                    ▼
-                                                [第 15 点]
-                                       智能体推理影响范围与候选方案
-                                                    │
-                                                    ▼
-                                                [第 14 点]
-                                       智能体生成动态约束与流程适配
-
-
-  【第 1 点：业务逻辑内聚】 ──┐
-  【第 2 点：领域与框架分离】 ┼───────► [第 9 点：纯计算可测试性]
-  【第 3 点：仓储接口化】 ────┘        （不启 Spring、不连库、不调远程服务直接单测）
-```
+<div class="dg" role="img" aria-label="第 8 点：形式化领域模型（系统、运筹、机器学习、智能体共享领域概念）向下支撑第 5 点算法与系统口径一致、第 6 点动态约束安全注入、第 7 点中间值透明可查、第 12 点数字孪生动态推演、第 15 点智能体业务推理，其中 (反向强化第 1 点与第 8 点)；第 6、7 点汇入【第 4 点：算法可被应用层白盒编排】（避免只暴露不透明的黑盒服务接口），落到 [第 10 点] 轻量高频可仿真性与 [第 6 / 7 点] 得以工程实现；【第 11 点】计划 / 预计 / 实际 + 版本快照 向上支撑 [第 10 点]，并向下展开 [第 10 点] 仿真对比、[第 12 点] 数字孪生推演、[第 13 点] 滚动排产与流程编排，再到 [第 15 点] 智能体推理影响范围与候选方案、[第 14 点] 智能体生成动态约束与流程适配；【第 1 点：业务逻辑内聚】【第 2 点：领域与框架分离】【第 3 点：仓储接口化】汇向 [第 9 点：纯计算可测试性]（不启 Spring、不连库、不调远程服务直接单测）。">
+<div class="dg-col">
+<div class="dg-node dg-node--key"><span class="dg-t">【第 8 点：形式化领域模型】</span><span class="dg-s">（系统、运筹、机器学习、智能体共享领域概念）</span></div>
+<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
+<div class="dg-row">
+<div class="dg-node dg-node--leaf"><span class="dg-t">[第 5 点]</span><span class="dg-s">算法与系统口径一致</span></div>
+<div class="dg-node dg-node--leaf"><span class="dg-t">[第 6 点]</span><span class="dg-s">动态约束安全注入</span></div>
+<div class="dg-node dg-node--leaf"><span class="dg-t">[第 7 点]</span><span class="dg-s">中间值透明可查</span></div>
+<div class="dg-node dg-node--leaf"><span class="dg-t">[第 12 点]</span><span class="dg-s">数字孪生动态推演</span></div>
+<div class="dg-node dg-node--leaf"><span class="dg-t">[第 15 点]</span><span class="dg-s">智能体业务推理</span></div>
+</div>
+<div class="dg-loop">↺ (反向强化第 1 点与第 8 点)</div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">【第 4 点：算法可被应用层白盒编排】</span><span class="dg-s">（避免只暴露不透明的黑盒服务接口）</span></div>
+<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
+<div class="dg-row">
+<div class="dg-node dg-node--leaf"><span class="dg-t">[第 10 点]</span><span class="dg-s">轻量高频可仿真性</span></div>
+<div class="dg-node dg-node--leaf"><span class="dg-t">[第 6 / 7 点]</span><span class="dg-s">得以工程实现</span></div>
+</div>
+<div class="dg-down" aria-hidden="true">↑</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">【第 11 点】</span><span class="dg-s">计划 / 预计 / 实际 + 版本快照</span></div>
+<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
+<div class="dg-row">
+<div class="dg-node dg-node--leaf"><span class="dg-t">[第 10 点]</span><span class="dg-s">仿真对比</span></div>
+<div class="dg-node dg-node--leaf"><span class="dg-t">[第 12 点]</span><span class="dg-s">数字孪生推演</span></div>
+<div class="dg-node dg-node--leaf"><span class="dg-t">[第 13 点]</span><span class="dg-s">滚动排产与流程编排</span></div>
+</div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node"><span class="dg-t">[第 15 点]</span><span class="dg-s">智能体推理影响范围与候选方案</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node"><span class="dg-t">[第 14 点]</span><span class="dg-s">智能体生成动态约束与流程适配</span></div>
+</div>
+<div class="dg-group">
+<div class="dg-col">
+<div class="dg-node"><span class="dg-t">【第 1 点：业务逻辑内聚】</span></div>
+<div class="dg-node"><span class="dg-t">【第 2 点：领域与框架分离】</span></div>
+<div class="dg-node"><span class="dg-t">【第 3 点：仓储接口化】</span></div>
+</div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node"><span class="dg-t">[第 9 点：纯计算可测试性]</span><span class="dg-s">（不启 Spring、不连库、不调远程服务直接单测）</span></div>
+</div>
+</div>
 
 在第 5 章中我们已经拆解了第一层依赖（第 8 点形式化领域模型是一切的根基），现在让我们重点审视**第二层至第六层依赖**是如何严密咬合的：
 
@@ -111,32 +112,28 @@
 
 因此，应用层通过确定性策略将处理流程划分为三个清晰梯度：
 
-```text
-               【现场实际执行反馈进入（如 T1 实际完工晚 30 分钟）】
-                                        │
-                                        ▼
-         ┌─────────────────────────────────────────────────────────────┐
-         │ 第一级：领域计算模型局部推演（系统侧纯数值计算，毫秒级）    │
-         │ • 沿前后置工序链与产线日历，重算 T2 等后序任务的预计时间窗  │
-         │ • 重算受影响时间桶内的预计投料量与预计资源占用              │
-         └──────────────────────────────┬──────────────────────────────┘
-                                        │
-                                        ▼
-                     [应用层确定性边界与冲突守卫检查]
-         • 预计结束时间是否越出订单交付窗口或超过偏差容忍阈值？
-         • 是否触发跨产线资源冲突（如共享投料口、公用夹具、齐套库存）？
-                                        │
-               ┌────────────────────────┴────────────────────────┐
-        【未越界且无全局冲突】                            【越过阈值或产生资源冲突】
-               │                                                 │
-               ▼                                                 ▼
-┌──────────────────────────────┐                  ┌──────────────────────────────┐
-│ 保持原基准计划顺序，仅更新   │                  │ 第二/三级：运筹求解与仿真比选│
-│ 数字孪生预计状态并持续监控   │                  │ • 方案 A：受限局部窗口重排   │
-└──────────────────────────────┘                  │ • 方案 B：全局滚动排产重算   │
-                                                  │ 经数字孪生仿真对比后确认下发 │
-                                                  └──────────────────────────────┘
-```
+<div class="dg" role="img" aria-label="【现场实际执行反馈进入（如 T1 实际完工晚 30 分钟）】先进入第一级领域计算模型局部推演（系统侧纯数值计算，毫秒级），再由 [应用层确定性边界与冲突守卫检查] 判定：【未越界且无全局冲突】时保持原基准计划顺序，仅更新数字孪生预计状态并持续监控；【越过阈值或产生资源冲突】时进入第二/三级：运筹求解与仿真比选。">
+<div class="dg-col">
+<div class="dg-node"><span class="dg-t">【现场实际执行反馈进入（如 T1 实际完工晚 30 分钟）】</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">第一级：领域计算模型局部推演（系统侧纯数值计算，毫秒级）</span><span class="dg-s">• 沿前后置工序链与产线日历，重算 T2 等后序任务的预计时间窗</span><span class="dg-s">• 重算受影响时间桶内的预计投料量与预计资源占用</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">[应用层确定性边界与冲突守卫检查]</span><span class="dg-s">• 预计结束时间是否越出订单交付窗口或超过偏差容忍阈值？</span><span class="dg-s">• 是否触发跨产线资源冲突（如共享投料口、公用夹具、齐套库存）？</span></div>
+<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
+<div class="dg-row">
+<div class="dg-col">
+<div class="dg-node"><span class="dg-t">【未越界且无全局冲突】</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node"><span class="dg-t">保持原基准计划顺序，仅更新</span><span class="dg-s">数字孪生预计状态并持续监控</span></div>
+</div>
+<div class="dg-col">
+<div class="dg-node"><span class="dg-t">【越过阈值或产生资源冲突】</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node"><span class="dg-t">第二/三级：运筹求解与仿真比选</span><span class="dg-s">• 方案 A：受限局部窗口重排</span><span class="dg-s">• 方案 B：全局滚动排产重算</span><span class="dg-s">经数字孪生仿真对比后确认下发</span></div>
+</div>
+</div>
+</div>
+</div>
 
 1. **第一级（系统侧纯数值局部推演）**：由应用层直接调用领域层的换产时间、生产时长与物料消耗计算模型，更新受影响工序链的预计时间。只要更新后的预计时间未突破订单交期红线、偏差在允许阈值内，且经约束求值器检查未违反任何跨资源硬约束，系统就只需更新数字孪生预计状态，无需惊动运筹求解器改动基准排产顺序。
 2. **第二级（运筹侧受限局部窗口重排）**：当偏差超出局部缓冲，但影响范围被领域图谱严格限定在某几个关联工单或单一车间内时，算法层仅锁定受影响对象集合（如 `{T2, T3, 产线 A, 产线 B}`），将其余已稳定工单冻结为边界常数，执行秒级轻量重排。
@@ -321,32 +318,23 @@ class DigitalTwinPropagationGuard(
 
 在 `ospf` 与本书的领域驱动设计（DDD）架构下，我们将列生成算法拆解为职责极其清晰的领域与算法协作组件，并为后续引入机器学习/强化学习加速预留了严格的安全验证边界：
 
-```text
-                    【DDD 架构下的列生成（Column Generation）协作闭环】
-
-       ┌─────────────────────────────────────────────────────────────────────┐
-       │ 1. 受限主问题（Restricted Master Problem, RMP —— 运筹主控层）       │
-       │ • 仅包含当前已生成的有限个可行方案列（如单车配载路径列 / 单线排产列）│
-       │ • 负责全局耦合硬约束（订单全覆盖、共享投料口总量上限、全局库存平衡）│
-       │ • 求解线性松弛并输出当前对偶价格（Dual Prices / Shadow Prices）     │
-       └──────────────────┬───────────────────────────────────▲──────────────┘
-                          │ 下发带对偶信息与业务边界的子问题契约 │
-                          ▼                                   │ 回注经验证的改进列
-       ┌──────────────────────────────────────────────────────┴──────────────┐
-       │ 2. 定价子问题契约（Pricing Subproblem Contract —— 领域与算法解耦层）│
-       │ • 按独立限界上下文/聚合（如单台设备、单条产线、单辆货车）拆分子问题 │
-       │ • 目标：寻找满足单资源局部工艺/时空约束、且约化成本（Reduced Cost） │
-       │   为负（最小化问题中）的新方案列                                    │
-       └──────────────────┬───────────────────────────────────▲──────────────┘
-                          │                                   │
-            ┌─────────────┴─────────────┐       ┌─────────────┴─────────────┐
-            ▼                           ▼       │                           │
-┌───────────────────────┐   ┌───────────────────────┐   ┌───────────────────────────┐
-│ 路径 A：加速/启发式器 │   │ 路径 B：精确子问题求解│   │ 3. 运筹验证守卫（OR Guard）│
-│ 启发式 / 受控 RL 策略 │   │ 动态规划 / MILP / CP  │──>│ • 独立校验领域硬约束可行性│
-│ 快速生成或排序候选列  │──>│ （负责收敛与最优证明）│   │ • 独立重算并核验约化成本  │
-└───────────────────────┘   └───────────────────────┘   └───────────────────────────┘
-```
+<div class="dg" role="img" aria-label="DDD 架构下的列生成（Column Generation）协作闭环：1. 受限主问题求解线性松弛并输出当前对偶价格，下发带对偶信息与业务边界的子问题契约给 2. 定价子问题契约；定价子问题经路径 A 加速/启发式器与路径 B 精确子问题求解产出候选列，交 3. 运筹验证守卫（OR Guard）独立校验与核验约化成本后，回注经验证的改进列。">
+<div class="dg-title">【DDD 架构下的列生成（Column Generation）协作闭环】</div>
+<div class="dg-col">
+<div class="dg-node dg-node--layer"><span class="dg-t">1. 受限主问题（Restricted Master Problem, RMP —— 运筹主控层）</span><span class="dg-s">• 仅包含当前已生成的有限个可行方案列（如单车配载路径列 / 单线排产列）</span><span class="dg-s">• 负责全局耦合硬约束（订单全覆盖、共享投料口总量上限、全局库存平衡）</span><span class="dg-s">• 求解线性松弛并输出当前对偶价格（Dual Prices / Shadow Prices）</span></div>
+<div class="dg-down" aria-hidden="true">↓<span class="dg-lbl">下发带对偶信息与业务边界的子问题契约</span></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">2. 定价子问题契约（Pricing Subproblem Contract —— 领域与算法解耦层）</span><span class="dg-s">• 按独立限界上下文/聚合（如单台设备、单条产线、单辆货车）拆分子问题</span><span class="dg-s">• 目标：寻找满足单资源局部工艺/时空约束、且约化成本（Reduced Cost）为负（最小化问题中）的新方案列</span></div>
+<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
+<div class="dg-row">
+<div class="dg-node dg-node--leaf"><span class="dg-t">路径 A：加速/启发式器</span><span class="dg-s">启发式 / 受控 RL 策略</span><span class="dg-s">快速生成或排序候选列</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--leaf"><span class="dg-t">路径 B：精确子问题求解</span><span class="dg-s">动态规划 / MILP / CP</span><span class="dg-s">（负责收敛与最优证明）</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--leaf dg-node--key"><span class="dg-t">3. 运筹验证守卫（OR Guard）</span><span class="dg-s">• 独立校验领域硬约束可行性</span><span class="dg-s">• 独立重算并核验约化成本</span></div>
+</div>
+<div class="dg-loop">↺ 回注经验证的改进列</div>
+</div>
+</div>
 
 用 DDD 架构组织列生成的核心工程精髓在于以下三点：
 
@@ -594,32 +582,17 @@ class OspfColumnGenerationCoordinator(
 
 在 DDD 与 `ospf` 架构下，Benders 分解同样被构建为一套高度模块化、带严格数学认证边界的协作管线：
 
-```text
-                    【DDD 架构下的 Benders 分解协作闭环】
-
-       ┌─────────────────────────────────────────────────────────────────────┐
-       │ 1. Benders 主问题（Master Problem —— 第一阶段战略/主计划决策）      │
-       │ • 决策核心骨架变量（如跨线任务分配、批次大小、主资源启停）          │
-       │ • 维护割平面池（Cut Pool），不断吸收子问题反馈的可行割与最优割      │
-       │ • 维护并更新全局下界（Lower Bound，以最小化问题为例）               │
-       └──────────────────┬───────────────────────────────────▲──────────────┘
-                          │ 下发当前主问题固定解（Trial Solution）│
-                          ▼                                   │ 回注经认证的可行割 / 最优割
-       ┌──────────────────────────────────────────────────────┴──────────────┐
-       │ 2. Benders 子问题群（Subproblems —— 第二阶段分车间/分场景检验）     │
-       │ • 在主问题固定解下，按各限界上下文或各随机场景独立并行求解          │
-       │ • 若子问题不可行 ──> 提取极射线/Farkas 证明，构造【Benders 可行割】 │
-       │ • 若子问题有最优解 ──> 提取对偶乘子，构造【Benders 最优割】并更新上界│
-       └──────────────────────────────────────────────────────┬──────────────┘
-                                                              │
-                                                              ▼
-       ┌─────────────────────────────────────────────────────────────────────┐
-       │ 3. 割平面有效性验证与收敛认证守卫（Cut & Convergence Guard）        │
-       │ • 任何由启发式或学习型策略提出的候选割/场景排序，必须经原始/对偶信息│
-       │   严格验证其数学有效性（绝不能切掉真正的全局最优解！）              │
-       │ • 主问题上下界（UB/LB）与终止间隙（Gap）必须由认证子问题精确计算！  │
-       └─────────────────────────────────────────────────────────────────────┘
-```
+<div class="dg" role="img" aria-label="DDD 架构下的 Benders 分解协作闭环：1. Benders 主问题下发当前主问题固定解（Trial Solution）给 2. Benders 子问题群；子问题群构造【Benders 可行割】与【Benders 最优割】，交由 3. 割平面有效性验证与收敛认证守卫认证后回注经认证的可行割 / 最优割。">
+<div class="dg-title">【DDD 架构下的 Benders 分解协作闭环】</div>
+<div class="dg-col">
+<div class="dg-node dg-node--layer"><span class="dg-t">1. Benders 主问题（Master Problem —— 第一阶段战略/主计划决策）</span><span class="dg-s">• 决策核心骨架变量（如跨线任务分配、批次大小、主资源启停）</span><span class="dg-s">• 维护割平面池（Cut Pool），不断吸收子问题反馈的可行割与最优割</span><span class="dg-s">• 维护并更新全局下界（Lower Bound，以最小化问题为例）</span></div>
+<div class="dg-down" aria-hidden="true">↓<span class="dg-lbl">下发当前主问题固定解（Trial Solution）</span></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">2. Benders 子问题群（Subproblems —— 第二阶段分车间/分场景检验）</span><span class="dg-s">• 在主问题固定解下，按各限界上下文或各随机场景独立并行求解</span><span class="dg-s">• 若子问题不可行 ──> 提取极射线/Farkas 证明，构造【Benders 可行割】</span><span class="dg-s">• 若子问题有最优解 ──> 提取对偶乘子，构造【Benders 最优割】并更新上界</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer dg-node--key"><span class="dg-t">3. 割平面有效性验证与收敛认证守卫（Cut &amp; Convergence Guard）</span><span class="dg-s">• 任何由启发式或学习型策略提出的候选割/场景排序，必须经原始/对偶信息严格验证其数学有效性（绝不能切掉真正的全局最优解！）</span><span class="dg-s">• 主问题上下界（UB/LB）与终止间隙（Gap）必须由认证子问题精确计算！</span></div>
+<div class="dg-loop">↺ 回注经认证的可行割 / 最优割</div>
+</div>
+</div>
 
 在工程实现中，Benders 分解架构严格遵循三条铁律：
 1. **主子问题通过领域快照与结构化割契约通信**：主问题无需感知子问题内部复杂的工序或物流细节；子问题求解完成后，向主问题返回的是绑定了稳定符号身份的**结构化割平面（Feasibility Cut / Optimality Cut）**，表达“为了避免车间排产不可行或成本过高，主问题的分配变量必须满足怎样的线性不等式约束”。

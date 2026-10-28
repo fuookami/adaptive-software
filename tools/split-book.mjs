@@ -371,7 +371,7 @@ function main() {
       console.error(
         `\n✗ docs/ 下已有 ${existing.length} 个页面会被覆盖，例如：\n` +
           existing.slice(0, 5).map((r) => `    ${r}`).join('\n') +
-          `\n确认要用 manuscript/ 手稿重置正文，请加 --force。`,
+          `\n确认要用 manuscript/ 手稿重置正文，请加 --force（注意：会一并回退已重绘的 HTML 图示）。`,
       );
       process.exitCode = 1;
       return;

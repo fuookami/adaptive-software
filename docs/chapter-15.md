@@ -10,47 +10,25 @@
 
 在 `LLM as Runtime` 的目标架构中，任何由用户意图触发并最终走向能力沉淀的过程，都必须严格经历以下由八个标准阶段组成的编译与治理流水线：
 
-```text
-┌───────────────────────────────────────────────────────────────────────────────────┐
-│ 【阶段 1：采集 (Collection)】                                                     │
-│  采集用户原始意图、工具调用轨迹、通用路径执行结果与性能开销事实                   │
-└─────────────────────────────────────────┬─────────────────────────────────────────┘
-                                          ▼
-┌───────────────────────────────────────────────────────────────────────────────────┐
-│ 【阶段 2：规范化 (Normalization)】                                                │
-│  从原始文本与交互中抽取稳定业务语义结构，剥离具体字面量参数与敏感业务值           │
-└─────────────────────────────────────────┬─────────────────────────────────────────┘
-                                          ▼
-┌───────────────────────────────────────────────────────────────────────────────────┐
-│ 【阶段 3：中间表示 (Intermediate Representation)】                                │
-│  生成可哈希、可版本化的结构化表示（Query IR / Constraint IR / Flow IR / Param IR）│
-└─────────────────────────────────────────┬─────────────────────────────────────────┘
-                                          ▼
-┌───────────────────────────────────────────────────────────────────────────────────┐
-│ 【阶段 4：验证 (Verification & Validation)】                                      │
-│  执行严格的类型、物理单位、字段目录、租户权限、算力预算、审批状态与语义等价校验   │
-└─────────────────────────────────────────┬─────────────────────────────────────────┘
-                                          ▼
-┌───────────────────────────────────────────────────────────────────────────────────┐
-│ 【阶段 5：优化与晋升评估 (Optimization & Promotion Decision)】                    │
-│  基于调用频率、延迟、资源成本、稳定性与预期收益，评估是否值得专门化提升           │
-└─────────────────────────────────────────┬─────────────────────────────────────────┘
-                                          ▼
-┌───────────────────────────────────────────────────────────────────────────────────┐
-│ 【阶段 6：降阶映射 (Lowering)】                                                   │
-│  编译生成参数化查询计划、预编译语句、OSPF 求解器约束模板、规则计划或受控插件      │
-└─────────────────────────────────────────┬─────────────────────────────────────────┘
-                                          ▼
-┌───────────────────────────────────────────────────────────────────────────────────┐
-│ 【阶段 7：发布 (Publishing)】                                                     │
-│  完成影子验证、灰度放量、计划注册表登记、数字签名、不可变版本化与原子流量切换     │
-└─────────────────────────────────────────┬─────────────────────────────────────────┘
-                                          ▼
-┌───────────────────────────────────────────────────────────────────────────────────┐
-│ 【阶段 8：自适应监控与演进 (Adaptation & Deoptimization)】                        │
-│  持续监控命中率与收益；遇异常自动回滚；当表结构/目录/策略变更时精确失效并重编译   │
-└───────────────────────────────────────────────────────────────────────────────────┘
-```
+<div class="dg" role="img" aria-label="八步受控编译流水线自上而下：【阶段 1：采集 (Collection)】、【阶段 2：规范化 (Normalization)】、【阶段 3：中间表示 (Intermediate Representation)】、【阶段 4：验证 (Verification &amp; Validation)】、【阶段 5：优化与晋升评估 (Optimization &amp; Promotion Decision)】、【阶段 6：降阶映射 (Lowering)】、【阶段 7：发布 (Publishing)】、【阶段 8：自适应监控与演进 (Adaptation &amp; Deoptimization)】。">
+<div class="dg-col">
+<div class="dg-node dg-node--layer"><span class="dg-t">【阶段 1：采集 (Collection)】</span><span class="dg-s">采集用户原始意图、工具调用轨迹、通用路径执行结果与性能开销事实</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">【阶段 2：规范化 (Normalization)】</span><span class="dg-s">从原始文本与交互中抽取稳定业务语义结构，剥离具体字面量参数与敏感业务值</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">【阶段 3：中间表示 (Intermediate Representation)】</span><span class="dg-s">生成可哈希、可版本化的结构化表示（Query IR / Constraint IR / Flow IR / Param IR）</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">【阶段 4：验证 (Verification &amp; Validation)】</span><span class="dg-s">执行严格的类型、物理单位、字段目录、租户权限、算力预算、审批状态与语义等价校验</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">【阶段 5：优化与晋升评估 (Optimization &amp; Promotion Decision)】</span><span class="dg-s">基于调用频率、延迟、资源成本、稳定性与预期收益，评估是否值得专门化提升</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">【阶段 6：降阶映射 (Lowering)】</span><span class="dg-s">编译生成参数化查询计划、预编译语句、OSPF 求解器约束模板、规则计划或受控插件</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">【阶段 7：发布 (Publishing)】</span><span class="dg-s">完成影子验证、灰度放量、计划注册表登记、数字签名、不可变版本化与原子流量切换</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">【阶段 8：自适应监控与演进 (Adaptation &amp; Deoptimization)】</span><span class="dg-s">持续监控命中率与收益；遇异常自动回滚；当表结构/目录/策略变更时精确失效并重编译</span></div>
+</div>
+</div>
 
 让我们逐一审视这八个阶段的核心工程职责：
 
@@ -69,18 +47,19 @@
 
 在许多传统软件团队的认知里，“验证（Verification）”往往被等同于代码写完上线前的那道集成测试。但在自适应软件与 `LLM as Runtime` 架构中，**形式化方法与运行时验证绝不是编译完成后的最后一道测试关卡，而是贯穿领域模型、领域语言、事件历史、数字孪生、能力生成与运行时发布的“横切可信基础（Cross-Cutting Trust Foundation）”**。
 
-```text
-   ┌─────────────────────────────────────────────────────────────────────────────┐
-   │             【横切可信基础：形式化方法与运行时确定性验证守卫】              │
-   │  • 代数类型与物理量纲检查 (Type & Dimension Safety)                         │
-   │  • 业务不变量与前置/后置契约 (Invariants & Pre/Post-Conditions)             │
-   │  • 状态机合法转移与状态角色隔离 (State Machine & Role Isolation)            │
-   │  • 租户隔离、字段级权限与算力预算配额 (Tenant, Auth & Resource Budget)      │
-   │  • 差分验证、等价性性质测试与影子验证 (Differential & Shadow Verification)  │
-   └──┬─────────────┬─────────────┬─────────────┬─────────────┬───────────────┬──┘
-      ▼             ▼             ▼             ▼             ▼               ▼
- [领域模型定义] [领域语言描述] [事件历史记录] [数字孪生推演] [产生式编译]   [运行时发布执行]
-```
+<div class="dg" role="img" aria-label="横切可信基础：形式化方法与运行时确定性验证守卫，向下横切领域模型定义、领域语言描述、事件历史记录、数字孪生推演、产生式编译、运行时发布执行六个环节。">
+<div class="dg-col">
+<div class="dg-group"><div class="dg-gt">【横切可信基础：形式化方法与运行时确定性验证守卫】</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">代数类型与物理量纲检查</span><span class="dg-s">(Type &amp; Dimension Safety)</span></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">业务不变量与前置/后置契约</span><span class="dg-s">(Invariants &amp; Pre/Post-Conditions)</span></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">状态机合法转移与状态角色隔离</span><span class="dg-s">(State Machine &amp; Role Isolation)</span></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">租户隔离、字段级权限与算力预算配额</span><span class="dg-s">(Tenant, Auth &amp; Resource Budget)</span></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">差分验证、等价性性质测试与影子验证</span><span class="dg-s">(Differential &amp; Shadow Verification)</span></div>
+</div>
+<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
+<div class="dg-row"><div class="dg-node dg-node--leaf">领域模型定义</div><div class="dg-node dg-node--leaf">领域语言描述</div><div class="dg-node dg-node--leaf">事件历史记录</div><div class="dg-node dg-node--leaf">数字孪生推演</div><div class="dg-node dg-node--leaf">产生式编译</div><div class="dg-node dg-node--leaf">运行时发布执行</div></div>
+</div>
+</div>
 
 为了确保动态产生的能力在任何时候都不会突破安全红线，系统在全链路强制执行**六条安全边界准则**：
 
@@ -116,17 +95,19 @@
 
 系统采用严密的**“异步构建 + 影子验证（Shadow Verification）+ 灰度切换”**三步曲：
 
-```text
-                        【新专用计划上线前的影子验证（Shadow Verification）机制】
-
-                                    ┌──> [通用执行路径（权威基准）] ──> 直接向用户返回生产结果
-                                    │                                            │
-[线上真实业务请求] ──> [流量复制器] ─┤                                            ▼
-                                    │                                  (异步比对器：校验结果集、
-                                    │                                   状态码、权限边界与性能收益)
-                                    └──> [新编译的专用候选计划（影子态）] ────────▲
-                                         （异步旁路运行，结果不对外暴露、不写生产库）
-```
+<div class="dg" role="img" aria-label="新专用计划上线前的影子验证（Shadow Verification）机制：线上真实业务请求 → 流量复制器 一分两路，一路 通用执行路径（权威基准） → 直接向用户返回生产结果，另一路 新编译的专用候选计划（影子态）（异步旁路运行，结果不对外暴露、不写生产库），两路汇入 (异步比对器：校验结果集、状态码、权限边界与性能收益)。">
+<div class="dg-title">新专用计划上线前的影子验证（Shadow Verification）机制</div>
+<div class="dg-col">
+<div class="dg-row"><div class="dg-node dg-node--chip">线上真实业务请求</div><div class="dg-edge" aria-hidden="true">→</div><div class="dg-node dg-node--chip">流量复制器</div></div>
+<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
+<div class="dg-row">
+<div class="dg-group"><div class="dg-node"><span class="dg-t">通用执行路径（权威基准）</span></div><div class="dg-edge" aria-hidden="true">→</div><div class="dg-node"><span class="dg-t">直接向用户返回生产结果</span></div></div>
+<div class="dg-group"><div class="dg-node dg-node--soft"><span class="dg-t">新编译的专用候选计划（影子态）</span><span class="dg-s">（异步旁路运行，结果不对外暴露、不写生产库）</span></div></div>
+</div>
+<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">(异步比对器：校验结果集、状态码、权限边界与性能收益)</span></div>
+</div>
+</div>
 
 1. **构建期静态与样本等价验证**：在后台异步编译任务生成专用计划后，计划验证器首先用历史回放样本库对其进行差分等价测试，确认专用计划与通用路径在边界输入下的输出一致。
 2. **线上流量旁路影子运行（Shadow Mode）**：进入发布准备阶段后，新计划被标记为 `SHADOW` 状态。当线上匹配该语义形状的真实请求到来时，前台依然 100% 由成熟可靠的**通用路径**处理并向用户返回结果；同时，运行时在后台异步将同一份冻结输入复制一份喂给**专用候选计划**旁路执行（不产生任何外部写副作用）。

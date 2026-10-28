@@ -43,6 +43,9 @@ jobs:
       - name: 校验书稿结构（SUMMARY.md ↔ docs/）
         run: node tools/split-book.mjs --check
 
+      - name: 校验图示 HTML 结构（块闭合 / 无空行 / 无 Markdown 残留）
+        run: node tools/check-diagrams.mjs --structure
+
       - name: 构建站点
         run: npx honkit build . ./_book
 

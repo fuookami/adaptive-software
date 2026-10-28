@@ -41,16 +41,15 @@ IEEE 754 双精度浮点数（`Double`）在表示十进制小数（如 `0.1 + 0
 
 在 `ospf-kotlin` 的 `fuookami.ospf.kotlin.utils.math` 包中，已经原生提供了一套按加法结构、环、域、标量与有序实数（`RealNumber`）组织的泛型数值层次：
 
-```text
-               【OSPF (fuookami.ospf.kotlin.utils.math) 代数化数值类型层次】
-                                             │
-                  ┌──────────────────────────┼──────────────────────────┐
-                  ▼                          ▼                          ▼
-        [整数系 IntegerNumber]     [有理数系 RationalNumber]   [实数/浮点系 RealNumber / FloatingNumber]
-        • Int32 / Int64 / Int8     • Rtn64 (64位精确有理数)    • Flt32 / Flt64 (带精度容差 ep 的浮点数)
-        • UInt32 / UInt64          • RtnX (任意精度有理数)     • FltX (基于 BigDecimal 的任意精度实数)
-        • IntX (任意精度大整数)
-```
+<div class="dg" role="img" aria-label="OSPF (fuookami.ospf.kotlin.utils.math) 代数化数值类型层次，向下分为三支：整数系 IntegerNumber 含 Int32 / Int64 / Int8、UInt32 / UInt64、IntX (任意精度大整数)；有理数系 RationalNumber 含 Rtn64 (64位精确有理数)、RtnX (任意精度有理数)；实数/浮点系 RealNumber / FloatingNumber 含 Flt32 / Flt64 (带精度容差 ep 的浮点数)、FltX (基于 BigDecimal 的任意精度实数)。">
+<div class="dg-title">OSPF (fuookami.ospf.kotlin.utils.math) 代数化数值类型层次</div>
+<div class="dg-arms"><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div></div>
+<div class="dg-group">
+<div class="dg-node dg-node--leaf"><span class="dg-t">整数系 IntegerNumber</span><span class="dg-s">Int32 / Int64 / Int8</span><span class="dg-s">UInt32 / UInt64</span><span class="dg-s">IntX (任意精度大整数)</span></div>
+<div class="dg-node dg-node--leaf"><span class="dg-t">有理数系 RationalNumber</span><span class="dg-s">Rtn64 (64位精确有理数)</span><span class="dg-s">RtnX (任意精度有理数)</span></div>
+<div class="dg-node dg-node--leaf"><span class="dg-t">实数/浮点系 RealNumber / FloatingNumber</span><span class="dg-s">Flt32 / Flt64 (带精度容差 ep 的浮点数)</span><span class="dg-s">FltX (基于 BigDecimal 的任意精度实数)</span></div>
+</div>
+</div>
 
 这套代数化数值底座在工程设计上遵循三大核心准则：
 

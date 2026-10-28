@@ -1,0 +1,229 @@
+/* =========================================================================
+   图示组件库（HTML Diagram Kit）
+   用于替代手稿中用 ```text 字符画描绘的流程图 / 架构图 / 分层图。
+   约定见 CONTRIBUTING.md「图示规范」。所有类名以 dg- 为前缀（diagram）。
+
+   结构骨架：
+     <div class="dg" role="img" aria-label="整图的文字替代表述">
+       <div class="dg-title">图标题</div>
+       <div class="dg-col"> …纵向流程… </div>
+       <div class="dg-row"> …横向流程… </div>
+       <div class="dg-node"><span class="dg-t">主标题</span><span class="dg-s">补充说明</span></div>
+       <div class="dg-edge">→</div>  <div class="dg-down">↓</div>
+       <div class="dg-group"><div class="dg-gt">分组标题</div> … </div>
+       <div class="dg-arms"> …一分多叉的分支线… </div>
+       <div class="dg-loop">↺ 回流说明</div>
+       <div class="dg-legend"> …图例… </div>
+     </div>
+
+   降级原则：箭头与标题都是真实文字，即使样式表缺失（例如 GitHub 直接阅读 .md），
+   内容仍可按行顺序阅读；不要用 ::before 生成任何必要文字。
+   ========================================================================= */
+
+.dg {
+  margin: 1.8em 0;
+  padding: 1.2em 1.3em 1.3em;
+  border: 1px solid #e3e6ea;
+  border-radius: 12px;
+  background: #fbfcfe;
+  font-size: 0.92em;
+  line-height: 1.55;
+  page-break-inside: avoid;
+}
+
+.dg-title {
+  font-weight: 700;
+  text-align: center;
+  color: #1d3557;
+  margin-bottom: 1em;
+  letter-spacing: 0.02em;
+}
+
+/* 布局容器 --------------------------------------------------------------- */
+.dg-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15em;
+}
+
+.dg-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0.4em;
+}
+
+.dg-center { width: 100%; text-align: center; }
+
+/* 节点 ------------------------------------------------------------------- */
+.dg-node {
+  flex: 1 1 9em;
+  min-width: 7.5em;
+  max-width: 22em;
+  border: 1.5px solid #4b7bec;
+  border-radius: 9px;
+  padding: 0.55em 0.75em;
+  background: #fff;
+  text-align: center;
+  color: #22303c;
+}
+
+.dg-node .dg-t {
+  display: block;
+  font-weight: 600;
+  color: #1d3557;
+}
+
+.dg-node .dg-s {
+  display: block;
+  font-size: 0.88em;
+  color: #5b6b7b;
+  margin-top: 0.3em;
+}
+
+/* 节点变体 */
+.dg-node--soft { border-style: dashed; border-color: #a4b0be; }
+.dg-node--key { border-color: #e67e22; background: #fff9f2; }
+.dg-node--key .dg-t { color: #a55b1b; }
+.dg-node--fact { border-color: #20bf6b; background: #f4fdf7; }
+.dg-node--fact .dg-t { color: #12784a; }
+.dg-node--layer { width: 100%; max-width: 42em; flex: 0 0 auto; }
+.dg-node--leaf { flex: 1 1 8em; min-width: 7em; }
+
+/* 紧凑链节：用于「A → B → C」式的长流程链 */
+.dg-node--chip {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: none;
+  padding: 0.35em 0.6em;
+  font-size: 0.92em;
+}
+
+/* 连接线与箭头 ----------------------------------------------------------- */
+.dg-edge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-width: 1.6em;
+  color: #4b7bec;
+  font-weight: 700;
+}
+
+.dg-edge .dg-lbl,
+.dg-down .dg-lbl {
+  display: block;
+  font-size: 0.8em;
+  font-weight: 500;
+  color: #5b6b7b;
+}
+
+.dg-down {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #4b7bec;
+  font-weight: 700;
+  line-height: 1.1;
+  padding: 0.1em 0;
+}
+
+/* 一分多叉 / 多叉合一：上横线 + 分支竖线 */
+.dg-arms {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 46em;
+  border-top: 1.5px solid #a4b0be;
+  margin-top: 0.1em;
+}
+
+.dg-arm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 0;
+  color: #4b7bec;
+  font-weight: 700;
+}
+
+/* 分组容器：表示“同一层 / 同一侧 / 同一支柱” */
+.dg-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  border: 1px dashed #b9c2cb;
+  border-radius: 10px;
+  padding: 0.9em 0.8em 0.8em;
+  margin: 0.35em 0;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.dg-gt {
+  flex: 0 0 100%;
+  font-weight: 700;
+  color: #4b5a68;
+  text-align: center;
+  margin-bottom: 0.3em;
+}
+
+/* 回流 / 反馈环 */
+.dg-loop {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  width: 100%;
+  max-width: 46em;
+  margin-top: 0.7em;
+  padding-left: 0.7em;
+  border-left: 2px dashed #e67e22;
+  color: #a55b1b;
+  font-size: 0.9em;
+}
+
+/* 图例 */
+.dg-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5em 1.4em;
+  margin-top: 1em;
+  padding-top: 0.7em;
+  border-top: 1px solid #e8ecef;
+  font-size: 0.85em;
+  color: #5b6b7b;
+}
+
+.dg-key {
+  display: inline-block;
+  width: 0.85em;
+  height: 0.85em;
+  margin-right: 0.35em;
+  border-radius: 3px;
+  border: 1.5px solid #4b7bec;
+  background: #fff;
+  vertical-align: -0.05em;
+}
+
+.dg-key--key { border-color: #e67e22; background: #fff9f2; }
+.dg-key--fact { border-color: #20bf6b; background: #f4fdf7; }
+.dg-key--soft { border-style: dashed; border-color: #a4b0be; }
+
+/* 打印与窄屏 */
+@media (max-width: 640px) {
+  .dg-row { flex-direction: column; align-items: stretch; }
+  .dg-edge { min-height: 1.4em; }
+  .dg-node { max-width: none; }
+}
+
+@media print {
+  .dg { background: #fff; border-color: #ccc; break-inside: avoid; }
+  .dg-node, .dg-group { box-shadow: none; }
+}

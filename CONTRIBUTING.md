@@ -14,6 +14,7 @@
 
 > `manuscript/` 是最初按卷合并的手稿，只在“重新生成整本书结构”时使用。**日常修订请直接改 `docs/`**，
 > 否则重跑 `tools/split-book.mjs` 会覆盖你的改动（脚本默认会拒绝覆盖已存在的页面，需要 `--force` 才会重写）。
+> 特别注意：手稿里的图仍是字符画，`--force` 会**连已重绘的 HTML 图示一起回退**，请勿轻易使用。
 
 ## 2. 排版与写作约定
 
@@ -21,7 +22,13 @@
 - **章内小节编号保持 `N.M`**（例如第 12 章的 `## 12.3 有解与无解的数学证据`），不要跨章连续编号。
 - **中文排版**：使用全角标点；中英文之间留一个空格；专有名词大小写固定（LLM、OSPF、DDD、ERP/APS/MES/WMS/TMS、Semantic IR、SolveReport、CVaR、DRO）。
 - **术语一致**：运筹原生（OR-Native）、机器学习原生（ML-Native）、智能体原生（Agent-Native）、形式化领域模型、语义即时编译（Semantic JIT）、软件产品线工程（SPLE）、自适应数字化运营平台（Adaptive DOP）。
-- **图示**：现有架构图使用 ```` ```text ```` 围栏里的字符画。新增图形优先沿用字符画或 Mermaid；图片请放到 `docs/assets/` 并用相对路径引用，避免绝对 URL。
+- **图示**：全书的流程图、架构图、分层图一律用 **HTML 图示组件**绘制，不再使用字符画。类名清单、四种模式配方与保真铁律见
+  [`tools/DIAGRAM-KIT.md`](tools/DIAGRAM-KIT.md)，样张见 [docs/chapter-02.md](docs/chapter-02.md)。样式集中在
+  [`styles/website.css`](styles/website.css)（`book.json` 已把它注入网站 / PDF / EPUB），**不要**在正文里写内联 `style="…"`，也不要新建 CSS。
+  新增图片请放到 `docs/assets/` 并用相对路径引用，避免绝对 URL。
+- **公式与推导**：这类 ```` ```text ```` 块（无框线、无箭头，如 `后序任务预计开始时间 = max(…)`）保持字符形式，它们不是图示。
+- **降级要求**：GitHub 直接阅读 `.md` 时会丢弃样式表，因此图示里的箭头必须是真实字符（`→ ↓ ↺`）而不是 CSS 生成的伪元素，
+  保证无样式时仍能按行顺序读出内容。
 - **代码**：标明语言围栏；`ospf` 相关类型名（`RealNumber`、`Quantity`、`PhysicalUnit`、`LinearPolynomial`、`LinearInequality`、`LinearMetaModel`、`Result`/`Ret`）与正文保持一致；示例需可读、可裁剪，不引入真实企业数据。
 - 每个页面结尾不要留 `---` 分隔线（GitBook 会自动分页，脚本也会清理）。
 
@@ -29,11 +36,16 @@
 
 ```bash
 npm install
-npm run serve    # http://localhost:4000 逐页检查导航与渲染
-npm run check    # SUMMARY.md 引用的文件都存在、每页恰好 1 个一级标题、18 章齐全
+npm run serve        # http://localhost:4000 逐页检查导航与渲染
+npm run check        # SUMMARY.md 引用的文件都存在、每页恰好 1 个一级标题、18 章齐全
+npm run structure    # 图示 HTML 结构：块闭合、无空行、顶格、无 Markdown 残留（CI 也跑这个）
+npm run diagrams     # 图示文字保真：与 ascii-baseline 标签逐词元比对，重绘不许丢字
 ```
 
-提交前请至少跑一次 `npm run check`。
+改动过任何图示，提交前请跑 `npm run structure`；若是从字符画转 HTML 或改写了图内文字，再加跑
+`npm run diagrams`（需要本地有 `ascii-baseline` 标签）与 `npm run diagrams -- --strict`（拦截新增表述）。
+想肉眼看图示效果：`npm run build` 后
+`powershell -ExecutionPolicy Bypass -File tools/preview-shot.ps1 -Pages "docs/chapter-18.html"`，截图在 `.shots/`。
 
 ## 4. 提交流程
 

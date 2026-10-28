@@ -9,7 +9,10 @@
     "build": "honkit build . ./_book",
     "pdf": "honkit pdf . ./adaptive-software.pdf",
     "split": "node tools/split-book.mjs",
-    "check": "node tools/split-book.mjs --check"
+    "check": "node tools/split-book.mjs --check",
+    "diagrams": "node tools/check-diagrams.mjs",
+    "diagrams:list": "node tools/check-diagrams.mjs --list",
+    "structure": "node tools/check-diagrams.mjs --structure"
   },
   "devDependencies": {
     "honkit": "^5.0.1"

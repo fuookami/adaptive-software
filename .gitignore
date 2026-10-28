@@ -23,6 +23,7 @@ desktop.ini
 # 本地临时
 /.dsh-acl-recovery/
 /.qoder-write-test.md
+/.shots/
 *.tmp
 
 # 本地私有笔记（不进入书籍）

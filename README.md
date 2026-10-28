@@ -54,9 +54,13 @@
 │   ├── chapter-01.md … chapter-18.md
 │   ├── part-2-summary.md … part-4-summary.md
 │   └── epilogue.md
+├── styles/
+│   └── website.css      # HTML 图示组件库（dg-*）与站点样式
 ├── manuscript/          # 原始手稿（按卷合并的长文件），用于重新生成 docs/
 ├── tools/
 │   ├── split-book.mjs   # 手稿 → docs/ 的切分与结构校验脚本（零依赖）
+│   ├── check-diagrams.mjs  # 图示重绘的文字保真校验（对比 ascii-baseline 标签）
+│   ├── DIAGRAM-KIT.md   # 图示重绘规范（类名、模式配方、铁律）
 │   └── bootstrap.ps1    # 一键切分 + 校验 + git 初始化
 └── .github/workflows/   # GitHub Pages 部署工作流
 ```
@@ -70,6 +74,7 @@ npm install          # 安装 honkit
 npm run serve        # 本地预览 http://localhost:4000
 npm run build        # 静态站点输出到 _book/
 npm run check        # 校验 SUMMARY.md 与 docs/ 结构是否一致
+npm run diagrams     # 校验图示重绘是否丢字（对比 ascii-baseline 标签）
 ```
 
 需要 PDF/EPUB 时另装 Calibre，然后 `npm run pdf`。
