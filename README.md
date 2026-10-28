@@ -74,10 +74,27 @@ npm install          # 安装 honkit
 npm run serve        # 本地预览 http://localhost:4000
 npm run build        # 静态站点输出到 _book/
 npm run check        # 校验 SUMMARY.md 与 docs/ 结构是否一致
+npm run structure    # 校验图示 HTML 结构（块闭合、无空行、顶格）
 npm run diagrams     # 校验图示重绘是否丢字（对比 ascii-baseline 标签）
 ```
 
 需要 PDF/EPUB 时另装 Calibre，然后 `npm run pdf`。
+
+### 直接在编辑器里看 .md
+
+书中的流程图与架构图是**语义化 HTML + 一张共用样式表**（`styles/website.css`）绘制的，样式由 `book.json` 在构建时注入，
+所以 `.md` 源码本身只带 `class` 名。各环境的阅读效果：
+
+| 环境 | 效果 | 说明 |
+| :--- | :--- | :--- |
+| `npm run serve` / `_book/` / GitHub Pages | ✅ 完整图示 | 站点已注入样式表 |
+| VS Code Markdown 预览 | ✅ 完整图示 | 仓库自带 [.vscode/settings.json](.vscode/settings.json) 的 `markdown.styles` 已指向 `styles/website.css`；改过 CSS 后需重开预览页 |
+| GitHub 上的 `.md` | ⚠️ 无样式的可读文本 | GitHub 不加载外链样式表并会剥掉 `class`，图示退化为按行排列的标签；箭头是真实字符（`→ ↓ ↺`），内容仍可读 |
+| GitBook.com（Git 同步） | ❓ 待验证 | 现代 GitBook 用自己的块模型，原始 HTML 支持不保证；接入后请先看任意图示页 |
+
+因此本仓库把 **GitHub 当作源码仓库**、把 **GitHub Pages（或 GitBook 空间）当作阅读入口**：
+需要带图阅读时，请勿直接滚动 `.md` 源码页，改用上面三种渲染环境之一。若你在某个环境里看到图示“散架”，
+按 [CONTRIBUTING.md](CONTRIBUTING.md) 的排查顺序处理即可。
 
 重新从手稿生成正文（例如改动过 `manuscript/` 里的原始稿）：
 

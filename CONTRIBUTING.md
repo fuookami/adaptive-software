@@ -47,6 +47,16 @@ npm run diagrams     # 图示文字保真：与 ascii-baseline 标签逐词元�
 想肉眼看图示效果：`npm run build` 后
 `powershell -ExecutionPolicy Bypass -File tools/preview-shot.ps1 -Pages "docs/chapter-18.html"`，截图在 `.shots/`。
 
+### 在编辑器里阅读图示
+
+图示的样式在 `styles/website.css`，`.md` 源码里只有 `class` 名，因此**必须由渲染环境加载这张样式表**：
+
+- VS Code 预览：仓库已带 `.vscode/settings.json` → `"markdown.styles": ["styles/website.css"]`。若你看到一堆按行堆叠的文字而没有框线，
+  先确认这个设置存在、然后**关掉再重开预览页**（CSS 变更后预览不会自动重取样式表）。
+- GitHub 的 `.md` 页面：样式表与 `class` 都会被剥掉，图示退化为纯文本顺序。这是预期行为，
+  请通过 GitHub Pages 或 `npm run serve` 阅读带图版本（箭头使用真实字符 `→ ↓ ↺`，保证退化时内容仍可读）。
+- 用 `book.json` 之外的方式自建站点时，记得手动引入 `styles/website.css`，否则图示同样不显示。
+
 ## 4. 提交流程
 
 1. Fork 本仓库，从 `main` 切出分支：`fix/chapter-12-typo`、`feat/part-3-diagrams`……

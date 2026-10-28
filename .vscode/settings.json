@@ -1,0 +1,40 @@
+{
+  // VS Code 的 Markdown 预览默认不加载任何外部样式表，而书里的图示只写了 class
+  // （dg / dg-node / dg-row …），样式集中在 styles/website.css，由 book.json 在构建时注入站点。
+  // 这里把同一张样式表喂给预览，VS Code 里看 .md 就能看到框线、分叉与回流线。
+  // 路径相对工作区根目录；改动 CSS 后需要重新打开预览页生效。
+  "markdown.styles": ["styles/website.css"],
+
+  // 预览时把相对链接按文件位置解析，docs/ 内互链才不会跳空
+  "markdown.preview.breaks": false,
+  "markdown.preview.fontSize": 15,
+  "markdown.preview.lineHeight": 1.7,
+
+  // 构建产物与依赖不进搜索/资源管理器，避免噪音
+  "files.exclude": {
+    "**/_book": true,
+    "**/node_modules": true,
+    "**/.shots": true,
+    "**/*.tmp": true
+  },
+  "search.exclude": {
+    "**/_book": true,
+    "**/node_modules": true,
+    "**/manuscript": true,
+    "**/package-lock.json": true
+  },
+
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "[markdown]": {
+    // 正文是手动换行的中文长句，保留行尾空格与自动换行
+    "files.trimTrailingWhitespace": false,
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "other": "off",
+      "strings": "off"
+    }
+  }
+}

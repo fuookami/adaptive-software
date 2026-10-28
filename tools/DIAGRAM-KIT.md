@@ -56,8 +56,14 @@
 | 发布渠道 | HTML 图示表现 | 说明 |
 | :--- | :--- | :--- |
 | Honkit 构建的静态站 / GitHub Pages | ✅ 完整彩色渲染 | `book.json` 的 `styles.website` 已注入 `styles/website.css`，本地 `npm run build` 已验证 |
+| VS Code Markdown 预览 | ✅ 完整彩色渲染 | 需要 `.vscode/settings.json` 里的 `"markdown.styles": ["styles/website.css"]`；预览不加载外链样式表，没有这一条就会退化成堆叠文字。改过 CSS 要重开预览页 |
+| 无任何样式的裸环境 | ✅ 完整彩色渲染 | 已用「只挂 `styles/website.css`、不挂 GitBook 主题」的页面实测：框线、分组虚线、分叉臂、回流线、图例都正常，说明样式表自足，不依赖主题 |
 | GitHub 直接阅读 `.md` | ⚠️ 有结构无样式 | GitHub 会剥掉 `class` 与外链样式表，图示退化为按行排列的标签 + 真实箭头字符，内容仍可读（这正是要求箭头用真实字符的原因） |
 | GitBook.com（Git 同步） | ❓ 待验证 | 现代 GitBook 把 Markdown 解析成自己的块模型，对原始 HTML 块的支持不保证。**接入空间后请先打开任意图示页确认**；若被当作代码块或丢弃，走下面的兜底 |
+
+**本仓库的定位**：GitHub 作为源码仓库，GitHub Pages / GitBook 作为阅读入口。图示「散架」时按这个顺序排查：
+① 是否在看 `.md` 源码页（换 Pages/`npm run serve`）；② VS Code 预览是否有 `markdown.styles`（看本文件与 `.vscode/settings.json`）；
+③ CSS 是否被构建注入（`_book/docs/*.html` 里应有 `<link rel="stylesheet" href="../styles/website.css">`）；④ 图块是否被 Markdown 切断（`npm run structure`）。
 
 兜底顺序（从省事到彻底）：
 
