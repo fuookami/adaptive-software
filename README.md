@@ -44,7 +44,7 @@
 │   └── en/                # 英文版＝独立书根：与中文侧同名同序，逐页标注 i18n-status
 ├── styles/website.css     # 图示组件库（dg-*）与站点样式的唯一真源
 ├── i18n/
-│   ├── glossary.md        # 中英术语对照表（翻译契约，CI 会检查覆盖情况）
+│   ├── glossary.md        # 中英术语对照表（97 条，翻译契约；术语靠 PR 评审把关）
 │   └── README.md          # 翻译流程与页面状态约定
 ├── manuscript/            # 原始手稿（按卷合并），用于重新生成中文正文
 ├── tools/                 # split-book / check-diagrams / check-i18n / init-en / build-site …

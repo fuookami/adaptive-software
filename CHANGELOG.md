@@ -34,7 +34,7 @@
   页面文件名与导航顺序一一对应。英文侧 30 个骨架页已就位，逐页用 `<!-- i18n-status: … -->` 标注翻译进度。
 - [gitbook-docs.yaml](gitbook-docs.yaml)：按 GitBook 官方 docs-as-code 规范声明“一个站点、两个语言空间”
   （`content.directory` + `language`，`key` 上线后不可改）。
-- [i18n/glossary.md](i18n/glossary.md)：中英术语对照表（约 120 条，含“不要译成”负例），作为翻译契约；
+- [i18n/glossary.md](i18n/glossary.md)：中英术语对照表（97 条，含“不要译成”负例），作为翻译契约；
   [i18n/README.md](i18n/README.md)：页面状态约定与翻译流程。
 - `tools/init-en.mjs`：从中文侧生成/更新英文骨架页与英文 `SUMMARY.md`（不覆盖已有译文，`--force` 才重写）。
 - `tools/check-i18n.mjs`：双语一致性闸（页面集合、导航条目与层级、书根配置、站点映射；已标记 `translated`
