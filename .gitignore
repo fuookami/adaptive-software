@@ -1,0 +1,29 @@
+# 构建产物
+/_book/
+/adaptive-software.pdf
+/adaptive-software.epub
+/adaptive-software.mobi
+
+# 依赖
+node_modules/
+npm-debug.log*
+yarn-error.log*
+package-lock.json.bak
+
+# 编辑器 / 系统
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/*
+!.vscode/settings.json
+*.swp
+*~
+
+# 本地临时
+/.dsh-acl-recovery/
+/.qoder-write-test.md
+*.tmp
+
+# 本地私有笔记（不进入书籍）
+NOTES.local.md

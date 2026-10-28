@@ -1,0 +1,73 @@
+name: Deploy book to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'README.md'
+      - 'SUMMARY.md'
+      - 'book.json'
+      - 'package.json'
+      - '.github/workflows/deploy.yml'
+  pull_request:
+    paths:
+      - 'docs/**'
+      - 'SUMMARY.md'
+      - 'book.json'
+      - 'package.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: 用 Honkit 构建静态书籍
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: 安装依赖
+        run: npm install --no-audit --no-fund
+
+      - name: 校验书稿结构（SUMMARY.md ↔ docs/）
+        run: node tools/split-book.mjs --check
+
+      - name: 构建站点
+        run: npx honkit build . ./_book
+
+      - name: 写入 .nojekyll
+        run: touch ./_book/.nojekyll
+
+      - name: 上传 Pages 产物
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_book
+
+  deploy:
+    name: 发布到 GitHub Pages
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 部署
+        id: deployment
+        uses: actions/deploy-pages@v4

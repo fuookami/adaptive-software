@@ -1,0 +1,45 @@
+name: 书稿问题（错字 / 术语 / 结构）
+description: 报告正文中的错别字、术语不一致、导航或渲染问题
+title: '[书稿] '
+labels:
+  - content
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢校对！请尽量给出**原文片段**，而不只是“第 N 章有错字”。
+  - type: input
+    id: page
+    attributes:
+      label: 出问题的页面
+      description: 例如 docs/chapter-12.md 第 12.3 节
+      placeholder: docs/chapter-07.md
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: 原文
+      description: 直接粘贴当前文字（含前后半句，便于定位）
+      render: markdown
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 建议改成
+      render: markdown
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 问题类型
+      options:
+        - 错字 / 病句 / 标点
+        - 术语或大小写不一致
+        - 标题层级 / 目录导航
+        - 代码围栏与图示渲染
+        - 技术表述可能有误（请说明理由）
+    validations:
+      required: true
