@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="1605" viewBox="0 0 860 1605" role="img">
+<rect x="0" y="0" width="860" height="1604.53" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<rect x="256.05" y="18.66" width="347.89" height="150.66" rx="9" fill="rgb(255, 249, 242)" stroke="rgb(230, 126, 34)" stroke-width="1"/>
+<text x="429.99" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(165, 91, 27)" text-anchor="middle">Point 8: formal domain model</text>
+<text x="429.99" y="68.77" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">(system, OR, ML and agent sides share domain</text>
+<text x="429.99" y="89.06" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">concepts)</text>
+<line x1="91.44" y1="173.48" x2="768.55" y2="173.48" stroke="rgb(164, 176, 190)" stroke-width="1"/>
+<text x="151.78" y="189.95" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="287.2" y="189.95" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="422.63" y="189.95" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="558.05" y="189.95" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="693.47" y="189.95" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="20.13" y="199" width="159.25" height="105.06" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="99.75" y="224.03" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[Point 5]</text>
+<text x="99.74" y="249.27" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Algorithm and system</text>
+<text x="99.75" y="269.32" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">definitions agree</text>
+<rect x="185.25" y="199" width="159.25" height="105.06" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="264.88" y="224.03" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[Point 6]</text>
+<text x="264.88" y="249.27" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Safe injection of</text>
+<text x="264.88" y="269.32" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">dynamic constraints</text>
+<rect x="350.38" y="199" width="159.25" height="105.06" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="430" y="224.03" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[Point 7]</text>
+<text x="430" y="249.27" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Transparent,</text>
+<text x="430" y="269.32" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">queryable</text>
+<text x="429.99" y="289.37" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">intermediates</text>
+<rect x="515.5" y="199" width="159.25" height="105.06" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="595.13" y="224.03" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[Point 12]</text>
+<text x="595.12" y="249.27" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Dynamic digital-twin</text>
+<text x="595.12" y="269.32" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">projection</text>
+<rect x="680.63" y="199" width="159.25" height="105.06" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="760.25" y="224.03" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[Point 15]</text>
+<text x="760.24" y="249.27" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Agent business</text>
+<text x="760.24" y="269.32" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">reasoning</text>
+<line x1="120.66" y1="315.53" x2="120.66" y2="336.06" stroke="rgb(230, 126, 34)" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="130.92" y="330.08" font-family="'Noto Sans SC'" font-size="13.248px" font-weight="400" fill="rgb(165, 91, 27)" text-anchor="start">↺ (reinforces points 1 and 8 in reverse)</text>
+<text x="422.63" y="352.76" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="359.59" width="642.3" height="64.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="384.72" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">Point 4: algorithms can be orchestrated white-box by the application layer</text>
+<text x="429.99" y="409.73" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">(avoid exposing only an opaque black-box service interface)</text>
+<line x1="91.44" y1="428.7" x2="768.55" y2="428.7" stroke="rgb(164, 176, 190)" stroke-width="1"/>
+<text x="253.34" y="445.11" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="591.89" y="445.11" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="193" y="454.22" width="234.06" height="85" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="310.03" y="479.2" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[Point 10]</text>
+<text x="310.03" y="504.44" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Lightweight, high-frequency</text>
+<text x="310.02" y="524.49" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">simulatability</text>
+<rect x="432.94" y="454.22" width="234.06" height="85" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="549.97" y="479.2" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[Point 6 / 7]</text>
+<text x="549.96" y="504.44" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Become engineering reality</text>
+<text x="422.63" y="555.88" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↑</text>
+<rect x="108.84" y="562.75" width="642.3" height="64.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="587.84" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">Point 11</text>
+<text x="429.98" y="613.08" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Planned / estimated / actual + version snapshots</text>
+<line x1="91.44" y1="631.86" x2="768.55" y2="631.86" stroke="rgb(164, 176, 190)" stroke-width="1"/>
+<text x="196.92" y="648.23" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="422.63" y="648.23" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="648.33" y="648.23" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="109.45" y="657.38" width="209.78" height="85" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="214.34" y="682.32" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[Point 10]</text>
+<text x="214.34" y="707.56" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Simulation comparison</text>
+<rect x="325.11" y="657.38" width="209.78" height="85" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="430" y="682.32" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[Point 12]</text>
+<text x="430" y="707.56" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Digital-twin projection</text>
+<rect x="540.77" y="657.38" width="209.78" height="85" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="645.66" y="682.32" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[Point 13]</text>
+<text x="645.65" y="707.56" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Rolling rescheduling and</text>
+<text x="645.66" y="727.61" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">process orchestration</text>
+<text x="422.63" y="759" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="256.05" y="765.91" width="347.89" height="150.66" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="790.96" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[Point 15]</text>
+<text x="429.98" y="816.2" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Agent reasons about impact scope and candidate</text>
+<text x="429.98" y="836.25" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">plans</text>
+<text x="422.63" y="933.14" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="256.05" y="940.09" width="347.89" height="150.66" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="965.1" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[Point 14]</text>
+<text x="429.98" y="990.35" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Agent generates dynamic constraints and process</text>
+<text x="429.99" y="1010.39" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">adaptation</text>
+<rect x="20.13" y="1095.89" width="845.28" height="483.38" rx="10" fill="rgba(255, 255, 255, 0.6)" fill-opacity="0.6" stroke="rgb(185, 194, 203)" stroke-width="1" stroke-dasharray="5 4"/>
+<rect x="123.45" y="1110.13" width="252.47" height="150.66" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="249.69" y="1135.13" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">Point 1: business logic cohesion</text>
+<rect x="83.17" y="1262.98" width="333.03" height="150.66" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="249.69" y="1288.02" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">Point 2: domain and framework separation</text>
+<rect x="127.22" y="1415.84" width="244.94" height="150.66" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="249.69" y="1440.91" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">Point 3: repository as interface</text>
+<text x="427.97" y="1342.89" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="454.47" y="1110.13" width="347.89" height="456.38" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="628.41" y="1135.13" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[Point 9: testability of pure computation]</text>
+<text x="628.41" y="1160.37" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">(unit tests directly, without Spring, a database or</text>
+<text x="628.41" y="1180.42" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">remote services)</text>
+</svg>
