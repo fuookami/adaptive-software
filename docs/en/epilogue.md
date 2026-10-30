@@ -1,15 +1,33 @@
-<!-- i18n-status: untranslated -->
+<!-- i18n-status: translated -->
 <!-- i18n-source: docs/zh/epilogue.md -->
-# Epilogue: Towards Software That Grows While It Is Used
+# Epilogue: Towards a New Species of Software That Grows While It Is Used
 
-> **This page is not translated yet.** Read the original:
-> [中文原文 →](../zh/epilogue.md)
->
-> 本页尚未翻译。英文译文提交后请删除上面的提示，并把首行的
-> `i18n-status` 改为 `translated`（`npm run i18n:check` 以它统计进度）。
+Looking back over this work of five volumes and eighteen chapters, we set out from an ordinary storm in shop-floor scheduling, travelled through the historical break between Software 1.0, 2.0 and 3.0, went down into the mechanisms beneath `ospf`'s algebraic numbers, physical dimensions and symbolic expressions, raised the engineering edifice where six pillars converge — domain-driven design, domain language, event sourcing, the digital twin, generative programming and formal methods — and finally flowed into the grand blueprint of "the three natives unified in a formal domain model" and "LLM as Runtime".
 
-## Original structure（供译者对照，译文就绪后删除本节）
+If the nearly one hundred thousand characters of this book were to be compressed into one closing paragraph, it would be this:
 
-- （本页无子标题）
+> **The real revolution brought by large language models was never a chat box bolted onto the side of software, nor the replacement of battle-tested business systems and optimization algorithms by an uncontrollable black-box model; it is that software now has, for the first time, a low-cost semantic entry point through which it can understand human intent and explore unforeseen change on the live floor of use. Once we anchor that semantic entry point in the shared language of a formal domain model, give it memory and a proving ground through event sourcing and a digital twin, fence it with the deterministic guard-rails of a semantic compiler and formal verification, and then use software product line engineering to keep absorbing battlefield-tested insight into the product core, software completes its speciation — from a tool manufactured once before release to an adaptive living system that keeps learning, specializing and sedimenting capability while in use.**
 
-> 本页含 1 个图示（HTML 组件）。翻译时请同步重绘图内标签，保持 `dg-*` 结构不变：见 [tools/DIAGRAM-KIT.md](../../tools/DIAGRAM-KIT.md)。
+<div class="dg" role="img" aria-label="The book's through-line in closing: the Adaptive Software vision → LLM as Runtime → formal domain model (OSPF substrate) → Semantic IR → compilation and formal verification → controlled specialized capability → SPLE promotion → stable product core → a new round of runtime exploration.">
+<div class="dg-row">
+<div class="dg-node dg-node--chip">Adaptive Software vision</div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--chip">LLM as Runtime</div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--chip">Formal domain model (OSPF substrate)</div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--chip">Semantic IR</div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--chip">Compilation and formal verification</div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--chip">Controlled specialized capability</div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--chip">SPLE promotion</div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--chip">Stable product core</div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--chip">A new round of runtime exploration</div>
+</div>
+</div>
+
+In the past, humans wrote programs and then adapted to them day after day; in the future, humans will use programs and, at the same time, create and evolve them together with machines. May the architectural philosophy and engineering practice set out in this book become the key in your hand to the next generation of adaptive enterprise software.

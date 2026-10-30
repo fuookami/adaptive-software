@@ -2,13 +2,14 @@
 
 **Domain-Driven Design, OSPF optimization modeling and the LLM as Runtime architecture for the Software 3.0 era**
 
-*by fuookami · English edition (translation in progress) · [Chinese original](../zh/README.md)*
+*by fuookami · English edition (complete) · [Chinese original](../zh/README.md)*
 
-> **Translation status.** This English edition is a scaffold: every page mirrors the Chinese
-> original file-for-file, and each page carries an `i18n-status` marker. Run
-> `npm run i18n:check` in the repository to see the live progress, or read the
-> [Chinese book](../zh/README.md) meanwhile. The five parts and eighteen chapters below link to the
-> English page when it exists, and each skeleton links back to the original.
+> **Translation status.** All thirty pages of the English edition are translated and kept in
+> one-to-one parity with the Chinese original — same file names, same navigation slots, same diagram
+> counts. `npm run i18n:check` re-verifies that parity on every commit. The Chinese edition remains the
+> source of truth: when the two diverge, the Chinese text wins and the English page is corrected.
+> Wording corrections to the translation are welcome; follow
+> [i18n/glossary.md](../../i18n/glossary.md) so terminology stays fixed.
 
 ## What this book argues
 
@@ -36,13 +37,16 @@ Full navigation: [SUMMARY.md](SUMMARY.md) · Outline: [outline.md](outline.md)
 ## Terminology
 
 Term translation is a contract, not a preference. The bilingual glossary lives in
-[i18n/glossary.md](../../i18n/glossary.md) and the CI gate rejects drift between the two editions.
+[i18n/glossary.md](../../i18n/glossary.md): terms listed there are fixed, and a change of rendering
+needs a matching glossary change. CI enforces structural parity between the editions (page set,
+navigation, diagram counts, subsection counts); terminology is held by review against that table.
 
-## Contributing a translation
+## Reviewing the translation
 
-Start with [CONTRIBUTING.md](../../CONTRIBUTING.md) and [i18n/README.md](../../i18n/README.md):
-pick a page, flip its `i18n-status` marker, keep the file name and navigation slot identical, and
-re-draw the diagram labels when you translate a page with figures. `npm run i18n:check` verifies that
-nothing was dropped along the way.
+Corrections are welcome. Start with [CONTRIBUTING.md](../../CONTRIBUTING.md) and
+[i18n/README.md](../../i18n/README.md): keep the file name and navigation slot identical, do not
+drop or merge sections, and keep the diagram HTML structure intact — only the visible labels and
+`aria-label` are translated. `npm run i18n:check` verifies that nothing was lost along the way; when
+the English and the Chinese disagree, the Chinese wins.
 
 Licensed under [CC BY-SA 4.0](../../LICENSE.md).

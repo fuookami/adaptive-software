@@ -33,6 +33,9 @@ docs/zh/chapter-12.md ⇄  docs/en/chapter-12.md
 
 ## 3. 翻译约定
 
+> 完整作业规范（结构契约、代码与图示 HTML 的保留规则、风格、自检清单）见
+> [translator-brief.md](translator-brief.md)——新译者在动笔前必须先读它，它也是并行作业时的唯一口径。
+
 - **术语**：先查 [glossary.md](glossary.md)。表里没有的术语，把拟定的译法**加进表里**再落笔，术语表随 PR 一起评审。
 - **拼写**：美式（`optimization` / `specialization` / `normalize` / `modeling`）。数字与单位保留原样（`1000 kg`、`90%`、`Gap`）。
 - **代码**：标识符、类型名、API 名**永不翻译**（`LinearPolynomial`、`SolveReport`、`Ret<T>`）；注释可以译，但要保持与中文页逐行对应，方便两边一起修。

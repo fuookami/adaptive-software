@@ -1,18 +1,111 @@
-<!-- i18n-status: untranslated -->
+<!-- i18n-status: translated -->
 <!-- i18n-source: docs/zh/chapter-17.md -->
-# Chapter 17: Taming Complexity — The Mythical Man-Month, SPLE and Four-Tier Promotion
+# Chapter 17: Taming Complexity — The Mythical Man-Month, SPLE and Four-Tier Capability Promotion
 
-> **This page is not translated yet.** Read the original:
-> [中文原文 →](../zh/chapter-17.md)
->
-> 本页尚未翻译。英文译文提交后请删除上面的提示，并把首行的
-> `i18n-status` 改为 `translated`（`npm run i18n:check` 以它统计进度）。
+Through the Semantic JIT of Chapter 16, our software can already turn high-frequency intents into efficient specialized execution capability automatically at runtime.
 
-## Original structure（供译者对照，译文就绪后删除本节）
+Yet from the vantage point of the full enterprise-software lifecycle and product engineering, a deeper crisis is surfacing: **when large language models and generative compilation make it easier than ever to try out and generate a new capability, what happens if we let floor staff at hundreds or thousands of customer sites keep generating dynamic rules, specialized queries and private flows day after day? Five years on, will this system evolve into a precise and powerful standard product, or degenerate into a Frankenstein monster packed with a million dynamic special cases that nobody can make sense of?**
 
-- 17.1 重温《人月神话》：当大模型让“生成新能力”的边际成本暴跌，如何守住系统的“概念完整性”？
-- 17.2 为什么运行时动态化不是终点，而是发现未来稳定产品结构的探测机制？
-- 17.3 软件产品线工程（SPLE）的四级能力晋升漏斗：临时能力 → 客户专用能力 → 产品可变点 → 平台稳定核心
-- 17.4 五大核心平台资产沉淀：语义中间表示、语义编译器、能力注册表、自适应运行时与产品线可变性模型
+This chapter revisits the core insight of the classic software-engineering book *The Mythical Man-Month*, introduces **Software Product Line Engineering (SPLE)**, explains why runtime dynamism is never the endpoint, and builds the four-tier product-asset promotion funnel that leads from a temporary dynamic capability to a stable platform core.
 
-> 本页含 2 个图示（HTML 组件）。翻译时请同步重绘图内标签，保持 `dg-*` 结构不变：见 [tools/DIAGRAM-KIT.md](../../tools/DIAGRAM-KIT.md)。
+---
+
+## 17.1 Revisiting *The Mythical Man-Month*: when large models collapse the marginal cost of generating a new capability, how do we preserve the system's conceptual integrity?
+
+Half a century ago, Turing Award winner Fred Brooks observed in *The Mythical Man-Month* that the essential difficulty of software engineering lies in **essential complexity**, and that what keeps a large software system from collapsing under its own evolution is the system's **conceptual integrity**.
+
+In the Software 3.0 era, large language models and agents bring a huge historical opportunity, and at the same time multiply the engineering risk of violating conceptual integrity:
+
+| Dimension | New opportunity created by Software 3.0 and runtime generation | Complexity risk that is sharply amplified |
+| :--- | :--- | :--- |
+| **Speed of admitting requirements** | A user's floor-level business intent can skip the long backlog and reach the system's response sooner. | **Conceptual inconsistency**: the same business semantics (say rush-order priority or kitting rate) get defined a dozen conflicting ways across different workshops or different prompts. |
+| **Cost of long-tail adaptation** | Temporary rules and customer long-tail needs can be adapted dynamically first, without having to build dedicated interface code right away each time. | **Product fragmentation**: large numbers of one-off special cases that barely run are kept in the system permanently, becoming a permanent technical-debt burden that cannot be upgraded or tested. |
+| **Efficiency of candidate generation** | Large models and generative tools can mass-produce candidate queries, constraints and flows at very low marginal cost. | **Coordination cost explosion**: multiple prediction models, agents, OR algorithms and subsystems each interpret the business through their own local understanding, and the structural entropy of the system grows out of control. |
+
+Faced with that challenge, we have hung one conspicuous motto on the architecture:
+
+> **The iron law of conceptual integrity: intelligence can be distributed, but semantics must never split!**
+
+We must see clearly that **large language models lower only the marginal cost of producing one new change; software engineering must still bear the complexity cost of controlling how those changes persist and interact over time**. The formal domain model (which guards the uniqueness of concepts and physical dimensions), formal verification (which guards the admission boundary for execution) and software product line engineering, discussed next (which guards the evolutionary order of the product structure), are the three core weapons with which we tame complexity and defend conceptual integrity in the Software 3.0 era.
+
+---
+
+## 17.2 Why runtime dynamism is not the endpoint, but a probing mechanism for discovering the future stable product structure
+
+Many people's intuition runs like this: now that we have a powerful dynamic runtime, shouldn't future software be dynamic in everything — drop the fixed product structure altogether and generate every feature on demand at runtime?
+
+This book gives a clear no: **Software 3.0 must never become infinitely dynamic; runtime dynamism is not the endpoint of software evolution but a low-cost probing mechanism for discovering the future stable product structure**!
+
+Why can't every capability stay dynamic at runtime forever?
+1. **The economics of maintenance and cognition at scale**: for core business logic already proven highly common and long stable across the whole industry or the vast majority of customers, sinking it into the platform standard core (a deterministic Software 1.0 module or a standard domain component) yields far better long-run runtime performance, test determinism and maintenance return than letting every tenant regenerate it dynamically at runtime and govern it separately;
+2. **Suppressing the growth of structural entropy**: as it serves more and more customers, a healthily evolving software product should gain an ever clearer grasp of industry commonality and of the dimensions of difference, and its product structure should converge and stabilize — instead of letting the set of dynamic rules expand without limit until it runs out of control.
+
+So in our top-level architecture, **the large language model runtime (LLM Runtime)** and **software product line engineering (SPLE)** form a perfect two-wheel drive of exploration and absorption:
+
+<div class="dg" role="img" aria-label="Two-wheel drive of exploration and absorption: the LLM runtime (exploration layer) provides evidence to software product line engineering, SPLE (absorption layer).">
+<div class="dg-row">
+<div class="dg-node"><span class="dg-t">LLM runtime (exploration layer)</span><span class="dg-s">Meets unknown, low-frequency, incompletely expressed new change on the floor</span><span class="dg-s">Understands intent, runs trial calculations and fails safe at very low marginal cost</span><span class="dg-s">Mission: explore what the software still lacks at low cost</span></div>
+<div class="dg-edge">→<span class="dg-lbl">provides evidence</span></div>
+<div class="dg-node"><span class="dg-t">Software product line engineering, SPLE (absorption layer)</span><span class="dg-s">Builds on real runtime repetition evidence across time and across customers</span><span class="dg-s">Governs commonality and variability</span><span class="dg-s">Mission: absorb changes already proven effective with high reliability</span></div>
+</div>
+</div>
+
+In short: **the LLM explores unknown change at low cost, and software product line engineering absorbs known change with high reliability**. Only a change that has accumulated real runtime evidence, passed formal verification and proved reusable across scenarios earns the right to be promoted step by step from dynamic candidate into the long-term product structure.
+
+---
+
+## 17.3 The four-tier capability promotion funnel of SPLE: temporary capability → customer-specific capability → product variability point → stable platform core
+
+As we pointed out in Chapter 9, SPLE is not a seventh sequential step in the chain define — describe — remember — project — generate — verify. It sits above the whole closed loop of capability formation and is dedicated to governing the **commonality and variability** of the product.
+
+When a new requirement is born on the operations floor — say the shared feeding-port capacity limit across multiple production lines that we have rehearsed several times, or a particular post-scheduling substitute-material recalculation flow — SPLE places it in a clear **four-tier capability promotion ladder** for full lifecycle management, according to its repetition evidence along the time dimension and the customer dimension:
+
+<div class="dg" role="img" aria-label="Four-tier capability promotion funnel: 1. new runtime change → 2. variability discovery → 3. controlled specialized capability → 4. repetition evidence established → 5. product line uplift → 6. core architecture evolution, settling downward into L1 temporary capability, L2 customer-specific capability, L3 product variability point and L4 stable core capability.">
+<div class="dg-row">
+<div class="dg-node"><span class="dg-t">1. New runtime change</span><span class="dg-s">Raised by users / the floor</span><span class="dg-s">Unknown new rule differences</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node"><span class="dg-t">2. Variability discovery</span><span class="dg-s">Events and runtime profiling</span><span class="dg-s">A repeating pattern is identified</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node"><span class="dg-t">3. Controlled specialized capability</span><span class="dg-s">Generate + verify + safe execution and fallback</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node"><span class="dg-t">4. Repetition evidence established</span><span class="dg-s">Recurs across time periods / across customers</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node"><span class="dg-t">5. Product line uplift</span><span class="dg-s">Abstract the dimension of difference</span><span class="dg-s">A formal variability point is formed</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node"><span class="dg-t">6. Core architecture evolution</span><span class="dg-s">Highly stable commonality</span><span class="dg-s">Sinks into the platform standard core</span></div>
+</div>
+<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
+<div class="dg-group">
+<div class="dg-node dg-node--leaf">L1: temporary capability</div>
+<div class="dg-node dg-node--leaf">L2: customer-specific capability</div>
+<div class="dg-node dg-node--leaf">L3: product variability point</div>
+<div class="dg-node dg-node--leaf">L4: stable core capability</div>
+</div>
+</div>
+
+The decision criteria and the product-engineering treatment of these four capability tiers are defined strictly as follows:
+
+| Capability tier | Deciding criteria from business and runtime evidence | Product-engineering and architectural treatment (SPLE governance rules) | Evolutionary form, taking the shared feeding-port constraint as the example |
+| :--- | :--- | :--- | :--- |
+| **Tier 1: Temporary capability**<br>(Temporary / Ad-hoc Capability) | • One-off and highly situation-specific;<br>• repetition evidence across periods is not yet sufficient. | Stays in the runtime candidate layer or in a one-off temporary configuration, and is archived into the event history once used; **never rush it into the long-term product structure or pollute the standard branch**. | A workshop's feeding pump needs emergency repair on a Tuesday, so the agent generates a one-off dynamic constraint valid for that day only. |
+| **Tier 2: Customer-specific capability**<br>(Customer-Specific Capability) | • Recurs across multiple production periods within a single customer or a single organization or plant;<br>• the business semantics and the benefit are already stable. | After shadow verification, **versioned as a controlled customer variant (Customer Variant) for that tenant**, written into the registry, with its scope of application, permissions, rollback path and expiry boundary made explicit. | Because of the plant's physical layout, the customer always shares a feeding port on Tuesdays and Thursdays, and the case settles into a parameterized constraint template dedicated to that tenant. |
+| **Tier 3: Product variability point / configurable capability**<br>(Product Variability Point) | • **Recurs across several different customers or plants in different industries**;<br>• the dimensions of difference between customers (say aggregation by day or by shift, by weight or by volume) can already be expressed formally. | **Formally promoted into the variability model (Variability Model) and the product capability catalog of the software product line**, offered to new customers as standardized configuration items, domain language (DSL) templates or process plugins for controlled out-of-the-box selection. | More than ten customers in the chemical and food industries show the same multi-line shared pretreatment feeding or buffer-tank capacity limit, which is distilled into a configurable constraint component of the standard product. |
+| **Tier 4: Stable core capability**<br>(Stable Platform Core) | • Becomes universal commonality for the vast majority of customers, stable over the long term;<br>• the return from unified maintenance clearly exceeds the cost of dynamic runtime generation. | **Sunk and promoted into the platform standard core (Platform Standard Core)**, built directly into the standard domain model and the base algorithm pipeline, reducing runtime dynamism and repeated generation overhead. | Multi-level resource sharing and coupled capacity constraints become part of the DOP/APS platform standard domain model and built-in standard operators of `ospf`, available to every customer by default. |
+
+Through this four-tier promotion mechanism, the software product acquires a virtuous **compounding of experience**: every special requirement at a new customer site stops being a custom-engineering swamp that drags the R&D team down and becomes radar that helps the platform detect variability points in unknown territory. Once runtime evidence across periods and across customers proves an exploration to be commonality, it climbs the ladder `temporary capability → customer-specific capability → product variability point → stable core capability` and steadily internalizes into a standard platform asset, so that the product grows more standard and clearer the more it is used!
+
+---
+
+## 17.4 Five core platform assets: semantic IR, the semantic compiler, the capability registry, the adaptive runtime and the product line variability model
+
+Once the way we produce software evolves from hard-coding everything before release to continuous specialization at runtime plus product line evolution, the **core platform assets** by which the core competitiveness of a software company or an engineering team is measured expand fundamentally as well.
+
+Tomorrow's core assets are no longer just the business source code in a Git repository, but an organic asset library made up of the following **five classes of technical platform assets** and **five classes of business knowledge assets**:
+
+| Core platform asset class | Core responsibility in the architecture | Typical asset objects and engineering carriers | Corresponding business-layer asset value (management view) |
+| :--- | :--- | :--- | :--- |
+| **1. Semantic IR assets**<br>(Semantic IR Assets) | Express formal business semantics precisely, fully isolating the ambiguity of natural language from implementation differences of the underlying execution engines. | Normalized query shape (Query Shape), query intermediate representation (Query IR), dynamic constraint definitions (Constraint IR), flow intermediate representation (Flow IR) and the domain metadata catalog. | **Unified business knowledge assets**: one authoritative definition across the whole domain for capacity, feeding, changeover and each state role. |
+| **2. Semantic compiler assets**<br>(Semantic Compiler Assets) | Enforce algebraic type, physical dimension, field catalog and tenant permission checks, and perform normalization, optimization and lowering to each backend. | Query plan generator, the `ospf`-based dynamic constraint compiler, the expression compiled evaluator, multi-solver adapter plugins and the explicit error contract set. | **Reusable business capability assets**: a library of rules, constraints, calculations and optimization operators that is strictly verified and freely composable. |
+| **3. Capability and plan registry assets**<br>(Capability Registry Assets) | Centrally govern the immutable version, lifecycle state, underlying dependency hash tree, canary release and one-click atomic rollback of every dynamic and specialized capability. | Plan registry (Plan Registry), constraint and flow template library, model artifact and effective overlay snapshot library, and the full lineage definition history. | **Traceable and auditable governance assets**: know exactly where each capability came from, who approved it, where it applies and when it expires. |
+| **4. Adaptive runtime and world model assets**<br>(Adaptive Runtime & World Model) | Collect runtime profiles, preserve event memory, drive digital-twin projection, run shadow verification, decide capability promotion, and handle precise invalidation and rebuild when dependencies change. | Runtime profile metric library, immutable domain event timeline, three-layer time digital-twin mirror, capability promotion policy engine, Schema/policy change listener. | **Replayable operating experience and a safe proving ground**: historical facts and decision trails, plus a digital-twin mirror that can safely rehearse hypotheses at any time. |
+| **5. Product line and variability model assets**<br>(Product Line & Variability Model) | Systematically manage the common core, formal variability points, customer variant rules and applicability boundaries of the product, plus the promotion state from dynamic capability to formal product capability. | Four-tier capability catalog, customer variant definition library, product variability point catalog (Variability Point Catalog), and audit records of capability promotion and retirement. | **A model of product commonality and difference**: clearly delimit the boundary between the industry-wide standard core, industry option packages and single-customer special cases. |

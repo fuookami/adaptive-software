@@ -5,7 +5,7 @@
 [![Deploy book to GitHub Pages](https://github.com/fuookami/adaptive-software/actions/workflows/deploy.yml/badge.svg)](https://github.com/fuookami/adaptive-software/actions/workflows/deploy.yml)
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
-> **English edition（翻译中）**：<https://fuookami.github.io/adaptive-software/en/>
+> **English edition（全 30 页已译）**：<https://fuookami.github.io/adaptive-software/en/>
 > **在线阅读（中文）**：<https://fuookami.github.io/adaptive-software/zh/> ·
 > **GitBook**：<https://fuookami.gitbook.io/adaptive-software/>（英文版 <https://fuookami.gitbook.io/adaptive-software/en/>）
 >

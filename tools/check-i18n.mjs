@@ -64,6 +64,26 @@ function sectionCount(text) {
   return n;
 }
 
+/** 三级子节数量（如第 1 章的「痛点 1–7」、第 10 章的 10.1 子节），不数代码块内的 # */
+function subsectionCount(text) {
+  const state = { open: false, marker: null };
+  let n = 0;
+  for (const line of text.split('\n')) {
+    const fm = /^ {0,3}(`{3,}|~{3,})(.*)$/.exec(line);
+    if (fm && !state.open) {
+      state.open = true;
+      state.marker = fm[1][0];
+      continue;
+    }
+    if (state.open) {
+      if (new RegExp(`^ {0,3}${state.marker === '`' ? '`' : '~'}{3,}\\s*$`).test(line)) state.open = false;
+      continue;
+    }
+    if (/^###\s+\S/.test(line)) n++;
+  }
+  return n;
+}
+
 /** 页面翻译状态：untranslated | translating | translated（缺标记返回 null） */
 function statusOf(text) {
   const m = /<!--\s*i18n-status:\s*(\w[\w-]*)\s*-->/.exec(text);
@@ -145,6 +165,34 @@ function main() {
     const sz = sectionCount(zhText);
     const se = sectionCount(enText);
     if (se < sz) warnings.push(`docs/en/${p} 小节数 ${se} 少于中文页 ${sz}，请确认没有漏译章节`);
+
+    // 三级子节（如「痛点 1–7」）：漏一个就是漏一段内容，按错误处理
+    const hz = subsectionCount(zhText);
+    const he = subsectionCount(enText);
+    if (he < hz) {
+      errors.push(`docs/en/${p} 三级子节只有 ${he} 个（中文 ${hz} 个），疑似漏译子节`);
+    }
+
+    // 脚手架残留：骨架期的提示与对照节必须删干净
+    if (/not translated yet/i.test(enText) || /##\s+Original structure/i.test(enText)) {
+      errors.push(`docs/en/${p} 标记为 translated，但仍残留骨架提示或 Original structure 对照节`);
+    }
+    // 中文残留：允许少量（引用中文术语、举例），超过阈值提醒复核
+    const cjk = (enText.match(/[\u3400-\u9fff]/g) || []).length;
+    if (cjk > 40) warnings.push(`docs/en/${p} 有 ${cjk} 个汉字，若并非有意引用请清理`);
+
+    // 译文质量 lint：只在正文里查（剥掉代码块与行内代码，避免误报）
+    const prose = enText.replace(/```[\s\S]*?```/g, '').replace(/`[^`\n]*`/g, '');
+    const dup = prose.match(/\b(\w{3,})\s+\1\b/gi);
+    if (dup) {
+      warnings.push(`docs/en/${p} 疑似重复词：${[...new Set(dup.map((s) => s.toLowerCase()))].slice(0, 3).join(', ')}`);
+    }
+    // 全角标点：只认中文标点与中文式双破折号 `——`；
+    // 单个 `—`（em dash）是英文正当用法，不予告警。
+    const fullWidth = prose.match(/[，。「」『』（）【】《》、；：？！]|——/g);
+    if (fullWidth) {
+      warnings.push(`docs/en/${p} 残留全角标点 ${fullWidth.length} 处（${[...new Set(fullWidth)].slice(0, 6).join(' ')}）`);
+    }
   }
 
   // 6. gitbook-docs.yaml

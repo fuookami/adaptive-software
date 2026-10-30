@@ -1,14 +1,7 @@
-<!-- i18n-status: untranslated -->
+<!-- i18n-status: translated -->
 <!-- i18n-source: docs/zh/title.md -->
-# Title, Subtitle and Working Titles
+# From Code to Intent: Building Software That Evolves
 
-> **This page is not translated yet.** Read the original:
-> [中文原文 →](../zh/title.md)
->
-> 本页尚未翻译。英文译文提交后请删除上面的提示，并把首行的
-> `i18n-status` 改为 `translated`（`npm run i18n:check` 以它统计进度）。
+**— Domain-Driven Design, OSPF Optimization Modeling and the LLM as Runtime Architecture for the Software 3.0 Era**
 
-## Original structure（供译者对照，译文就绪后删除本节）
-
-- （本页无子标题）
-
+* **Working title (alternative)**: *Software That Evolves: Domain Language, Optimization and Adaptive Architecture in the Software 3.0 Era — Reshaping the Next Generation of Enterprise Core Systems with Domain-Driven Design, OSPF and LLM as Runtime*

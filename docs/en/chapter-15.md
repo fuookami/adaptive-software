@@ -1,20 +1,133 @@
-<!-- i18n-status: untranslated -->
+<!-- i18n-status: translated -->
 <!-- i18n-source: docs/zh/chapter-15.md -->
-# Chapter 15: The Trusted Execution Boundary — Eight Steps from Candidate to Production
+# Chapter 15: The Trusted Execution Boundary — The Eight-Step Pipeline from Candidate Semantics to Production Execution and the Anti-Hallucination Guardrails
 
-> **This page is not translated yet.** Read the original:
-> [中文原文 →](../zh/chapter-15.md)
->
-> 本页尚未翻译。英文译文提交后请删除上面的提示，并把首行的
-> `i18n-status` 改为 `translated`（`npm run i18n:check` 以它统计进度）。
+In Chapter 14 we saw how a single user intent is turned into a structured candidate and compiled into mathematical constraints. But in an enterprise-grade digital operations platform (DOP / APS) that serves many users, runs at high concurrency and operates 7×24, if we are to manage hundreds or thousands of such daily interactions, and from them select the patterns that are genuinely worth precipitating into the system's long-term formal capability, we need an industrial-grade **end-to-end controlled compilation and release pipeline**, together with a **formal safety line** that cuts across the whole chain.
 
-## Original structure（供译者对照，译文就绪后删除本节）
+This chapter dissects in full the **eight-step target-architecture pipeline** that runs from "one conversational interaction" to "a formal capability that can be precipitated", explains how formal methods, the digital-twin sandbox and shadow verification work together to raise the anti-hallucination guardrails, and sets out the engineering treatment of the six core runtime risks.
 
-- 15.1 从对话到沉淀能力的八步标准流水线：采集 → 规范化 → 中间表示 → 验证 → 优化 → 降阶映射 → 发布 → 自适应监控
-- 15.2 形式化方法作为横切可信基础：类型、量纲、租户权限、预算配额、前置/后置契约与业务不变量检查
-- 15.3 在进入生产前证明自己：数字孪生沙盒仿真、通用/专用路径等价性验证与影子运行
-  - 1. 面向业务决策候选：数字孪生沙盒仿真比选（What-If Sandbox Simulation）
-  - 2. 面向专门化编译能力：差分等价性验证与影子运行（Shadow Verification）
-- 15.4 运行时六大核心风险治理：防御语义漂移、权限穿透、错误固化、环境变化、代码供应链风险与过度专门化
+---
 
-> 本页含 3 个图示（HTML 组件）。翻译时请同步重绘图内标签，保持 `dg-*` 结构不变：见 [tools/DIAGRAM-KIT.md](../../tools/DIAGRAM-KIT.md)。
+## 15.1 The eight-step standard pipeline from conversation to precipitated capability: collection → normalization → intermediate representation → verification → optimization → lowering → publishing → adaptive monitoring
+
+In the `LLM as Runtime` target architecture, any process that is triggered by user intent and eventually leads to capability precipitation must pass strictly through the following compilation and governance pipeline made up of eight standard stages:
+
+<div class="dg" role="img" aria-label="An eight-step controlled compilation pipeline running from top to bottom: Stage 1: Collection, Stage 2: Normalization, Stage 3: Intermediate Representation, Stage 4: Verification &amp; Validation, Stage 5: Optimization &amp; Promotion Decision, Stage 6: Lowering, Stage 7: Publishing, Stage 8: Adaptation &amp; Deoptimization.">
+<div class="dg-col">
+<div class="dg-node dg-node--layer"><span class="dg-t">Stage 1: Collection</span><span class="dg-s">Collect raw user intent, tool-call traces, general-path execution results and performance-cost facts</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">Stage 2: Normalization</span><span class="dg-s">Extract stable business semantic structure from raw text and interactions, stripping concrete literal parameters and sensitive business values</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">Stage 3: Intermediate Representation</span><span class="dg-s">Produce a hashable, versionable structured representation (Query IR / Constraint IR / Flow IR / Param IR)</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">Stage 4: Verification &amp; Validation</span><span class="dg-s">Run strict checks on types, physical units, field catalog, tenant permissions, compute budget, approval status and semantic equivalence</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">Stage 5: Optimization &amp; Promotion Decision</span><span class="dg-s">Weigh call frequency, latency, resource cost, stability and expected benefit to judge whether specialization is worth it</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">Stage 6: Lowering</span><span class="dg-s">Compile into parameterized query plans, prepared statements, OSPF solver constraint templates, rule plans or controlled plug-ins</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">Stage 7: Publishing</span><span class="dg-s">Complete shadow verification, canary release, plan registry registration, digital signing, immutable versioning and atomic traffic switchover</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">Stage 8: Adaptation &amp; Deoptimization</span><span class="dg-s">Keep monitoring hit rate and benefit; roll back automatically on anomaly; invalidate precisely and recompile when schema, catalog or policy changes</span></div>
+</div>
+</div>
+
+Let us examine the core engineering responsibility of each of the eight stages one by one:
+
+1. **Stage 1: Collection** — while the general execution path handles the user request, the runtime unobtrusively collects the expression of user intent, the chain of tool calls the agent made, the business results returned by the general path, and facts about actual execution latency, rows scanned and compute consumed.
+2. **Stage 2: Normalization** — the normalizer strips concrete business literals out of the raw request (turning a specific date such as `"2026-09-15"`, a specific production line identifier such as `"lineA"` and a specific weight such as `"1000"` into typed parameter placeholders), thoroughly removes any private or commercially sensitive values, and distills a pure **normalized semantic shape**.
+3. **Stage 3: Intermediate Representation** — wraps the normalized semantics into a standard `Query IR`, `Constraint IR` or `Flow IR`, and computes a unique cryptographic hash of its content and shape.
+4. **Stage 4: Validation** — deterministic validators run a full set of static and dynamic checks: is the referenced field in the catalog of the current version? Do the data type and physical dimension (`Quantity`) match? Is the current tenant and role authorized to access these objects? Are the projected rows scanned or the solve time within the budget quota (Budget)? Have the required business approvals been obtained? And is the representation business-semantically equivalent to the original intent?
+5. **Stage 5: Optimization** — the runtime optimizer combines historical profiling data to assess the call frequency of that semantic shape, the latency of the general path, the compilation and maintenance cost, and the expected benefit after specialization, and then decides whether to leave it on the general path executing per call, or to promote it into the specialized compilation queue.
+6. **Stage 6: Lowering** — the semantic compiler lowers the intermediate representation cleared for promotion into a concrete target artifact, such as a database parameterized query plan, a prepared statement, an `ospf` dynamic constraint template, a deterministic workflow plan or a controlled plug-in artifact.
+7. **Stage 7: Publishing** — a newly generated specialized capability never goes straight into full production traffic; it must first pass **shadow verification** and a small-traffic **canary release**. Once verified, it is digitally signed, assigned a version number, written formally into the **plan and capability registry (Plan Registry)**, and takes over subsequent requests of the same kind through an atomic pointer switch.
+8. **Stage 8: Adaptation** — the runtime keeps monitoring the cache hit rate, execution time and result quality of the published specialized capability; on anomaly it supports millisecond one-click rollback; and when the underlying database schema, the domain field catalog, the permission policy or the compiler version changes, it triggers a precise invalidation, falls back automatically to the general path and asynchronously recompiles in the background.
+
+---
+
+## 15.2 Formal methods as the cross-cutting trust foundation: checking types, dimensions, tenant permissions, budget quotas, pre/post-conditions and business invariants
+
+In the minds of many traditional software teams, "verification" tends to be equated with the integration test that runs just before code goes live. But in Adaptive Software and the `LLM as Runtime` architecture, **formal methods and runtime verification are by no means the last test gate after compilation finishes; they are the "cross-cutting trust foundation" that runs through the domain model, the domain language, event history, the digital twin, capability generation and runtime publishing**.
+
+<div class="dg" role="img" aria-label="Cross-cutting trust foundation: formal methods and runtime deterministic verification guards, cutting downward across six stages: domain model definition, domain language description, event history recording, digital-twin projection, generative compilation and runtime publishing execution.">
+<div class="dg-col">
+<div class="dg-group"><div class="dg-gt">Cross-cutting trust foundation: formal methods and runtime deterministic verification guards</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">Algebraic type and physical dimension checks</span><span class="dg-s">(Type &amp; Dimension Safety)</span></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">Business invariants and pre/post-conditions</span><span class="dg-s">(Invariants &amp; Pre/Post-Conditions)</span></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">Legal state-machine transitions and state-role isolation</span><span class="dg-s">(State Machine &amp; Role Isolation)</span></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">Tenant isolation, field-level permissions and compute budget quotas</span><span class="dg-s">(Tenant, Auth &amp; Resource Budget)</span></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">Differential verification, property-based equivalence testing and shadow verification</span><span class="dg-s">(Differential &amp; Shadow Verification)</span></div>
+</div>
+<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
+<div class="dg-row"><div class="dg-node dg-node--leaf">Domain model definition</div><div class="dg-node dg-node--leaf">Domain language description</div><div class="dg-node dg-node--leaf">Event history recording</div><div class="dg-node dg-node--leaf">Digital-twin projection</div><div class="dg-node dg-node--leaf">Generative compilation</div><div class="dg-node dg-node--leaf">Runtime publishing execution</div></div>
+</div>
+</div>
+
+To ensure that dynamically produced capability never breaches a safety red line at any moment, the system enforces **six safety-boundary rules** across the whole chain:
+
+1. **Candidate-layer isolation rule**: natural-language text and the raw output of the large language model stay forever in the candidate layer, and are never allowed to serve as a production execution key or to be put into operation directly as a script.
+2. **Multi-dimensional static and dynamic guard rule**: before any candidate capability enters the execution chain, it must simultaneously pass validation of the structured intermediate representation, algebraic type checks, physical dimension and unit compatibility checks, multi-tenant isolation boundary checks, field-level read/write permission checks, per-computation resource budget checks (maximum rows scanned, maximum solve memory and a timeout ceiling) and business approval status verification.
+3. **Contract and business invariant guard rule**: domain aggregates and process nodes explicitly define preconditions, postconditions and domain invariants (for example, "no scheduling adjustment may tamper with the actual production-reporting fact `actualFeeding` that has already occurred", and "after inventory deduction the available quantity must not breach the safety floor"). Once an execution result violates an invariant, the transaction aborts immediately and reports a structured error.
+4. **Zero-privilege on the specialized path rule**: a "specialized fast path" produced by specialization compilation **must absolutely never bypass any safety or permission semantics of the "general slow path"**! Even if a specialized query plan has already been precompiled and cached in the registry, every time a concrete user invokes it, the runtime must still perform the final tenant and field-level authorization check.
+5. **Strong isolation and revocability of dynamic artifacts rule**: any plan or artifact produced by dynamic compilation must carry a digital signature, version lineage and resource quota limits, and must support one-click revocation at any time, plus runtime isolation and safe rollback.
+6. **Profiling privacy and de-identification rule**: when runtime profiling aggregates hot patterns, it may use only the de-identified "normalized semantic shape hash" as the aggregation key; **it is absolutely forbidden to persist complete raw natural-language user text, or sensitive literal parameters that contain trade secrets, as a statistical key**.
+
+---
+
+## 15.3 Proving yourself before entering production: digital-twin sandbox simulation, general/specialized path equivalence verification and shadow runs
+
+When a business adjustment plan generated by an agent (say, adding a shared feeding port constraint and rescheduling) or a specialized execution plan newly compiled by the semantic compiler has passed the static type and permission checks of Section 15.2, it still has one last and most critical step before it may formally rewrite production state: **proving its correctness and benefit with real or simulated execution results**.
+
+Depending on the nature of the artifact, the system adopts two verification mechanisms respectively: **"digital-twin sandbox simulation and comparison"** (for business decision plans) and **"differential equivalence and shadow-run verification"** (for specialized compilation capability):
+
+### 1. For business decision candidates: digital-twin sandbox simulation and comparison (What-If Sandbox Simulation)
+When the agent proposes, for "lines A and B share a feeding port + `T1` is delayed", two candidates — "option one: local delay only" and "option two: inject the shared feeding port constraint and trigger rolling rescheduling" — the system never overwrites the original plan directly in the real production database. Instead it spins up two isolated simulation branches in the computable digital-twin sandbox and evaluates them in parallel:
+
+| Simulation comparison dimension | Baseline plan (originally released plan) | Candidate one: local delay only | Candidate two: shared feeding constraint + rolling rescheduling |
+| :--- | :--- | :--- | :--- |
+| **Mathematical and physical feasibility** | Already invalid (because `T1` is delayed and the feeding-port maintenance restriction was not accounted for) | **Infeasible (hard constraint violated)**: after `T2` is pushed to `10:30` it feeds at the same time as `T3` at `11:00`, and the day's cumulative feeding reaches `1150 kg > 1000 kg`, the ceiling | **Feasible, and proven optimal**: the solver fine-tuned the batch feeding rhythm of `T3`, keeping the day's total feeding precisely at `995 kg <= 1000 kg` |
+| **Order due-date on-time rate** | 100% (baseline) | No delay on the surface, but the floor will inevitably stall from feeding-port congestion | Core rush orders 100% on time; only non-urgent stock-building work orders slip by 40 minutes |
+| **Total changeover time and inventory impact** | 60 minutes of changeover | 60 minutes of changeover | 60 minutes of changeover, and the WMS substitute-material kitting check passes 100% |
+| **Plan stability (difference from the original plan)** | — | Only 1 task time changed | Only 2 related tasks adjusted locally; the remaining 98% of work orders stay frozen |
+
+With this structured simulation comparison table generated automatically from the digital twin and the `SolveReport`, a planner can see at a glance, without reading a single line of code, why "option one" steps on the feeding-port ceiling and why "option two" can defuse the crisis with the smallest plan change while holding the `1000 kg` safety floor, and can then confidently click approve and formally release "option two" to production.
+
+### 2. For specialized compilation capability: differential equivalence verification and shadow runs (Shadow Verification)
+When the runtime notices that a class of query or constraint pattern keeps recurring and prepares to compile it into a "specialized fast path", how does the system prevent a compiler bug or a model misunderstanding from ossifying an error?
+
+The system applies a rigorous three-step sequence: **"asynchronous build + shadow verification + canary switchover"**:
+
+<div class="dg" role="img" aria-label="Shadow verification before a new specialized plan goes live: an online real business request → traffic duplicator splits into two paths; one is the general execution path (authoritative baseline) → returning production results directly to the user, the other is the newly compiled specialized candidate plan (shadow state), run asynchronously on a side path with results neither exposed externally nor written to the production database; both paths merge into an asynchronous comparator that validates result sets, status codes, permission boundaries and performance benefit.">
+<div class="dg-title">Shadow verification before a new specialized plan goes live</div>
+<div class="dg-col">
+<div class="dg-row"><div class="dg-node dg-node--chip">Online real business request</div><div class="dg-edge" aria-hidden="true">→</div><div class="dg-node dg-node--chip">Traffic duplicator</div></div>
+<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
+<div class="dg-row">
+<div class="dg-group"><div class="dg-node"><span class="dg-t">General execution path (authoritative baseline)</span></div><div class="dg-edge" aria-hidden="true">→</div><div class="dg-node"><span class="dg-t">Return production results directly to the user</span></div></div>
+<div class="dg-group"><div class="dg-node dg-node--soft"><span class="dg-t">Newly compiled specialized candidate plan (shadow state)</span><span class="dg-s">(asynchronous side-path run; results not exposed externally and not written to the production database)</span></div></div>
+</div>
+<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">(asynchronous comparator: validates result sets, status codes, permission boundaries and performance benefit)</span></div>
+</div>
+</div>
+
+1. **Build-time static and sample-based equivalence verification**: after the background asynchronous compilation job has produced the specialized plan, the plan validator first runs a differential equivalence test against it using the historical replay sample library, confirming that the specialized plan and the general path produce identical output on boundary inputs.
+2. **Shadow mode on a side path of online traffic**: once it enters release preparation, the new plan is marked `SHADOW`. When a real online request matching that semantic shape arrives, the front end is still handled 100% by the mature, reliable **general path**, which returns results to the user; at the same time the runtime asynchronously copies the same frozen input and feeds it to the **specialized candidate plan** for side-path execution (producing no external write side effects).
+3. **Zero-difference proof and promotion on benefit threshold**: the shadow comparator automatically compares the results returned by the general path and the specialized path (or their mathematical constraint matrices), their permission-filtering behavior and their actual execution time. Only when N consecutive real shadow runs prove that **the results are 100% equivalent (zero difference) and the performance/cost benefit is clearly above the promotion threshold** does the registry switch its status formally to `ACTIVE` (or run a 1% → 10% → 100% canary rollout); if even one inconsistent result appears during shadow runs, the candidate plan is discarded automatically and a diagnostic alert is recorded, while online business is left unharmed.
+
+---
+
+## 15.4 Governing the six core runtime risks: defending against semantic drift, privilege penetration, error ossification, environmental shift, code supply-chain risk and over-specialization
+
+In Chapter 4 we analyzed why "letting the LLM write code directly online" would die of six risks; and now that Chapters 10 to 15 have built event sourcing, the digital twin, the three natives and the controlled compilation pipeline, we can finally give the engineering treatment of an **eight-risk governance matrix** covering the whole system lifecycle (the six runtime compilation risks above, plus the two world-model risks of distorted event history and digital-twin mismatch):
+
+| Risk category | Risk mechanism and potential harm | Hard-core engineering treatment implemented in the adaptive architecture |
+| :--- | :--- | :--- |
+| **1. Semantic drift risk**<br>(Semantic Drift) | The same natural-language sentence means different things on different shifts and in different contexts, and the model confuses planned variables with actual facts. | • Force conversion into a `Semantic IR` that explicitly declares state roles;<br>• Bind to a versioned domain field catalog;<br>• Rely on `ospf` to enforce algebraic types, physical dimensions (`Quantity`) and effective time ranges. |
+| **2. Privilege penetration risk**<br>(Privilege Penetration) | A precompiled specialized query plan or constraint template, when reused, wrongly bypasses tenant isolation, field de-identification or compute budget limits. | • The plan registry explicitly binds the permission policy version;<br>• **Re-validate the final authorization and budget quota on every execution of the specialized path**;<br>• The specialized path never enjoys privileges beyond the general path. |
+| **3. Error ossification risk**<br>(Error Ossification) | A one-off misjudgment by the agent is precipitated, without rigorous checks, into a long-running system template or rule. | • Strictly enforce the whole-process boundary of "candidate → validation and simulation → shadow/equivalence verification → approval and release → one-click rollback";<br>• A candidate that fails zero-difference shadow verification and the benefit threshold is strictly forbidden from going live. |
+| **4. Environmental shift invalidation risk**<br>(Environmental Shift) | A change in database schema, domain catalog, permission policy, model or generator version makes an old specialized plan stale. | • The registry records a complete **dependency version hash tree** for every specialized plan;<br>• Any dependency change immediately triggers a precise invalidation, with automatic fallback to the general path in milliseconds and asynchronous recompilation. |
+| **5. Code supply chain and isolation risk**<br>(Code Supply Chain) | When high-order specialization generates bytecode, JVM plug-ins or WebAssembly artifacts, illegal dependencies, unauthorized read and write, or exhaustion of host resources may be introduced. | • Prefer low-risk parameterized plans and constraint templates;<br>• When a code artifact really must be compiled, mandatorily use an isolated build process, artifact digital signatures, a strict dependency allowlist, CPU/memory quotas, and an independent class loader or sandbox process. |
+| **6. Over-specialization and resource amplification**<br>(Over-Specialization) | Low-frequency one-off needs generate specialized plans and templates without limit, blowing up storage, the compilation queue and the cache, and raising structural entropy. | • Set a strict promotion threshold based on hotness, compute cost and expected benefit;<br>• Set hard count ceilings and an LRU/benefit eviction policy for the build queue and the plan registry. |
+| **7. Distorted event history and feedback**<br>(History & Feedback Distortion) | Missing key facts, or unclassified manual plan patches, enter the sample set, causing runtime profiling and parameter learning to induce wrong patterns. | • Specify immutable event contracts, idempotent writes and event-time semantics;<br>• Mandate structured reason codes on manual adjustment records; unclassified or data-correction patches are strictly forbidden from entering the learning and training set. |
+| **8. Digital-twin simulation world mismatch**<br>(Simulation Mismatch) | Digital-twin model parameters drift over time from the real equipment takt, inventory or changeover time on the shop floor, so a plan that passed simulation fails in reality. | • Use actual production-reporting feedback to keep monitoring the residual distribution between estimated and actual time;<br>• Trigger periodic calibration of capacity and duration models, and raise an explicit alert and degradation when the model leaves its applicable range. |

@@ -16,7 +16,7 @@
 | 语言 | 在线阅读 | 源码 |
 | :--- | :--- | :--- |
 | 简体中文 | [GitHub Pages](https://fuookami.github.io/adaptive-software/zh/) · [GitBook](https://fuookami.gitbook.io/adaptive-software/) | [docs/zh/](docs/zh/) |
-| English | [GitHub Pages](https://fuookami.github.io/adaptive-software/en/) · [GitBook](https://fuookami.gitbook.io/adaptive-software/en/) | [docs/en/](docs/en/)（翻译中） |
+| English | [GitHub Pages](https://fuookami.github.io/adaptive-software/en/) · [GitBook](https://fuookami.gitbook.io/adaptive-software/en/) | [docs/en/](docs/en/)（30 页全译） |
 
 **GitHub Pages 是带图主入口**，中文站根路径是语言选择页。**GitBook 是文本镜像**：该平台会剥离图示的 HTML 标签，
 把每张图压平成一行文字，内容的可读性保留但框线与分行不再呈现。图示的实现规范与各平台差异见
@@ -63,10 +63,14 @@ npm run check          # 书稿结构 + 图示结构 + 双语一致性 + GitBook
 npm run i18n           # 翻译进度
 ```
 
-## 参与翻译
+## 参与翻译与审校
 
-先读 [i18n/README.md](i18n/README.md) 与术语表 [i18n/glossary.md](i18n/glossary.md)：一页一 PR，文件名与导航槽位不动，
-翻完把页面首行的 `i18n-status` 从 `untranslated` 改成 `translated`，`npm run check` 会核对两侧页面、导航与图示数量是否对齐。
+英文版 30 页已全部译出，与中文版保持文件名、导航槽位、图示数量一一对应。现在最需要的是**审校**：
+发现措辞生硬、术语不一致或漏译，一页一 PR 即可，文件名与导航槽位不动、不删并不小节。
+
+术语以 [i18n/glossary.md](i18n/glossary.md) 为准，改译法请同时改术语表；流程与状态标记见
+[i18n/README.md](i18n/README.md)，逐条作业规范见 [i18n/translator-brief.md](i18n/translator-brief.md)。
+`npm run check` 会核对两侧页面、导航、图示数与三级子节数是否对齐。两版分歧时**以中文版为准**。
 其余贡献方式（正文修订、图示规范、提交流程）见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
 ## 发布
