@@ -1,40 +1,36 @@
-# GitBook 站点结构：一个站点、两个语言空间。
+# GitBook 站点结构（Git Sync）：一个站点、两个语言空间。
 #
-# 事实依据（GitBook 官方 docs-as-code / git-sync / content-configuration）：
-#   · gitbook-docs.yaml 配置整个站点，并把每个 space 映射到仓库目录（content.directory + language）；
-#   · space 由 `key` 识别，不是 title 或 path —— 上线后不要改 key，改了 GitBook 会当成新 space 重建；
-#   · 每个 space 目录内再用 .gitbook.yaml 指定 readme / summary；导航由该 space 的 SUMMARY.md 决定。
+# 权威契约：https://api.gitbook.com/gitbook-docs.yaml （JSON Schema，2026-10-30 核对）
+#   · structure 里每个节点由 `key` 稳定识别 —— 上线后改 key 会重建 space，不要改；
+#   · `content.language` 是封闭枚举，简体中文用 `zh`（没有 `zh-Hans`），繁体是 `zh-tw`；
+#   · `localizedTitle` / `localizedDescription` 的键也必须取自同一枚举；
+#   · `site` 只允许 `title` 与 `structure`（additionalProperties: false）；
+#   · 有 section 的站点必须恰好一个 section 标 `default: true`，且顶层不能再列 space；
+#     只有两个语言、不需要分组，因此这里采用“顶层平铺 space”的形态，URL 为 /zh 与 /en。
 #
-# 注意：在 GitBook 应用里保存站点内容映射时，GitBook 会回写这个文件（包括 key）。
-# 下面的 key / path 是首版建议值，接入后请保留 GitBook 回写结果，不要再重命名。
+# 本文件由 `node tools/check-gitbook-yaml.mjs` 按其 schema 规则校验（npm run check 已含）。
 $schema: https://api.gitbook.com/gitbook-docs.yaml
 
 site:
   title: 从代码到意图 · From Code to Intent
-  description: 构建会进化的自适应软件 —— Software 3.0 时代的领域驱动设计、OSPF 运筹优化与大语言模型运行时架构。
   structure:
-    - type: section
-      key: adaptive-software
-      title: 全书 · The Book
-      path: book
-      children:
-        - type: space
-          key: book-zh
-          title: 中文（简体）
-          localizedTitle:
-            en: Chinese (Simplified)
-          path: zh
-          default: true
-          content:
-            directory: ./docs/zh
-            language: zh-Hans
+    - type: space
+      key: book-zh
+      title: 中文（简体）
+      localizedTitle:
+        en: Chinese (Simplified)
+      path: zh
+      default: true
+      content:
+        directory: ./docs/zh
+        language: zh
 
-        - type: space
-          key: book-en
-          title: English
-          localizedTitle:
-            zh-Hans: 英文
-          path: en
-          content:
-            directory: ./docs/en
-            language: en
+    - type: space
+      key: book-en
+      title: English
+      localizedTitle:
+        zh: 英文
+      path: en
+      content:
+        directory: ./docs/en
+        language: en

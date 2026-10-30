@@ -51,6 +51,9 @@ jobs:
       - name: 校验双语一致性（页面、导航、书根配置、站点映射）
         run: node tools/check-i18n.mjs
 
+      - name: 校验 GitBook 站点配置符合官方 schema
+        run: node tools/check-gitbook-yaml.mjs
+
       - name: 构建 zh 与 en 两版站点
         run: node tools/build-site.mjs
 

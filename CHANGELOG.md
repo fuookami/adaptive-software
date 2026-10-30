@@ -4,8 +4,21 @@
 
 ## [未发布]
 
+### 新增
+
+- `tools/check-gitbook-yaml.mjs`：按 [官方 schema](https://api.gitbook.com/gitbook-docs.yaml) 在本地与 CI 校验
+  `gitbook-docs.yaml`——translation language 枚举（含 `localizedTitle` 的键）、各节点必填与多余字段、`key` 全局唯一、
+  `default` 规则（有 section 时顶层不得再列 space、每组同级恰好一个 default）、`content.directory` 不含 `..` 且真实存在。
+  报错路径与 GitBook 一致（如 `site.structure.0.content.language`），一次报全而不是只报第一个。已接入 `npm run check` 与 CI。
+
 ### 修复
 
+- `gitbook-docs.yaml` 修正 4 处会导致 Git Sync `Failed to parse site configuration` 的问题：
+  ① `content.language` 的 `zh-Hans` → `zh`（该字段是封闭枚举，简体中文只接受 `zh`，繁体是 `zh-tw`）；
+  ② `localizedTitle` 的键同样必须是枚举值，`zh-Hans` → `zh`；
+  ③ 删除 `site.description`（`site` 为 `additionalProperties: false`，只允许 `title` / `structure`）；
+  ④ 去掉 section 包裹层，改为顶层平铺两个 space——schema 要求“有 section 的站点必须恰好一个 section 标 `default: true`，
+  且顶层不得再列 space”，平铺后既合规又保住 `/zh` 与 `/en` 两个 URL。
 - CI 部署作业前增加 GitHub Pages 预检：先请求 `GET /repos/{owner}/{repo}/pages`，把
   `Failed to create deployment (status: 404)` 翻译成可执行指引（去 Settings → Pages 把 Source 设为
   “GitHub Actions” 再 Re-run），并识别 `build_type` 不是 `workflow` 的 legacy 模式；401/403 等读不到配置时

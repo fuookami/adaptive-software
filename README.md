@@ -113,10 +113,24 @@ npm run i18n           # 只看翻译进度
 ## 在 GitBook 上发布（双语）
 
 1. 推到 GitHub；
-2. 站点级用 [gitbook-docs.yaml](gitbook-docs.yaml) 描述两个 space（`docs/zh` → `language: zh`、`docs/en` → `language: en`）；
-   每个 space 目录内的 `.gitbook.yaml` 指定 `readme` 与 `summary`；
+2. 站点级用 [gitbook-docs.yaml](gitbook-docs.yaml) 描述两个 space（`docs/zh` → `language: zh`、`docs/en` → `language: en`），
+   形态是**顶层平铺 space**（不套 section），因此站点 URL 就是 `/zh` 与 `/en`；每个 space 目录内的 `.gitbook.yaml`
+   指定 `readme` 与 `summary`；
 3. 在 GitBook 里开启 Git Sync 后，**首次映射会由 GitBook 回写这个文件**（`key` 一旦上线就不要再改，改了会新建 space）；
 4. 发布后把站点地址回填到本文件与 [docs/zh/README.md](docs/zh/README.md) 的 TODO 处。
+
+### 这个 YAML 有两个容易踩的坑
+
+| 坑 | 说明 |
+| :--- | :--- |
+| `content.language` 是**封闭枚举** | 简体中文是 `zh`，**不是** `zh-Hans`；繁体是 `zh-tw`。`localizedTitle` 的**键**也取自同一枚举。写错会被拒：`expected one of the enum value` |
+| `site` 只能有 `title` 与 `structure` | 站点描述要写在 GitBook 后台，写进 YAML 会被 `additionalProperties: false` 拒掉 |
+
+这两类错误以前只能在 Git Sync 时被 GitBook 一条条报出来（它还只报第一个）。
+现在 [tools/check-gitbook-yaml.mjs](tools/check-gitbook-yaml.mjs) 按[官方 schema](https://api.gitbook.com/gitbook-docs.yaml)
+在本地与 CI 校验：枚举成员、各节点必填与多余字段、`key` 全局唯一、`default` 规则（有 section 时顶层不得再列 space）、
+`content.directory` 真实存在且不含 `..`。报错路径与 GitBook 一致，例如
+`site.structure.0.content.language`。`npm run check` 与 `npm run gitbook` 都会跑它。
 
 ## 许可
 

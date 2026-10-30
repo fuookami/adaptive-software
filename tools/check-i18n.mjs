@@ -152,13 +152,14 @@ function main() {
   if (!site) {
     warnings.push('根目录没有 gitbook-docs.yaml（只在接入 GitBook 多空间站点时才需要）');
   } else {
-    const dirs = [...site.matchAll(/directory:\s*(\S+)/g)].map((m) => m[1].replace(/^\.?\//, ''));
-    const langs = [...site.matchAll(/language:\s*(\S+)/g)].map((m) => m[1]);
-    const defaults = [...site.matchAll(/default:\s*true/g)].length;
-    for (const d of dirs) if (!fs.existsSync(path.join(ROOT, d))) errors.push(`gitbook-docs.yaml 的 content.directory 不存在：${d}`);
-    const uniq = new Set(langs);
-    if (uniq.size !== langs.length) errors.push(`gitbook-docs.yaml 里 language 重复：${langs.join(', ')}`);
-    if (langs.length && defaults !== 1) errors.push(`gitbook-docs.yaml 应恰好有一个 default: true 空间，实际 ${defaults} 个`);
+    // 站点映射的完整校验（语言枚举、default 规则、key 唯一、目录存在）由专用校验器负责：
+    //   node tools/check-gitbook-yaml.mjs
+    // 这里不再用正则重复解析（注释里出现 default: true 之类的字样会误伤）。
+    const dirs = [...site.matchAll(/directory:\s*(\S+)/g)].map((m) => m[1].replace(/^\.\/?/, ''));
+    for (const d of dirs) {
+      if (d === 'null') continue;
+      if (!fs.existsSync(path.join(ROOT, d))) errors.push(`gitbook-docs.yaml 的 content.directory 不存在：${d}`);
+    }
   }
 
   if (argvProgress) return report(progress);
