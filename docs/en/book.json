@@ -1,6 +1,6 @@
 {
   "title": "From Code to Intent — Building Software That Evolves",
-  "description": "Domain-Driven Design, OSPF optimization modeling and the LLM as Runtime architecture for enterprise software in the Software 3.0 era (English edition, translation in progress).",
+  "description": "Domain-Driven Design, OSPF optimization modeling and the LLM as Runtime architecture for enterprise software in the Software 3.0 era.",
   "author": "fuookami",
   "language": "en",
   "gitbook": ">=3.2.3",

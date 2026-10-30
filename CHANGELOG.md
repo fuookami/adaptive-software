@@ -2,6 +2,18 @@
 
 本文件遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/) 与 [语义化版本](https://semver.org/lang/zh-CN/) 约定。
 
+## [0.3.2] - 2026-10-30
+
+### 变更
+
+- **移除全部“英文翻译进度”表述**：站点根语言选择页的英文卡片由 `translation in progress` 改为 `18 chapters`
+  （该文案原先写死在 `tools/build-site.mjs`，不在 Markdown 里，所以改 README 不生效）；
+  英文落地页删去 `Translation status` 整段，仅保留“中文版为准 + 术语表”两句；
+  中文版入口的「（全 30 页已译）」、根 README 语言表的「（30 页全译）」一并去除；
+  `docs/en/book.json` 的 description 去掉 `(English edition, translation in progress)`。
+- README 与 CONTRIBUTING 里的 `npm run i18n` 说明从“只看翻译进度”改为“双语一致性校验”；
+  “参与翻译与审校”改为“参与审校”。
+
 ## [0.3.1] - 2026-10-30
 
 ### 变更

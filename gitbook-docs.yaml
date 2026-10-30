@@ -1,4 +1,16 @@
+# GitBook 站点结构（Git Sync）：一个站点、两个语言空间。
+#
+# 权威契约：https://api.gitbook.com/gitbook-docs.yaml （JSON Schema，2026-10-30 核对）
+#   · structure 里每个节点由 `key` 稳定识别 —— 上线后改 key 会重建 space，不要改；
+#   · `content.language` 是封闭枚举，简体中文用 `zh`（没有 `zh-Hans`），繁体是 `zh-tw`；
+#   · `localizedTitle` / `localizedDescription` 的键也必须取自同一枚举；
+#   · `site` 只允许 `title` 与 `structure`（additionalProperties: false）；
+#   · 有 section 的站点必须恰好一个 section 标 `default: true`，且顶层不能再列 space；
+#     只有两个语言、不需要分组，因此这里采用“顶层平铺 space”的形态，URL 为 /zh 与 /en。
+#
+# 本文件由 `node tools/check-gitbook-yaml.mjs` 按其 schema 规则校验（npm run check 已含）。
 $schema: https://api.gitbook.com/gitbook-docs.yaml
+
 site:
   title: 从代码到意图 · From Code to Intent
   structure:
@@ -12,6 +24,7 @@ site:
       content:
         directory: ./docs/zh
         language: zh
+
     - type: space
       key: book-en
       title: English

@@ -48,7 +48,7 @@ npm install
 npm run serve        # 中文站 http://localhost:4000，逐页检查导航与渲染
 npm run serve:en     # 英文站
 npm run check        # 书稿结构 + 图示源码结构 + 双语一致性 + GitBook schema + SVG 引用（五道闸，CI 同样顺序）
-npm run i18n         # 只看翻译进度
+npm run i18n:check   # 双语一致性（页面、导航、图示、子节逐项比对）
 npm run build        # 双语构建 → _book/{zh,en} + 根语言选择页
 npm run figures      # 由 figures/ 重新导出 90 个 SVG（改了图示源码才需要）
 npm run diagrams     # 图示文字保真：与 ascii-baseline 标签逐词元比对（读正文 + SVG 内文字），导出不许丢字

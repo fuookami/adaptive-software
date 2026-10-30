@@ -129,7 +129,7 @@ function landing() {
     Building software that evolves: domain-driven design, OSPF optimization and the LLM as Runtime.</p>
     <div class="cards">
 ${card('zh', '中文（简体）', '完整 18 章')}
-${card('en', 'English', 'translation in progress')}
+${card('en', 'English', '18 chapters')}
     </div>
     <footer>
       源码与贡献方式见 <a href="https://github.com/fuookami/adaptive-software">GitHub</a> ·

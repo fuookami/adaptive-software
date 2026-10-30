@@ -16,7 +16,7 @@
 | 语言 | 在线阅读 | 源码 |
 | :--- | :--- | :--- |
 | 简体中文 | [GitHub Pages](https://fuookami.github.io/adaptive-software/zh/) · [GitBook](https://fuookami.gitbook.io/adaptive-software/) | [docs/zh/](docs/zh/) |
-| English | [GitHub Pages](https://fuookami.github.io/adaptive-software/en/) · [GitBook](https://fuookami.gitbook.io/adaptive-software/en/) | [docs/en/](docs/en/)（30 页全译） |
+| English | [GitHub Pages](https://fuookami.github.io/adaptive-software/en/) · [GitBook](https://fuookami.gitbook.io/adaptive-software/en/) | [docs/en/](docs/en/) |
 
 **任一入口都能看到完整图示**：流程图与架构图已导出为独立 SVG（`docs/<lang>/assets/diagrams/`），
 正文只留图片引用，因此 GitHub Pages、GitBook、GitHub 仓库页、VS Code 预览与 PDF 的呈现一致。
@@ -62,13 +62,13 @@ npm install
 npm run serve          # 中文站 http://localhost:4000
 npm run serve:en       # 英文站
 npm run build          # 双语构建 → _book/{zh,en} + 根语言选择页
-npm run check          # 书稿结构 + 图示结构 + 双语一致性 + GitBook 配置
-npm run i18n           # 翻译进度
+npm run check          # 书稿结构 + 图示源码 + 图示导出 + 双语一致性 + GitBook 配置
+npm run i18n:check     # 同上中的双语一致性部分
 ```
 
-## 参与翻译与审校
+## 参与审校
 
-英文版 30 页已全部译出，与中文版保持文件名、导航槽位、图示数量一一对应。现在最需要的是**审校**：
+英文版与中文版保持文件名、导航槽位、图示数量一一对应。现在最需要的是**审校**：
 发现措辞生硬、术语不一致或漏译，一页一 PR 即可，文件名与导航槽位不动、不删并不小节。
 
 术语以 [i18n/glossary.md](i18n/glossary.md) 为准，改译法请同时改术语表；流程与状态标记见
