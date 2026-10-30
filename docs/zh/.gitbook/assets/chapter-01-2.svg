@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="259" viewBox="0 0 860 259" role="img">
+<rect x="0" y="0" width="860" height="258.81" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<text x="429.99" y="34.7" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(29, 53, 87)" text-anchor="middle">【根问题一：领域知识如何统一表达？】</text>
+<rect x="108.84" y="56.19" width="642.3" height="64.94" rx="9" fill="rgb(255, 249, 242)" stroke="rgb(230, 126, 34)" stroke-width="1"/>
+<text x="429.99" y="81.17" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(165, 91, 27)" text-anchor="middle">形式化领域模型</text>
+<text x="429.98" y="106.42" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">（系统、运筹优化、机器学习、智能体的共同语义契约）</text>
+<line x1="91.44" y1="125.3" x2="768.55" y2="125.3" stroke="rgb(164, 176, 190)" stroke-width="1"/>
+<text x="168.7" y="141.81" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="337.97" y="141.81" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="507.25" y="141.81" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="676.53" y="141.81" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="167" y="150.81" width="171.41" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="252.7" y="175.89" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">数值解释</text>
+<rect x="344.28" y="150.81" width="171.42" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="175.89" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">符号解释</text>
+<rect x="521.58" y="150.81" width="171.42" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="607.28" y="175.89" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">统计/概率解释</text>
+<rect x="256.05" y="197.69" width="347.89" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="222.79" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">语义解释</text>
+</svg>

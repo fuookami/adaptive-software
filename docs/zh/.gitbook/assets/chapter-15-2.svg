@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="583" viewBox="0 0 860 583" role="img">
+<rect x="0" y="0" width="860" height="582.33" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<rect x="7.36" y="23.8" width="845.28" height="415.7" rx="10" fill="rgba(255, 255, 255, 0.6)" fill-opacity="0.6" stroke="rgb(185, 194, 203)" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="430" y="53.98" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 90, 104)" text-anchor="middle">【横切可信基础：形式化方法与运行时确定性验证守卫】</text>
+<rect x="108.84" y="72.61" width="642.3" height="64.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="97.73" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">代数类型与物理量纲检查</text>
+<text x="429.98" y="122.74" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">(Type &amp; Dimension Safety)</text>
+<rect x="108.84" y="144.91" width="642.3" height="64.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="169.96" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">业务不变量与前置/后置契约</text>
+<text x="429.99" y="195.2" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">(Invariants &amp; Pre/Post-Conditions)</text>
+<rect x="108.84" y="217.2" width="642.3" height="64.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="242.19" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">状态机合法转移与状态角色隔离</text>
+<text x="429.99" y="267.43" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">(State Machine &amp; Role Isolation)</text>
+<rect x="108.84" y="289.5" width="642.3" height="64.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="314.65" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">租户隔离、字段级权限与算力预算配额</text>
+<text x="429.99" y="339.65" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">(Tenant, Auth &amp; Resource Budget)</text>
+<rect x="108.84" y="361.8" width="642.3" height="64.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="386.88" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">差分验证、等价性性质测试与影子验证</text>
+<text x="429.99" y="412.12" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">(Differential &amp; Shadow Verification)</text>
+<line x1="91.44" y1="448.81" x2="768.55" y2="448.81" stroke="rgb(164, 176, 190)" stroke-width="1"/>
+<text x="140.48" y="465.2" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="253.34" y="465.2" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="366.19" y="465.2" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="479.05" y="465.2" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="591.89" y="465.2" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="704.75" y="465.2" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="34.02" y="474.33" width="153.69" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="110.85" y="499.28" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">领域模型定义</text>
+<rect x="193.58" y="474.33" width="153.7" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="270.43" y="499.28" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">领域语言描述</text>
+<rect x="353.16" y="474.33" width="153.69" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="499.28" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">事件历史记录</text>
+<rect x="512.72" y="474.33" width="153.69" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="589.55" y="499.28" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">数字孪生推演</text>
+<rect x="672.28" y="474.33" width="153.69" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="749.12" y="499.28" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">产生式编译</text>
+<rect x="256.05" y="521.2" width="347.89" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="546.19" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">运行时发布执行</text>
+</svg>

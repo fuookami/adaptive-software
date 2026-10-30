@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="110" viewBox="0 0 860 110" role="img">
+<rect x="0" y="0" width="860" height="109.56" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<rect x="54.53" y="18.66" width="203.44" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="156.25" y="39.5" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">[阶段一：形式化领域模型沉淀]</text>
+<text x="268.25" y="39.32" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="293.27" y="18.66" width="216.97" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="401.75" y="39.5" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">[阶段二：运筹原生化与白盒求解]</text>
+<text x="520.52" y="39.32" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="545.53" y="18.66" width="230.52" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="660.79" y="39.5" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">[阶段三：事件溯源与数字孪生闭环]</text>
+<text x="786.33" y="39.32" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="48.94" y="56.98" width="230.52" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="164.2" y="77.99" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">[阶段四：机器学习原生与双向增强]</text>
+<text x="289.73" y="77.81" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="314.75" y="56.98" width="216.97" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="423.23" y="77.99" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">[阶段五：智能体原生与语义前端]</text>
+<text x="542" y="77.81" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="567.02" y="56.98" width="244.05" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="689.04" y="77.99" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">[阶段六：运行时专门化与产品线晋升]</text>
+</svg>

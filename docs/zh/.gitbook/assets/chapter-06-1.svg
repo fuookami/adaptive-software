@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="251" viewBox="0 0 860 251" role="img">
+<rect x="0" y="0" width="860" height="250.22" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<text x="430" y="34.7" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(29, 53, 87)" text-anchor="middle">OSPF (fuookami.ospf.kotlin.utils.math) 代数化数值类型层次</text>
+<line x1="20.13" y1="56.69" x2="697.24" y2="56.69" stroke="rgb(164, 176, 190)" stroke-width="1"/>
+<text x="125.61" y="73.1" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="351.31" y="73.1" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="577.02" y="73.1" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="20.13" y="85.14" width="845.28" height="139.81" rx="10" fill="rgba(255, 255, 255, 0.6)" fill-opacity="0.6" stroke="rgb(185, 194, 203)" stroke-width="1" stroke-dasharray="5 4"/>
+<rect x="32.89" y="99.38" width="268.34" height="112.81" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="167.05" y="124.32" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">整数系 IntegerNumber</text>
+<text x="167.05" y="149.56" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Int32 / Int64 / Int8</text>
+<text x="167.05" y="173.51" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">UInt32 / UInt64</text>
+<text x="167.06" y="197.46" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">IntX (任意精度大整数)</text>
+<rect x="308.59" y="99.38" width="268.34" height="112.81" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="442.76" y="124.32" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">有理数系 RationalNumber</text>
+<text x="442.76" y="149.56" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Rtn64 (64位精确有理数)</text>
+<text x="442.76" y="173.51" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">RtnX (任意精度有理数)</text>
+<rect x="584.3" y="99.38" width="268.34" height="112.81" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="718.46" y="124.32" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">实数/浮点系 RealNumber /</text>
+<text x="718.46" y="147.17" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">FloatingNumber</text>
+<text x="718.46" y="172.42" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Flt32 / Flt64 (带精度容差 ep 的浮点数)</text>
+<text x="718.47" y="196.37" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">FltX (基于 BigDecimal 的任意精度实数)</text>
+</svg>
