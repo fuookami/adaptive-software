@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="210" viewBox="0 0 860 210" role="img">
+<rect x="0" y="0" width="860" height="209.53" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<rect x="20.13" y="18.66" width="178.45" height="170.75" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="109.35" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">1. Normalize domain</text>
+<text x="109.34" y="66.63" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">observation facts</text>
+<text x="109.35" y="91.63" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Work unit / good output /</text>
+<text x="109.35" y="111.68" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">actual duration / unit /</text>
+<text x="109.34" y="131.73" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">event time</text>
+<text x="208.86" y="108.68" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="233.88" y="18.66" width="178.47" height="170.75" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="323.11" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">2. Freeze training</text>
+<text x="323.1" y="66.63" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">and inference</text>
+<text x="323.11" y="89.25" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">versions</text>
+<text x="323.11" y="114.49" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Feature schema /</text>
+<text x="323.1" y="134.54" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">observation window /</text>
+<text x="323.11" y="154.58" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">label cut-off / model</text>
+<text x="323.11" y="174.63" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">artifact hash</text>
+<text x="422.63" y="108.68" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="447.64" y="18.66" width="178.47" height="170.75" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="536.87" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">3. Structured</text>
+<text x="536.87" y="66.63" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">prediction snapshot</text>
+<text x="536.88" y="89.25" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">output</text>
+<text x="536.88" y="114.49" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Estimate + quality</text>
+<text x="536.87" y="134.54" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">metrics + confidence</text>
+<text x="536.87" y="154.58" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">interval / uncertainty +</text>
+<text x="536.87" y="174.63" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">lineage</text>
+<text x="636.39" y="108.68" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="661.41" y="18.66" width="178.47" height="170.75" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="750.64" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">4. Admission</text>
+<text x="750.64" y="66.63" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">validation and</text>
+<text x="750.64" y="89.25" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">approval activation</text>
+<text x="750.63" y="114.49" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Validate unit / threshold /</text>
+<text x="750.64" y="134.54" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">freshness, then activate</text>
+<text x="750.64" y="154.58" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">as the effective capacity</text>
+<text x="750.63" y="174.63" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">overlay</text>
+</svg>

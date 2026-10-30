@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="501" viewBox="0 0 860 501" role="img">
+<rect x="0" y="0" width="860" height="500.75" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<rect x="108.84" y="18.66" width="642.3" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">Runtime memory system: version snapshots + domain event timeline</text>
+<line x1="91.44" y1="63.83" x2="768.55" y2="63.83" stroke="rgb(164, 176, 190)" stroke-width="1"/>
+<text x="253.34" y="80.21" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="591.89" y="80.21" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="20.13" y="94.48" width="819.75" height="171.02" rx="10" fill="rgba(255, 255, 255, 0.6)" fill-opacity="0.6" stroke="rgb(185, 194, 203)" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="429.99" y="124.75" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 90, 104)" text-anchor="middle">Immutable business version snapshots (Versioned Snapshots)</text>
+<rect x="32.89" y="143.3" width="193.03" height="109.44" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="129.41" y="168.26" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">Scheduling input data</text>
+<text x="129.4" y="191.11" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">snapshots, rule</text>
+<text x="129.4" y="213.97" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">snapshots, field catalog</text>
+<text x="129.41" y="236.83" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">versions</text>
+<rect x="233.28" y="143.3" width="193.05" height="109.44" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="329.8" y="168.26" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">ML training datasets,</text>
+<text x="329.8" y="191.11" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">feature schemas, model</text>
+<text x="329.8" y="213.97" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">artifact versions</text>
+<rect x="433.69" y="143.3" width="193.03" height="109.44" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="530.2" y="168.26" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">Capacity estimate</text>
+<text x="530.2" y="191.11" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">snapshots and the</text>
+<text x="530.2" y="213.97" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">active overlay</text>
+<text x="536.09" y="236.83" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">(CapacityEffectiveOverlay)</text>
+<rect x="634.08" y="143.3" width="193.03" height="109.44" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="730.59" y="168.26" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">Historical plan versions</text>
+<text x="730.59" y="191.11" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">(baseline plan /</text>
+<text x="730.59" y="213.97" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">simulation candidate</text>
+<text x="730.59" y="236.83" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">snapshots)</text>
+<rect x="20.13" y="281.66" width="819.75" height="193.83" rx="10" fill="rgba(255, 255, 255, 0.6)" fill-opacity="0.6" stroke="rgb(185, 194, 203)" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="429.99" y="311.88" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 90, 104)" text-anchor="middle">Immutable domain event timeline (Domain Event Timeline)</text>
+<rect x="32.89" y="330.47" width="193.03" height="132.25" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="129.41" y="355.63" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">External execution fact</text>
+<text x="129.4" y="378.25" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">events (MES reporting,</text>
+<text x="129.4" y="401.1" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">WMS material issue,</text>
+<text x="129.41" y="423.96" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">TMS truck arrival)</text>
+<rect x="233.28" y="330.47" width="193.05" height="132.25" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="329.8" y="355.63" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">Planning decision</text>
+<text x="329.8" y="378.25" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">events (schedule</text>
+<text x="329.8" y="401.1" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">release, trigger reason</text>
+<text x="329.8" y="423.96" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">for rolling rescheduling)</text>
+<rect x="433.69" y="330.47" width="193.03" height="132.25" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="530.2" y="355.63" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">Manual plan adjustment</text>
+<text x="530.2" y="378.25" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">events (original</text>
+<text x="530.2" y="401.1" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">solution, structured diff,</text>
+<text x="530.2" y="423.96" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">reason code)</text>
+<rect x="634.08" y="330.47" width="193.03" height="132.25" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="730.59" y="355.63" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">Runtime capability</text>
+<text x="730.59" y="378.25" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">lifecycle events</text>
+<text x="730.59" y="401.1" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">(candidate approval,</text>
+<text x="730.59" y="423.96" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">release, invalidation,</text>
+<text x="730.59" y="446.82" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">rollback)</text>
+</svg>

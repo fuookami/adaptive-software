@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="589" viewBox="0 0 860 589" role="img">
+<rect x="0" y="0" width="860" height="588.17" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<text x="429.99" y="34.7" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(29, 53, 87)" text-anchor="middle">[Column generation collaboration loop under a DDD architecture]</text>
+<rect x="108.84" y="56.19" width="642.3" height="152.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="81.17" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">1. Restricted master problem (RMP — OR control layer)</text>
+<text x="429.99" y="106.42" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• Contains only the finitely many feasible plan columns generated so far (e.g. single-vehicle loading</text>
+<text x="429.98" y="126.46" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">route columns / single-line schedule columns)</text>
+<text x="429.98" y="150.42" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• Owns the globally coupled hard constraints (full order coverage, total shared feeding-port capacity,</text>
+<text x="429.98" y="170.46" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">global inventory balance)</text>
+<text x="429.99" y="194.42" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• Solves the linear relaxation and outputs the current dual prices (shadow prices)</text>
+<text x="422.63" y="225.81" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="190.34" y="238.91" font-family="'Noto Sans SC'" font-size="11.776px" font-weight="500" fill="rgb(91, 107, 123)" text-anchor="start">Hands down the subproblem contract with dual information and business boundaries</text>
+<rect x="108.84" y="245.61" width="642.3" height="129" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="270.73" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">2. Pricing subproblem contract — domain/algorithm decoupling layer</text>
+<text x="429.99" y="295.74" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• Split subproblems by independent bounded context/aggregate (e.g. one machine, one line, one</text>
+<text x="429.98" y="315.78" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">truck)</text>
+<text x="429.99" y="339.74" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• Goal: find a new plan column that satisfies single-resource local process/space-time constraints and</text>
+<text x="429.99" y="359.78" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">has a negative reduced cost (in a minimization problem)</text>
+<line x1="91.44" y1="378.78" x2="768.55" y2="378.78" stroke="rgb(164, 176, 190)" stroke-width="1"/>
+<text x="253.34" y="395.17" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="591.89" y="395.17" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="20.13" y="404.3" width="249.72" height="131.75" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="144.98" y="429.26" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">Path A: accelerators/heuristics</text>
+<text x="144.98" y="454.5" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Heuristic / controlled RL policy</text>
+<text x="144.98" y="478.45" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Generate or rank candidate columns</text>
+<text x="144.98" y="498.5" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">fast</text>
+<text x="280.13" y="474.78" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="305.14" y="404.3" width="249.72" height="131.75" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="429.26" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">Path B: exact subproblem</text>
+<text x="430" y="452.11" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">solve</text>
+<text x="430" y="477.36" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Dynamic programming / MILP / CP</text>
+<text x="429.99" y="501.31" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">(responsible for convergence and</text>
+<text x="429.99" y="521.36" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">optimality proof)</text>
+<text x="565.14" y="474.78" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="590.16" y="404.3" width="249.72" height="131.75" rx="9" fill="rgb(255, 249, 242)" stroke="rgb(230, 126, 34)" stroke-width="1"/>
+<text x="715.01" y="429.26" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(165, 91, 27)" text-anchor="middle">3. OR Guard</text>
+<text x="715.01" y="454.5" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• Independently verify domain hard-</text>
+<text x="715.01" y="474.55" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">constraint feasibility</text>
+<text x="715.02" y="498.5" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• Independently recompute and</text>
+<text x="715.02" y="518.55" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">verify the reduced cost</text>
+<line x1="120.66" y1="547.52" x2="120.66" y2="568.05" stroke="rgb(230, 126, 34)" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="130.92" y="562.07" font-family="'Noto Sans SC'" font-size="13.248px" font-weight="400" fill="rgb(165, 91, 27)" text-anchor="start">↺ Re-inject the verified improving columns</text>
+</svg>

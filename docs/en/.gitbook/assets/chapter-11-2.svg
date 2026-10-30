@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="857" viewBox="0 0 860 857" role="img">
+<rect x="0" y="0" width="860" height="856.81" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<rect x="256.05" y="18.66" width="347.89" height="150.66" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[Actual floor execution feedback enters (e.g.</text>
+<text x="429.98" y="66.63" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">T1 actually finishes 30 minutes late)]</text>
+<text x="422.63" y="185.95" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="192.84" width="642.3" height="151.81" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="217.91" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">Tier 1: local propagation in the domain computation model (system-side pure</text>
+<text x="429.98" y="240.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">numeric computation, millisecond level)</text>
+<text x="429.98" y="265.77" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• Along the predecessor/successor operation chain and the line calendar, recompute the estimated</text>
+<text x="429.99" y="286.06" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">time windows of successors such as T2</text>
+<text x="429.98" y="309.77" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• Recompute the estimated feeding quantity and estimated resource occupancy in the affected time</text>
+<text x="429.99" y="330.06" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">buckets</text>
+<text x="422.63" y="361.21" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="368.19" width="642.3" height="108.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="393.17" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[Application-layer deterministic boundary and conflict guard check]</text>
+<text x="429.99" y="418.42" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• Does the estimated end time fall outside the order delivery window or exceed the deviation</text>
+<text x="429.98" y="438.46" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">tolerance threshold?</text>
+<text x="429.99" y="462.42" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• Does it trigger a cross-line resource conflict (shared feeding port, shared fixture, kitting inventory)?</text>
+<line x1="91.44" y1="481.3" x2="768.55" y2="481.3" stroke="rgb(164, 176, 190)" stroke-width="1"/>
+<text x="253.34" y="497.81" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="591.89" y="497.81" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="103.48" y="506.81" width="299.25" height="153.17" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="253.11" y="531.89" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[Within bounds and no global conflict]</text>
+<text x="245.75" y="676.7" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="79.17" y="683.52" width="347.89" height="153.17" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="253.11" y="708.66" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">Keep the original baseline plan sequence,</text>
+<text x="253.12" y="731.28" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">only update</text>
+<text x="253.11" y="756.52" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">digital-twin estimated state and keep monitoring</text>
+<rect x="432.94" y="506.81" width="347.89" height="150.66" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="606.88" y="531.89" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[Threshold exceeded or a resource conflict</text>
+<text x="606.88" y="554.75" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">arises]</text>
+<text x="599.52" y="674.07" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="432.94" y="681" width="347.89" height="155.69" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="606.88" y="706.03" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">Tier 2/3: OR solving and simulation</text>
+<text x="606.88" y="728.89" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">comparison</text>
+<text x="606.88" y="754.13" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• Plan A: restricted local-window reschedule</text>
+<text x="606.88" y="778.08" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• Plan B: global rolling reschedule recomputation</text>
+<text x="606.88" y="801.8" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Confirm and release after digital-twin simulation</text>
+<text x="606.88" y="822.08" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">comparison</text>
+</svg>

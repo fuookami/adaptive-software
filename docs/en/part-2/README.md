@@ -1,0 +1,9 @@
+<!-- i18n-status: translated -->
+<!-- i18n-source: docs/zh/part-2.md -->
+# Part Two: The Semantic Substrate — Formal Domain Models and the OSPF Optimization Modeling Framework
+
+In Volume One we established the top-level philosophy of adaptive software: **LLM as Runtime**, that is, positioning the large language model as the runtime's business semantic frontend, turning the user's open intent into structured candidates and handing them to deterministic compilers, validators and execution backends to land, then sedimenting them into long-term product assets through runtime profiling and software product line engineering.
+
+Yet for this grand runtime edifice to actually run, one indispensable precondition must hold: **the system's substrate must possess a common business language that is machine-readable, solvable by algorithms, learnable by models and referenceable by agents**. If the substrate is still anemic database tables scattered here and there, raw floating-point arithmetic and mathematical scripts privately kept inside algorithm black boxes, then no matter how exquisitely the semantic compiler above is designed, the structured intent a model generates still has nowhere to land.
+
+This volume goes deep into the "semantic and mathematical substrate" of adaptive software. It systematically explains why **"the three natives unified in a formal domain model"** is the foundation of the whole architecture, and works directly from the native infrastructure of the open-source operations research and formal modeling framework **`ospf` (`ospf-kotlin`)** to unpack how algebraic numbers, physical dimension safety, a unified expression intermediate representation (Expression IR), higher-order function symbols and a solver-decoupled compilation architecture can finally end the chronic split, that of "two separate skins", between business systems and algorithm models in enterprise software.
