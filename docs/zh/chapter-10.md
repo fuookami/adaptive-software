@@ -4,15 +4,7 @@
 
 一个真正“活着的”运行时业务世界，绝不能只有一个扁平的当前数据库截面，它必须同时贯通**过去、现在与未来**三个时间维度：
 
-<div class="dg" role="img" aria-label="活着的运行时业务世界贯通三个时间维度：过去（Past）事件溯源与版本历史 What happened?（发生过什么？为何至此？）→ 现在（Present）当前领域状态 What is?（当前有效事实与规则是什么？）→ 未来（Future）可计算数字孪生 What if?（如果这样做，接下来会怎样？）">
-<div class="dg-row">
-<div class="dg-node"><span class="dg-t">过去（Past）</span><span class="dg-s">事件溯源与版本历史</span><span class="dg-s">What happened?</span><span class="dg-s">（发生过什么？为何至此？）</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">现在（Present）</span><span class="dg-s">当前领域状态</span><span class="dg-s">What is?</span><span class="dg-s">（当前有效事实与规则是什么？）</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">未来（Future）</span><span class="dg-s">可计算数字孪生</span><span class="dg-s">What if?</span><span class="dg-s">（如果这样做，接下来会怎样？）</span></div>
-</div>
-</div>
+![活着的运行时业务世界贯通三个时间维度：过去（Past）事件溯源与版本历史 What happened?（发生过什么？为何至此？）→ 现在（Present）当前领域状态 What is?（当前有效事实与规则是什么？）→ 未来（Future）可计算数字孪生 What if?（如果这样做，接下来会怎样？）](assets/diagrams/chapter-10-1.svg)
 
 本章将详细阐述如何用**事件溯源（Event Sourcing）**构建系统的“记忆系统”，用**可计算的数字孪生（Digital Twin）**构建系统的“安全试验场”，从而将 Software 3.0 的语义推理牢牢锚定在真实的工业物理世界之上。
 
@@ -45,31 +37,7 @@
 
 需要强调的是，在工程落地上，我们保持务实与克制：**统一历史记忆，绝不要求系统里的每一个普通配置表或每一个业务对象都强行采用全量纯事件溯源（Pure Event Sourcing）实现**。我们采用的是**“不可变业务版本快照 + 关键领域事件时间轴”**的双轨组合模式：
 
-<div class="dg" role="img" aria-label="运行时记忆系统：版本快照 + 领域事件时间轴，由两条不可变轨道组成：不可变业务版本快照（Versioned Snapshots）与不可变领域事件时间轴（Domain Event Timeline）。">
-<div class="dg-col">
-<div class="dg-node dg-node--layer"><span class="dg-t">运行时记忆系统：版本快照 + 领域事件时间轴</span></div>
-<div class="dg-arms">
-<div class="dg-arm">↓</div>
-<div class="dg-arm">↓</div>
-</div>
-<div class="dg-row">
-<div class="dg-group">
-<div class="dg-gt">不可变业务版本快照（Versioned Snapshots）</div>
-<div class="dg-node dg-node--leaf">排产输入数据快照、规则快照、字段目录版本</div>
-<div class="dg-node dg-node--leaf">机器学习训练数据集、特征模式（Schema）、模型制品版本</div>
-<div class="dg-node dg-node--leaf">产能估算快照与激活覆盖层（CapacityEffectiveOverlay）</div>
-<div class="dg-node dg-node--leaf">历史计划方案版本（基准计划 / 仿真候选方案快照）</div>
-</div>
-<div class="dg-group">
-<div class="dg-gt">不可变领域事件时间轴（Domain Event Timeline）</div>
-<div class="dg-node dg-node--leaf">外部执行事实事件（MES报工、WMS领料、TMS到车）</div>
-<div class="dg-node dg-node--leaf">计划决策事件（排产下发、滚动重排触发原因）</div>
-<div class="dg-node dg-node--leaf">人工计划微调事件（原始方案、结构化差异、原因码）</div>
-<div class="dg-node dg-node--leaf">运行时能力生命周期事件（候选审批、发布、失效、回滚）</div>
-</div>
-</div>
-</div>
-</div>
+![运行时记忆系统：版本快照 + 领域事件时间轴，由两条不可变轨道组成：不可变业务版本快照（Versioned Snapshots）与不可变领域事件时间轴（Domain Event Timeline）。](assets/diagrams/chapter-10-2.svg)
 
 这套记忆机制在架构上严格保障以下四项核心能力：
 
@@ -141,19 +109,7 @@
 
 更进一步，这个实时演进的数字孪生镜像，直接成为了**智能体业务推理（Agent Reasoning）与滚动排产决策的权威上下文来源**。当计划员询问影响时，智能体不再是凭空瞎猜，而是读取数字孪生状态，沿着一条严密的工程链路完成闭环协同：
 
-<div class="dg" role="img" aria-label="智能体与数字孪生的闭环协同链路：1. 现场实际反馈（MES报工/WMS库存同步）→ 2. 数字孪生更新预计态（领域模型重算预计时间窗）→ 3. 智能体推理偏差影响（识别受波及任务与新冲突）→ 4. 生成候选并仿真对比（试算局部顺延vs全局重排）→ 5. 局部调整或滚动排产（应用层按策略校验并执行）。">
-<div class="dg-row">
-<div class="dg-node dg-node--chip"><span class="dg-t">1. 现场实际反馈</span><span class="dg-s">MES报工/WMS库存同步</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip"><span class="dg-t">2. 数字孪生更新预计态</span><span class="dg-s">领域模型重算预计时间窗</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip"><span class="dg-t">3. 智能体推理偏差影响</span><span class="dg-s">识别受波及任务与新冲突</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip"><span class="dg-t">4. 生成候选并仿真对比</span><span class="dg-s">试算局部顺延vs全局重排</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip"><span class="dg-t">5. 局部调整或滚动排产</span><span class="dg-s">应用层按策略校验并执行</span></div>
-</div>
-</div>
+![智能体与数字孪生的闭环协同链路：1. 现场实际反馈（MES报工/WMS库存同步）→ 2. 数字孪生更新预计态（领域模型重算预计时间窗）→ 3. 智能体推理偏差影响（识别受波及任务与新冲突）→ 4. 生成候选并仿真对比（试算局部顺延vs全局重排）→ 5. 局部调整或滚动排产（应用层按策略校验并执行）。](assets/diagrams/chapter-10-3.svg)
 
 在这条连续链路中，数字孪生同时充当了**三原生的交汇点**：
 * **机器学习原生**为数字孪生提供带血缘与不确定性的有效产能与耗时预测输入；

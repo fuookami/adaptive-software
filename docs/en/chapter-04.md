@@ -53,21 +53,7 @@ We give its strict definition:
 
 "Programming" here means that while business users express goals, business rules, resource constraints and decision preferences, they continuously produce new **"executable business semantics"**. To turn this open, vague natural language safely into industrial-grade software capability, the system imitates the refined architecture of a modern compiler and builds, at runtime, a standard pipeline of six core stages:
 
-<div class="dg" role="img" aria-label="1. User intent (natural language / behavior) → 2. LLM semantic frontend (understanding and candidate generation) → 3. Semantic IR (DSL / AST / plan IR) → 4. Semantic compiler (validate / optimize / lower) → 5. Controlled execution backend (database / solver / code) → 6. Adaptive runtime (profiling / JIT / invalidation / fallback).">
-<div class="dg-row">
-<div class="dg-node"><span class="dg-t">1. User intent</span><span class="dg-s">Natural language / behavior</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--key"><span class="dg-t">2. LLM semantic frontend</span><span class="dg-s">Understanding and candidate generation</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">3. Semantic IR</span><span class="dg-s">DSL / AST / plan IR</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">4. Semantic compiler</span><span class="dg-s">Validate / optimize / lower</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">5. Controlled execution backend</span><span class="dg-s">Database / solver / code</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">6. Adaptive runtime</span><span class="dg-s">Profiling / JIT / invalidation / fallback</span></div>
-</div>
-</div>
+![1. User intent (natural language / behavior) → 2. LLM semantic frontend (understanding and candidate generation) → 3. Semantic IR (DSL / AST / plan IR) → 4. Semantic compiler (validate / optimize / lower) → 5. Controlled execution backend (database / solver / code) → 6. Adaptive runtime (profiling / JIT / invalidation / fallback).](assets/diagrams/chapter-04-1.svg)
 
 In this pipeline every component has its own job and clear boundaries:
 1. **The large language model (semantic frontend)**: plays a role analogous to a compiler frontend, compressing the user's natural language, the current runtime context, historical interaction events and domain knowledge into a structurally constrained candidate representation;
@@ -113,15 +99,7 @@ Take the platform's "dynamic query just-in-time compilation" and "dynamic constr
 
 In engineering practice, Semantic JIT follows the same restrained principle of **"tiered specialization"** — not every hot requirement deserves the trouble of generating bytecode or a code plugin:
 
-<div class="dg" role="img" aria-label="Tiered specialization: Tier 0 general semantic planner / interpreter (long-tail exploration and low-frequency requests) → Tier 1 parameterized query plan / precompiled constraints and flows (lowest risk, covers 90% of hot-spot benefit) → Tier 2 controlled compiled plugin (JVM / WebAssembly) (enabled only when the performance gain is very significant and the boundaries are stable).">
-<div class="dg-row">
-<div class="dg-node"><span class="dg-t">Tier 0</span><span class="dg-s">General semantic planner / interpreter</span><span class="dg-s">(long-tail exploration and low-frequency requests)</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">Tier 1</span><span class="dg-s">Parameterized query plan / precompiled constraints and flows</span><span class="dg-s">(lowest risk, 90% of hot-spot benefit)</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">Tier 2</span><span class="dg-s">Controlled compiled plugin (JVM / WebAssembly)</span><span class="dg-s">(only when the performance gain is very large and boundaries are stable)</span></div>
-</div>
-</div>
+![Tiered specialization: Tier 0 general semantic planner / interpreter (long-tail exploration and low-frequency requests) → Tier 1 parameterized query plan / precompiled constraints and flows (lowest risk, covers 90% of hot-spot benefit) → Tier 2 controlled compiled plugin (JVM / WebAssembly) (enabled only when the performance gain is very significant and the boundaries are stable).](assets/diagrams/chapter-04-2.svg)
 
 The system always prefers the tier-1 deterministic artifacts: lowest risk, best reversibility, and benefit already sufficient (such as `query IR + parameterized query plan`, or a `pre-compiled linear constraint template` carried by `ospf`). Only when performance profiling proves that some ultra-high-frequency computation really is a significant bottleneck, and that its productization boundary is already highly stable, does it upgrade on demand to a tier-2 controlled VM plugin (such as a JVM plugin under an isolated class loader, or a WebAssembly artifact).
 
@@ -137,19 +115,7 @@ Before closing Volume One and moving on to the underlying formal domain model an
 
 To ensure this iron law is followed one hundred percent in daily development and operation, the system forcibly places five deterministic defense lines between "the model proposes a candidate" and "the production environment executes it":
 
-<div class="dg" role="img" aria-label="1. Candidate generation → 2. Permission and governance check → 3. Domain and business check → 4. Simulation and result verification → 5. Versioned, reversible execution.">
-<div class="dg-row">
-<div class="dg-node dg-node--chip">[1. Candidate generation]</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">[2. Permission and governance check]</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">[3. Domain and business check]</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">[4. Simulation and result verification]</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">[5. Versioned, reversible execution]</div>
-</div>
-</div>
+![1. Candidate generation → 2. Permission and governance check → 3. Domain and business check → 4. Simulation and result verification → 5. Versioned, reversible execution.](assets/diagrams/chapter-04-3.svg)
 
 1. **Defense line one: structured candidate isolation** — the large language model and agents may only emit structured candidates against constrained domain metadata; any unknown field, unauthorized field, unknown mount point or expression beyond what the underlying solver or system supports is blocked by the compiler, which returns a structured error code; silent guessing, or letting a defective plan through, is strictly forbidden;
 2. **Defense line two: permission, tenant and budget gatekeeping** — deterministic code verifies who the initiator is, which organizations and business objects they may access, which sensitive fields are involved, how much compute budget is consumed, and whether a change at this level must be confirmed through human approval;

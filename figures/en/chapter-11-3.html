@@ -1,0 +1,17 @@
+<div class="dg" role="img" aria-label="The column generation collaboration loop under a DDD architecture: 1. the restricted master problem solves the linear relaxation and outputs the current dual prices, then hands down the subproblem contract carrying dual information and business boundaries to 2. the pricing subproblem contract; the pricing subproblem produces candidate columns through path A, accelerators and heuristics, and path B, exact subproblem solving, and passes them to 3. the OR Guard, which independently validates and verifies the reduced cost before re-injecting the verified improving columns.">
+<div class="dg-title">[Column generation collaboration loop under a DDD architecture]</div>
+<div class="dg-col">
+<div class="dg-node dg-node--layer"><span class="dg-t">1. Restricted master problem (RMP — OR control layer)</span><span class="dg-s">• Contains only the finitely many feasible plan columns generated so far (e.g. single-vehicle loading route columns / single-line schedule columns)</span><span class="dg-s">• Owns the globally coupled hard constraints (full order coverage, total shared feeding-port capacity, global inventory balance)</span><span class="dg-s">• Solves the linear relaxation and outputs the current dual prices (shadow prices)</span></div>
+<div class="dg-down" aria-hidden="true">↓<span class="dg-lbl">Hands down the subproblem contract with dual information and business boundaries</span></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">2. Pricing subproblem contract — domain/algorithm decoupling layer</span><span class="dg-s">• Split subproblems by independent bounded context/aggregate (e.g. one machine, one line, one truck)</span><span class="dg-s">• Goal: find a new plan column that satisfies single-resource local process/space-time constraints and has a negative reduced cost (in a minimization problem)</span></div>
+<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
+<div class="dg-row">
+<div class="dg-node dg-node--leaf"><span class="dg-t">Path A: accelerators/heuristics</span><span class="dg-s">Heuristic / controlled RL policy</span><span class="dg-s">Generate or rank candidate columns fast</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--leaf"><span class="dg-t">Path B: exact subproblem solve</span><span class="dg-s">Dynamic programming / MILP / CP</span><span class="dg-s">(responsible for convergence and optimality proof)</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--leaf dg-node--key"><span class="dg-t">3. OR Guard</span><span class="dg-s">• Independently verify domain hard-constraint feasibility</span><span class="dg-s">• Independently recompute and verify the reduced cost</span></div>
+</div>
+<div class="dg-loop">↺ Re-inject the verified improving columns</div>
+</div>
+</div>

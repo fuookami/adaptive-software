@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="726" viewBox="0 0 860 726" role="img">
+<rect x="0" y="0" width="860" height="725.88" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<rect x="108.84" y="18.66" width="642.3" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">【形式化领域模型 + 冻结的排产求解快照】</text>
+<text x="422.63" y="76.21" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="83.19" width="642.3" height="64.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="108.17" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">1. 运筹优化构建受限主问题（RMP） / Benders 分解主问题</text>
+<text x="429.99" y="133.42" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">掌控全局硬约束、当前上下界（Bounds）与收敛终止标准</text>
+<text x="422.63" y="164.81" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="288.75" y="177.91" font-family="'Noto Sans SC'" font-size="11.776px" font-weight="500" fill="rgb(91, 107, 123)" text-anchor="start">下发带主问题状态、对偶信息与业务边界的子问题契约</text>
+<rect x="108.84" y="184.61" width="642.3" height="64.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="209.73" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">2. 机器学习 / 强化学习（ML / RL 学习型子问题加速器）</text>
+<text x="429.98" y="234.74" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">快速生成或排序候选列、候选割、候选子问题解或热启动提示</text>
+<text x="422.63" y="266.13" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="394.69" y="279.23" font-family="'Noto Sans SC'" font-size="11.776px" font-weight="500" fill="rgb(91, 107, 123)" text-anchor="start">提交内部候选</text>
+<rect x="108.84" y="286.03" width="642.3" height="64.94" rx="9" fill="rgb(255, 249, 242)" stroke="rgb(230, 126, 34)" stroke-width="1"/>
+<text x="429.98" y="311.06" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(165, 91, 27)" text-anchor="middle">3. 运筹优化确定性验证守卫（OR Verification Guard）</text>
+<text x="429.99" y="336.3" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">严格检验领域硬约束可行性、约化成本（Reduced Cost）以及 Benders 割平面的数学有效性与上下界</text>
+<line x1="91.44" y1="355.14" x2="768.55" y2="355.14" stroke="rgb(164, 176, 190)" stroke-width="1"/>
+<text x="253.34" y="371.69" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="591.89" y="371.69" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="20.13" y="385.8" width="819.75" height="102.58" rx="10" fill="rgba(255, 255, 255, 0.6)" fill-opacity="0.6" stroke="rgb(185, 194, 203)" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="429.99" y="415.98" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 90, 104)" text-anchor="middle">【验证通过】</text>
+<rect x="256.05" y="434.61" width="347.89" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="459.73" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">回注主问题并继续快速迭代</text>
+<rect x="20.13" y="504.53" width="819.75" height="125.39" rx="10" fill="rgba(255, 255, 255, 0.6)" fill-opacity="0.6" stroke="rgb(185, 194, 203)" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="429.99" y="534.78" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 90, 104)" text-anchor="middle">【验证失败 或 候选改进不足】</text>
+<rect x="256.05" y="553.34" width="347.89" height="63.81" rx="9" fill="rgb(255, 249, 242)" stroke="rgb(230, 126, 34)" stroke-width="1"/>
+<text x="429.99" y="578.29" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(165, 91, 27)" text-anchor="middle">4. 精确子问题或确定性启发式强制兜底（Exact</text>
+<text x="429.99" y="601.15" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(165, 91, 27)" text-anchor="middle">Fallback）</text>
+<line x1="91.44" y1="639.23" x2="768.55" y2="639.23" stroke="rgb(164, 176, 190)" stroke-width="1"/>
+<text x="253.34" y="655.76" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="591.89" y="655.76" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="664.75" width="642.3" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="689.84" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">5. 运筹优化根据经认证的上下界与终止条件判定最终收敛</text>
+</svg>

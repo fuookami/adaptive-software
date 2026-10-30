@@ -1,0 +1,9 @@
+<div class="dg" role="img" aria-label="类编译器降阶架构三层自上而下：领域层（Domain Layer）经暴露纯计算与符号双入口进入算法建模层（Algorithm Layer —— 前端元模型 LinearMetaModel），再经调用 LinearMechanismModel(metaModel) 降阶编译进入 OSPF 中端编译器与后端求解器插件层（LinearMechanismModel &amp; Solver Plugins）。">
+<div class="dg-col">
+<div class="dg-node dg-node--layer"><span class="dg-t">领域层（Domain Layer）</span><span class="dg-s">定义业务概念、OSPF 原生单位 (Kilogram/Hour)、计算关系与约束语义模板</span><span class="dg-s">铁律：领域聚合根绝不持有任何求解器变量、模型句柄或求解会话（Session）</span></div>
+<div class="dg-down" aria-hidden="true">↓<span class="dg-lbl">暴露纯计算与符号双入口</span></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">算法建模层（Algorithm Layer —— 前端元模型 LinearMetaModel）</span><span class="dg-s">基于 OSPF 通用符号（URealVar / LinearExpressionSymbol）与内置函数算子（SemiFunction / SlackFunction / IfThenFunction）组装单次求解元模型</span><span class="dg-s">不绑定任何特定商业或开源求解器的原生 API</span></div>
+<div class="dg-down" aria-hidden="true">↓<span class="dg-lbl">调用 LinearMechanismModel(metaModel) 降阶编译</span></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">OSPF 中端编译器与后端求解器插件层（LinearMechanismModel &amp; Solver Plugins）</span><span class="dg-s">自动递归展开所有高阶函数算子，执行同类项合并、常量折叠与阶数/能力检查</span><span class="dg-s">降阶生成稀疏矩阵视图并对接统一 LinearSolver 接口</span><span class="dg-s">零业务代码改动切换 Gurobi / Cplex / SCIP / Cbc / Hexaly 等求解器插件</span></div>
+</div>
+</div>

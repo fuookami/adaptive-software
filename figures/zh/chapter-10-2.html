@@ -1,0 +1,25 @@
+<div class="dg" role="img" aria-label="运行时记忆系统：版本快照 + 领域事件时间轴，由两条不可变轨道组成：不可变业务版本快照（Versioned Snapshots）与不可变领域事件时间轴（Domain Event Timeline）。">
+<div class="dg-col">
+<div class="dg-node dg-node--layer"><span class="dg-t">运行时记忆系统：版本快照 + 领域事件时间轴</span></div>
+<div class="dg-arms">
+<div class="dg-arm">↓</div>
+<div class="dg-arm">↓</div>
+</div>
+<div class="dg-row">
+<div class="dg-group">
+<div class="dg-gt">不可变业务版本快照（Versioned Snapshots）</div>
+<div class="dg-node dg-node--leaf">排产输入数据快照、规则快照、字段目录版本</div>
+<div class="dg-node dg-node--leaf">机器学习训练数据集、特征模式（Schema）、模型制品版本</div>
+<div class="dg-node dg-node--leaf">产能估算快照与激活覆盖层（CapacityEffectiveOverlay）</div>
+<div class="dg-node dg-node--leaf">历史计划方案版本（基准计划 / 仿真候选方案快照）</div>
+</div>
+<div class="dg-group">
+<div class="dg-gt">不可变领域事件时间轴（Domain Event Timeline）</div>
+<div class="dg-node dg-node--leaf">外部执行事实事件（MES报工、WMS领料、TMS到车）</div>
+<div class="dg-node dg-node--leaf">计划决策事件（排产下发、滚动重排触发原因）</div>
+<div class="dg-node dg-node--leaf">人工计划微调事件（原始方案、结构化差异、原因码）</div>
+<div class="dg-node dg-node--leaf">运行时能力生命周期事件（候选审批、发布、失效、回滚）</div>
+</div>
+</div>
+</div>
+</div>

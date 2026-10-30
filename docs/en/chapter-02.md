@@ -10,17 +10,7 @@ In the production-scheduling storm of Chapter 1 we saw how badly traditional ind
 
 If we stretch out the history of enterprise software, it passes in turn through four stages: **informatization**, **automation**, **algorithmic intelligence before large language models** and **intelligence in the age of large language models**.
 
-<div class="dg" role="img" aria-label="The four stages of software evolution advance in turn: informatization records things in the system, automation makes the system act by rules, pre-LLM intelligence makes models render specific judgments, and LLM intelligence understands goals and completes tasks.">
-<div class="dg-row">
-<div class="dg-node"><span class="dg-t">Informatization</span><span class="dg-s">Recording things into the system</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">Automation</span><span class="dg-s">The system acts by rules</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">Pre-LLM intelligence</span><span class="dg-s">Models make specific judgments</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--key"><span class="dg-t">LLM intelligence</span><span class="dg-s">Understand goals, complete tasks</span></div>
-</div>
-</div>
+![The four stages of software evolution advance in turn: informatization records things in the system, automation makes the system act by rules, pre-LLM intelligence makes models render specific judgments, and LLM intelligence understands goals and completes tasks.](assets/diagrams/chapter-02-1.svg)
 
 The essential difference between these four stages lies not in whether the substrate is a relational database, a workflow engine, deep learning or a large language model, but in **how much "cognitive and execution responsibility" the software system takes off humanity's hands**.
 
@@ -55,49 +45,13 @@ Looking at those four stages, why was the evolution of the first three mainly in
 
 In informatization, automation and even the algorithmic intelligence of the pre-LLM era, however much cleverer the systems became, the basic chain of "how software capability is manufactured" never changed:
 
-<div class="dg" role="img" aria-label="The traditional software paradigm: capability is formed before release. The chain runs business requirement, product design or R&D scheduling, coding in an integrated development environment (IDE), testing, build, version release, use by users.">
-<div class="dg-title">The traditional software paradigm: capability is formed "before release"</div>
-<div class="dg-row">
-<div class="dg-node dg-node--chip">Business requirement</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Product design / R&amp;D scheduling</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Coding in an IDE</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Testing</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Build</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Version release</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Use by users</div>
-</div>
-</div>
+![The traditional software paradigm: capability is formed before release. The chain runs business requirement, product design or R&D scheduling, coding in an integrated development environment (IDE), testing, build, version release, use by users.](assets/diagrams/chapter-02-2.svg)
 
 In that traditional chain — whether one hard-codes a database validation rule, configures an automated approval flow, trains a capacity-forecasting model or writes a mixed-integer linear programming (MILP) scheduling script — **the formation of software capability happens mainly "before release", in the development or training period**. Once the software is released into production, its capability boundary is frozen; on the live floor users can only use the functions the R&D team imagined in advance.
 
 In the era of large language models, however, part of "semantic production" and "capability shaping" crosses for the first time from the development period onto the runtime site where users actually work:
 
-<div class="dg" role="img" aria-label="The LLM runtime paradigm: part of capability is formed while in use. The chain runs: real use by users, the LLM understands and handles long-tail requests, the runtime collects behavioral and performance facts, identifies frequent stable patterns, extracts a semantic intermediate representation (IR), runs semantic compilation and equivalence verification, releases a specialized deterministic capability, and later requests are executed directly and efficiently.">
-<div class="dg-title">The LLM runtime paradigm: part of capability is formed "while in use"</div>
-<div class="dg-row">
-<div class="dg-node dg-node--chip">Real use by users</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">LLM handles long-tail requests</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Runtime collects behavior and performance facts</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Identify frequent stable patterns</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Extract a semantic intermediate representation (IR)</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Semantic compilation and equivalence verification</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Release a specialized deterministic capability</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Later requests execute directly</div>
-</div>
-</div>
+![The LLM runtime paradigm: part of capability is formed while in use. The chain runs: real use by users, the LLM understands and handles long-tail requests, the runtime collects behavioral and performance facts, identifies frequent stable patterns, extracts a semantic intermediate representation (IR), runs semantic compilation and equivalence verification, releases a specialized deterministic capability, and later requests are executed directly and efficiently.](assets/diagrams/chapter-02-3.svg)
 
 As the figure shows, when a user on the production floor raises a long-tail request for which the system has no ready button — say, "today lines A and B share a feeding port, and total feeding must not exceed 1000 kg" — the system no longer fails outright or sends you off to raise an R&D ticket. The large language model first understands the intent on the live runtime, assembles the context and generates a structured candidate plan, which after safety verification completes that instance of the work. Immediately afterwards the runtime keeps watching whether requests of this kind recur in later production cycles; as soon as it finds a pattern that is frequent, stable and clearly beneficial, the system extracts its semantic structure, compiles and verifies it into a low-cost, reusable specialized deterministic capability, and later requests of the same kind go straight down the specialized, efficient path.
 

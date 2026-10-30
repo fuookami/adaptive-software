@@ -6,26 +6,6 @@
 
 > **大语言模型带来的真正革命，从来不是在软件旁边多塞了一个会聊天的对话框，也不是用一个不可控的黑盒大模型去取代久经考验的业务系统与运筹算法；而是第一次让软件拥有了在真实使用现场理解人类意图、探索未知变化的低成本语义入口。当我们将这一语义入口锚定在“形式化领域模型”的共同语言之上，用“事件溯源与数字孪生”赋予它记忆与试验场，用“语义编译器与形式化验证”为它筑起确定性的安全护栏，再用“软件产品线工程”将经过实战检验的真知灼见持续吸收进产品核心时，软件就完成了从“发布前一次性制造的工具”向“在使用中持续学习、专门化并沉淀能力的自适应生命体”的物种进化。**
 
-<div class="dg" role="img" aria-label="全书主线收束链：自适应软件远景 → LLM as Runtime → 形式化领域模型（OSPF 底座） → 语义中间表示（Semantic IR） → 编译产生与形式化验证 → 受控专用能力 → 软件产品线（SPLE）晋升 → 稳定产品核心 → 新一轮运行时探索。">
-<div class="dg-row">
-<div class="dg-node dg-node--chip">自适应软件远景</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">LLM as Runtime</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">形式化领域模型（OSPF 底座）</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">语义中间表示（Semantic IR）</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">编译产生与形式化验证</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">受控专用能力</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">软件产品线（SPLE）晋升</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">稳定产品核心</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">新一轮运行时探索</div>
-</div>
-</div>
+![全书主线收束链：自适应软件远景 → LLM as Runtime → 形式化领域模型（OSPF 底座） → 语义中间表示（Semantic IR） → 编译产生与形式化验证 → 受控专用能力 → 软件产品线（SPLE）晋升 → 稳定产品核心 → 新一轮运行时探索。](assets/diagrams/epilogue-1.svg)
 
 过去，人类编写程序，然后日复一日地适应程序；未来，人类在使用程序的同时，也在与机器共同创造和进化程序。愿本书所阐述的架构哲学与工程实践，能成为您手中开启下一代自适应企业软件大门的钥匙。

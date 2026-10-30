@@ -16,17 +16,7 @@ For machine learning and OR optimization to collaborate safely, the first step m
 
 Let us return to the running example that spans Chapters 4 and 5 — **the factory calendar (Calendar) and the effective capacity estimation for production lines A and B** — and look at how a prediction loop that meets the ML-Native standard operates:
 
-<div class="dg" role="img" aria-label="Four steps of the ML-Native prediction loop, linked in order: 1. normalize domain observation facts, 2. freeze training and inference versions, 3. output a structured prediction snapshot, 4. admission validation and approval activation.">
-<div class="dg-row">
-<div class="dg-node"><span class="dg-t">1. Normalize domain observation facts</span><span class="dg-s">Work unit / good output / actual duration / unit / event time</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">2. Freeze training and inference versions</span><span class="dg-s">Feature schema / observation window / label cut-off / model artifact hash</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">3. Structured prediction snapshot output</span><span class="dg-s">Estimate + quality metrics + confidence interval / uncertainty + lineage</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">4. Admission validation and approval activation</span><span class="dg-s">Validate unit / threshold / freshness, then activate as the effective capacity overlay</span></div>
-</div>
-</div>
+![Four steps of the ML-Native prediction loop, linked in order: 1. normalize domain observation facts, 2. freeze training and inference versions, 3. output a structured prediction snapshot, 4. admission validation and approval activation.](assets/diagrams/chapter-13-1.svg)
 
 1. **Domain normalization of production execution observations**: when MES reports execution records for completed tasks, the system first normalizes them into standard production observation facts under domain-layer rules, explicitly fixing the work unit (Work Unit), the good output quantity, the actual production duration, the target physical unit, the business event time (Event Time) and the historical observation window. A machine learning script is never allowed to guess or improvise business semantics on its own.
 2. **Immutable freezing of inputs and model artifacts**: when training or online inference starts, the application layer forcibly freezes the feature schema definition (Schema), the observation-window range, the label maturity cut-off (which prevents future data from leaking into features and causing data leakage), the model artifact version, the runtime configuration and the content hash of the inputs used by this computation; the machine learning runtime may consume only frozen, deterministic inputs.
@@ -65,24 +55,7 @@ This book's architecture therefore establishes a second collaboration paradigm �
 
 Our core architectural principle is this: **never let reinforcement learning issue production actions directly against business state; instead, treat reinforcement learning as a strictly constrained "learned subproblem accelerator" inside the large-scale decomposition algorithms of Chapter 11 (column generation and Benders decomposition)**. OR optimization always keeps firm control of the master problem, the hard-constraint boundary, candidate validation, bound computation and the final convergence decision.
 
-<div class="dg" role="img" aria-label="Collaboration chain of OR in control, RL acceleration and exact fallback: the formal domain model plus a frozen scheduling solve snapshot; OR optimization first builds the restricted master problem or the Benders master problem, then issues the subproblem contract to the ML / RL accelerator, whose submitted internal candidates go to the OR deterministic verification guard; if verification passes, they feed back into the master problem and fast iteration continues; if verification fails or candidate gain is insufficient, the path goes to an exact subproblem or deterministic heuristic mandatory fallback; both paths finally converge into the OR decision on final convergence.">
-<div class="dg-col">
-<div class="dg-node dg-node--layer"><span class="dg-t">Formal domain model + frozen scheduling solve snapshot</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">1. OR builds the restricted master problem (RMP) / Benders master problem</span><span class="dg-s">Holds global hard constraints, current bounds and the convergence stopping criteria</span></div>
-<div class="dg-down">↓<span class="dg-lbl">Issues the subproblem contract with master state, dual information and business boundaries</span></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">2. Machine learning / reinforcement learning (ML / RL learned subproblem accelerator)</span><span class="dg-s">Rapidly generates or ranks candidate columns, candidate cuts, candidate subproblem solutions or warm-start hints</span></div>
-<div class="dg-down">↓<span class="dg-lbl">Submits internal candidates</span></div>
-<div class="dg-node dg-node--key dg-node--layer"><span class="dg-t">3. OR deterministic verification guard (OR Verification Guard)</span><span class="dg-s">Strictly checks domain hard-constraint feasibility, reduced cost, and the mathematical validity of Benders cut planes and bounds</span></div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-row">
-<div class="dg-group"><div class="dg-gt">Verification passed</div><div class="dg-node"><span class="dg-t">Feed back into the master problem and keep iterating fast</span></div></div>
-<div class="dg-group"><div class="dg-gt">Verification failed or candidate gain insufficient</div><div class="dg-node dg-node--key"><span class="dg-t">4. Exact subproblem or deterministic heuristic mandatory fallback (Exact Fallback)</span></div></div>
-</div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">5. OR decides final convergence from the certified bounds and termination conditions</span></div>
-</div>
-</div>
+![Collaboration chain of OR in control, RL acceleration and exact fallback: the formal domain model plus a frozen scheduling solve snapshot; OR optimization first builds the restricted master problem or the Benders master problem, then issues the subproblem contract to the ML / RL accelerator, whose submitted internal candidates go to the OR deterministic verification guard; if verification passes, they feed back into the master problem and fast iteration continues; if verification fails or candidate gain is insufficient, the path goes to an exact subproblem or deterministic heuristic mandatory fallback; both paths finally converge into the OR decision on final convergence.](assets/diagrams/chapter-13-2.svg)
 
 As the figure shows, this collaboration chain of "OR in control + RL acceleration + exact fallback" holds five engineering boundaries strictly:
 
@@ -104,19 +77,7 @@ After the original plan produced by OR optimization is manually adjusted by the 
 
 To that end we build a third enhancement loop — **Decision-Feedback-Driven OR Parameter Calibration**. Using controlled parameter-learning methods such as inverse optimization (Inverse Optimization), preference learning (Preference Learning) or learning to rank (Learning to Rank), the system continuously calibrates, from historical decision feedback, those **OR parameters that the domain layer has explicitly declared "learnable"**:
 
-<div class="dg" role="img" aria-label="Five steps of the decision-feedback-driven OR parameter calibration loop: 1. freeze inputs and the original OR solve, 2. capture manual fine-tuning and classify reasons, 3. controlled training of calibratable parameter candidates, 4. offline replay and counterfactual simulation acceptance, 5. OR re-solve and continuous evolution.">
-<div class="dg-row">
-<div class="dg-node"><span class="dg-t">1. Frozen input and original OR solve</span><span class="dg-s">Produces the OR baseline plan from the frozen input and the current parameter version</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">2. Capture manual fine-tuning and reason classification</span><span class="dg-s">Records the plan diff, structured reason codes, approval chain and later real execution results</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">3. Controlled training of calibratable parameter candidates</span><span class="dg-s">Learns objective weights and soft-constraint penalty candidates only from stable preference samples</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">4. Offline replay and counterfactual simulation acceptance</span><span class="dg-s">Compares feasibility rate / objective components / manual acceptance rate on a holdout set, then freezes after approval</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">5. OR re-solve and continuous evolution</span><span class="dg-s">Solves with the approved frozen parameter version; baseline parameters roll back in one click</span></div>
-</div>
-</div>
+![Five steps of the decision-feedback-driven OR parameter calibration loop: 1. freeze inputs and the original OR solve, 2. capture manual fine-tuning and classify reasons, 3. controlled training of calibratable parameter candidates, 4. offline replay and counterfactual simulation acceptance, 5. OR re-solve and continuous evolution.](assets/diagrams/chapter-13-3.svg)
 
 To keep parameter learning from fossilizing a planner's temporary compromise or mistaken action into the system as truth, this loop enforces five iron governance rules:
 

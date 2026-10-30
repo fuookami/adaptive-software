@@ -1,0 +1,17 @@
+<div class="dg" role="img" aria-label="DDD 架构下的列生成（Column Generation）协作闭环：1. 受限主问题求解线性松弛并输出当前对偶价格，下发带对偶信息与业务边界的子问题契约给 2. 定价子问题契约；定价子问题经路径 A 加速/启发式器与路径 B 精确子问题求解产出候选列，交 3. 运筹验证守卫（OR Guard）独立校验与核验约化成本后，回注经验证的改进列。">
+<div class="dg-title">【DDD 架构下的列生成（Column Generation）协作闭环】</div>
+<div class="dg-col">
+<div class="dg-node dg-node--layer"><span class="dg-t">1. 受限主问题（Restricted Master Problem, RMP —— 运筹主控层）</span><span class="dg-s">• 仅包含当前已生成的有限个可行方案列（如单车配载路径列 / 单线排产列）</span><span class="dg-s">• 负责全局耦合硬约束（订单全覆盖、共享投料口总量上限、全局库存平衡）</span><span class="dg-s">• 求解线性松弛并输出当前对偶价格（Dual Prices / Shadow Prices）</span></div>
+<div class="dg-down" aria-hidden="true">↓<span class="dg-lbl">下发带对偶信息与业务边界的子问题契约</span></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">2. 定价子问题契约（Pricing Subproblem Contract —— 领域与算法解耦层）</span><span class="dg-s">• 按独立限界上下文/聚合（如单台设备、单条产线、单辆货车）拆分子问题</span><span class="dg-s">• 目标：寻找满足单资源局部工艺/时空约束、且约化成本（Reduced Cost）为负（最小化问题中）的新方案列</span></div>
+<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
+<div class="dg-row">
+<div class="dg-node dg-node--leaf"><span class="dg-t">路径 A：加速/启发式器</span><span class="dg-s">启发式 / 受控 RL 策略</span><span class="dg-s">快速生成或排序候选列</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--leaf"><span class="dg-t">路径 B：精确子问题求解</span><span class="dg-s">动态规划 / MILP / CP</span><span class="dg-s">（负责收敛与最优证明）</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node dg-node--leaf dg-node--key"><span class="dg-t">3. 运筹验证守卫（OR Guard）</span><span class="dg-s">• 独立校验领域硬约束可行性</span><span class="dg-s">• 独立重算并核验约化成本</span></div>
+</div>
+<div class="dg-loop">↺ 回注经验证的改进列</div>
+</div>
+</div>

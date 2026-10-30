@@ -6,15 +6,7 @@ When comparing Software 2.0 and Software 3.0, we noted a difference that is very
 
 A genuinely "living" runtime business world can never be a single flat cross-section of the current database. It must connect three time dimensions at once — **past, present and future**:
 
-<div class="dg" role="img" aria-label="A living runtime business world spans three time dimensions: Past, event sourcing and version history, What happened? (what occurred, and why did we end up here?) → Present, current domain state, What is? (which facts and rules are in force now?) → Future, computable digital twin, What if? (if we do this, what happens next?)">
-<div class="dg-row">
-<div class="dg-node"><span class="dg-t">Past</span><span class="dg-s">Event sourcing and version history</span><span class="dg-s">What happened?</span><span class="dg-s">(What occurred, and why did we end up here?)</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">Present</span><span class="dg-s">Current domain state</span><span class="dg-s">What is?</span><span class="dg-s">(Which facts and rules are in force now?)</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">Future</span><span class="dg-s">Computable digital twin</span><span class="dg-s">What if?</span><span class="dg-s">(If we do this, what happens next?)</span></div>
-</div>
-</div>
+![A living runtime business world spans three time dimensions: Past, event sourcing and version history, What happened? (what occurred, and why did we end up here?) → Present, current domain state, What is? (which facts and rules are in force now?) → Future, computable digital twin, What if? (if we do this, what happens next?)](assets/diagrams/chapter-10-1.svg)
 
 This chapter explains in detail how to build the system's "memory system" with **event sourcing** and its "safe proving ground" with the **computable digital twin**, so that the semantic reasoning of Software 3.0 stays firmly anchored in the real industrial physical world.
 
@@ -51,31 +43,7 @@ To fill the "memory gap", we introduce **event sourcing and a versioned historic
 
 It must be stressed that, in engineering practice, we stay pragmatic and restrained: **unified historical memory by no means requires every ordinary configuration table or business object in the system to adopt full pure event sourcing**. What we adopt is a dual-track combination of **"immutable business version snapshots + a timeline of key domain events"**:
 
-<div class="dg" role="img" aria-label="Runtime memory system: version snapshots + domain event timeline, made of two immutable tracks: immutable business version snapshots (Versioned Snapshots) and the immutable domain event timeline (Domain Event Timeline).">
-<div class="dg-col">
-<div class="dg-node dg-node--layer"><span class="dg-t">Runtime memory system: version snapshots + domain event timeline</span></div>
-<div class="dg-arms">
-<div class="dg-arm">↓</div>
-<div class="dg-arm">↓</div>
-</div>
-<div class="dg-row">
-<div class="dg-group">
-<div class="dg-gt">Immutable business version snapshots (Versioned Snapshots)</div>
-<div class="dg-node dg-node--leaf">Scheduling input data snapshots, rule snapshots, field catalog versions</div>
-<div class="dg-node dg-node--leaf">ML training datasets, feature schemas, model artifact versions</div>
-<div class="dg-node dg-node--leaf">Capacity estimate snapshots and the active overlay (CapacityEffectiveOverlay)</div>
-<div class="dg-node dg-node--leaf">Historical plan versions (baseline plan / simulation candidate snapshots)</div>
-</div>
-<div class="dg-group">
-<div class="dg-gt">Immutable domain event timeline (Domain Event Timeline)</div>
-<div class="dg-node dg-node--leaf">External execution fact events (MES reporting, WMS material issue, TMS truck arrival)</div>
-<div class="dg-node dg-node--leaf">Planning decision events (schedule release, trigger reason for rolling rescheduling)</div>
-<div class="dg-node dg-node--leaf">Manual plan adjustment events (original solution, structured diff, reason code)</div>
-<div class="dg-node dg-node--leaf">Runtime capability lifecycle events (candidate approval, release, invalidation, rollback)</div>
-</div>
-</div>
-</div>
-</div>
+![Runtime memory system: version snapshots + domain event timeline, made of two immutable tracks: immutable business version snapshots (Versioned Snapshots) and the immutable domain event timeline (Domain Event Timeline).](assets/diagrams/chapter-10-2.svg)
 
 This memory mechanism rigorously guarantees the following four core capabilities:
 
@@ -147,19 +115,7 @@ In our architecture, by precipitating changeover time, production duration, cale
 
 Going further, this real-time evolving digital-twin mirror directly becomes **the authoritative context source for agent reasoning and rolling scheduling decisions**. When a planner asks about impact, the agent no longer guesses in a vacuum; it reads the digital-twin state and completes closed-loop collaboration along a rigorous engineering chain:
 
-<div class="dg" role="img" aria-label="Closed-loop collaboration between the agent and the digital twin: 1. actual floor feedback (MES reporting / WMS inventory sync) → 2. digital twin updates the estimated state (domain model recomputes the estimated time window) → 3. agent reasons about deviation impact (identifies affected tasks and new conflicts) → 4. generate candidates and compare by simulation (trial local delay vs. global rescheduling) → 5. local adjustment or rolling rescheduling (application layer validates by policy and executes).">
-<div class="dg-row">
-<div class="dg-node dg-node--chip"><span class="dg-t">1. Actual floor feedback</span><span class="dg-s">MES reporting / WMS inventory sync</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip"><span class="dg-t">2. Digital twin updates estimates</span><span class="dg-s">Domain model recomputes estimated time windows</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip"><span class="dg-t">3. Agent reasons about deviation impact</span><span class="dg-s">Identifies affected tasks and new conflicts</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip"><span class="dg-t">4. Generate candidates and compare</span><span class="dg-s">Trial local delay vs. global rescheduling</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip"><span class="dg-t">5. Local adjustment or rolling rescheduling</span><span class="dg-s">Application layer validates by policy and executes</span></div>
-</div>
-</div>
+![Closed-loop collaboration between the agent and the digital twin: 1. actual floor feedback (MES reporting / WMS inventory sync) → 2. digital twin updates the estimated state (domain model recomputes the estimated time window) → 3. agent reasons about deviation impact (identifies affected tasks and new conflicts) → 4. generate candidates and compare by simulation (trial local delay vs. global rescheduling) → 5. local adjustment or rolling rescheduling (application layer validates by policy and executes).](assets/diagrams/chapter-10-3.svg)
 
 Along this continuous chain, the digital twin simultaneously serves as **the intersection of the three natives**:
 * **ML-Native** supplies the digital twin with effective capacity and duration predictions that carry provenance and uncertainty;

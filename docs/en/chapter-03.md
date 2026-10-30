@@ -52,14 +52,7 @@ In a wave of technological change it is easy to fall into the black-and-white fa
 
 In real industrial systems, however, **the three generations are never a relationship in which the new wave eliminates the old, but a layered stacking of the ways software capability is formed**:
 
-<div class="dg" role="img" aria-label="Layered stacking of how capability is formed across the three software generations, four layers from top to bottom: LLM as Runtime (continuous discovery, verification, specialization and sedimentation of new capability at runtime), Software 3.0: intent drives behavior (understand open goals, plan with context, generate candidate plans), Software 2.0: data shapes behavior (learn statistical regularities from historical data, predict capacity / duration / risk), Software 1.0: code defines behavior (deterministic computation, state transactions, permission control, efficient execution).">
-<div class="dg-col">
-<div class="dg-node dg-node--layer dg-node--key"><span class="dg-t">LLM as Runtime</span><span class="dg-s">(continuous discovery, verification, specialization and sedimentation of new capability at runtime)</span></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Software 3.0: intent drives behavior</span><span class="dg-s">(understand open goals, plan with context, generate candidate plans)</span></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Software 2.0: data shapes behavior</span><span class="dg-s">(learn statistical regularities from history, predict capacity / duration / risk)</span></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Software 1.0: code defines behavior</span><span class="dg-s">(deterministic computation, state transactions, permission control, fast execution)</span></div>
-</div>
-</div>
+![Layered stacking of how capability is formed across the three software generations, four layers from top to bottom: LLM as Runtime (continuous discovery, verification, specialization and sedimentation of new capability at runtime), Software 3.0: intent drives behavior (understand open goals, plan with context, generate candidate plans), Software 2.0: data shapes behavior (learn statistical regularities from historical data, predict capacity / duration / risk), Software 1.0: code defines behavior (deterministic computation, state transactions, permission control, efficient execution).](assets/diagrams/chapter-03-1.svg)
 
 We can compare the responsibility boundaries and the complementarity of the three generations along six core dimensions:
 
@@ -113,17 +106,7 @@ Why can't a large language model take on all the work by itself, from understand
 
 So in the adaptive software architecture the two are not competitors; they stand in the standard **"explore — verify — solidify" upstream/downstream pipeline relationship**:
 
-<div class="dg" role="img" aria-label="1. A new long-tail requirement appears (no ready product capability existed) → 2. LLM exploration (understand at low cost and produce a candidate) → 3. Runtime evidence accumulates (verify stability and reuse rate) → 4. Traditional engine locks it in (compile into query / constraint / workflow).">
-<div class="dg-row">
-<div class="dg-node"><span class="dg-t">1. New long-tail requirement</span><span class="dg-s">No ready product capability existed</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">2. LLM exploration</span><span class="dg-s">Understand cheaply, produce a candidate</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">3. Runtime evidence accumulates</span><span class="dg-s">Verify stability and reuse rate</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">4. Traditional engine locks in</span><span class="dg-s">Compile into query / constraint / workflow</span></div>
-</div>
-</div>
+![1. A new long-tail requirement appears (no ready product capability existed) → 2. LLM exploration (understand at low cost and produce a candidate) → 3. Runtime evidence accumulates (verify stability and reuse rate) → 4. Traditional engine locks it in (compile into query / constraint / workflow).](assets/diagrams/chapter-03-2.svg)
 
 In this closed loop the division of labor among the three roles is perfectly clear:
 

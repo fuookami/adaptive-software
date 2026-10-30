@@ -1,0 +1,13 @@
+<div class="dg" role="img" aria-label="新专用计划上线前的影子验证（Shadow Verification）机制：线上真实业务请求 → 流量复制器 一分两路，一路 通用执行路径（权威基准） → 直接向用户返回生产结果，另一路 新编译的专用候选计划（影子态）（异步旁路运行，结果不对外暴露、不写生产库），两路汇入 (异步比对器：校验结果集、状态码、权限边界与性能收益)。">
+<div class="dg-title">新专用计划上线前的影子验证（Shadow Verification）机制</div>
+<div class="dg-col">
+<div class="dg-row"><div class="dg-node dg-node--chip">线上真实业务请求</div><div class="dg-edge" aria-hidden="true">→</div><div class="dg-node dg-node--chip">流量复制器</div></div>
+<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
+<div class="dg-row">
+<div class="dg-group"><div class="dg-node"><span class="dg-t">通用执行路径（权威基准）</span></div><div class="dg-edge" aria-hidden="true">→</div><div class="dg-node"><span class="dg-t">直接向用户返回生产结果</span></div></div>
+<div class="dg-group"><div class="dg-node dg-node--soft"><span class="dg-t">新编译的专用候选计划（影子态）</span><span class="dg-s">（异步旁路运行，结果不对外暴露、不写生产库）</span></div></div>
+</div>
+<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">(异步比对器：校验结果集、状态码、权限边界与性能收益)</span></div>
+</div>
+</div>

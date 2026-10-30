@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="326" viewBox="0 0 860 326" role="img">
+<rect x="0" y="0" width="860" height="325.97" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<rect x="20.13" y="18.66" width="171.11" height="88.88" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="105.68" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">1. 运行时新变化</text>
+<text x="105.67" y="68.77" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">用户/现场提出</text>
+<text x="105.67" y="92.73" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">未知新规则差异</text>
+<text x="201.52" y="67.72" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="226.53" y="18.66" width="171.11" height="88.88" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="312.09" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">2. 可变性发现</text>
+<text x="312.08" y="68.77" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">事件与运行画像</text>
+<text x="312.08" y="92.73" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">识别出重复模式</text>
+<text x="407.92" y="67.72" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="432.94" y="18.66" width="171.11" height="88.88" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="518.49" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">3. 受控专用能力</text>
+<text x="518.48" y="68.77" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">产生 + 验证 + 安全执行与</text>
+<text x="518.48" y="89.06" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">回退</text>
+<text x="614.33" y="67.72" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="639.34" y="18.66" width="171.11" height="88.88" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="724.9" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">4. 重复证据成立</text>
+<text x="724.9" y="68.77" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">跨时间周期 / 跨客户持续</text>
+<text x="724.89" y="89.06" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">复现</text>
+<text x="820.73" y="67.72" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="64.45" y="113.41" width="347.89" height="88.88" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="238.4" y="138.58" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">5. 产品线提升</text>
+<text x="238.4" y="163.58" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">抽象差异维度</text>
+<text x="238.39" y="187.54" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">形成正式可变点</text>
+<text x="422.63" y="162.29" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="447.64" y="113.41" width="347.89" height="88.88" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="621.59" y="138.58" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">6. 核心架构演化</text>
+<text x="621.59" y="163.58" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">高度稳定共性</text>
+<text x="621.59" y="187.54" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">沉入平台标准核心</text>
+<line x1="20.13" y1="204.25" x2="697.24" y2="204.25" stroke="rgb(164, 176, 190)" stroke-width="1"/>
+<text x="97.39" y="220.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="266.66" y="220.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="435.94" y="220.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="605.22" y="220.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="20.13" y="232.7" width="845.28" height="68" rx="10" fill="rgba(255, 255, 255, 0.6)" fill-opacity="0.6" stroke="rgb(185, 194, 203)" stroke-width="1" stroke-dasharray="5 4"/>
+<rect x="32.89" y="246.94" width="199.41" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="132.59" y="271.98" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">【L1：临时能力】</text>
+<rect x="239.66" y="246.94" width="199.42" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="339.36" y="271.98" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">【L2：客户专用能力】</text>
+<rect x="446.44" y="246.94" width="199.42" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="546.14" y="271.98" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">【L3：产品可变点】</text>
+<rect x="653.22" y="246.94" width="199.42" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="752.92" y="271.98" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">【L4：稳定核心能力】</text>
+</svg>

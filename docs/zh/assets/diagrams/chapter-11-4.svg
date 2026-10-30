@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="503" viewBox="0 0 860 503" role="img">
+<rect x="0" y="0" width="860" height="502.89" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<text x="430" y="34.7" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(29, 53, 87)" text-anchor="middle">【DDD 架构下的 Benders 分解协作闭环】</text>
+<rect x="108.84" y="56.19" width="642.3" height="112.81" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="81.17" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">1. Benders 主问题（Master Problem —— 第一阶段战略/主计划决策）</text>
+<text x="429.99" y="106.42" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• 决策核心骨架变量（如跨线任务分配、批次大小、主资源启停）</text>
+<text x="429.99" y="130.37" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• 维护割平面池（Cut Pool），不断吸收子问题反馈的可行割与最优割</text>
+<text x="429.99" y="154.32" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• 维护并更新全局下界（Lower Bound，以最小化问题为例）</text>
+<text x="422.63" y="185.71" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="321.61" y="198.81" font-family="'Noto Sans SC'" font-size="11.776px" font-weight="500" fill="rgb(91, 107, 123)" text-anchor="start">下发当前主问题固定解（Trial Solution）</text>
+<rect x="108.84" y="205.48" width="642.3" height="112.81" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="230.64" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">2. Benders 子问题群（Subproblems —— 第二阶段分车间/分场景检验）</text>
+<text x="429.99" y="255.64" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• 在主问题固定解下，按各限界上下文或各随机场景独立并行求解</text>
+<text x="429.98" y="279.59" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• 若子问题不可行 ──&gt; 提取极射线/Farkas 证明，构造【Benders 可行割】</text>
+<text x="429.99" y="303.55" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• 若子问题有最优解 ──&gt; 提取对偶乘子，构造【Benders 最优割】并更新上界</text>
+<text x="422.63" y="334.94" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="341.83" width="642.3" height="108.94" rx="9" fill="rgb(255, 249, 242)" stroke="rgb(230, 126, 34)" stroke-width="1"/>
+<text x="429.98" y="366.9" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(165, 91, 27)" text-anchor="middle">3. 割平面有效性验证与收敛认证守卫（Cut &amp; Convergence Guard）</text>
+<text x="429.99" y="392.14" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• 任何由启发式或学习型策略提出的候选割/场景排序，必须经原始/对偶信息严格验证其数学有效性（绝不</text>
+<text x="429.99" y="412.19" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">能切掉真正的全局最优解！）</text>
+<text x="429.98" y="436.14" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• 主问题上下界（UB/LB）与终止间隙（Gap）必须由认证子问题精确计算！</text>
+<line x1="120.66" y1="462.23" x2="120.66" y2="482.76" stroke="rgb(230, 126, 34)" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="130.92" y="476.62" font-family="'Noto Sans SC'" font-size="13.248px" font-weight="400" fill="rgb(165, 91, 27)" text-anchor="start">↺ 回注经认证的可行割 / 最优割</text>
+</svg>

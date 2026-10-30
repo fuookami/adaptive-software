@@ -35,19 +35,23 @@
 - 行内 `` `code` `` 同理：不改名、不加空格。
 - 数字、百分比、单位、公式符号（`Gap 25%`、`1000 kg`、`x_ij`）原样。
 
-## 5. 图示（HTML 组件）
+## 5. 图示（SVG 资产 + HTML 源码）
 
-中文页里的图是手写的 HTML 组件，**结构必须逐字节保留**，只翻译可见文本：
+正文里的图示已经是**图片引用**：`![alt 文字](assets/diagrams/<页面>-<序号>.svg)`。
+`alt` 取自原图的 `aria-label`，保持原样即可，不要改路径。
 
-| 必须原样保留 | 需要翻译 |
-| :--- | :--- |
-| `<div class="dg" role="img" aria-label="…">` 的标签与类名 | `aria-label` 的内容 |
-| `dg-row` / `dg-col` / `dg-grid` / `dg-box` / `dg-node` / `dg-node--chip` / `dg-node--accent` / `dg-edge` / `dg-lbl` / `dg-group` 等类名 | 节点内的文字 |
-| 箭头字符 `→ ↓ ↑ ↺`、`aria-hidden="true"` | 图例/注释文字（`dg-lbl` 里的内容） |
-| 缩进与换行位置（每个 `dg` 块内部不能有空行） | — |
+图示的源码在 `figures/<lang>/<页面>-<序号>.html`（HTML 组件）。译页时：
+
+1. 复制 `figures/zh/<页面>-<序号>.html` 为 `figures/en/` 下的同名文件（若尚未存在），
+   只替换其中的可见文字与 `aria-label`，**结构与类名逐字节保留**
+   （`dg-row` / `dg-col` / `dg-box` / `dg-node` / `dg-node--*` / `dg-edge` / `dg-down` / `dg-arms` / `dg-arm` /
+   `dg-group` / `dg-gt` / `dg-loop` / `dg-legend` / `dg-lbl` / `dg-t` / `dg-s`、箭头 `→ ↓ ↑ ↺`、缩进、块内无空行）；
+2. 跑 `npm run figures` 重新导出该语言的 SVG；
+3. 再跑 `npm run check`。校验会确认：每个 `.md` 的图片引用与 `figures/` 里的源码一一对应、
+   SVG 文件存在、正文没有残留内联 HTML 块。
 
 **标签要短**：中文标签译成英文后常变长，允许略作缩写（如 "formal domain model (OSPF)" → "Domain model (OSPF)"），
-但不得改变语义；宁可缩短也不要让图溢出。译完后 `npm run check` 会检查块结构（闭合、无空行、顶格、无 Markdown 残留）。
+但不得改变语义，也不得删节点。导出器的版心宽度按线上正文实测值固定，标签过长会折行——折行可接受，溢出不行。
 
 ## 6. 风格
 

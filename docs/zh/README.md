@@ -9,8 +9,8 @@
 > **在线阅读（中文）**：<https://fuookami.github.io/adaptive-software/zh/> ·
 > **GitBook**：<https://fuookami.gitbook.io/adaptive-software/>（英文版 <https://fuookami.gitbook.io/adaptive-software/en/>）
 >
-> 提示：GitBook 会剥离图示的 HTML 标签，把每张图压平成一行文字（内容不丢、但没有框线）。**想看带图版本请走上面的
-> GitHub Pages 链接**，或在仓库内用 `npm run serve` / VS Code 预览阅读。
+> 图示已导出为独立 SVG，**各平台呈现一致**：GitHub Pages、GitBook、仓库内预览与 PDF 都能看到完整框线图，
+> 不再有“GitBook 压平成一行”的退化。
 
 ---
 

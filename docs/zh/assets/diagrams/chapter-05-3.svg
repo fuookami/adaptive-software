@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="703" viewBox="0 0 860 703" role="img">
+<rect x="0" y="0" width="860" height="702.73" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<rect x="108.84" y="18.66" width="642.3" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">形式化领域定义 · 结构化元数据 · 冻结版本快照</text>
+<line x1="91.44" y1="63.83" x2="768.55" y2="63.83" stroke="rgb(164, 176, 190)" stroke-width="1"/>
+<text x="168.7" y="80.21" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="337.97" y="80.21" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="507.25" y="80.21" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="676.53" y="80.21" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="7.36" y="94.48" width="845.28" height="102.58" rx="10" fill="rgba(255, 255, 255, 0.6)" fill-opacity="0.6" stroke="rgb(185, 194, 203)" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="429.99" y="124.75" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 90, 104)" text-anchor="middle">1. 系统侧数值解释</text>
+<rect x="256.05" y="143.3" width="347.89" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="168.26" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">纯函数领域计算结果</text>
+<rect x="7.36" y="209.55" width="845.28" height="102.58" rx="10" fill="rgba(255, 255, 255, 0.6)" fill-opacity="0.6" stroke="rgb(185, 194, 203)" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="430" y="239.79" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 90, 104)" text-anchor="middle">2. 机器学习侧统计/概率解释</text>
+<rect x="20.13" y="258.36" width="247.73" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="143.99" y="283.3" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">特征与标签映射</text>
+<text x="279.63" y="283.3" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="306.13" y="258.36" width="247.75" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="430" y="283.3" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">模型训练 / 在线推理</text>
+<text x="565.64" y="283.3" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="592.14" y="258.36" width="247.73" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="716.01" y="283.3" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">预测结果与血缘追踪信息</text>
+<rect x="7.36" y="324.61" width="845.28" height="102.58" rx="10" fill="rgba(255, 255, 255, 0.6)" fill-opacity="0.6" stroke="rgb(185, 194, 203)" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="429.99" y="354.84" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 90, 104)" text-anchor="middle">3. 智能体侧语义解释</text>
+<rect x="256.05" y="373.42" width="347.89" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="398.59" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">候选原因、动态约束与方案</text>
+<rect x="7.36" y="439.67" width="845.28" height="102.58" rx="10" fill="rgba(255, 255, 255, 0.6)" fill-opacity="0.6" stroke="rgb(185, 194, 203)" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="429.99" y="469.89" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 90, 104)" text-anchor="middle">4. 运筹优化侧符号映射</text>
+<rect x="20.13" y="488.48" width="247.73" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="143.99" y="513.64" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">决策变量与中间符号注册</text>
+<text x="279.63" y="513.64" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="306.13" y="488.48" width="247.75" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="513.64" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">约束与目标函数管线组合</text>
+<text x="565.64" y="513.64" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="592.14" y="488.48" width="247.73" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="716.01" y="513.64" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">优化求解与结构化解解析</text>
+<line x1="91.44" y1="551.56" x2="768.55" y2="551.56" stroke="rgb(164, 176, 190)" stroke-width="1"/>
+<text x="168.7" y="568.01" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="337.97" y="568.01" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="507.25" y="568.01" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="676.53" y="568.01" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="577.08" width="642.3" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="602.09" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">应用层确定性校验、状态转换与流程编排</text>
+<text x="422.63" y="634.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="641.61" width="642.3" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="666.73" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">展示看板 · 人工审批 · 生产下发 · 智能体引用 · 仿真与复盘</text>
+</svg>

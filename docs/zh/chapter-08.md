@@ -46,27 +46,7 @@
 
 因此，形式化领域模型将约束与目标定义为结构化的元数据，并严格区分**硬约束**与**软约束（Soft Constraints）/ 多目标权衡**：
 
-<div class="dg" role="img" aria-label="形式化约束与目标分类治理体系分两支：硬约束（Hard Constraints）与软约束与多目标（Soft Constraints &amp; Objectives）。">
-<div class="dg-col">
-<div class="dg-node dg-node--layer"><span class="dg-t">形式化约束与目标分类治理体系</span></div>
-<div class="dg-arms">
-<div class="dg-arm">↓</div>
-<div class="dg-arm">↓</div>
-</div>
-<div class="dg-row">
-<div class="dg-group">
-<div class="dg-gt">硬约束（Hard Constraints）</div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">物理与安全底线</span><span class="dg-s">（如设备物理容量上限、物料守恒平衡、共享投料口物理极限、法规红线）</span></div>
-<div class="dg-node dg-node--key"><span class="dg-t">铁律：</span><span class="dg-s">绝对不可违反；任何机器学习校准或智能体适配均无权通过训练或提示词放宽硬约束！</span></div>
-</div>
-<div class="dg-group">
-<div class="dg-gt">软约束与多目标（Soft Constraints &amp; Objectives）</div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">业务偏好与优化方向</span><span class="dg-s">（如订单交期准时率、减少换产总耗时、降低库存积压、均衡产线负载）</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">机制：</span><span class="dg-s">通过 OSPF SlackFunction 与目标权重/罚系数转化为目标函数分项，支持按优先级或权重权衡！</span></div>
-</div>
-</div>
-</div>
-</div>
+![形式化约束与目标分类治理体系分两支：硬约束（Hard Constraints）与软约束与多目标（Soft Constraints &amp; Objectives）。](assets/diagrams/chapter-08-1.svg)
 
 ---
 
@@ -76,15 +56,7 @@
 
 这里体现了 `ospf-kotlin` 最核心的工程设计——**类编译器降阶架构（`LinearMetaModel` → `LinearMechanismModel` → `LinearSolver`）与求解器彻底解耦**。
 
-<div class="dg" role="img" aria-label="类编译器降阶架构三层自上而下：领域层（Domain Layer）经暴露纯计算与符号双入口进入算法建模层（Algorithm Layer —— 前端元模型 LinearMetaModel），再经调用 LinearMechanismModel(metaModel) 降阶编译进入 OSPF 中端编译器与后端求解器插件层（LinearMechanismModel &amp; Solver Plugins）。">
-<div class="dg-col">
-<div class="dg-node dg-node--layer"><span class="dg-t">领域层（Domain Layer）</span><span class="dg-s">定义业务概念、OSPF 原生单位 (Kilogram/Hour)、计算关系与约束语义模板</span><span class="dg-s">铁律：领域聚合根绝不持有任何求解器变量、模型句柄或求解会话（Session）</span></div>
-<div class="dg-down" aria-hidden="true">↓<span class="dg-lbl">暴露纯计算与符号双入口</span></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">算法建模层（Algorithm Layer —— 前端元模型 LinearMetaModel）</span><span class="dg-s">基于 OSPF 通用符号（URealVar / LinearExpressionSymbol）与内置函数算子（SemiFunction / SlackFunction / IfThenFunction）组装单次求解元模型</span><span class="dg-s">不绑定任何特定商业或开源求解器的原生 API</span></div>
-<div class="dg-down" aria-hidden="true">↓<span class="dg-lbl">调用 LinearMechanismModel(metaModel) 降阶编译</span></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">OSPF 中端编译器与后端求解器插件层（LinearMechanismModel &amp; Solver Plugins）</span><span class="dg-s">自动递归展开所有高阶函数算子，执行同类项合并、常量折叠与阶数/能力检查</span><span class="dg-s">降阶生成稀疏矩阵视图并对接统一 LinearSolver 接口</span><span class="dg-s">零业务代码改动切换 Gurobi / Cplex / SCIP / Cbc / Hexaly 等求解器插件</span></div>
-</div>
-</div>
+![类编译器降阶架构三层自上而下：领域层（Domain Layer）经暴露纯计算与符号双入口进入算法建模层（Algorithm Layer —— 前端元模型 LinearMetaModel），再经调用 LinearMechanismModel(metaModel) 降阶编译进入 OSPF 中端编译器与后端求解器插件层（LinearMechanismModel &amp; Solver Plugins）。](assets/diagrams/chapter-08-2.svg)
 
 这一类编译器分层架构为企业软件带来了三大决定性的工程优势：
 

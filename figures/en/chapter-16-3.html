@@ -1,0 +1,15 @@
+<div class="dg" role="img" aria-label="[Explicit version binding structure of the plan registry]: a specialized plan ID with its semantic shape hash and specialization tier, bound to [the validity boundary dependency version fingerprints (Validity Boundary Dependencies)]; ↓ [a lower-level change event is detected: for example, the field catalog is upgraded to v_catalog_4.3 or the permission policy changes] ↓ 1. precise invalidation → 2. automatic seamless fallback → 3. asynchronous background rebuild.">
+<div class="dg-col">
+<div class="dg-title">[Explicit version binding structure of the plan registry]</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">Specialized plan ID: plan_query_delay_shortage_v3</span><span class="dg-t">State: ACTIVE</span><span class="dg-s">Semantic shape hash (Shape Hash): sha256:4b9e...</span><span class="dg-s">Specialization tier: Tier 1</span></div>
+<div class="dg-group"><div class="dg-gt">[Validity boundary dependency version fingerprints (Validity Boundary Dependencies)]</div>
+<div class="dg-node dg-node--chip">Database schema version (DB Schema Version): v_schema_20260901</div>
+<div class="dg-node dg-node--chip">Domain field and metadata catalog version (Catalog Ver): v_catalog_4.2</div>
+<div class="dg-node dg-node--chip">Tenant permission and security policy version (Auth Policy Ver): v_policy_19</div>
+<div class="dg-node dg-node--chip">Semantic compiler/generator version (Generator Ver): v_compiler_2.1</div>
+<div class="dg-node dg-node--chip">Execution backend adapter version (Adapter Ver): v_adapter_pg_1.4</div>
+</div>
+<div class="dg-down">↓<span class="dg-lbl">[a lower-level change event is detected: for example, the field catalog is upgraded to v_catalog_4.3 or the permission policy changes]</span></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">1. Precise invalidation: atomically switch the state to INVALIDATED</span><span class="dg-s">2. Instant fallback: the current request immediately runs on the Tier 0 general path</span><span class="dg-s">3. Asynchronous rebuild: recompile against the new catalog and rerun shadow verification</span></div>
+</div>
+</div>

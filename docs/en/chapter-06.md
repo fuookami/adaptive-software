@@ -44,15 +44,7 @@ To defuse the first and second bombs of bare `Double`, the foundation framework 
 
 The `fuookami.ospf.kotlin.utils.math` package of `ospf-kotlin` already ships a generic numeric hierarchy organized by additive structure, ring, field, scalar and ordered real number (`RealNumber`):
 
-<div class="dg" role="img" aria-label="The OSPF (fuookami.ospf.kotlin.utils.math) algebraic numeric type hierarchy, branching downward into three arms: the integer family IntegerNumber with Int32 / Int64 / Int8, UInt32 / UInt64 and IntX (arbitrary-precision big integer); the rational family RationalNumber with Rtn64 (64-bit exact rational) and RtnX (arbitrary-precision rational); the real / floating-point family RealNumber / FloatingNumber with Flt32 / Flt64 (floating-point numbers carrying the precision tolerance ep) and FltX (arbitrary-precision real based on BigDecimal).">
-<div class="dg-title">OSPF (fuookami.ospf.kotlin.utils.math) algebraic numeric type hierarchy</div>
-<div class="dg-arms"><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div></div>
-<div class="dg-group">
-<div class="dg-node dg-node--leaf"><span class="dg-t">Integer family IntegerNumber</span><span class="dg-s">Int32 / Int64 / Int8</span><span class="dg-s">UInt32 / UInt64</span><span class="dg-s">IntX (arbitrary-precision big integer)</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">Rational family RationalNumber</span><span class="dg-s">Rtn64 (64-bit exact rational)</span><span class="dg-s">RtnX (arbitrary-precision rational)</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">Real / floating-point family RealNumber / FloatingNumber</span><span class="dg-s">Flt32 / Flt64 (floating-point with precision tolerance ep)</span><span class="dg-s">FltX (arbitrary-precision real based on BigDecimal)</span></div>
-</div>
-</div>
+![The OSPF (fuookami.ospf.kotlin.utils.math) algebraic numeric type hierarchy, branching downward into three arms: the integer family IntegerNumber with Int32 / Int64 / Int8, UInt32 / UInt64 and IntX (arbitrary-precision big integer); the rational family RationalNumber with Rtn64 (64-bit exact rational) and RtnX (arbitrary-precision rational); the real / floating-point family RealNumber / FloatingNumber with Flt32 / Flt64 (floating-point numbers carrying the precision tolerance ep) and FltX (arbitrary-precision real based on BigDecimal).](assets/diagrams/chapter-06-1.svg)
 
 This algebraic numeric foundation follows three core principles in its engineering design:
 

@@ -42,23 +42,7 @@ Once a process rule or a substitute-material loss rate is tweaked and any one pl
 
 Yet under a traditional software architecture, if the original development did not hard-wire a parameter switch for "dual-line shared feeding port limit" into the database and the algorithm interface, the requirement can only go through the standard R&D chain:
 
-<div class="dg" role="img" aria-label="The floor raises an issue → implementation consultant interprets it → product manager confirms → backend development changes interfaces and table schema → algorithm engineer changes the mathematical model → integration testing → release.">
-<div class="dg-row">
-<div class="dg-node dg-node--chip">Floor raises an issue</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Consultant interprets</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Product manager confirms</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Backend changes APIs and tables</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Algorithm engineer changes the model</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Integration testing</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Release</div>
-</div>
-</div>
+![The floor raises an issue → implementation consultant interprets it → product manager confirms → backend development changes interfaces and table schema → algorithm engineer changes the mathematical model → integration testing → release.](assets/diagrams/chapter-01-1.svg)
 
 For building brand-new platform standard capability this process is beyond reproach; but if even a process restriction that will hold for only a day or two must queue for an R&D release, by the time the code ships those orders have long been delivered or defaulted.
 
@@ -192,38 +176,9 @@ Drilling through the six kinds of business friction, the four anemic CRUD dilemm
 
 The answers to these two root questions together form the core architecture blueprint of this book:
 
-<div class="dg" role="img" aria-label="Root question 1: how should domain knowledge be expressed in one place? The answer is the formal domain model—the shared semantic contract of the system, operations research optimization, machine learning and agents—which branches downward into numeric interpretation, symbolic interpretation, statistical/probabilistic interpretation and semantic interpretation.">
-<div class="dg-title">[Root question 1: how should domain knowledge be expressed in one place?]</div>
-<div class="dg-col">
-<div class="dg-node dg-node--layer dg-node--key"><span class="dg-t">Formal domain model</span><span class="dg-s">(the shared semantic contract of the system, OR optimization, machine learning and agents)</span></div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-row">
-<div class="dg-node dg-node--leaf">Numeric interpretation</div>
-<div class="dg-node dg-node--leaf">Symbolic interpretation</div>
-<div class="dg-node dg-node--leaf">Statistical/probabilistic interpretation</div>
-<div class="dg-node dg-node--leaf">Semantic interpretation</div>
-</div>
-</div>
-</div>
+![Root question 1: how should domain knowledge be expressed in one place? The answer is the formal domain model—the shared semantic contract of the system, operations research optimization, machine learning and agents—which branches downward into numeric interpretation, symbolic interpretation, statistical/probabilistic interpretation and semantic interpretation.](assets/diagrams/chapter-01-2.svg)
 
-<div class="dg" role="img" aria-label="Root question 2: how does new domain capability enter the system? The chain is user intent at runtime / on-site behavior, the large language model / agent semantic frontend, semantic intermediate representation (Semantic IR), type/unit/permission validation · digital-twin simulation · semantic compilation, deterministic execution capability (query plan / constraint model / process plan), runtime profiling → capability promotion and specialization → deoptimization and recompilation, and software product line engineering (temporary capability → customer-specific → product variability point → stable core).">
-<div class="dg-title">[Root question 2: how does new domain capability enter the system?]</div>
-<div class="dg-col">
-<div class="dg-node dg-node--layer">User intent at runtime / on-site behavior</div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer">Large language model / agent semantic frontend</div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer">Semantic intermediate representation (Semantic IR)</div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer">Type/unit/permission validation · digital-twin simulation · semantic compilation</div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Deterministic execution capability</span><span class="dg-s">(query plan / constraint model / process plan)</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer">Runtime profiling → capability promotion and specialization → deoptimization and recompilation</div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer dg-node--key"><span class="dg-t">Software product line engineering</span><span class="dg-s">(temporary capability → customer-specific → product variability point → stable core)</span></div>
-</div>
-</div>
+![Root question 2: how does new domain capability enter the system? The chain is user intent at runtime / on-site behavior, the large language model / agent semantic frontend, semantic intermediate representation (Semantic IR), type/unit/permission validation · digital-twin simulation · semantic compilation, deterministic execution capability (query plan / constraint model / process plan), runtime profiling → capability promotion and specialization → deoptimization and recompilation, and software product line engineering (temporary capability → customer-specific → product variability point → stable core).](assets/diagrams/chapter-01-3.svg)
 
 As the diagrams above show, these two answers by no means stand alone; they are each other's premise:
 * **Answering the first question with a "formal domain model"**: we free domain knowledge from scattered code and black-box scripts and establish a computable, dimensionally typed, versionable formal domain model. The system side gives it a **deterministic numeric interpretation** (pure-function computation, state management and transaction governance); the operations research side gives it a **symbolic interpretation** (variable mapping, constraint modeling, optimization solving and feasibility certification); the machine learning side gives it a **statistical/probabilistic interpretation** (feature construction, distribution prediction and controlled parameter calibration); agents and large language models give it a **semantic interpretation** (understanding open intent and generating structured candidates). All four share one set of business concept definitions while strictly separating the state roles of "requirement, planned, forecast and estimated quantities and actual execution facts", ending the fragmentation of definitions at the root.

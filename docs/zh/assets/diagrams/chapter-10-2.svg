@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="433" viewBox="0 0 860 433" role="img">
+<rect x="0" y="0" width="860" height="432.31" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<rect x="108.84" y="18.66" width="642.3" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">运行时记忆系统：版本快照 + 领域事件时间轴</text>
+<line x1="91.44" y1="63.83" x2="768.55" y2="63.83" stroke="rgb(164, 176, 190)" stroke-width="1"/>
+<text x="253.34" y="80.21" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="591.89" y="80.21" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="20.13" y="94.48" width="819.75" height="148.2" rx="10" fill="rgba(255, 255, 255, 0.6)" fill-opacity="0.6" stroke="rgb(185, 194, 203)" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="429.99" y="124.75" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 90, 104)" text-anchor="middle">不可变业务版本快照（Versioned Snapshots）</text>
+<rect x="32.89" y="143.3" width="193.03" height="86.63" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="129.4" y="168.26" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">排产输入数据快照、规则</text>
+<text x="129.4" y="191.11" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">快照、字段目录版本</text>
+<rect x="233.28" y="143.3" width="193.05" height="86.63" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="329.8" y="168.26" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">机器学习训练数据集、特</text>
+<text x="329.8" y="191.11" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">征模式（Schema）、模型</text>
+<text x="329.8" y="213.97" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">制品版本</text>
+<rect x="433.69" y="143.3" width="193.03" height="86.63" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="530.2" y="168.26" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">产能估算快照与激活覆盖</text>
+<text x="530.2" y="191.11" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">层</text>
+<text x="545.83" y="213.97" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">（CapacityEffectiveOverlay）</text>
+<rect x="634.08" y="143.3" width="193.03" height="86.63" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="730.59" y="168.26" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">历史计划方案版本（基准</text>
+<text x="730.59" y="191.11" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">计划 / 仿真候选方案快照）</text>
+<rect x="20.13" y="258.84" width="819.75" height="148.2" rx="10" fill="rgba(255, 255, 255, 0.6)" fill-opacity="0.6" stroke="rgb(185, 194, 203)" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="430" y="289.02" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 90, 104)" text-anchor="middle">不可变领域事件时间轴（Domain Event Timeline）</text>
+<rect x="32.89" y="307.66" width="193.03" height="86.63" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="129.4" y="332.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">外部执行事实事件（MES</text>
+<text x="129.4" y="355.63" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">报工、WMS领料、TMS到</text>
+<text x="129.4" y="378.25" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">车）</text>
+<rect x="233.28" y="307.66" width="193.05" height="86.63" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="329.8" y="332.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">计划决策事件（排产下</text>
+<text x="329.8" y="355.63" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">发、滚动重排触发原因）</text>
+<rect x="433.69" y="307.66" width="193.03" height="86.63" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="530.2" y="332.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">人工计划微调事件（原始</text>
+<text x="530.2" y="355.63" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">方案、结构化差异、原因</text>
+<text x="530.2" y="378.25" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">码）</text>
+<rect x="634.08" y="307.66" width="193.03" height="86.63" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="730.59" y="332.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">运行时能力生命周期事件</text>
+<text x="730.59" y="355.63" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">（候选审批、发布、失</text>
+<text x="730.59" y="378.25" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">效、回滚）</text>
+</svg>

@@ -14,19 +14,7 @@ If the system simply takes the **raw natural-language string** a user typed, or 
 
 So the first core mechanism of dynamic query JIT compilation and dynamic constraint specialization is to **cluster like requests by "normalized semantic shape", and never use raw natural language or concrete literal parameters as the statistics key**:
 
-<div class="dg" role="img" aria-label="Five-stage flow: 1. General path (general query planning/execution, or general constraint injection) → 2. Runtime profiling (semantic shape hash + latency, + scan rows/compute cost) → 3. Capability promotion (enters the specialization compile candidate queue after reaching the promotion threshold) → 4. Build and verify (asynchronous background plan generation + shadow verification and equivalence checking) → 5. Specialized path (parameterized query plan / precompiled constraint template execution).">
-<div class="dg-row">
-<div class="dg-node"><span class="dg-t">1. General path</span><span class="dg-s">General query planning/execution</span><span class="dg-s">or general constraint injection</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">2. Runtime profiling</span><span class="dg-s">Semantic shape hash + latency</span><span class="dg-s">+ scan rows / compute cost</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">3. Capability promotion</span><span class="dg-s">Enters once the promotion threshold is met</span><span class="dg-s">specialization compile candidate queue</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">4. Build and verify</span><span class="dg-s">Asynchronous background plan generation +</span><span class="dg-s">shadow verification and equivalence checks</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">5. Specialized path</span><span class="dg-s">Parameterized query plan /</span><span class="dg-s">precompiled constraint template execution</span></div>
-</div>
-</div>
+![Five-stage flow: 1. General path (general query planning/execution, or general constraint injection) → 2. Runtime profiling (semantic shape hash + latency, + scan rows/compute cost) → 3. Capability promotion (enters the specialization compile candidate queue after reaching the promotion threshold) → 4. Build and verify (asynchronous background plan generation + shadow verification and equivalence checking) → 5. Specialized path (parameterized query plan / precompiled constraint template execution).](assets/diagrams/chapter-16-1.svg)
 
 Let us use the figure above to see how "normalized semantic shape" converges wildly varying field expressions into a stable statistics key:
 
@@ -64,15 +52,7 @@ Many engineers, on hearing "just-in-time compilation (JIT)", immediately think o
 
 The system builds a clear **three-tier specialization ladder** at runtime:
 
-<div class="dg" role="img" aria-label="The three-tier specialization ladder from top to bottom: [Tier 0: general planner and interpreted execution path] ↓ the profile reaches the first-level hot-spot and stability threshold ↓ [Tier 1: controlled deterministic plans and parameterized templates (the main consolidation layer, covering 90%+ of scenarios)] ↓ only when the performance bottleneck is extremely clear, the benefit is sufficient and the product boundary is highly stable ↓ [Tier 2: controlled code artifacts and VM plugins (the extreme-performance layer)].">
-<div class="dg-col">
-<div class="dg-node dg-node--layer"><span class="dg-t">[Tier 0: general planner and interpreted execution path]</span><span class="dg-s">Who it serves: requirements never seen before, low-frequency long-tail exploration, temporary interactions that have not reached the promotion threshold</span><span class="dg-s">How it executes: the LLM semantic frontend generates candidate IR → real-time validation → general query planner / general constraint injection</span></div>
-<div class="dg-down">↓<span class="dg-lbl">The profile reaches the first-level hot-spot and stability threshold</span></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">[Tier 1: controlled deterministic plans and parameterized templates (the main consolidation layer, covering 90%+ of scenarios)]</span><span class="dg-s">Who it serves: frequently repeated business queries, periodically recurring dynamic scheduling constraints, stable customer process combinations</span><span class="dg-s">Consolidated artifacts:</span><span class="dg-s">High-frequency queries → query IR + parameterized query plan / precompiled SQL statement (Prepared Plan)</span><span class="dg-s">High-frequency rules → parameterized OSPF dynamic constraint template (Constraint Template)</span><span class="dg-s">High-frequency expressions → high-performance compiled evaluator with a frozen symbol order (Compiled Evaluator)</span><span class="dg-s">Stable flows → standard workflow execution plan and tool-call chain template (Flow Plan)</span></div>
-<div class="dg-down">↓<span class="dg-lbl">Only when the performance bottleneck is extremely clear, the benefit is sufficient and the product boundary is highly stable</span></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">[Tier 2: controlled code artifacts and VM plugins (the extreme-performance layer)]</span><span class="dg-s">Who it serves: core operators with ultra-high throughput requirements, complex custom evaluators or high-frequency dedicated query interfaces</span><span class="dg-s">Consolidated artifacts: controlled JVM-compiled query interface plugin / bytecode artifact / WebAssembly (Wasm) sandbox module</span><span class="dg-s">Non-negotiable safety rules: isolated build process, digital signature, dependency allowlist, CPU/memory limits, separate class loader / process</span></div>
-</div>
-</div>
+![The three-tier specialization ladder from top to bottom: Tier 0: general planner and interpreted execution path ↓ the profile reaches the first-level hot-spot and stability threshold ↓ Tier 1: controlled deterministic plans and parameterized templates (the main consolidation layer, covering 90%+ of scenarios) ↓ only when the performance bottleneck is extremely clear, the benefit is sufficient and the product boundary is highly stable ↓ Tier 2: controlled code artifacts and VM plugins (the extreme-performance layer).](assets/diagrams/chapter-16-2.svg)
 
 ---
 
@@ -84,21 +64,7 @@ In enterprise adaptive software the runtime environment evolves in the same way:
 
 The answer lies in **explicit version binding and precise invalidating rebuild in the plan and capability registry**:
 
-<div class="dg" role="img" aria-label="[Explicit version binding structure of the plan registry]: a specialized plan ID with its semantic shape hash and specialization tier, bound to [the validity boundary dependency version fingerprints (Validity Boundary Dependencies)]; ↓ [a lower-level change event is detected: for example, the field catalog is upgraded to v_catalog_4.3 or the permission policy changes] ↓ 1. precise invalidation → 2. automatic seamless fallback → 3. asynchronous background rebuild.">
-<div class="dg-col">
-<div class="dg-title">[Explicit version binding structure of the plan registry]</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Specialized plan ID: plan_query_delay_shortage_v3</span><span class="dg-t">State: ACTIVE</span><span class="dg-s">Semantic shape hash (Shape Hash): sha256:4b9e...</span><span class="dg-s">Specialization tier: Tier 1</span></div>
-<div class="dg-group"><div class="dg-gt">[Validity boundary dependency version fingerprints (Validity Boundary Dependencies)]</div>
-<div class="dg-node dg-node--chip">Database schema version (DB Schema Version): v_schema_20260901</div>
-<div class="dg-node dg-node--chip">Domain field and metadata catalog version (Catalog Ver): v_catalog_4.2</div>
-<div class="dg-node dg-node--chip">Tenant permission and security policy version (Auth Policy Ver): v_policy_19</div>
-<div class="dg-node dg-node--chip">Semantic compiler/generator version (Generator Ver): v_compiler_2.1</div>
-<div class="dg-node dg-node--chip">Execution backend adapter version (Adapter Ver): v_adapter_pg_1.4</div>
-</div>
-<div class="dg-down">↓<span class="dg-lbl">[a lower-level change event is detected: for example, the field catalog is upgraded to v_catalog_4.3 or the permission policy changes]</span></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">1. Precise invalidation: atomically switch the state to INVALIDATED</span><span class="dg-s">2. Instant fallback: the current request immediately runs on the Tier 0 general path</span><span class="dg-s">3. Asynchronous rebuild: recompile against the new catalog and rerun shadow verification</span></div>
-</div>
-</div>
+![Explicit version binding structure of the plan registry: a specialized plan ID with its semantic shape hash and specialization tier, bound to the validity boundary dependency version fingerprints (Validity Boundary Dependencies); ↓ a lower-level change event is detected: for example, the field catalog is upgraded to v_catalog_4.3 or the permission policy changes ↓ 1. precise invalidation → 2. automatic seamless fallback → 3. asynchronous background rebuild.](assets/diagrams/chapter-16-3.svg)
 
 This mechanism closes the full lifecycle loop in engineering terms:
 1. **Explicit validity boundary**: whenever a specialized plan, constraint template or compiled evaluator is published to the registry, it is forced to bind at the same time the complete hash fingerprints of the **database schema version, domain field catalog version, permission policy version, model/generator version and backend adapter version** it depends on.

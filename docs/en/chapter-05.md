@@ -12,13 +12,7 @@ When Chapter 1 dissected the pain points of traditional architectures, we noted 
 
 When we subject these 15 capabilities to a strict topological dependency analysis, one finding stands out: **"all runtime sides sharing one formal domain model" (point 8) is the common foundation that supports every higher-order capability**.
 
-<div class="dg" role="img" aria-label="Architectural foundation: the formal domain model — (system, OR, ML and agent share one domain definition) — supporting, below it: shared definitions across algorithm and system, safe dynamic constraint injection, transparent and inspectable business intermediate values, dynamic digital-twin projection, agent reasoning and adaptation.">
-<div class="dg-col">
-<div class="dg-node dg-node--key"><span class="dg-t">Architectural foundation: formal domain model</span><span class="dg-s">(system, OR, ML and agent share one domain definition)</span></div>
-<div class="dg-arms"><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div></div>
-<div class="dg-group"><div class="dg-node dg-node--leaf">Shared definitions across algorithm and system</div><div class="dg-node dg-node--leaf">Safe dynamic constraint injection</div><div class="dg-node dg-node--leaf">Transparent business intermediate values</div><div class="dg-node dg-node--leaf">Dynamic digital-twin projection</div><div class="dg-node dg-node--leaf">Agent reasoning and adaptation</div></div>
-</div>
-</div>
+![Architectural foundation: the formal domain model — (system, OR, ML and agent share one domain definition) — supporting, below it: shared definitions across algorithm and system, safe dynamic constraint injection, transparent and inspectable business intermediate values, dynamic digital-twin projection, agent reasoning and adaptation.](assets/diagrams/chapter-05-1.svg)
 
 Why is it that once the cornerstone of a "shared formal domain model" is gone, every intelligent capability above it becomes a castle in the air? We can verify this along the dependency chain, one link at a time:
 
@@ -56,18 +50,7 @@ The essence of ML-Native is that domain knowledge can be consumed by training an
 ### 4. Agent-Native: semantic and orchestration interpretation (Semantic Interpretation)
 The essence of Agent-Native is that the domain model itself becomes a structured semantic contract that a large language model can read, reason over and compose directly. On the agent side, the model does not need to guess the underlying code implementation; through structured domain metadata it directly identifies "feeding port", "planned feeding quantity", "actual feeding fact" and "capacity estimate snapshot" together with their units and boundaries, and, combined with the current digital-twin context, outputs the affected object set, structured candidate constraints and simulation comparison options.
 
-<div class="dg" role="img" aria-label="The formal domain model (the single authoritative business semantics and type contract) splits downward into four runtime interpretations: system-side runtime interpretation — deterministic pure numerical computation, requiredFeeding = 120; OR-Native runtime interpretation — decision variables and symbolic constraints, plannedFeeding &lt;= Limit; ML-Native interpretation — features/distributions and uncertainty, estimatedProductivity; Agent-Native runtime interpretation — open intent understanding and candidate generation, structured constraints and simulation plan candidates.">
-<div class="dg-col">
-<div class="dg-node dg-node--key"><span class="dg-t">Formal domain model</span><span class="dg-s">(single authoritative business semantics and type contract)</span></div>
-<div class="dg-arms"><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div></div>
-<div class="dg-group">
-<div class="dg-node dg-node--leaf"><span class="dg-t">System-side runtime interpretation</span><span class="dg-s">Deterministic pure numerical computation</span><span class="dg-s">requiredFeeding = 120</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">OR-Native runtime interpretation</span><span class="dg-s">Decision variables and symbolic constraints</span><span class="dg-s">plannedFeeding &lt;= Limit</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">ML-Native interpretation</span><span class="dg-s">Features/distributions and uncertainty</span><span class="dg-s">estimatedProductivity</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">Agent-Native runtime interpretation</span><span class="dg-s">Open intent understanding and candidate generation</span><span class="dg-s">Structured constraints and simulation plan candidates</span></div>
-</div>
-</div>
-</div>
+![The formal domain model (the single authoritative business semantics and type contract) splits downward into four runtime interpretations: system-side runtime interpretation — deterministic pure numerical computation, requiredFeeding = 120; OR-Native runtime interpretation — decision variables and symbolic constraints, plannedFeeding &lt;= Limit; ML-Native interpretation — features/distributions and uncertainty, estimatedProductivity; Agent-Native runtime interpretation — open intent understanding and candidate generation, structured constraints and simulation plan candidates.](assets/diagrams/chapter-05-2.svg)
 
 Through these four orthogonal interpretations, the formal domain model plays two key roles at once: horizontally, it is the **common semantic contract** of the system, OR, ML and the agent; vertically, it is the **domain-language specification, type system and compilation contract** for `LLM as Runtime`.
 
@@ -286,17 +269,4 @@ At the same time, named business intermediate values and prediction results act 
 
 Once this formal domain model enters the running state, the four runtime sides form a highly cohesive, traceable standard collaboration chain:
 
-<div class="dg" role="img" aria-label="Formal domain definition · structured metadata · frozen version snapshots expand downward into four runtime chains: 1. system-side numerical interpretation yields pure-function domain computation results; 2. ML-side statistical/probabilistic interpretation yields feature and label mapping, model training / online inference, prediction results and provenance; 3. agent-side semantic interpretation yields candidate causes, dynamic constraints and plans; 4. OR-side symbolic mapping yields decision variable and intermediate symbol registration, constraint and objective pipeline composition, optimization solve and structured result parsing; the four chains converge into application-layer deterministic validation, state transitions and workflow orchestration, and then into dashboards · human approval · production release · agent reference · simulation and retrospective.">
-<div class="dg-col">
-<div class="dg-node dg-node--layer"><span class="dg-t">Formal domain definition · structured metadata · frozen version snapshots</span></div>
-<div class="dg-arms"><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div></div>
-<div class="dg-group"><div class="dg-gt">1. System-side numerical interpretation</div><div class="dg-node dg-node--leaf">Pure-function domain computation results</div></div>
-<div class="dg-group"><div class="dg-gt">2. ML-side statistical/probabilistic interpretation</div><div class="dg-node dg-node--leaf">Feature and label mapping</div><div class="dg-edge" aria-hidden="true">→</div><div class="dg-node dg-node--leaf">Model training / online inference</div><div class="dg-edge" aria-hidden="true">→</div><div class="dg-node dg-node--leaf">Prediction results and provenance</div></div>
-<div class="dg-group"><div class="dg-gt">3. Agent-side semantic interpretation</div><div class="dg-node dg-node--leaf">Candidate causes, dynamic constraints and plans</div></div>
-<div class="dg-group"><div class="dg-gt">4. OR-side symbolic mapping</div><div class="dg-node dg-node--leaf">Decision variable and intermediate symbol registration</div><div class="dg-edge" aria-hidden="true">→</div><div class="dg-node dg-node--leaf">Constraint and objective pipeline composition</div><div class="dg-edge" aria-hidden="true">→</div><div class="dg-node dg-node--leaf">Optimization solve and structured result parsing</div></div>
-<div class="dg-arms"><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Application-layer deterministic validation, state transitions and workflow orchestration</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Dashboards · human approval · production release · agent reference · simulation and retrospective</span></div>
-</div>
-</div>
+![Formal domain definition · structured metadata · frozen version snapshots expand downward into four runtime chains: 1. system-side numerical interpretation yields pure-function domain computation results; 2. ML-side statistical/probabilistic interpretation yields feature and label mapping, model training / online inference, prediction results and provenance; 3. agent-side semantic interpretation yields candidate causes, dynamic constraints and plans; 4. OR-side symbolic mapping yields decision variable and intermediate symbol registration, constraint and objective pipeline composition, optimization solve and structured result parsing; the four chains converge into application-layer deterministic validation, state transitions and workflow orchestration, and then into dashboards · human approval · production release · agent reference · simulation and retrospective.](assets/diagrams/chapter-05-3.svg)

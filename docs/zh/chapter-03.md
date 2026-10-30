@@ -44,14 +44,7 @@
 
 然而在真实的工业级系统中，**三代软件从来不是后浪淘汰前浪的替代关系，而是软件能力形成方式的层层叠加**：
 
-<div class="dg" role="img" aria-label="三代软件能力形成方式的层层叠加，自上而下四层：LLM as Runtime（运行时持续发现、验证、专门化并沉淀新能力）、Software 3.0：意图驱动行为（理解开放目标、结合上下文规划、生成候选方案）、Software 2.0：数据塑造行为（从历史数据学习统计规律、预测产能/耗时/风险）、Software 1.0：代码定义行为（确定性计算、状态事务、权限控制、高效执行）。">
-<div class="dg-col">
-<div class="dg-node dg-node--layer dg-node--key"><span class="dg-t">LLM as Runtime</span><span class="dg-s">（运行时持续发现、验证、专门化并沉淀新能力）</span></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Software 3.0：意图驱动行为</span><span class="dg-s">（理解开放目标、结合上下文规划、生成候选方案）</span></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Software 2.0：数据塑造行为</span><span class="dg-s">（从历史数据学习统计规律、预测产能/耗时/风险）</span></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Software 1.0：代码定义行为</span><span class="dg-s">（确定性计算、状态事务、权限控制、高效执行）</span></div>
-</div>
-</div>
+![三代软件能力形成方式的层层叠加，自上而下四层：LLM as Runtime（运行时持续发现、验证、专门化并沉淀新能力）、Software 3.0：意图驱动行为（理解开放目标、结合上下文规划、生成候选方案）、Software 2.0：数据塑造行为（从历史数据学习统计规律、预测产能/耗时/风险）、Software 1.0：代码定义行为（确定性计算、状态事务、权限控制、高效执行）。](assets/diagrams/chapter-03-1.svg)
 
 我们可以从以下六个核心维度，清晰地对比三代软件的职责边界与互补关系：
 
@@ -105,17 +98,7 @@
 
 因此，在自适应软件架构中，二者之间不是竞争替代关系，而是标准的**“探索—验证—固化”上下游流水线关系**：
 
-<div class="dg" role="img" aria-label="1. 新长尾需求出现（过去无现成产品能力）→ 2. 大语言模型探索（低成本理解并产候选）→ 3. 运行证据积累（验证稳定性与复用率）→ 4. 传统引擎固化（编译为查询/约束/流程）。">
-<div class="dg-row">
-<div class="dg-node"><span class="dg-t">1. 新长尾需求出现</span><span class="dg-s">过去无现成产品能力</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">2. 大语言模型探索</span><span class="dg-s">低成本理解并产候选</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">3. 运行证据积累</span><span class="dg-s">验证稳定性与复用率</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">4. 传统引擎固化</span><span class="dg-s">编译为查询/约束/流程</span></div>
-</div>
-</div>
+![1. 新长尾需求出现（过去无现成产品能力）→ 2. 大语言模型探索（低成本理解并产候选）→ 3. 运行证据积累（验证稳定性与复用率）→ 4. 传统引擎固化（编译为查询/约束/流程）。](assets/diagrams/chapter-03-2.svg)
 
 在这个闭环里，三大角色的职责分工清晰无比：
 1. **大语言模型（LLM）负责“发现应该存在什么能力”**：在运行现场接住用户的自然语言目标与临时规则，将其翻译为结构化的业务候选方案；

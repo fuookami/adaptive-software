@@ -12,11 +12,7 @@
 
 在“智能体原生”架构下，“原生”二字的真正含义是：**形式化领域模型本身就是一份可被智能体直接读取、理解、组合与引用的结构化语义契约**。系统不再把业务知识藏在过程式代码里，而是通过应用层向智能体显式暴露一套机器可读的**结构化领域元数据目录（Structured Domain Metadata Catalog）**——这就好比给智能体装上了一本权威的“企业业务词典与组合语法书”：
 
-<div class="dg" role="img" aria-label="面向智能体暴露的结构化领域元数据目录一分五叉：1. 可引用概念与变量 (Variables &amp; Symbols)，2. 具名业务中间值 (Intermediates)，3. 结构化约束模板 (Constraint Tpls)，4. 可组合流程节点契约 (Flow Node Contracts)，5. 适用边界与错误码 (Scopes &amp; Error Codes)。">
-<div class="dg-title">面向智能体暴露的结构化领域元数据目录</div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-group"><div class="dg-node dg-node--leaf"><span class="dg-t">1. 可引用概念与变量</span><span class="dg-s">(Variables &amp; Symbols)</span></div><div class="dg-node dg-node--leaf"><span class="dg-t">2. 具名业务中间值</span><span class="dg-s">(Intermediates)</span></div><div class="dg-node dg-node--leaf"><span class="dg-t">3. 结构化约束模板</span><span class="dg-s">(Constraint Tpls)</span></div><div class="dg-node dg-node--leaf"><span class="dg-t">4. 可组合流程节点契约</span><span class="dg-s">(Flow Node Contracts)</span></div><div class="dg-node dg-node--leaf"><span class="dg-t">5. 适用边界与错误码</span><span class="dg-s">(Scopes &amp; Error Codes)</span></div></div>
-</div>
+![面向智能体暴露的结构化领域元数据目录一分五叉：1. 可引用概念与变量 (Variables &amp; Symbols)，2. 具名业务中间值 (Intermediates)，3. 结构化约束模板 (Constraint Tpls)，4. 可组合流程节点契约 (Flow Node Contracts)，5. 适用边界与错误码 (Scopes &amp; Error Codes)。](assets/diagrams/chapter-14-1.svg)
 
 具体而言，这份领域元数据目录至少向智能体清晰声明了以下五类核心要素：
 
@@ -78,19 +74,7 @@
 
 为了让你直观感受到“智能体语义前端 + 语义中间表示 + 动态约束编译器”的威力，让我们完整走一遍贯穿全书的标杆场景：**如何将现场人员的一句临时规则，安全编译为 `ospf` 运筹优化引擎中的数学约束**。
 
-<div class="dg" role="img" aria-label="动态约束转化实战链五步依次衔接：1. 用户业务规则，2. LLM 语义前端，3. 约束中间表示 (Constraint IR)，4. 动态约束编译器，5. 算法执行后端。">
-<div class="dg-row">
-<div class="dg-node"><span class="dg-t">1. 用户业务规则</span><span class="dg-s">“今天A和B线共用投料口，不超1000公斤”</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">2. LLM 语义前端</span><span class="dg-s">结合元数据与上下文生成结构化候选方案</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">3. 约束中间表示</span><span class="dg-s">(Constraint IR) 约束定义+表达式+符号引用</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">4. 动态约束编译器</span><span class="dg-s">字段能力与权限校验 + 符号注册表解析</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">5. 算法执行后端</span><span class="dg-s">OSPF LinearInequality 注入 LinearMetaModel</span></div>
-</div>
-</div>
+![动态约束转化实战链五步依次衔接：1. 用户业务规则，2. LLM 语义前端，3. 约束中间表示 (Constraint IR)，4. 动态约束编译器，5. 算法执行后端。](assets/diagrams/chapter-14-2.svg)
 
 ### 第一步：用户用自然语言表达现场规则
 周二上午 `10:00`，车间人员输入自然语言：“今天 A 线和 B 线共用一个投料口，总投料不要超过 1000 公斤。”

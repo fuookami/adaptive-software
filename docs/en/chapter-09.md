@@ -51,24 +51,7 @@ These six are not six unrelated technology choices. Together they answer six bas
 
 Once these six pillars are joined end to end, they build inside the software runtime a self-renewing **loop of capability formation and evolution**:
 
-<div class="dg" role="img" aria-label="A vertical loop from the six engineering pillars to controlled production execution: 1. Domain-Driven Design (defines the world) → 2. Domain language (describes the world) → 3. Event sourcing (remembers the world) → 4. Digital twin (projects the world) → 5. Generative programming (produces capability) → 6. Formal methods (verifies capability) → 7. Controlled production execution → new domain events; step 7 produces new domain events, and execution results flow back to the event store, returning to step 3, event sourcing (remembers the world).">
-<div class="dg-col">
-<div class="dg-node dg-node--layer"><span class="dg-t">1. Domain-Driven Design (defines the world)</span><span class="dg-s">Concepts, bounded contexts, invariants and ownership of state roles</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">2. Domain language (describes the world)</span><span class="dg-s">A machine-readable, composable, compilable formal domain representation</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">3. Event sourcing (remembers the world)</span><span class="dg-s">Time series of facts, decisions, manual adjustments and rule versions</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">4. Digital twin (projects the world)</span><span class="dg-s">Safe rehearsal of future candidates on shared models and current state</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">5. Generative programming (produces capability)</span><span class="dg-s">Semantic IR compiles into queries, constraints, workflows or artifacts</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">6. Formal methods (verifies capability)</span><span class="dg-s">Types, dimensions, permissions, contracts, equivalence and shadow runs</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">7. Controlled production execution → new domain events</span><span class="dg-s">Runs in the real business and feeds results back into the event store</span></div>
-<div class="dg-loop">↺ From step 7 back to step 3: 7. controlled production execution → new domain events, results return to the event store → 3. event sourcing (remembers the world)</div>
-</div>
-</div>
+![A vertical loop from the six engineering pillars to controlled production execution: 1. Domain-Driven Design (defines the world) → 2. Domain language (describes the world) → 3. Event sourcing (remembers the world) → 4. Digital twin (projects the world) → 5. Generative programming (produces capability) → 6. Formal methods (verifies capability) → 7. Controlled production execution → new domain events; step 7 produces new domain events, and execution results flow back to the event store, returning to step 3, event sourcing (remembers the world).](assets/diagrams/chapter-09-1.svg)
 
 Note especially the return arc from step 7 to step 3: **every controlled production execution, every floor-level production report, every manual adjustment by a planner produces new domain events, which are written back into event sourcing and become the raw material for the next round of digital-twin projection, machine-learning training and runtime specialization**.
 

@@ -1,0 +1,18 @@
+<div class="dg" role="img" aria-label="OR 主控、RL 加速、精确兜底的协同链路：形式化领域模型 + 冻结的排产求解快照，先由运筹优化构建受限主问题或 Benders 分解主问题，再把子问题契约下发给机器学习 / 强化学习加速器，其提交的内部候选交运筹优化确定性验证守卫；验证通过则回注主问题并继续快速迭代，验证失败 或 候选改进不足则走精确子问题或确定性启发式强制兜底，两路最终汇入运筹优化判定最终收敛。">
+<div class="dg-col">
+<div class="dg-node dg-node--layer"><span class="dg-t">【形式化领域模型 + 冻结的排产求解快照】</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">1. 运筹优化构建受限主问题（RMP） / Benders 分解主问题</span><span class="dg-s">掌控全局硬约束、当前上下界（Bounds）与收敛终止标准</span></div>
+<div class="dg-down">↓<span class="dg-lbl">下发带主问题状态、对偶信息与业务边界的子问题契约</span></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">2. 机器学习 / 强化学习（ML / RL 学习型子问题加速器）</span><span class="dg-s">快速生成或排序候选列、候选割、候选子问题解或热启动提示</span></div>
+<div class="dg-down">↓<span class="dg-lbl">提交内部候选</span></div>
+<div class="dg-node dg-node--key dg-node--layer"><span class="dg-t">3. 运筹优化确定性验证守卫（OR Verification Guard）</span><span class="dg-s">严格检验领域硬约束可行性、约化成本（Reduced Cost）以及 Benders 割平面的数学有效性与上下界</span></div>
+<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
+<div class="dg-row">
+<div class="dg-group"><div class="dg-gt">【验证通过】</div><div class="dg-node"><span class="dg-t">回注主问题并继续快速迭代</span></div></div>
+<div class="dg-group"><div class="dg-gt">【验证失败 或 候选改进不足】</div><div class="dg-node dg-node--key"><span class="dg-t">4. 精确子问题或确定性启发式强制兜底（Exact Fallback）</span></div></div>
+</div>
+<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">5. 运筹优化根据经认证的上下界与终止条件判定最终收敛</span></div>
+</div>
+</div>

@@ -43,7 +43,11 @@ function summaryItems(text) {
 }
 
 function diagramCount(text) {
-  return (text.match(/^<div class="dg"/gm) || []).length;
+  // 图示已导出为 SVG 图片引用（见 tools/export-diagrams.mjs），此处统计图片引用数；
+  // 兼容尚未迁移的内联 HTML 块。
+  const refs = (text.match(/!\[[^\]]*\]\(assets\/diagrams\/[^)\s]+\.svg\)/g) || []).length;
+  const inline = (text.match(/^<div class="dg"/gm) || []).length;
+  return refs + inline;
 }
 function sectionCount(text) {
   const state = { open: false, marker: null };

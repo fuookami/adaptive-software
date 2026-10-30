@@ -83,7 +83,7 @@
   * 15.1 The eight-step standard pipeline from conversation to sedimented capability: capture → normalize → intermediate representation → verification → optimization → lowering mapping → release → adaptive monitoring
   * 15.2 Formal methods as the cross-cutting trust foundation: type, dimension, tenant permission, budget quota, pre/postcondition contract and business invariant checks
   * 15.3 Proving yourself before entering production: digital twin sandbox simulation, generic/specialized path equivalence verification and shadow runs
-  * 15.4 Governing the six core runtime risks: defending against semantic drift, privilege penetration, error fossilization, environment change, code supply-chain risk and over-specialization
+  * 15.4 Governing the eight core runtime risks: defending against semantic drift, privilege penetration, error fossilization, environmental shift, code supply-chain risk, over-specialization, history and feedback distortion, and simulation mismatch
 
 ## Part Five: Runtime Evolution and the Full Picture — Toward the Adaptive DOP
 * **Chapter 16: Semantic JIT — Profile-Driven Specialization and Invalidating Rebuilds**

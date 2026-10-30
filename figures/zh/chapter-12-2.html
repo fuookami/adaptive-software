@@ -1,0 +1,11 @@
+<div class="dg" role="img" aria-label="四层自解释架构自上而下：第一层求解器与计算后端（Solver / Backend Layer）→ 第二层 OSPF 基础框架层（Base Framework Layer）→ 第三层算法层与 APS/DOP 应用层（Algorithm &amp; Application Layer）→ 第四层工作台展示层与智能体层（Presentation &amp; Agent Layer）。">
+<div class="dg-col">
+<div class="dg-node dg-node--layer"><span class="dg-t">第一层：求解器与计算后端（Solver / Backend Layer）</span><span class="dg-s">• 产出原始求解状态、变量解值、目标值、上下界与底层数学证据（IIS/对偶等）</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">第二层：OSPF 基础框架层（Base Framework Layer）</span><span class="dg-s">• 封装统一正交的 SolveReport、稳定模型元素 ID、证据能力等级、数学模型指纹（Fingerprint）与组合求解尝试轨迹（Attempt Trace）</span><span class="dg-s">• 边界：只懂通用数学报告与代数诊断，不知道“哪个订单延期”“哪台设备冲突”</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">第三层：算法层与 APS/DOP 应用层（Algorithm &amp; Application Layer）</span><span class="dg-s">• 算法层：保留数学语义，将元素 ID 映射回领域变量、约束模板、目标与中间值</span><span class="dg-s">• 应用层：将数学证据绑定到具体业务对象（订单/产线/任务/库位）、冻结的版本快照、业务 KPI 对比结果与租户权限边界</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer dg-node--key"><span class="dg-t">第四层：工作台展示层与智能体层（Presentation &amp; Agent Layer）</span><span class="dg-s">• 在工作台可视化展示可行性、KPI 拆解、松弛量（Slack）与冲突约束集（IIS）</span><span class="dg-s">• 智能体基于已授权的结构化证据做归纳、多方案对比与本地化业务语言说明</span><span class="dg-s">• 铁律：智能体严禁改写求解状态、严禁虚构 IIS、严禁用置信度覆盖硬约束！</span></div>
+</div>
+</div>

@@ -1,0 +1,22 @@
+<div class="dg" role="img" aria-label="【现场实际执行反馈进入（如 T1 实际完工晚 30 分钟）】先进入第一级领域计算模型局部推演（系统侧纯数值计算，毫秒级），再由 [应用层确定性边界与冲突守卫检查] 判定：【未越界且无全局冲突】时保持原基准计划顺序，仅更新数字孪生预计状态并持续监控；【越过阈值或产生资源冲突】时进入第二/三级：运筹求解与仿真比选。">
+<div class="dg-col">
+<div class="dg-node"><span class="dg-t">【现场实际执行反馈进入（如 T1 实际完工晚 30 分钟）】</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">第一级：领域计算模型局部推演（系统侧纯数值计算，毫秒级）</span><span class="dg-s">• 沿前后置工序链与产线日历，重算 T2 等后序任务的预计时间窗</span><span class="dg-s">• 重算受影响时间桶内的预计投料量与预计资源占用</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">[应用层确定性边界与冲突守卫检查]</span><span class="dg-s">• 预计结束时间是否越出订单交付窗口或超过偏差容忍阈值？</span><span class="dg-s">• 是否触发跨产线资源冲突（如共享投料口、公用夹具、齐套库存）？</span></div>
+<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
+<div class="dg-row">
+<div class="dg-col">
+<div class="dg-node"><span class="dg-t">【未越界且无全局冲突】</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node"><span class="dg-t">保持原基准计划顺序，仅更新</span><span class="dg-s">数字孪生预计状态并持续监控</span></div>
+</div>
+<div class="dg-col">
+<div class="dg-node"><span class="dg-t">【越过阈值或产生资源冲突】</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node"><span class="dg-t">第二/三级：运筹求解与仿真比选</span><span class="dg-s">• 方案 A：受限局部窗口重排</span><span class="dg-s">• 方案 B：全局滚动排产重算</span><span class="dg-s">经数字孪生仿真对比后确认下发</span></div>
+</div>
+</div>
+</div>
+</div>

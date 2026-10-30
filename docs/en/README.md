@@ -45,8 +45,8 @@ navigation, diagram counts, subsection counts); terminology is held by review ag
 
 Corrections are welcome. Start with [CONTRIBUTING.md](../../CONTRIBUTING.md) and
 [i18n/README.md](../../i18n/README.md): keep the file name and navigation slot identical, do not
-drop or merge sections, and keep the diagram HTML structure intact — only the visible labels and
-`aria-label` are translated. `npm run i18n:check` verifies that nothing was lost along the way; when
+drop or merge sections. Diagrams are SVG assets referenced from the text; to change one, edit its HTML
+source under `figures/en/` (labels and `aria-label` only, structure untouched) and run `npm run figures`. `npm run i18n:check` verifies that nothing was lost along the way; when
 the English and the Chinese disagree, the Chinese wins.
 
 Licensed under [CC BY-SA 4.0](../../LICENSE.md).

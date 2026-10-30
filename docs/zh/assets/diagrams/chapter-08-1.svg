@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="430" viewBox="0 0 860 430" role="img">
+<rect x="0" y="0" width="860" height="429.06" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<rect x="108.84" y="18.66" width="642.3" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">形式化约束与目标分类治理体系</text>
+<line x1="91.44" y1="63.83" x2="768.55" y2="63.83" stroke="rgb(164, 176, 190)" stroke-width="1"/>
+<text x="253.34" y="80.21" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="591.89" y="80.21" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="20.13" y="94.48" width="819.75" height="146.58" rx="10" fill="rgba(255, 255, 255, 0.6)" fill-opacity="0.6" stroke="rgb(185, 194, 203)" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="430" y="124.75" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 90, 104)" text-anchor="middle">硬约束（Hard Constraints）</text>
+<rect x="78.42" y="143.3" width="347.89" height="85" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="252.37" y="168.26" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">物理与安全底线</text>
+<text x="252.36" y="193.5" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">（如设备物理容量上限、物料守恒平衡、共享投料口物理</text>
+<text x="252.37" y="213.55" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">极限、法规红线）</text>
+<rect x="433.67" y="143.3" width="347.89" height="85" rx="9" fill="rgb(255, 249, 242)" stroke="rgb(230, 126, 34)" stroke-width="1"/>
+<text x="607.62" y="168.26" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(165, 91, 27)" text-anchor="middle">铁律：</text>
+<text x="607.61" y="193.5" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">绝对不可违反；任何机器学习校准或智能体适配均无权通</text>
+<text x="607.62" y="213.55" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">过训练或提示词放宽硬约束！</text>
+<rect x="20.13" y="257.22" width="819.75" height="146.58" rx="10" fill="rgba(255, 255, 255, 0.6)" fill-opacity="0.6" stroke="rgb(185, 194, 203)" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="430" y="287.3" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 90, 104)" text-anchor="middle">软约束与多目标（Soft Constraints &amp; Objectives）</text>
+<rect x="78.42" y="306.03" width="347.89" height="85" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="252.37" y="331.06" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">业务偏好与优化方向</text>
+<text x="252.36" y="356.3" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">（如订单交期准时率、减少换产总耗时、降低库存积压、</text>
+<text x="252.36" y="376.35" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">均衡产线负载）</text>
+<rect x="433.67" y="306.03" width="347.89" height="85" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="607.62" y="331.06" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">机制：</text>
+<text x="607.62" y="356.3" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">通过 OSPF SlackFunction 与目标权重/罚系数转化为目</text>
+<text x="607.62" y="376.35" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">标函数分项，支持按优先级或权重权衡！</text>
+</svg>

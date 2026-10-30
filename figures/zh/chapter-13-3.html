@@ -1,0 +1,13 @@
+<div class="dg" role="img" aria-label="决策反馈驱动的运筹参数校准闭环五步：1. 冻结输入与运筹原始求解，2. 捕获人工微调与原因分类，3. 受控训练可校准参数候选，4. 离线回放与反事实仿真验收，5. 运筹重求解与持续演进。">
+<div class="dg-row">
+<div class="dg-node"><span class="dg-t">1. 冻结输入与运筹原始求解</span><span class="dg-s">基于冻结输入与当前参数版本产出运筹优化原始基准方案</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node"><span class="dg-t">2. 捕获人工微调与原因分类</span><span class="dg-s">记录方案Diff、结构化原因码、审批链与后续真实执行结果</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node"><span class="dg-t">3. 受控训练可校准参数候选</span><span class="dg-s">仅针对稳定偏好样本，学习目标权重与软约束罚系数候选值</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node"><span class="dg-t">4. 离线回放与反事实仿真验收</span><span class="dg-s">在留出集上比对可行率/目标分项/人工接受率，经审批后冻结</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node"><span class="dg-t">5. 运筹重求解与持续演进</span><span class="dg-s">使用批准冻结的新参数版本求解，支持一键回滚基线参数</span></div>
+</div>
+</div>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="110" viewBox="0 0 860 110" role="img">
+<rect x="0" y="0" width="860" height="109.56" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<rect x="22.02" y="18.66" width="144.72" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="94.38" y="39.5" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">Floor raises an issue</text>
+<text x="177.02" y="39.32" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="202.03" y="18.66" width="152.14" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="278.1" y="39.5" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">Consultant interprets</text>
+<text x="364.45" y="39.32" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="389.47" y="18.66" width="186.05" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="482.49" y="39.5" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">Product manager confirms</text>
+<text x="585.8" y="39.32" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="610.81" y="18.66" width="227.17" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="724.4" y="39.5" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">Backend changes APIs and tables</text>
+<text x="153.03" y="77.81" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="178.05" y="56.98" width="262.08" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="309.09" y="77.99" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">Algorithm engineer changes the model</text>
+<text x="450.41" y="77.81" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="475.42" y="56.98" width="133.94" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="542.39" y="77.99" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">Integration testing</text>
+<text x="619.64" y="77.81" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="644.66" y="56.98" width="66.72" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="678.02" y="77.99" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">Release</text>
+</svg>

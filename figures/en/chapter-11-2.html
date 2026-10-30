@@ -1,0 +1,22 @@
+<div class="dg" role="img" aria-label="Actual floor execution feedback enters (e.g. T1 actually finishes 30 minutes late), and first enters tier one, local propagation in the domain computation model (system-side pure numeric computation, millisecond level); then [the application-layer deterministic boundary and conflict guard check] judges: on [within bounds and no global conflict], keep the original baseline plan sequence and only update the digital-twin estimated state and keep monitoring; on [threshold exceeded or a resource conflict arises], enter tier two/three: OR solving and simulation comparison.">
+<div class="dg-col">
+<div class="dg-node"><span class="dg-t">[Actual floor execution feedback enters (e.g. T1 actually finishes 30 minutes late)]</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">Tier 1: local propagation in the domain computation model (system-side pure numeric computation, millisecond level)</span><span class="dg-s">• Along the predecessor/successor operation chain and the line calendar, recompute the estimated time windows of successors such as T2</span><span class="dg-s">• Recompute the estimated feeding quantity and estimated resource occupancy in the affected time buckets</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">[Application-layer deterministic boundary and conflict guard check]</span><span class="dg-s">• Does the estimated end time fall outside the order delivery window or exceed the deviation tolerance threshold?</span><span class="dg-s">• Does it trigger a cross-line resource conflict (shared feeding port, shared fixture, kitting inventory)?</span></div>
+<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
+<div class="dg-row">
+<div class="dg-col">
+<div class="dg-node"><span class="dg-t">[Within bounds and no global conflict]</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node"><span class="dg-t">Keep the original baseline plan sequence, only update</span><span class="dg-s">digital-twin estimated state and keep monitoring</span></div>
+</div>
+<div class="dg-col">
+<div class="dg-node"><span class="dg-t">[Threshold exceeded or a resource conflict arises]</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node"><span class="dg-t">Tier 2/3: OR solving and simulation comparison</span><span class="dg-s">• Plan A: restricted local-window reschedule</span><span class="dg-s">• Plan B: global rolling reschedule recomputation</span><span class="dg-s">Confirm and release after digital-twin simulation comparison</span></div>
+</div>
+</div>
+</div>
+</div>

@@ -18,9 +18,10 @@
 | 简体中文 | [GitHub Pages](https://fuookami.github.io/adaptive-software/zh/) · [GitBook](https://fuookami.gitbook.io/adaptive-software/) | [docs/zh/](docs/zh/) |
 | English | [GitHub Pages](https://fuookami.github.io/adaptive-software/en/) · [GitBook](https://fuookami.gitbook.io/adaptive-software/en/) | [docs/en/](docs/en/)（30 页全译） |
 
-**GitHub Pages 是带图主入口**，中文站根路径是语言选择页。**GitBook 是文本镜像**：该平台会剥离图示的 HTML 标签，
-把每张图压平成一行文字，内容的可读性保留但框线与分行不再呈现。图示的实现规范与各平台差异见
-[tools/DIAGRAM-KIT.md](tools/DIAGRAM-KIT.md)。
+**任一入口都能看到完整图示**：流程图与架构图已导出为独立 SVG（`docs/<lang>/assets/diagrams/`），
+正文只留图片引用，因此 GitHub Pages、GitBook、GitHub 仓库页、VS Code 预览与 PDF 的呈现一致。
+图示源码是 `figures/<lang>/*.html` 里的 HTML 组件，改完跑 `npm run figures` 重新导出即可，
+规范与导出流程见 [tools/DIAGRAM-KIT.md](tools/DIAGRAM-KIT.md)。
 
 两语言各自是独立的一本书（独立 `book.json` / `SUMMARY.md` / `README.md`）。
 
@@ -42,10 +43,12 @@
 .
 ├── docs/zh/               # 中文版＝独立书根：book.json / SUMMARY.md / README.md / 30 个页面
 ├── docs/en/               # 英文版＝独立书根：与中文侧同名同序，逐页标注 i18n-status
+├── docs/*/assets/diagrams/# 导出的 SVG 图示（正文以图片引用，各平台一致）
+├── figures/               # 图示源码：HTML 组件（dg-*），改完 npm run figures 重新导出
 ├── styles/website.css     # 图示组件库（dg-*）与站点样式的唯一真源
 ├── i18n/                  # 术语对照表与翻译流程
 ├── gitbook-docs.yaml      # GitBook 站点结构：一个站点、两个语言空间
-├── tools/                 # 切分 / 校验 / 构建 / 截图脚本
+├── tools/                 # 切分 / 校验 / 图示导出 / 构建 / 截图脚本
 ├── manuscript/            # 原始手稿（按卷合并），用于重新生成中文正文
 └── .github/workflows/     # 校验 + 双语言构建 + GitHub Pages 部署
 ```

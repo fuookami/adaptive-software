@@ -1,0 +1,11 @@
+<div class="dg" role="img" aria-label="DDD 架构下的 Benders 分解协作闭环：1. Benders 主问题下发当前主问题固定解（Trial Solution）给 2. Benders 子问题群；子问题群构造【Benders 可行割】与【Benders 最优割】，交由 3. 割平面有效性验证与收敛认证守卫认证后回注经认证的可行割 / 最优割。">
+<div class="dg-title">【DDD 架构下的 Benders 分解协作闭环】</div>
+<div class="dg-col">
+<div class="dg-node dg-node--layer"><span class="dg-t">1. Benders 主问题（Master Problem —— 第一阶段战略/主计划决策）</span><span class="dg-s">• 决策核心骨架变量（如跨线任务分配、批次大小、主资源启停）</span><span class="dg-s">• 维护割平面池（Cut Pool），不断吸收子问题反馈的可行割与最优割</span><span class="dg-s">• 维护并更新全局下界（Lower Bound，以最小化问题为例）</span></div>
+<div class="dg-down" aria-hidden="true">↓<span class="dg-lbl">下发当前主问题固定解（Trial Solution）</span></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">2. Benders 子问题群（Subproblems —— 第二阶段分车间/分场景检验）</span><span class="dg-s">• 在主问题固定解下，按各限界上下文或各随机场景独立并行求解</span><span class="dg-s">• 若子问题不可行 ──> 提取极射线/Farkas 证明，构造【Benders 可行割】</span><span class="dg-s">• 若子问题有最优解 ──> 提取对偶乘子，构造【Benders 最优割】并更新上界</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer dg-node--key"><span class="dg-t">3. 割平面有效性验证与收敛认证守卫（Cut &amp; Convergence Guard）</span><span class="dg-s">• 任何由启发式或学习型策略提出的候选割/场景排序，必须经原始/对偶信息严格验证其数学有效性（绝不能切掉真正的全局最优解！）</span><span class="dg-s">• 主问题上下界（UB/LB）与终止间隙（Gap）必须由认证子问题精确计算！</span></div>
+<div class="dg-loop">↺ 回注经认证的可行割 / 最优割</div>
+</div>
+</div>

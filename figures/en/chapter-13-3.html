@@ -1,0 +1,13 @@
+<div class="dg" role="img" aria-label="Five steps of the decision-feedback-driven OR parameter calibration loop: 1. freeze inputs and the original OR solve, 2. capture manual fine-tuning and classify reasons, 3. controlled training of calibratable parameter candidates, 4. offline replay and counterfactual simulation acceptance, 5. OR re-solve and continuous evolution.">
+<div class="dg-row">
+<div class="dg-node"><span class="dg-t">1. Frozen input and original OR solve</span><span class="dg-s">Produces the OR baseline plan from the frozen input and the current parameter version</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node"><span class="dg-t">2. Capture manual fine-tuning and reason classification</span><span class="dg-s">Records the plan diff, structured reason codes, approval chain and later real execution results</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node"><span class="dg-t">3. Controlled training of calibratable parameter candidates</span><span class="dg-s">Learns objective weights and soft-constraint penalty candidates only from stable preference samples</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node"><span class="dg-t">4. Offline replay and counterfactual simulation acceptance</span><span class="dg-s">Compares feasibility rate / objective components / manual acceptance rate on a holdout set, then freezes after approval</span></div>
+<div class="dg-edge" aria-hidden="true">→</div>
+<div class="dg-node"><span class="dg-t">5. OR re-solve and continuous evolution</span><span class="dg-s">Solves with the approved frozen parameter version; baseline parameters roll back in one click</span></div>
+</div>
+</div>

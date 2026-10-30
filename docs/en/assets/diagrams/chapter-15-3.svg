@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="505" viewBox="0 0 860 505" role="img">
+<rect x="0" y="0" width="860" height="504.08" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<text x="429.99" y="34.7" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(29, 53, 87)" text-anchor="middle">Shadow verification before a new specialized plan goes live</text>
+<rect x="251.8" y="56.19" width="195.63" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="349.61" y="77.14" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">Online real business request</text>
+<text x="457.7" y="76.96" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="482.72" y="56.19" width="125.47" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="545.45" y="77.14" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">Traffic duplicator</text>
+<line x1="91.44" y1="92.81" x2="768.55" y2="92.81" stroke="rgb(164, 176, 190)" stroke-width="1"/>
+<text x="253.34" y="109.2" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="591.89" y="109.2" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="20.13" y="123.47" width="819.75" height="90.81" rx="10" fill="rgba(255, 255, 255, 0.6)" fill-opacity="0.6" stroke="rgb(185, 194, 203)" stroke-width="1" stroke-dasharray="5 4"/>
+<rect x="62.97" y="137.7" width="347.89" height="63.81" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="236.91" y="162.81" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">General execution path (authoritative</text>
+<text x="236.91" y="185.66" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">baseline)</text>
+<text x="422.63" y="174.11" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="449.13" y="137.7" width="347.89" height="63.81" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="623.06" y="162.81" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">Return production results directly to the</text>
+<text x="623.06" y="185.66" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">user</text>
+<rect x="20.13" y="230.44" width="819.75" height="154.88" rx="10" fill="rgba(255, 255, 255, 0.6)" fill-opacity="0.6" stroke="rgb(185, 194, 203)" stroke-width="1" stroke-dasharray="5 4"/>
+<rect x="256.05" y="244.67" width="347.89" height="127.88" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(164, 176, 190)" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="429.99" y="269.78" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">Newly compiled specialized candidate plan</text>
+<text x="429.99" y="292.64" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">(shadow state)</text>
+<text x="429.99" y="317.64" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">(asynchronous side-path run; results not exposed</text>
+<text x="429.99" y="337.69" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">externally and not written to the production</text>
+<text x="429.99" y="357.74" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">database)</text>
+<line x1="91.44" y1="394.63" x2="768.55" y2="394.63" stroke="rgb(164, 176, 190)" stroke-width="1"/>
+<text x="253.34" y="411.06" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="591.89" y="411.06" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="420.14" width="642.3" height="63.81" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="445.14" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">(asynchronous comparator: validates result sets, status codes, permission boundaries</text>
+<text x="429.99" y="468" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">and performance benefit)</text>
+</svg>

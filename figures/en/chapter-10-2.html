@@ -1,0 +1,25 @@
+<div class="dg" role="img" aria-label="Runtime memory system: version snapshots + domain event timeline, made of two immutable tracks: immutable business version snapshots (Versioned Snapshots) and the immutable domain event timeline (Domain Event Timeline).">
+<div class="dg-col">
+<div class="dg-node dg-node--layer"><span class="dg-t">Runtime memory system: version snapshots + domain event timeline</span></div>
+<div class="dg-arms">
+<div class="dg-arm">↓</div>
+<div class="dg-arm">↓</div>
+</div>
+<div class="dg-row">
+<div class="dg-group">
+<div class="dg-gt">Immutable business version snapshots (Versioned Snapshots)</div>
+<div class="dg-node dg-node--leaf">Scheduling input data snapshots, rule snapshots, field catalog versions</div>
+<div class="dg-node dg-node--leaf">ML training datasets, feature schemas, model artifact versions</div>
+<div class="dg-node dg-node--leaf">Capacity estimate snapshots and the active overlay (CapacityEffectiveOverlay)</div>
+<div class="dg-node dg-node--leaf">Historical plan versions (baseline plan / simulation candidate snapshots)</div>
+</div>
+<div class="dg-group">
+<div class="dg-gt">Immutable domain event timeline (Domain Event Timeline)</div>
+<div class="dg-node dg-node--leaf">External execution fact events (MES reporting, WMS material issue, TMS truck arrival)</div>
+<div class="dg-node dg-node--leaf">Planning decision events (schedule release, trigger reason for rolling rescheduling)</div>
+<div class="dg-node dg-node--leaf">Manual plan adjustment events (original solution, structured diff, reason code)</div>
+<div class="dg-node dg-node--leaf">Runtime capability lifecycle events (candidate approval, release, invalidation, rollback)</div>
+</div>
+</div>
+</div>
+</div>

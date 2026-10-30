@@ -45,8 +45,11 @@ jobs:
       - name: 校验书稿结构（中文书根的 SUMMARY.md ↔ 页面）
         run: node tools/split-book.mjs --check
 
-      - name: 校验图示 HTML 结构（块闭合 / 无空行 / 顶格 / 无 Markdown 残留）
+      - name: 校验图示源码结构（块闭合 / 无空行 / 顶格 / 无 Markdown 残留）
         run: node tools/check-diagrams.mjs --structure
+
+      - name: 校验图示导出（SVG 引用完整、正文无残留 HTML 块）
+        run: node tools/export-diagrams.mjs --check
 
       - name: 校验双语一致性（页面、导航、书根配置、站点映射）
         run: node tools/check-i18n.mjs

@@ -42,17 +42,7 @@
 
 在 `ospf-kotlin`（`fuookami.ospf.kotlin.core.frontend.expression`）中，已经原生提供了一套可扩展的标量表达式与布尔关系表达式中间表示体系：
 
-<div class="dg" role="img" aria-label="OSPF (fuookami.ospf.kotlin.core.frontend.expression) 表达式体系，向下分为五支：决策变量项 (AbstractVariable) 含 BinVar / IntVar、URealVar / RealVar；单项式 (Monomial) 含 LinearMonomial、QuadraticMonomial；多项式 (Polynomial) 含 LinearPolynomial、QuadraticPolynomial、(不可变/可变多项式)；具名中间符号 (Symbol) 含 LinearIntermediate、LinearExpressionSym、QuadraticExpression；函数算子符号 含 SlackFunction、SemiFunction、ULP / IfThen ...。">
-<div class="dg-title">OSPF (fuookami.ospf.kotlin.core.frontend.expression) 表达式体系</div>
-<div class="dg-arms"><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div></div>
-<div class="dg-group">
-<div class="dg-node dg-node--leaf"><span class="dg-t">决策变量项 (AbstractVariable)</span><span class="dg-s">BinVar / IntVar</span><span class="dg-s">URealVar / RealVar</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">单项式 (Monomial)</span><span class="dg-s">LinearMonomial</span><span class="dg-s">QuadraticMonomial</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">多项式 (Polynomial)</span><span class="dg-s">LinearPolynomial</span><span class="dg-s">QuadraticPolynomial</span><span class="dg-s">(不可变/可变多项式)</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">具名中间符号 (Symbol)</span><span class="dg-s">LinearIntermediate</span><span class="dg-s">LinearExpressionSym</span><span class="dg-s">QuadraticExpression</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">函数算子符号</span><span class="dg-s">SlackFunction</span><span class="dg-s">SemiFunction</span><span class="dg-s">ULP / IfThen ...</span></div>
-</div>
-</div>
+![OSPF (fuookami.ospf.kotlin.core.frontend.expression) 表达式体系，向下分为五支：决策变量项 (AbstractVariable) 含 BinVar / IntVar、URealVar / RealVar；单项式 (Monomial) 含 LinearMonomial、QuadraticMonomial；多项式 (Polynomial) 含 LinearPolynomial、QuadraticPolynomial、(不可变/可变多项式)；具名中间符号 (Symbol) 含 LinearIntermediate、LinearExpressionSym、QuadraticExpression；函数算子符号 含 SlackFunction、SemiFunction、ULP / IfThen ...。](assets/diagrams/chapter-07-1.svg)
 
 在设计和使用这套 `Expression IR` 时，架构上必须严格遵循四项工程规范：
 
@@ -67,22 +57,7 @@
 
 依托 `ospf-kotlin` 的表达式与具名中间符号体系，我们可以在领域层构建**“共享业务核心与数值/符号双入口”**的标准架构模式。
 
-<div class="dg" role="img" aria-label="领域概念、计算规则、折算系数与分支规格（唯一权威业务口径）汇入共享业务核心（Shared Core），再左右对照两个入口：系统侧数值入口——传入：Quantity&lt;Flt64&gt; (具体值+单位)、输出：Ret&lt;Quantity&lt;Flt64&gt;&gt;；运筹优化侧符号/建模入口——传入：OSPF 决策变量 / 上游符号、输出：Ret&lt;Quantity&lt;LinearExpressionSymbol&gt;&gt;；两入口汇合做等价性自动验证，再到 LinearMetaModel 编译与底层求解器能力检查。">
-<div class="dg-col">
-<div class="dg-node dg-node--layer"><span class="dg-t">领域概念、计算规则、折算系数与分支规格（唯一权威业务口径）</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">共享业务核心（Shared Core）</span></div>
-<div class="dg-arms"><div class="dg-arm">↓</div><div class="dg-arm">↓</div></div>
-<div class="dg-row">
-<div class="dg-node"><span class="dg-t">系统侧数值入口</span><span class="dg-s">传入：Quantity&lt;Flt64&gt; (具体值+单位)</span><span class="dg-s">输出：Ret&lt;Quantity&lt;Flt64&gt;&gt;</span></div>
-<div class="dg-node"><span class="dg-t">运筹优化侧符号/建模入口</span><span class="dg-s">传入：OSPF 决策变量 / 上游符号</span><span class="dg-s">输出：Ret&lt;Quantity&lt;LinearExpressionSymbol&gt;&gt;</span></div>
-</div>
-<div class="dg-arms"><div class="dg-arm">↓</div><div class="dg-arm">↓</div></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">等价性自动验证</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">LinearMetaModel 编译与底层求解器能力检查</span></div>
-</div>
-</div>
+![领域概念、计算规则、折算系数与分支规格（唯一权威业务口径）汇入共享业务核心（Shared Core），再左右对照两个入口：系统侧数值入口——传入：Quantity&lt;Flt64&gt; (具体值+单位)、输出：Ret&lt;Quantity&lt;Flt64&gt;&gt;；运筹优化侧符号/建模入口——传入：OSPF 决策变量 / 上游符号、输出：Ret&lt;Quantity&lt;LinearExpressionSymbol&gt;&gt;；两入口汇合做等价性自动验证，再到 LinearMetaModel 编译与底层求解器能力检查。](assets/diagrams/chapter-07-2.svg)
 
 如上图所示，这套架构明确划分了领域层、算法层与求解器适配层的职责边界：
 * **领域层（唯一业务语义所有者）**：只维护一份权威的领域概念、计算规则、损耗系数与条件分支规格。它通过共享业务核心对外暴露两个入口——当系统侧（如 BOM 展开、替代料消耗重算、数字孪生预计时间推演）调用**数值入口**时，传入带原生 `PhysicalUnit` 的 `Quantity<Flt64>`，直接获得计算结果；当运筹优化侧调用**符号/建模入口**时，则生成引用同一套系数与分支逻辑的 `Quantity<LinearExpressionSymbol>`（带物理单位的具名中间符号）。

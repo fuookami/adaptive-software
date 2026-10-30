@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="669" viewBox="0 0 860 669" role="img">
+<rect x="0" y="0" width="860" height="668.25" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<rect x="108.84" y="18.66" width="642.3" height="85" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">Layer 1: Solver and compute backend (Solver / Backend Layer)</text>
+<text x="429.98" y="68.77" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• Produces the raw solve status, variable solution values, objective value, bounds and low-level</text>
+<text x="429.98" y="89.06" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">mathematical evidence (IIS/duals, etc.)</text>
+<text x="422.63" y="120.21" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="127.19" width="642.3" height="149.06" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="152.17" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">Layer 2: OSPF base framework layer (Base Framework Layer)</text>
+<text x="429.98" y="177.42" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• Encapsulates the unified orthogonal SolveReport, stable model element IDs, evidence capability</text>
+<text x="429.98" y="197.46" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">grades, the mathematical model fingerprint (Fingerprint) and the composite solve attempt trace</text>
+<text x="429.98" y="217.51" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">(Attempt Trace)</text>
+<text x="429.98" y="241.46" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• Boundary: understands only generic mathematical reports and algebraic diagnostics, and does not</text>
+<text x="429.99" y="261.51" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">know which order is late or which machine conflicts</text>
+<text x="422.63" y="292.9" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="299.78" width="642.3" height="171.88" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="324.87" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">Layer 3: Algorithm layer and APS/DOP application layer (Algorithm &amp; Application</text>
+<text x="429.98" y="347.72" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">Layer)</text>
+<text x="429.98" y="372.73" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• Algorithm layer: keeps the mathematical semantics and maps element IDs back to domain</text>
+<text x="429.99" y="392.77" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">variables, constraint templates, objectives and intermediate values</text>
+<text x="429.99" y="416.73" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• Application layer: binds mathematical evidence to concrete business objects (order/production</text>
+<text x="429.98" y="436.77" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">line/task/location), frozen version snapshots, business KPI comparisons and tenant permission</text>
+<text x="429.99" y="457.06" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">boundaries</text>
+<text x="422.63" y="488.21" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="495.19" width="642.3" height="152.94" rx="9" fill="rgb(255, 249, 242)" stroke="rgb(230, 126, 34)" stroke-width="1"/>
+<text x="429.98" y="520.17" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(165, 91, 27)" text-anchor="middle">Layer 4: Workbench presentation layer and agent layer (Presentation &amp; Agent Layer)</text>
+<text x="429.99" y="545.42" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• Visualizes feasibility, KPI breakdown, slack and the conflicting constraint set (IIS) in the workbench</text>
+<text x="429.99" y="569.37" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• The agent summarizes authorized structured evidence, compares candidate plans and explains in</text>
+<text x="429.99" y="589.42" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">localized business language</text>
+<text x="429.99" y="613.37" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• Iron rule: the agent must never rewrite the solve status, never invent an IIS, and never override a</text>
+<text x="429.99" y="633.42" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">hard constraint with a confidence score!</text>
+</svg>

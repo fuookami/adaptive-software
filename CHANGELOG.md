@@ -2,6 +2,34 @@
 
 本文件遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/) 与 [语义化版本](https://semver.org/lang/zh-CN/) 约定。
 
+## [0.3.1] - 2026-10-30
+
+### 变更
+
+- **图示改为独立 SVG 资产**：全书 45 张图（中英各 45）由内联 HTML 组件导出为**真矢量 SVG**，
+  正文只保留图片引用 `![…](assets/diagrams/…)`。GitBook 上“整张图被压平成一行”的问题随之消失，
+  GitHub Pages、GitBook、仓库内阅读、VS Code 预览与 PDF 的呈现一致。
+- 新增 `figures/<lang>/<页面>-<序号>.html` 作为图示**源码**（唯一真源），
+  与导出物 `docs/<lang>/assets/diagrams/*.svg` 一一对应；
+  `tools/export-diagrams.mjs` 提供 `--extract/--build/--replace/--check` 四个子命令，
+  npm scripts 增加 `figures`、`figures:extract`、`figures:replace`、`figures:check`。
+- `tools/check-diagrams.mjs`：结构校验改查 `figures/` 源码；保真校验把**引用 SVG 内的 `<text>` 内容**并入
+  “页面可见文字”，因此 44/44 的丢字闸在图片化之后仍然有效。
+- `tools/check-i18n.mjs`：图示计数改为统计 SVG 图片引用（兼容内联块）。
+- CI 增加“图示导出校验”步骤（引用完整、无残留 HTML 块、图数与源码一一对应）。
+
+### 修复
+
+- 第 15 章 15.4 由「运行时**六大**核心风险治理」更正为「**八大**」，补齐「事件历史与反馈失真」
+  「数字孪生仿真世界失配」两项；同步修正 `docs/zh/outline.md`、英文版与 `manuscript/` 手稿源头。
+
+### 实现说明
+
+- 导出走 CDP 远程调试协议驱动无头 Edge，实测盒模型、边框、圆角与**逐字符**文本行盒后生成
+  `<rect>/<line>/<text>`，不是整页截图，文字仍是矢量、可检索。
+- 版心宽度 860px、基准字号 16px，用以对齐线上 `.markdown-section`（实测 770px / 16px）的换行；
+  图片在页内按栏宽缩放。文本按字符量测逐行输出，避免折行时整句被重复绘制。
+
 ## [0.3.0] - 2026-10-30
 
 ### 新增

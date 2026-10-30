@@ -10,13 +10,7 @@
 
 当我们对这 15 项能力进行严格的拓扑依赖推演时，会得出一个极其关键的发现：**“各运行侧共享同一形式化领域模型”（第 8 点）是支撑所有高阶能力的总根基**。
 
-<div class="dg" role="img" aria-label="架构总根基：形式化领域模型——（系统、运筹优化、机器学习、智能体共享同一领域定义），向下支撑算法与系统口径一致、动态约束安全注入、业务中间值透明可查、数字孪生动态推演、智能体推理与适配。">
-<div class="dg-col">
-<div class="dg-node dg-node--key"><span class="dg-t">架构总根基：形式化领域模型</span><span class="dg-s">（系统、运筹优化、机器学习、智能体共享同一领域定义）</span></div>
-<div class="dg-arms"><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div></div>
-<div class="dg-group"><div class="dg-node dg-node--leaf">算法与系统口径一致</div><div class="dg-node dg-node--leaf">动态约束安全注入</div><div class="dg-node dg-node--leaf">业务中间值透明可查</div><div class="dg-node dg-node--leaf">数字孪生动态推演</div><div class="dg-node dg-node--leaf">智能体推理与适配</div></div>
-</div>
-</div>
+![架构总根基：形式化领域模型——（系统、运筹优化、机器学习、智能体共享同一领域定义），向下支撑算法与系统口径一致、动态约束安全注入、业务中间值透明可查、数字孪生动态推演、智能体推理与适配。](assets/diagrams/chapter-05-1.svg)
 
 为什么一旦失去“共享形式化领域模型”这块基石，上面所有的智能化能力都会沦为空中楼阁？我们可以顺着依赖链逐一验证：
 
@@ -54,18 +48,7 @@
 ### 4. 智能体原生（Agent-Native）：语义与编排解释（Semantic Interpretation）
 智能体原生的本质，是让领域模型本身成为可被大语言模型直接读取、推理和组合的结构化语义契约。在智能体侧，模型无需猜测底层代码实现，而是直接通过结构化领域元数据识别出“投料口”“计划投料量”“实际投料事实”“产能估算快照”及其单位与边界，结合当前数字孪生上下文输出受影响对象集合、结构化候选约束与仿真比选方案。
 
-<div class="dg" role="img" aria-label="形式化领域模型（唯一权威业务语义与类型契约）向下分出四种运行解释：系统侧运行解释——确定性数值纯计算，requiredFeeding = 120；运筹原生运行解释——决策变量与符号约束，plannedFeeding &lt;= Limit；机器学习原生解释——特征/分布与不确定性，estimatedProductivity；智能体原生运行解释——开放意图理解与候选生成，结构化约束与仿真方案候选。">
-<div class="dg-col">
-<div class="dg-node dg-node--key"><span class="dg-t">形式化领域模型</span><span class="dg-s">（唯一权威业务语义与类型契约）</span></div>
-<div class="dg-arms"><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div></div>
-<div class="dg-group">
-<div class="dg-node dg-node--leaf"><span class="dg-t">系统侧运行解释</span><span class="dg-s">确定性数值纯计算</span><span class="dg-s">requiredFeeding = 120</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">运筹原生运行解释</span><span class="dg-s">决策变量与符号约束</span><span class="dg-s">plannedFeeding &lt;= Limit</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">机器学习原生解释</span><span class="dg-s">特征/分布与不确定性</span><span class="dg-s">estimatedProductivity</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">智能体原生运行解释</span><span class="dg-s">开放意图理解与候选生成</span><span class="dg-s">结构化约束与仿真方案候选</span></div>
-</div>
-</div>
-</div>
+![形式化领域模型（唯一权威业务语义与类型契约）向下分出四种运行解释：系统侧运行解释——确定性数值纯计算，requiredFeeding = 120；运筹原生运行解释——决策变量与符号约束，plannedFeeding &lt;= Limit；机器学习原生解释——特征/分布与不确定性，estimatedProductivity；智能体原生运行解释——开放意图理解与候选生成，结构化约束与仿真方案候选。](assets/diagrams/chapter-05-2.svg)
 
 通过这四种正交解释，形式化领域模型同时扮演了双重关键角色：在横向协同上，它是系统、运筹优化、机器学习与智能体的**共同语义契约**；在纵向演进上，它又是面向 `LLM as Runtime` 的**领域语言规范、类型系统与编译契约**。
 
@@ -283,17 +266,4 @@ object MesFactIngestionGuard {
 
 当这套形式化领域模型进入运行态后，四大运行侧便形成了一条高度内聚、可追溯的标准协作链路：
 
-<div class="dg" role="img" aria-label="形式化领域定义 · 结构化元数据 · 冻结版本快照向下展开为四条运行链路：1. 系统侧数值解释 得到 纯函数领域计算结果；2. 机器学习侧统计/概率解释 得到 特征与标签映射、模型训练 / 在线推理、预测结果与血缘追踪信息；3. 智能体侧语义解释 得到 候选原因、动态约束与方案；4. 运筹优化侧符号映射 得到 决策变量与中间符号注册、约束与目标函数管线组合、优化求解与结构化解解析；四条链路汇入 应用层确定性校验、状态转换与流程编排，再到 展示看板 · 人工审批 · 生产下发 · 智能体引用 · 仿真与复盘。">
-<div class="dg-col">
-<div class="dg-node dg-node--layer"><span class="dg-t">形式化领域定义 · 结构化元数据 · 冻结版本快照</span></div>
-<div class="dg-arms"><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div></div>
-<div class="dg-group"><div class="dg-gt">1. 系统侧数值解释</div><div class="dg-node dg-node--leaf">纯函数领域计算结果</div></div>
-<div class="dg-group"><div class="dg-gt">2. 机器学习侧统计/概率解释</div><div class="dg-node dg-node--leaf">特征与标签映射</div><div class="dg-edge" aria-hidden="true">→</div><div class="dg-node dg-node--leaf">模型训练 / 在线推理</div><div class="dg-edge" aria-hidden="true">→</div><div class="dg-node dg-node--leaf">预测结果与血缘追踪信息</div></div>
-<div class="dg-group"><div class="dg-gt">3. 智能体侧语义解释</div><div class="dg-node dg-node--leaf">候选原因、动态约束与方案</div></div>
-<div class="dg-group"><div class="dg-gt">4. 运筹优化侧符号映射</div><div class="dg-node dg-node--leaf">决策变量与中间符号注册</div><div class="dg-edge" aria-hidden="true">→</div><div class="dg-node dg-node--leaf">约束与目标函数管线组合</div><div class="dg-edge" aria-hidden="true">→</div><div class="dg-node dg-node--leaf">优化求解与结构化解解析</div></div>
-<div class="dg-arms"><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">应用层确定性校验、状态转换与流程编排</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">展示看板 · 人工审批 · 生产下发 · 智能体引用 · 仿真与复盘</span></div>
-</div>
-</div>
+![形式化领域定义 · 结构化元数据 · 冻结版本快照向下展开为四条运行链路：1. 系统侧数值解释 得到 纯函数领域计算结果；2. 机器学习侧统计/概率解释 得到 特征与标签映射、模型训练 / 在线推理、预测结果与血缘追踪信息；3. 智能体侧语义解释 得到 候选原因、动态约束与方案；4. 运筹优化侧符号映射 得到 决策变量与中间符号注册、约束与目标函数管线组合、优化求解与结构化解解析；四条链路汇入 应用层确定性校验、状态转换与流程编排，再到 展示看板 · 人工审批 · 生产下发 · 智能体引用 · 仿真与复盘。](assets/diagrams/chapter-05-3.svg)

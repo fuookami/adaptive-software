@@ -40,23 +40,7 @@
 
 然而在传统软件架构下，如果当初开发时没有预先在数据库和算法接口里写死“双线共享投料口上限”这个参数开关，这项需求就只能走标准研发链路：
 
-<div class="dg" role="img" aria-label="现场提出问题 → 实施顾问理解 → 产品经理确认 → 后端开发改接口与表结构 → 算法工程师改数学模型 → 联调测试 → 版本发布。">
-<div class="dg-row">
-<div class="dg-node dg-node--chip">现场提出问题</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">实施顾问理解</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">产品经理确认</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">后端开发改接口与表结构</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">算法工程师改数学模型</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">联调测试</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">版本发布</div>
-</div>
-</div>
+![现场提出问题 → 实施顾问理解 → 产品经理确认 → 后端开发改接口与表结构 → 算法工程师改数学模型 → 联调测试 → 版本发布。](assets/diagrams/chapter-01-1.svg)
 
 对于构建全新的平台标准能力，这套流程无可厚非；但如果连现场临时维持一两天的工艺限制都要排队等研发发版，等代码上线时，那批订单早就交货或违约了。
 
@@ -190,38 +174,9 @@
 
 这两个根问题的答案，共同构成了本书的核心架构蓝图：
 
-<div class="dg" role="img" aria-label="根问题一：领域知识如何统一表达？答案是形式化领域模型——系统、运筹优化、机器学习、智能体的共同语义契约，它向下分出数值解释、符号解释、统计/概率解释、语义解释。">
-<div class="dg-title">【根问题一：领域知识如何统一表达？】</div>
-<div class="dg-col">
-<div class="dg-node dg-node--layer dg-node--key"><span class="dg-t">形式化领域模型</span><span class="dg-s">（系统、运筹优化、机器学习、智能体的共同语义契约）</span></div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-row">
-<div class="dg-node dg-node--leaf">数值解释</div>
-<div class="dg-node dg-node--leaf">符号解释</div>
-<div class="dg-node dg-node--leaf">统计/概率解释</div>
-<div class="dg-node dg-node--leaf">语义解释</div>
-</div>
-</div>
-</div>
+![根问题一：领域知识如何统一表达？答案是形式化领域模型——系统、运筹优化、机器学习、智能体的共同语义契约，它向下分出数值解释、符号解释、统计/概率解释、语义解释。](assets/diagrams/chapter-01-2.svg)
 
-<div class="dg" role="img" aria-label="根问题二：新的领域能力如何进入系统？链路为用户运行时意图 / 现场行为、大语言模型 / 智能体语义前端、语义中间表示（Semantic IR）、类型/单位/权限校验 · 数字孪生仿真 · 语义编译、确定性执行能力（查询计划 / 约束模型 / 流程计划）、运行时画像采集 → 能力提升与专门化 → 失效回退与重新编译、软件产品线工程（临时能力 → 客户专用 → 产品可变点 → 稳定核心）。">
-<div class="dg-title">【根问题二：新的领域能力如何进入系统？】</div>
-<div class="dg-col">
-<div class="dg-node dg-node--layer">用户运行时意图 / 现场行为</div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer">大语言模型 / 智能体语义前端</div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer">语义中间表示（Semantic IR）</div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer">类型/单位/权限校验 · 数字孪生仿真 · 语义编译</div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">确定性执行能力</span><span class="dg-s">（查询计划 / 约束模型 / 流程计划）</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer">运行时画像采集 → 能力提升与专门化 → 失效回退与重新编译</div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer dg-node--key"><span class="dg-t">软件产品线工程</span><span class="dg-s">（临时能力 → 客户专用 → 产品可变点 → 稳定核心）</span></div>
-</div>
-</div>
+![根问题二：新的领域能力如何进入系统？链路为用户运行时意图 / 现场行为、大语言模型 / 智能体语义前端、语义中间表示（Semantic IR）、类型/单位/权限校验 · 数字孪生仿真 · 语义编译、确定性执行能力（查询计划 / 约束模型 / 流程计划）、运行时画像采集 → 能力提升与专门化 → 失效回退与重新编译、软件产品线工程（临时能力 → 客户专用 → 产品可变点 → 稳定核心）。](assets/diagrams/chapter-01-3.svg)
 
 如上图所示，这两个答案绝非孤立存在，而是互为前提：
 * **用“形式化领域模型”回答第一个问题**：我们将领域知识从散落的代码和黑盒脚本中解放出来，建立一套可计算、带物理量纲、可版本化的形式化领域模型。系统侧对其进行**确定性数值解释**（负责纯函数计算、状态管理与事务治理）；运筹优化侧对其进行**符号解释**（负责变量映射、约束建模、优化求解与可行性认证）；机器学习侧对其进行**统计/概率解释**（负责特征构造、分布预测与受控参数校准）；智能体与大语言模型则对其进行**语义解释**（负责理解开放意图并生成结构化候选方案）。四者共享同一套业务概念定义，同时严格区分“需求量、计划量、预测量、预计量与实际执行事实”的状态角色，从根源上终结口径分裂。

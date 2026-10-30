@@ -48,27 +48,7 @@ In real production scheduling, not every rule is a blunt "one-vote veto". If the
 
 The formal domain model therefore defines constraints and objectives as structured metadata, drawing a strict line between **hard constraints** and **soft constraints (Soft Constraints) / multi-objective trade-offs**:
 
-<div class="dg" role="img" aria-label="The governance system for formal constraints and objectives splits into two branches: hard constraints (Hard Constraints), and soft constraints and multiple objectives (Soft Constraints &amp; Objectives).">
-<div class="dg-col">
-<div class="dg-node dg-node--layer"><span class="dg-t">Formal constraint and objective classification system</span></div>
-<div class="dg-arms">
-<div class="dg-arm">↓</div>
-<div class="dg-arm">↓</div>
-</div>
-<div class="dg-row">
-<div class="dg-group">
-<div class="dg-gt">Hard constraints</div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">Physical and safety floor</span><span class="dg-s">(such as equipment physical capacity ceilings, material conservation balance, shared feeding port physical limits, regulatory red lines)</span></div>
-<div class="dg-node dg-node--key"><span class="dg-t">Iron rule:</span><span class="dg-s">Never violable; no ML calibration or agent adaptation may relax a hard constraint through training or prompts!</span></div>
-</div>
-<div class="dg-group">
-<div class="dg-gt">Soft constraints &amp; objectives</div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">Business preferences and optimization direction</span><span class="dg-s">(such as order on-time delivery rate, less total changeover time, lower inventory backlog, balanced line load)</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">Mechanism:</span><span class="dg-s">Converts into objective-function terms through OSPF SlackFunction plus objective weights / penalty coefficients, traded off by priority or by weight!</span></div>
-</div>
-</div>
-</div>
-</div>
+![The governance system for formal constraints and objectives splits into two branches: hard constraints (Hard Constraints), and soft constraints and multiple objectives (Soft Constraints &amp; Objectives).](assets/diagrams/chapter-08-1.svg)
 
 ---
 
@@ -78,15 +58,7 @@ Once the domain layer and the algorithm layer have built a model from the genera
 
 This is where the most central engineering design of `ospf-kotlin` comes in — **a compiler-style lowering architecture (`LinearMetaModel` → `LinearMechanismModel` → `LinearSolver`) that decouples the model completely from the solver**.
 
-<div class="dg" role="img" aria-label="The compiler-style lowering architecture in three layers, top to bottom: the domain layer exposes the dual entry points of pure computation and symbols into the algorithm modeling layer (Algorithm Layer — frontend meta-model LinearMetaModel), which then calls LinearMechanismModel(metaModel) for lowering compilation into the OSPF mid-end compiler and backend solver plugin layer (LinearMechanismModel &amp; Solver Plugins).">
-<div class="dg-col">
-<div class="dg-node dg-node--layer"><span class="dg-t">Domain Layer</span><span class="dg-s">Defines business concepts, OSPF native units (Kilogram/Hour), computation relations and constraint semantic templates</span><span class="dg-s">Iron rule: a domain aggregate root never holds any solver variable, model handle or solve session</span></div>
-<div class="dg-down" aria-hidden="true">↓<span class="dg-lbl">Exposes the dual entry points of pure computation and symbols</span></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Algorithm Layer — frontend meta-model LinearMetaModel</span><span class="dg-s">Assembles a single-solve meta-model from general OSPF symbols (URealVar / LinearExpressionSymbol) and built-in function operators (SemiFunction / SlackFunction / IfThenFunction)</span><span class="dg-s">Binds to no native API of any specific commercial or open-source solver</span></div>
-<div class="dg-down" aria-hidden="true">↓<span class="dg-lbl">Calls LinearMechanismModel(metaModel) for lowering compilation</span></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">OSPF mid-end compiler and backend solver plugin layer (LinearMechanismModel &amp; Solver Plugins)</span><span class="dg-s">Recursively expands every higher-order function operator, performing like-term collapsing, constant folding and degree / capability checks</span><span class="dg-s">Lowers to a sparse matrix view and binds it to the unified LinearSolver interface</span><span class="dg-s">Switches between Gurobi / Cplex / SCIP / Cbc / Hexaly solver plugins with zero business-code changes</span></div>
-</div>
-</div>
+![The compiler-style lowering architecture in three layers, top to bottom: the domain layer exposes the dual entry points of pure computation and symbols into the algorithm modeling layer (Algorithm Layer — frontend meta-model LinearMetaModel), which then calls LinearMechanismModel(metaModel) for lowering compilation into the OSPF mid-end compiler and backend solver plugin layer (LinearMechanismModel &amp; Solver Plugins).](assets/diagrams/chapter-08-2.svg)
 
 This compiler-style layered architecture brings enterprise software three decisive engineering advantages:
 

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="110" viewBox="0 0 860 110" role="img">
+<rect x="0" y="0" width="860" height="109.56" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<rect x="54.94" y="18.66" width="177.72" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="143.8" y="39.5" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">[1. Candidate generation]</text>
+<text x="242.94" y="39.32" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="267.95" y="18.66" width="255.55" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="395.73" y="39.5" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">[2. Permission and governance check]</text>
+<text x="533.78" y="39.32" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="558.8" y="18.66" width="216.84" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="667.22" y="39.5" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">[3. Domain and business check]</text>
+<text x="785.92" y="39.32" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="167.81" y="56.98" width="251.19" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="293.41" y="77.99" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">[4. Simulation and result verification]</text>
+<text x="429.28" y="77.81" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="454.3" y="56.98" width="237.88" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="573.23" y="77.99" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">[5. Versioned, reversible execution]</text>
+</svg>

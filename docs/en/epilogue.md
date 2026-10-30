@@ -8,26 +8,6 @@ If the nearly one hundred thousand characters of this book were to be compressed
 
 > **The real revolution brought by large language models was never a chat box bolted onto the side of software, nor the replacement of battle-tested business systems and optimization algorithms by an uncontrollable black-box model; it is that software now has, for the first time, a low-cost semantic entry point through which it can understand human intent and explore unforeseen change on the live floor of use. Once we anchor that semantic entry point in the shared language of a formal domain model, give it memory and a proving ground through event sourcing and a digital twin, fence it with the deterministic guard-rails of a semantic compiler and formal verification, and then use software product line engineering to keep absorbing battlefield-tested insight into the product core, software completes its speciation — from a tool manufactured once before release to an adaptive living system that keeps learning, specializing and sedimenting capability while in use.**
 
-<div class="dg" role="img" aria-label="The book's through-line in closing: the Adaptive Software vision → LLM as Runtime → formal domain model (OSPF substrate) → Semantic IR → compilation and formal verification → controlled specialized capability → SPLE promotion → stable product core → a new round of runtime exploration.">
-<div class="dg-row">
-<div class="dg-node dg-node--chip">Adaptive Software vision</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">LLM as Runtime</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Formal domain model (OSPF substrate)</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Semantic IR</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Compilation and formal verification</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Controlled specialized capability</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">SPLE promotion</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Stable product core</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">A new round of runtime exploration</div>
-</div>
-</div>
+![The book's through-line in closing: the Adaptive Software vision → LLM as Runtime → formal domain model (OSPF substrate) → Semantic IR → compilation and formal verification → controlled specialized capability → SPLE promotion → stable product core → a new round of runtime exploration.](assets/diagrams/epilogue-1.svg)
 
 In the past, humans wrote programs and then adapted to them day after day; in the future, humans will use programs and, at the same time, create and evolve them together with machines. May the architectural philosophy and engineering practice set out in this book become the key in your hand to the next generation of adaptive enterprise software.

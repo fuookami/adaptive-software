@@ -8,36 +8,7 @@
 
 让我们最后一次回到第 1 章开头那个让传统系统瘫痪的周二上午 `10:00` 生产调度风暴现场，看一看在我们构建的**“自适应 DOP / APS 架构”**下，八大架构层次、三原生能力与双闭环机制是如何行云流水般协同化解危机的：
 
-<div class="dg" role="img" aria-label="【自适应 DOP / APS 全景协同架构图】：长期远景（自适应软件）↓ 大语言模型即运行时 ↓ 一分二叉为 [用户意图]（LLM / 智能体语义前端）与 [运行时画像]（稳定高频模式）→ 汇合至【语义中间表示】(Query / Constraint / Flow IR) ↓【形式化领域模型】(OSPF 承载：领域语言 / 类型与量纲系统) ↓【语义编译器】(校验 / 规范化 / 优化 / 降阶) ↓ 一分三叉至 [确定性系统运行时] (ERP/MES/WMS/TMS 状态与数值计算)、[运筹优化运行时] (MILP / 列生成 / Benders / 认证)、[机器学习运行时] (产能/耗时分布预测 / 受控 RL / 参数校准) → 汇合至【数字孪生与事件溯源】(过去记忆 / 现在状态 / 未来试算) ↓【受控生产执行与学习】↺ 反馈至：运行时画像 / 能力晋升 / SPLE 产品线演化。">
-<div class="dg-title">【自适应 DOP / APS 全景协同架构图】</div>
-<div class="dg-col">
-<div class="dg-node"><span class="dg-t">长期远景</span><span class="dg-s">自适应软件</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node"><span class="dg-t">大语言模型即运行时</span></div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-group">
-<div class="dg-node dg-node--leaf"><span class="dg-t">[用户意图]</span><span class="dg-s">(LLM / 智能体语义前端)</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">[运行时画像]</span><span class="dg-s">(稳定高频模式)</span></div>
-</div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-node"><span class="dg-t">【语义中间表示】</span><span class="dg-s">(Query / Constraint / Flow IR)</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node"><span class="dg-t">【形式化领域模型】</span><span class="dg-s">(OSPF 承载：领域语言 / 类型与量纲系统)</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node"><span class="dg-t">【语义编译器】</span><span class="dg-s">(校验 / 规范化 / 优化 / 降阶)</span></div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-group">
-<div class="dg-node dg-node--leaf"><span class="dg-t">[确定性系统运行时]</span><span class="dg-s">(ERP/MES/WMS/TMS 状态与数值计算)</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">[运筹优化运行时]</span><span class="dg-s">(MILP / 列生成 / Benders / 认证)</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">[机器学习运行时]</span><span class="dg-s">(产能/耗时分布预测 / 受控 RL / 参数校准)</span></div>
-</div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-node"><span class="dg-t">【数字孪生与事件溯源】</span><span class="dg-s">(过去记忆 / 现在状态 / 未来试算)</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node"><span class="dg-t">【受控生产执行与学习】</span></div>
-<div class="dg-loop">↺ 反馈至：运行时画像 / 能力晋升 / SPLE 产品线演化</div>
-</div>
-</div>
+![【自适应 DOP / APS 全景协同架构图】：长期远景（自适应软件）↓ 大语言模型即运行时 ↓ 一分二叉为 用户意图（LLM / 智能体语义前端）与 运行时画像（稳定高频模式）→ 汇合至【语义中间表示】(Query / Constraint / Flow IR) ↓【形式化领域模型】(OSPF 承载：领域语言 / 类型与量纲系统) ↓【语义编译器】(校验 / 规范化 / 优化 / 降阶) ↓ 一分三叉至 确定性系统运行时 (ERP/MES/WMS/TMS 状态与数值计算)、运筹优化运行时 (MILP / 列生成 / Benders / 认证)、机器学习运行时 (产能/耗时分布预测 / 受控 RL / 参数校准) → 汇合至【数字孪生与事件溯源】(过去记忆 / 现在状态 / 未来试算) ↓【受控生产执行与学习】↺ 反馈至：运行时画像 / 能力晋升 / SPLE 产品线演化。](assets/diagrams/chapter-18-1.svg)
 
 在这场横跨产供销存运的实战演练中，端到端的 **7 步自适应闭环** 精确运转如下：
 
@@ -89,21 +60,7 @@ Through 下表，我们可以纵览整个数字化运营平台（DOP / APS）从
 
 综合全书的技术依赖关系（第 8 点形式化领域模型为总根基，且先“编译计划”再“编译代码”），我们制定了标准化的**六阶段工程实施路线图**：
 
-<div class="dg" role="img" aria-label="六阶段工程实施路线图：[阶段一：形式化领域模型沉淀] → [阶段二：运筹原生化与白盒求解] → [阶段三：事件溯源与数字孪生闭环] → [阶段四：机器学习原生与双向增强] → [阶段五：智能体原生与语义前端] → [阶段六：运行时专门化与产品线晋升]。">
-<div class="dg-row">
-<div class="dg-node dg-node--chip">[阶段一：形式化领域模型沉淀]</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">[阶段二：运筹原生化与白盒求解]</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">[阶段三：事件溯源与数字孪生闭环]</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">[阶段四：机器学习原生与双向增强]</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">[阶段五：智能体原生与语义前端]</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">[阶段六：运行时专门化与产品线晋升]</div>
-</div>
-</div>
+![六阶段工程实施路线图：阶段一：形式化领域模型沉淀 → 阶段二：运筹原生化与白盒求解 → 阶段三：事件溯源与数字孪生闭环 → 阶段四：机器学习原生与双向增强 → 阶段五：智能体原生与语义前端 → 阶段六：运行时专门化与产品线晋升。](assets/diagrams/chapter-18-2.svg)
 
 | 实施阶段 | 核心建设目标与关键工程任务 | 贯穿用例落地进度 | 可独立交付的验收标准（Acceptance Criteria） | 前置依赖与核心风险防控 |
 | :--- | :--- | :--- | :--- | :--- |

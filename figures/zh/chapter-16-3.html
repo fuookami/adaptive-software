@@ -1,0 +1,15 @@
+<div class="dg" role="img" aria-label="【计划注册表（Plan Registry）的显式版本绑定结构】：专用计划 ID 与语义形状哈希、专门化层级，绑定【绑定的有效性边界依赖版本指纹（Validity Boundary Dependencies）】；↓ [监听到底层变更事件：如字段目录升级为 v_catalog_4.3 或权限策略变更] ↓ 1. 精确标记失效 → 2. 自动无感回退 → 3. 后台异步重建。">
+<div class="dg-col">
+<div class="dg-title">【计划注册表（Plan Registry）的显式版本绑定结构】</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">专用计划 ID: plan_query_delay_shortage_v3</span><span class="dg-t">状态: ACTIVE</span><span class="dg-s">语义形状哈希 (Shape Hash): sha256:4b9e...</span><span class="dg-s">专门化层级: Tier 1</span></div>
+<div class="dg-group"><div class="dg-gt">【绑定的有效性边界依赖版本指纹（Validity Boundary Dependencies）】</div>
+<div class="dg-node dg-node--chip">数据库结构版本 (DB Schema Version): v_schema_20260901</div>
+<div class="dg-node dg-node--chip">领域字段与元数据目录版本 (Catalog Ver): v_catalog_4.2</div>
+<div class="dg-node dg-node--chip">租户权限与安全策略版本 (Auth Policy Ver): v_policy_19</div>
+<div class="dg-node dg-node--chip">语义编译器/生成器版本 (Generator Ver): v_compiler_2.1</div>
+<div class="dg-node dg-node--chip">执行后端适配器版本 (Adapter Ver): v_adapter_pg_1.4</div>
+</div>
+<div class="dg-down">↓<span class="dg-lbl">[监听到底层变更事件：如字段目录升级为 v_catalog_4.3 或权限策略变更]</span></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">1. 精确标记失效 (Precise Invalidation)：将状态原子切换为 INVALIDATED</span><span class="dg-s">2. 自动无感回退 (Instant Fallback)：当前请求立即走 Tier 0 通用路径执行</span><span class="dg-s">3. 后台异步重建 (Async Re-compilation)：基于新目录重编译并重走影子验证</span></div>
+</div>
+</div>

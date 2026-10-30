@@ -1,4 +1,4 @@
-# 图示重绘规范（HTML Diagram Kit）
+# 图示规范（HTML 源码 → SVG 资产）
 
 把 `docs/zh/*.md`（英文侧 `docs/en/*.md` 同结构） 里用 ```` ```text ```` 字符画描绘的**流程图 / 架构图 / 分层图**重绘为语义化 HTML + 共用样式表。
 样式在 `styles/website.css`（由 `book.json` 的 `styles.website` 注入站点），不要新建 CSS、不要写 `style="…"` 内联样式。
@@ -51,46 +51,60 @@
 - 正文段落、表格、小标题一律不碰。
 - 若发现某个 `text` 块其实是**贴错语言标记的代码**（例如以 `package …` 开头），不要改写，直接在你的汇报里指出，由主控处理。
 
-## 五、各平台支持情况与兜底
+## 五、从源码到 SVG：导出流程
 
-| 发布渠道 | HTML 图示表现 | 说明 |
+图示的**源码**是 HTML 组件，**交付物**是 SVG 图片；正文只保留图片引用。三者对应关系：
+
+```text
+figures/<lang>/<页面>-<序号>.html     ← 唯一真源（可读可改，写法见上文一~三节）
+        │  npm run figures           ← tools/export-diagrams.mjs --build
+        ▼
+docs/<lang>/assets/diagrams/<页面>-<序号>.svg
+        │  npm run figures -- --replace   ← 只做一次：把正文里的 HTML 块换成图片引用
+        ▼
+docs/<lang>/<页面>.md → ![aria-label 文字](assets/diagrams/<页面>-<序号>.svg)
+```
+
+**日常改动只有一种流程**：改 `figures/` 里的 HTML → `npm run figures` → `npm run check`（含图示源码结构与 SVG 引用校验）
+→ 想验证有没有丢字再跑 `npm run diagrams`。
+
+### 为什么导出的是真矢量
+
+`tools/export-diagrams.mjs` 用 CDP 远程调试协议驱动无头 Edge：把单个图块放进与线上等宽的页面里，
+实测每个元素的盒模型、边框（含虚线/单边线）、圆角、背景与**逐字符**的文本行盒，再生成 `<rect>` / `<line>` / `<text>`。
+因此文字可缩放、可检索、可打印，不是整页截图。
+
+两个与换行有关的常量必须与线上一致，否则导出图里的折行会和在线阅读不同：
+
+| 常量 | 值 | 依据 |
 | :--- | :--- | :--- |
-| Honkit 构建的静态站 / GitHub Pages | ✅ 完整彩色渲染 | `book.json` 的 `styles.website` 已注入 `styles/website.css`，本地 `npm run build` 已验证 |
-| VS Code Markdown 预览 | ✅ 完整彩色渲染 | 需要 `.vscode/settings.json` 里的 `"markdown.styles": ["styles/website.css"]`；预览不加载外链样式表，没有这一条就会退化成堆叠文字。改过 CSS 要重开预览页 |
-| 无任何样式的裸环境 | ✅ 完整彩色渲染 | 已用「只挂 `styles/website.css`、不挂 GitBook 主题」的页面实测：框线、分组虚线、分叉臂、回流线、图例都正常，说明样式表自足，不依赖主题 |
-| GitHub 直接阅读 `.md` | ⚠️ 有结构无样式 | GitHub 会剥掉 `class` 与外链样式表，图示退化为按行排列的标签 + 真实箭头字符，内容仍可读（这正是要求箭头用真实字符的原因） |
-| GitBook.com（Git 同步） | ⚠️ 已实测退化 | 2026-10-30 实测：GitBook 保留块内**文字**，但剥掉全部标签与块级结构，把整张图**压平成一行**（`dg-*` 类消失，框线与分行全丢）。内容不丢但不可视。若需要可视版本，见下方「GitBook 上的兜底」 |
+| `WIDTH` | 860 px | 比 `.markdown-section` 实测 770 px 略宽，让 5 列节点能排进一行、避免中文出现单字孤行；图片在页内按 `max-width:100%` 缩回栏宽，矢量不受影响 |
+| `BODY_FONT` | 16 px | 等于 `.markdown-section` 的字号；`.dg` 内部用 `0.92em`、`min-width:7.5em` 等相对单位，基准错了整张图的比例都会错 |
 
-**本仓库的定位**：GitHub 作为源码仓库，**GitHub Pages 作为带图主阅读入口**，GitBook 作文本镜像。
-图示「散架」时按这个顺序排查：
-① 是否在看 `.md` 源码页或被 GitBook 代理（换 Pages / `npm run serve`）；② VS Code 预览是否有 `markdown.styles`（看本文件与 `.vscode/settings.json`）；
-③ CSS 是否被构建注入（`_book/zh/*.html`、`_book/en/*.html` 里应有指向 `styles/website.css` 的 `<link>`）；④ 图块是否被 Markdown 切断（`npm run check`）。
+### 各平台支持情况（导出后的实际状态）
 
-## GitBook 上的兜底
+| 发布渠道 | 图示表现 | 说明 |
+| :--- | :--- | :--- |
+| Honkit 静态站 / GitHub Pages | ✅ | 图片按栏宽缩放，矢量清晰 |
+| GitBook.com（Git 同步） | ✅ | 图片是标准 Markdown 引用，GitBook 正常渲染；**不再有压平成一行的问题** |
+| GitHub 直接阅读 `.md` | ✅ | 图片走仓库相对路径，仓库内直接显示 |
+| VS Code Markdown 预览 | ✅ | 同上，且不再依赖 `markdown.styles` |
+| PDF / EPUB（`npm run pdf`） | ✅ | 图片随正文嵌入 |
 
-2026-10-30 已在线上空间实测（<https://fuookami.gitbook.io/adaptive-software/>）：GitBook 保留图示块的**文字**，
-但剥掉 `dg-*` 标签、`role`/`aria-label` 与全部块级结构，把整张图**压平成一整行**。以第 2 章「软件演进的四个阶段」为例，
-线上显示为「信息化把事情记录进系统→自动化让系统按规则做事→…」——内容不丢、箭头可辨，但无框线、无分行。
-因此“标签用真实字符 `→ ↓ ↺`”这条铁律的价值在这里兑现：**退化后仍是通顺的一句话**。
-
-若需要 GitBook 上也看到图，按成本从低到高：
-
-1. **接受文本镜像**（当前状态）：README 与各卷入口注明“带图阅读走 Pages”；
-2. **导图为 SVG**（彻底，代价最大）：用无头浏览器把每个 `.dg` 块渲染成 `docs/<lang>/assets/diagrams/*.svg`，
-   正文改用 `![图注](assets/diagrams/…)`。全平台一致，但失去语义化 HTML、响应式与可检索的图内标签，
-   且 44 张图 × 2 语言要维护两套资产；
-3. **关键图补 Mermaid 版**：只对第 18 章总架构图等少数几张做正文备份，混合排版。
-
-第 2、3 项尚未实现。是否要做，取决于你更看重 GitBook 上的可视性，还是正文的可维护性。
+> 历史记录：2026-10-30 曾实测 GitBook 会把内联 HTML 图示压平成一行（标签保留、框线尽失）。
+> 这正是改为导出 SVG 的原因；相关实测结论保留在 `CHANGELOG.md`。
 
 > **基线标签要一起推**：`npm run diagrams` 依赖 `ascii-baseline` 标签（字符画时代的快照）。
+> 该脚本现在把**正文文字 + 引用 SVG 里的 `<text>` 内容**一起当作“页面可见文字”，所以导出成图片不会让它失效。
 > 首次推送时执行 `git push origin main --follow-tags`（或 `git push origin ascii-baseline`）；
 > 别人克隆后若没有该标签，脚本会自动退回 `HEAD` 并在无标签时给出提示。
 
 ## 六、自检与交付
 
 ```bash
-node tools/check-diagrams.mjs            # 全库丢字校验，必须 ✓（0 处丢字）
+node tools/export-diagrams.mjs --build   # figures/*.html → docs/<lang>/assets/diagrams/*.svg
+node tools/export-diagrams.mjs --check   # 引用完整、无残留 HTML 块、图数与源码一一对应
+node tools/check-diagrams.mjs            # 全库丢字校验（正文 + SVG 内文字），必须 ✓
 node tools/check-diagrams.mjs --list     # 看你负责的文件是否 N/N
 ```
 

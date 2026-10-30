@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="506" viewBox="0 0 860 506" role="img">
+<rect x="0" y="0" width="860" height="505.38" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<rect x="108.84" y="18.66" width="642.3" height="108.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">Domain Layer</text>
+<text x="429.99" y="68.77" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Defines business concepts, OSPF native units (Kilogram/Hour), computation relations and constraint</text>
+<text x="429.98" y="89.06" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">semantic templates</text>
+<text x="429.98" y="112.77" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Iron rule: a domain aggregate root never holds any solver variable, model handle or solve session</text>
+<text x="422.63" y="144.16" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="251.84" y="157.26" font-family="'Noto Sans SC'" font-size="11.776px" font-weight="500" fill="rgb(91, 107, 123)" text-anchor="start">Exposes the dual entry points of pure computation and symbols</text>
+<rect x="108.84" y="164.08" width="642.3" height="129" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="189.09" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">Algorithm Layer — frontend meta-model LinearMetaModel</text>
+<text x="429.98" y="214.33" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Assembles a single-solve meta-model from general OSPF symbols (URealVar /</text>
+<text x="429.98" y="234.38" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">LinearExpressionSymbol) and built-in function operators (SemiFunction / SlackFunction /</text>
+<text x="429.98" y="254.43" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">IfThenFunction)</text>
+<text x="429.98" y="278.38" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Binds to no native API of any specific commercial or open-source solver</text>
+<text x="422.63" y="309.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="241.98" y="322.87" font-family="'Noto Sans SC'" font-size="11.776px" font-weight="500" fill="rgb(91, 107, 123)" text-anchor="start">Calls LinearMechanismModel(metaModel) for lowering compilation</text>
+<rect x="108.84" y="329.56" width="642.3" height="155.69" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="354.7" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">OSPF mid-end compiler and backend solver plugin layer (LinearMechanismModel &amp;</text>
+<text x="429.99" y="377.32" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">Solver Plugins)</text>
+<text x="429.98" y="402.56" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Recursively expands every higher-order function operator, performing like-term collapsing, constant</text>
+<text x="429.98" y="422.61" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">folding and degree / capability checks</text>
+<text x="429.98" y="446.56" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Lowers to a sparse matrix view and binds it to the unified LinearSolver interface</text>
+<text x="429.98" y="470.51" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Switches between Gurobi / Cplex / SCIP / Cbc / Hexaly solver plugins with zero business-code changes</text>
+</svg>

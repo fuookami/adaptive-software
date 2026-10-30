@@ -27,48 +27,7 @@ Let us first list the **15 key architectural points** required to build a modern
 
 Once we draw the support and constraint relations among these 15 points as a complete architectural dependency topology, the mechanical structure of the whole building becomes clear at a glance:
 
-<div class="dg" role="img" aria-label="Point 8: formal domain model (the system, OR, ML and agent sides share domain concepts) supports downward point 5 (algorithm and system definitions agree), point 6 (safe injection of dynamic constraints), point 7 (transparent, queryable intermediate values), point 12 (dynamic digital-twin projection) and point 15 (agent business reasoning), where (this reinforces points 1 and 8 in reverse); points 6 and 7 flow into [point 4: algorithms can be orchestrated white-box by the application layer] (avoiding exposing only an opaque black-box service interface), landing on [point 10] lightweight high-frequency simulatability and [points 6 / 7] becoming engineering reality; [point 11] planned / estimated / actual + version snapshots supports [point 10] upward and unfolds [point 10] simulation comparison, [point 12] digital-twin projection and [point 13] rolling rescheduling and process orchestration downward, then on to [point 15] agents reason about impact scope and candidate plans and [point 14] agents generate dynamic constraints and process adaptation; [point 1: business logic cohesion] [point 2: domain and framework separation] [point 3: repository as interface] converge on [point 9: testability of pure computation] (unit tests directly, without starting Spring, connecting a database or calling remote services).">
-<div class="dg-col">
-<div class="dg-node dg-node--key"><span class="dg-t">Point 8: formal domain model</span><span class="dg-s">(system, OR, ML and agent sides share domain concepts)</span></div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-row">
-<div class="dg-node dg-node--leaf"><span class="dg-t">[Point 5]</span><span class="dg-s">Algorithm and system definitions agree</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">[Point 6]</span><span class="dg-s">Safe injection of dynamic constraints</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">[Point 7]</span><span class="dg-s">Transparent, queryable intermediates</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">[Point 12]</span><span class="dg-s">Dynamic digital-twin projection</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">[Point 15]</span><span class="dg-s">Agent business reasoning</span></div>
-</div>
-<div class="dg-loop">↺ (reinforces points 1 and 8 in reverse)</div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Point 4: algorithms can be orchestrated white-box by the application layer</span><span class="dg-s">(avoid exposing only an opaque black-box service interface)</span></div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-row">
-<div class="dg-node dg-node--leaf"><span class="dg-t">[Point 10]</span><span class="dg-s">Lightweight, high-frequency simulatability</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">[Point 6 / 7]</span><span class="dg-s">Become engineering reality</span></div>
-</div>
-<div class="dg-down" aria-hidden="true">↑</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Point 11</span><span class="dg-s">Planned / estimated / actual + version snapshots</span></div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-row">
-<div class="dg-node dg-node--leaf"><span class="dg-t">[Point 10]</span><span class="dg-s">Simulation comparison</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">[Point 12]</span><span class="dg-s">Digital-twin projection</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">[Point 13]</span><span class="dg-s">Rolling rescheduling and process orchestration</span></div>
-</div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node"><span class="dg-t">[Point 15]</span><span class="dg-s">Agent reasons about impact scope and candidate plans</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node"><span class="dg-t">[Point 14]</span><span class="dg-s">Agent generates dynamic constraints and process adaptation</span></div>
-</div>
-<div class="dg-group">
-<div class="dg-col">
-<div class="dg-node"><span class="dg-t">Point 1: business logic cohesion</span></div>
-<div class="dg-node"><span class="dg-t">Point 2: domain and framework separation</span></div>
-<div class="dg-node"><span class="dg-t">Point 3: repository as interface</span></div>
-</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">[Point 9: testability of pure computation]</span><span class="dg-s">(unit tests directly, without Spring, a database or remote services)</span></div>
-</div>
-</div>
+![Point 8: formal domain model (the system, OR, ML and agent sides share domain concepts) supports downward point 5 (algorithm and system definitions agree), point 6 (safe injection of dynamic constraints), point 7 (transparent, queryable intermediate values), point 12 (dynamic digital-twin projection) and point 15 (agent business reasoning), where (this reinforces points 1 and 8 in reverse); points 6 and 7 flow into point 4: algorithms can be orchestrated white-box by the application layer (avoiding exposing only an opaque black-box service interface), landing on point 10 lightweight high-frequency simulatability and points 6 / 7 becoming engineering reality; point 11 planned / estimated / actual + version snapshots supports point 10 upward and unfolds point 10 simulation comparison, point 12 digital-twin projection and point 13 rolling rescheduling and process orchestration downward, then on to point 15 agents reason about impact scope and candidate plans and point 14 agents generate dynamic constraints and process adaptation; point 1: business logic cohesion point 2: domain and framework separation point 3: repository as interface converge on point 9: testability of pure computation (unit tests directly, without starting Spring, connecting a database or calling remote services).](assets/diagrams/chapter-11-1.svg)
 
 In Chapter 5 we already dissected the first layer of dependency (point 8, the formal domain model, is the root of everything); now let us focus on how the **second through sixth layers of dependency** mesh so tightly:
 
@@ -114,28 +73,7 @@ Why draw a strict boundary between "local propagation" and "a full reschedule"?
 
 The application layer therefore divides the process into three clear tiers by deterministic policy:
 
-<div class="dg" role="img" aria-label="Actual floor execution feedback enters (e.g. T1 actually finishes 30 minutes late), and first enters tier one, local propagation in the domain computation model (system-side pure numeric computation, millisecond level); then [the application-layer deterministic boundary and conflict guard check] judges: on [within bounds and no global conflict], keep the original baseline plan sequence and only update the digital-twin estimated state and keep monitoring; on [threshold exceeded or a resource conflict arises], enter tier two/three: OR solving and simulation comparison.">
-<div class="dg-col">
-<div class="dg-node"><span class="dg-t">[Actual floor execution feedback enters (e.g. T1 actually finishes 30 minutes late)]</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Tier 1: local propagation in the domain computation model (system-side pure numeric computation, millisecond level)</span><span class="dg-s">• Along the predecessor/successor operation chain and the line calendar, recompute the estimated time windows of successors such as T2</span><span class="dg-s">• Recompute the estimated feeding quantity and estimated resource occupancy in the affected time buckets</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">[Application-layer deterministic boundary and conflict guard check]</span><span class="dg-s">• Does the estimated end time fall outside the order delivery window or exceed the deviation tolerance threshold?</span><span class="dg-s">• Does it trigger a cross-line resource conflict (shared feeding port, shared fixture, kitting inventory)?</span></div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-row">
-<div class="dg-col">
-<div class="dg-node"><span class="dg-t">[Within bounds and no global conflict]</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node"><span class="dg-t">Keep the original baseline plan sequence, only update</span><span class="dg-s">digital-twin estimated state and keep monitoring</span></div>
-</div>
-<div class="dg-col">
-<div class="dg-node"><span class="dg-t">[Threshold exceeded or a resource conflict arises]</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node"><span class="dg-t">Tier 2/3: OR solving and simulation comparison</span><span class="dg-s">• Plan A: restricted local-window reschedule</span><span class="dg-s">• Plan B: global rolling reschedule recomputation</span><span class="dg-s">Confirm and release after digital-twin simulation comparison</span></div>
-</div>
-</div>
-</div>
-</div>
+![Actual floor execution feedback enters (e.g. T1 actually finishes 30 minutes late), and first enters tier one, local propagation in the domain computation model (system-side pure numeric computation, millisecond level); then the application-layer deterministic boundary and conflict guard check judges: on within bounds and no global conflict, keep the original baseline plan sequence and only update the digital-twin estimated state and keep monitoring; on threshold exceeded or a resource conflict arises, enter tier two/three: OR solving and simulation comparison.](assets/diagrams/chapter-11-2.svg)
 
 1. **Tier 1 (system-side pure numeric local propagation)**: the application layer calls the domain layer's changeover-time, production-duration and material-consumption models directly and updates the estimated times of the affected operation chain. As long as the updated estimated time does not breach the order delivery deadline, the deviation stays within the allowed threshold, and the constraint evaluator finds no violation of any cross-resource hard constraint, the system only needs to update the digital-twin estimated state and never disturbs the OR solver to change the baseline scheduling sequence.
 2. **Tier 2 (OR-side restricted local-window reschedule)**: when the deviation exceeds the local buffer but the domain graph strictly limits the impact to a few related work orders or a single workshop, the algorithm layer locks only the affected object set (such as `{T2, T3, line A, line B}`), freezes the remaining stabilized work orders as boundary constants, and runs a lightweight reschedule in seconds.
@@ -320,23 +258,7 @@ One of the most powerful weapons the OR community has for such very-large-scale 
 
 Under `ospf` and this book's DDD architecture, we break column generation into domain and algorithm collaboration components with sharply separated responsibilities, and reserve a strict safety verification boundary for the machine-learning and reinforcement-learning accelerators introduced later:
 
-<div class="dg" role="img" aria-label="The column generation collaboration loop under a DDD architecture: 1. the restricted master problem solves the linear relaxation and outputs the current dual prices, then hands down the subproblem contract carrying dual information and business boundaries to 2. the pricing subproblem contract; the pricing subproblem produces candidate columns through path A, accelerators and heuristics, and path B, exact subproblem solving, and passes them to 3. the OR Guard, which independently validates and verifies the reduced cost before re-injecting the verified improving columns.">
-<div class="dg-title">[Column generation collaboration loop under a DDD architecture]</div>
-<div class="dg-col">
-<div class="dg-node dg-node--layer"><span class="dg-t">1. Restricted master problem (RMP — OR control layer)</span><span class="dg-s">• Contains only the finitely many feasible plan columns generated so far (e.g. single-vehicle loading route columns / single-line schedule columns)</span><span class="dg-s">• Owns the globally coupled hard constraints (full order coverage, total shared feeding-port capacity, global inventory balance)</span><span class="dg-s">• Solves the linear relaxation and outputs the current dual prices (shadow prices)</span></div>
-<div class="dg-down" aria-hidden="true">↓<span class="dg-lbl">Hands down the subproblem contract with dual information and business boundaries</span></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">2. Pricing subproblem contract — domain/algorithm decoupling layer</span><span class="dg-s">• Split subproblems by independent bounded context/aggregate (e.g. one machine, one line, one truck)</span><span class="dg-s">• Goal: find a new plan column that satisfies single-resource local process/space-time constraints and has a negative reduced cost (in a minimization problem)</span></div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-row">
-<div class="dg-node dg-node--leaf"><span class="dg-t">Path A: accelerators/heuristics</span><span class="dg-s">Heuristic / controlled RL policy</span><span class="dg-s">Generate or rank candidate columns fast</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">Path B: exact subproblem solve</span><span class="dg-s">Dynamic programming / MILP / CP</span><span class="dg-s">(responsible for convergence and optimality proof)</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--leaf dg-node--key"><span class="dg-t">3. OR Guard</span><span class="dg-s">• Independently verify domain hard-constraint feasibility</span><span class="dg-s">• Independently recompute and verify the reduced cost</span></div>
-</div>
-<div class="dg-loop">↺ Re-inject the verified improving columns</div>
-</div>
-</div>
+![The column generation collaboration loop under a DDD architecture: 1. the restricted master problem solves the linear relaxation and outputs the current dual prices, then hands down the subproblem contract carrying dual information and business boundaries to 2. the pricing subproblem contract; the pricing subproblem produces candidate columns through path A, accelerators and heuristics, and path B, exact subproblem solving, and passes them to 3. the OR Guard, which independently validates and verifies the reduced cost before re-injecting the verified improving columns.](assets/diagrams/chapter-11-3.svg)
 
 The engineering essence of organizing column generation with a DDD architecture comes down to three points:
 
@@ -584,17 +506,7 @@ In a digital operations platform (DOP), many decisions naturally have a two-stag
 
 Under DDD and `ospf`, Benders decomposition is likewise built as a highly modular collaboration pipeline with a strict mathematical certification boundary:
 
-<div class="dg" role="img" aria-label="The Benders decomposition collaboration loop under a DDD architecture: 1. the Benders master problem hands down the current master fixed solution (trial solution) to 2. the Benders subproblem group; the subproblem group constructs Benders feasibility cuts and Benders optimality cuts, and passes them to 3. the cut validity verification and convergence certification guard, which certifies them before the certified feasibility/optimality cuts are re-injected.">
-<div class="dg-title">[Benders decomposition collaboration loop under a DDD architecture]</div>
-<div class="dg-col">
-<div class="dg-node dg-node--layer"><span class="dg-t">1. Benders master problem (stage-one strategic / master-plan decisions)</span><span class="dg-s">• Decides the core skeleton variables (e.g. cross-line task allocation, batch sizes, main resource start/stop)</span><span class="dg-s">• Maintains a cut pool and keeps absorbing the feasibility and optimality cuts fed back by subproblems</span><span class="dg-s">• Maintains and updates the global lower bound (for a minimization problem)</span></div>
-<div class="dg-down" aria-hidden="true">↓<span class="dg-lbl">Hands down the current master fixed solution (trial solution)</span></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">2. Benders subproblem group (stage-two per-workshop / per-scenario checks)</span><span class="dg-s">• Solved independently and in parallel per bounded context or per random scenario under the master's fixed solution</span><span class="dg-s">• If a subproblem is infeasible ──> extract the extreme ray / Farkas proof and construct a Benders feasibility cut</span><span class="dg-s">• If a subproblem has an optimum ──> extract the dual multipliers, construct a Benders optimality cut and update the upper bound</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer dg-node--key"><span class="dg-t">3. Cut validity and convergence certification guard (Cut &amp; Convergence Guard)</span><span class="dg-s">• Any candidate cut or scenario ordering proposed by a heuristic or learned policy must have its mathematical validity strictly verified from primal/dual information (it must never cut off the true global optimum!)</span><span class="dg-s">• The master's upper/lower bounds (UB/LB) and the termination gap must be computed exactly by the certified subproblems!</span></div>
-<div class="dg-loop">↺ Re-inject the certified feasibility / optimality cuts</div>
-</div>
-</div>
+![The Benders decomposition collaboration loop under a DDD architecture: 1. the Benders master problem hands down the current master fixed solution (trial solution) to 2. the Benders subproblem group; the subproblem group constructs Benders feasibility cuts and Benders optimality cuts, and passes them to 3. the cut validity verification and convergence certification guard, which certifies them before the certified feasibility/optimality cuts are re-injected.](assets/diagrams/chapter-11-4.svg)
 
 In engineering practice the Benders decomposition architecture follows three iron rules:
 1. **Master and subproblems communicate through domain snapshots and a structured cut contract**: the master problem need not perceive the complex operation or logistics detail inside a subproblem; when a subproblem finishes solving, it returns to the master a **structured cut (feasibility cut / optimality cut)** bound to a stable symbolic identity, expressing "which linear inequality the master's allocation variables must satisfy so that workshop scheduling stays feasible and not too costly".

@@ -27,19 +27,7 @@ To eradicate this confusion at the root, the base framework (`ospf-kotlin` and t
 
 Whether the solve runs in local memory, as a decomposed composite, or on remote compute, it must uniformly return a `SolveReport` containing the following core orthogonal dimensions:
 
-<div class="dg" role="img" aria-label="The unified orthogonal solve-result protocol (SolveReport) unfolds into five orthogonal dimensions: 1. mathematical problem status (problemStatus), 2. solve termination reason (terminationReason), 3. current solution presence (solutionPresence), 4. objective and bound metrics (Objective &amp; Gap), 5. provenance and attempt trace (Provenance &amp; Trace).">
-<div class="dg-col">
-<div class="dg-title">[Unified orthogonal solve-result protocol (SolveReport)]</div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-row">
-<div class="dg-node dg-node--leaf"><span class="dg-t">1. Mathematical problem status</span><span class="dg-s">(problemStatus)</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">2. Solve termination reason</span><span class="dg-s">(terminationReason)</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">3. Current solution presence</span><span class="dg-s">(solutionPresence)</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">4. Objective and bound metrics</span><span class="dg-s">(Objective &amp; Gap)</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">5. Provenance and attempt trace</span><span class="dg-s">(Provenance &amp; Trace)</span></div>
-</div>
-</div>
-</div>
+![The unified orthogonal solve-result protocol (SolveReport) unfolds into five orthogonal dimensions: 1. mathematical problem status (problemStatus), 2. solve termination reason (terminationReason), 3. current solution presence (solutionPresence), 4. objective and bound metrics (Objective &amp; Gap), 5. provenance and attempt trace (Provenance &amp; Trace).](assets/diagrams/chapter-12-1.svg)
 
 1. **`problemStatus` (mathematical problem status)**: describes the objective properties of the mathematical model itself — proven optimal (`Optimal`), proven infeasible (`Infeasible`), proven unbounded (`Unbounded`), or not yet finally proven (`Indeterminate` / `Feasible`);
 2. **`terminationReason` (solve termination reason)**: describes why the solver stopped — because it completed a mathematical convergence proof, or because it reached the time limit (`TimeLimit`), the node limit (`NodeLimit`), an iteration limit, or user cancellation (`Cancelled`), or because it hit numerical ill-conditioning, a license failure or an infrastructure error;
@@ -289,17 +277,7 @@ With the orthogonal `SolveReport` and honest mathematical diagnostic evidence in
 
 What this book means by "self-explanation" is **by no means letting the solver dump a pile of logs and then having a large language model invent a plausible-sounding excuse from them**. It is a **four-layer self-explanation architecture** with clearly divided authority and responsibility — each layer, strictly on the structured evidence handed up by the layer below, performs the explanation transformation that falls within its own remit:
 
-<div class="dg" role="img" aria-label="The four-layer self-explanation architecture from top to bottom: layer one, solver and compute backend (Solver / Backend Layer) → layer two, OSPF base framework layer (Base Framework Layer) → layer three, algorithm layer and APS/DOP application layer (Algorithm &amp; Application Layer) → layer four, workbench presentation layer and agent layer (Presentation &amp; Agent Layer).">
-<div class="dg-col">
-<div class="dg-node dg-node--layer"><span class="dg-t">Layer 1: Solver and compute backend (Solver / Backend Layer)</span><span class="dg-s">• Produces the raw solve status, variable solution values, objective value, bounds and low-level mathematical evidence (IIS/duals, etc.)</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Layer 2: OSPF base framework layer (Base Framework Layer)</span><span class="dg-s">• Encapsulates the unified orthogonal SolveReport, stable model element IDs, evidence capability grades, the mathematical model fingerprint (Fingerprint) and the composite solve attempt trace (Attempt Trace)</span><span class="dg-s">• Boundary: understands only generic mathematical reports and algebraic diagnostics, and does not know which order is late or which machine conflicts</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Layer 3: Algorithm layer and APS/DOP application layer (Algorithm &amp; Application Layer)</span><span class="dg-s">• Algorithm layer: keeps the mathematical semantics and maps element IDs back to domain variables, constraint templates, objectives and intermediate values</span><span class="dg-s">• Application layer: binds mathematical evidence to concrete business objects (order/production line/task/location), frozen version snapshots, business KPI comparisons and tenant permission boundaries</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer dg-node--key"><span class="dg-t">Layer 4: Workbench presentation layer and agent layer (Presentation &amp; Agent Layer)</span><span class="dg-s">• Visualizes feasibility, KPI breakdown, slack and the conflicting constraint set (IIS) in the workbench</span><span class="dg-s">• The agent summarizes authorized structured evidence, compares candidate plans and explains in localized business language</span><span class="dg-s">• Iron rule: the agent must never rewrite the solve status, never invent an IIS, and never override a hard constraint with a confidence score!</span></div>
-</div>
-</div>
+![The four-layer self-explanation architecture from top to bottom: layer one, solver and compute backend (Solver / Backend Layer) → layer two, OSPF base framework layer (Base Framework Layer) → layer three, algorithm layer and APS/DOP application layer (Algorithm &amp; Application Layer) → layer four, workbench presentation layer and agent layer (Presentation &amp; Agent Layer).](assets/diagrams/chapter-12-2.svg)
 
 Let us walk through an intuitive example: when the "shared feeding-port cap (1000 kg)" conflicts with the "hard constraint that a rush order must finish today" and the model becomes infeasible, how do these four layers work together to produce an airtight self-explaining report?
 

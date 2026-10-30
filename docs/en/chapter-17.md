@@ -42,13 +42,7 @@ Why can't every capability stay dynamic at runtime forever?
 
 So in our top-level architecture, **the large language model runtime (LLM Runtime)** and **software product line engineering (SPLE)** form a perfect two-wheel drive of exploration and absorption:
 
-<div class="dg" role="img" aria-label="Two-wheel drive of exploration and absorption: the LLM runtime (exploration layer) provides evidence to software product line engineering, SPLE (absorption layer).">
-<div class="dg-row">
-<div class="dg-node"><span class="dg-t">LLM runtime (exploration layer)</span><span class="dg-s">Meets unknown, low-frequency, incompletely expressed new change on the floor</span><span class="dg-s">Understands intent, runs trial calculations and fails safe at very low marginal cost</span><span class="dg-s">Mission: explore what the software still lacks at low cost</span></div>
-<div class="dg-edge">→<span class="dg-lbl">provides evidence</span></div>
-<div class="dg-node"><span class="dg-t">Software product line engineering, SPLE (absorption layer)</span><span class="dg-s">Builds on real runtime repetition evidence across time and across customers</span><span class="dg-s">Governs commonality and variability</span><span class="dg-s">Mission: absorb changes already proven effective with high reliability</span></div>
-</div>
-</div>
+![Two-wheel drive of exploration and absorption: the LLM runtime (exploration layer) provides evidence to software product line engineering, SPLE (absorption layer).](assets/diagrams/chapter-17-1.svg)
 
 In short: **the LLM explores unknown change at low cost, and software product line engineering absorbs known change with high reliability**. Only a change that has accumulated real runtime evidence, passed formal verification and proved reusable across scenarios earns the right to be promoted step by step from dynamic candidate into the long-term product structure.
 
@@ -60,28 +54,7 @@ As we pointed out in Chapter 9, SPLE is not a seventh sequential step in the cha
 
 When a new requirement is born on the operations floor — say the shared feeding-port capacity limit across multiple production lines that we have rehearsed several times, or a particular post-scheduling substitute-material recalculation flow — SPLE places it in a clear **four-tier capability promotion ladder** for full lifecycle management, according to its repetition evidence along the time dimension and the customer dimension:
 
-<div class="dg" role="img" aria-label="Four-tier capability promotion funnel: 1. new runtime change → 2. variability discovery → 3. controlled specialized capability → 4. repetition evidence established → 5. product line uplift → 6. core architecture evolution, settling downward into L1 temporary capability, L2 customer-specific capability, L3 product variability point and L4 stable core capability.">
-<div class="dg-row">
-<div class="dg-node"><span class="dg-t">1. New runtime change</span><span class="dg-s">Raised by users / the floor</span><span class="dg-s">Unknown new rule differences</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">2. Variability discovery</span><span class="dg-s">Events and runtime profiling</span><span class="dg-s">A repeating pattern is identified</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">3. Controlled specialized capability</span><span class="dg-s">Generate + verify + safe execution and fallback</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">4. Repetition evidence established</span><span class="dg-s">Recurs across time periods / across customers</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">5. Product line uplift</span><span class="dg-s">Abstract the dimension of difference</span><span class="dg-s">A formal variability point is formed</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">6. Core architecture evolution</span><span class="dg-s">Highly stable commonality</span><span class="dg-s">Sinks into the platform standard core</span></div>
-</div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-group">
-<div class="dg-node dg-node--leaf">L1: temporary capability</div>
-<div class="dg-node dg-node--leaf">L2: customer-specific capability</div>
-<div class="dg-node dg-node--leaf">L3: product variability point</div>
-<div class="dg-node dg-node--leaf">L4: stable core capability</div>
-</div>
-</div>
+![Four-tier capability promotion funnel: 1. new runtime change → 2. variability discovery → 3. controlled specialized capability → 4. repetition evidence established → 5. product line uplift → 6. core architecture evolution, settling downward into L1 temporary capability, L2 customer-specific capability, L3 product variability point and L4 stable core capability.](assets/diagrams/chapter-17-2.svg)
 
 The decision criteria and the product-engineering treatment of these four capability tiers are defined strictly as follows:
 

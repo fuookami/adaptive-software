@@ -14,11 +14,7 @@ Because the developers made a fundamental architectural mistake: **letting the l
 
 Under the Agent-Native architecture, the real meaning of "native" is this: **the formal domain model is itself a structured semantic contract that an agent can read, understand, compose and reference directly**. The system no longer hides business knowledge inside procedural code; through the application layer it explicitly exposes to the agent a machine-readable **structured domain metadata catalog (Structured Domain Metadata Catalog)** — as if we had handed the agent an authoritative "enterprise business dictionary and composition grammar":
 
-<div class="dg" role="img" aria-label="Structured domain metadata catalog exposed to the agent, branching into five groups: 1. referencable concepts and variables (Variables &amp; Symbols), 2. named business intermediate values (Intermediates), 3. structured constraint templates (Constraint Tpls), 4. composable flow node contracts (Flow Node Contracts), 5. applicable boundaries and error codes (Scopes &amp; Error Codes).">
-<div class="dg-title">Structured domain metadata catalog exposed to the agent</div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-group"><div class="dg-node dg-node--leaf"><span class="dg-t">1. Referencable concepts and variables</span><span class="dg-s">(Variables &amp; Symbols)</span></div><div class="dg-node dg-node--leaf"><span class="dg-t">2. Named business intermediate values</span><span class="dg-s">(Intermediates)</span></div><div class="dg-node dg-node--leaf"><span class="dg-t">3. Structured constraint templates</span><span class="dg-s">(Constraint Tpls)</span></div><div class="dg-node dg-node--leaf"><span class="dg-t">4. Composable flow node contracts</span><span class="dg-s">(Flow Node Contracts)</span></div><div class="dg-node dg-node--leaf"><span class="dg-t">5. Applicable boundaries and error codes</span><span class="dg-s">(Scopes &amp; Error Codes)</span></div></div>
-</div>
+![Structured domain metadata catalog exposed to the agent, branching into five groups: 1. referencable concepts and variables (Variables &amp; Symbols), 2. named business intermediate values (Intermediates), 3. structured constraint templates (Constraint Tpls), 4. composable flow node contracts (Flow Node Contracts), 5. applicable boundaries and error codes (Scopes &amp; Error Codes).](assets/diagrams/chapter-14-1.svg)
 
 Concretely, this domain metadata catalog declares to the agent at least the following five classes of core elements:
 
@@ -80,19 +76,7 @@ In the digital operations platform (DOP / APS), the semantic intermediate repres
 
 To let you feel the power of "agent semantic frontend + semantic intermediate representation + dynamic constraint compiler" first-hand, let us walk the whole benchmark scenario that runs through this book: **how one temporary rule spoken by a shop-floor person is safely compiled into a mathematical constraint in the `ospf` OR optimization engine**.
 
-<div class="dg" role="img" aria-label="The five steps of the dynamic constraint transformation chain, joined in order: 1. the user's business rule, 2. the LLM semantic frontend, 3. the constraint intermediate representation (Constraint IR), 4. the dynamic constraint compiler, 5. the algorithm execution backend.">
-<div class="dg-row">
-<div class="dg-node"><span class="dg-t">1. User business rule</span><span class="dg-s">"Today lines A and B share a feeding port, not more than 1000 kg"</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">2. LLM semantic frontend</span><span class="dg-s">Combines metadata and context to generate a structured candidate</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">3. Constraint intermediate representation</span><span class="dg-s">(Constraint IR) constraint definition + expression + symbol references</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">4. Dynamic constraint compiler</span><span class="dg-s">Field capability and permission validation + symbol registry resolution</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">5. Algorithm execution backend</span><span class="dg-s">OSPF LinearInequality injected into LinearMetaModel</span></div>
-</div>
-</div>
+![The five steps of the dynamic constraint transformation chain, joined in order: 1. the user's business rule, 2. the LLM semantic frontend, 3. the constraint intermediate representation (Constraint IR), 4. the dynamic constraint compiler, 5. the algorithm execution backend.](assets/diagrams/chapter-14-2.svg)
 
 ### Step 1: The user states a floor rule in natural language
 At `10:00` on Tuesday morning, a shop-floor worker enters the natural-language rule: "Today lines A and B share one feeding port; total feeding must not exceed 1000 kilograms."

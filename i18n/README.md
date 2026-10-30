@@ -40,7 +40,8 @@ docs/zh/chapter-12.md ⇄  docs/en/chapter-12.md
 - **拼写**：美式（`optimization` / `specialization` / `normalize` / `modeling`）。数字与单位保留原样（`1000 kg`、`90%`、`Gap`）。
 - **代码**：标识符、类型名、API 名**永不翻译**（`LinearPolynomial`、`SolveReport`、`Ret<T>`）；注释可以译，但要保持与中文页逐行对应，方便两边一起修。
 - **公式与量纲**：`ospf` 的表达式、约束式、单位写法一律原样保留，不做“可读性改写”。
-- **图示**：44 张图是 HTML 组件（`dg-*`），翻译时同步重绘**图内标签**，结构不动，规范见
+- **图示**：45 张图各有一份 HTML 源码在 `figures/<lang>/`，正文只引用导出的 SVG；翻译时改 `figures/en/` 里的源码再
+  `npm run figures` 重新导出，结构不动，规范见
   [../tools/DIAGRAM-KIT.md](../tools/DIAGRAM-KIT.md)。只译正文不译图内标签，会被图示保真闸拦下。
 - **引用与书名**：中文书名《从代码到意图：构建会进化的自适应软件》，英文书名 *From Code to Intent — Building Software That Evolves*；
   两版互链时用对应书名。

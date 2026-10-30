@@ -1,0 +1,18 @@
+<div class="dg" role="img" aria-label="Collaboration chain of OR in control, RL acceleration and exact fallback: the formal domain model plus a frozen scheduling solve snapshot; OR optimization first builds the restricted master problem or the Benders master problem, then issues the subproblem contract to the ML / RL accelerator, whose submitted internal candidates go to the OR deterministic verification guard; if verification passes, they feed back into the master problem and fast iteration continues; if verification fails or candidate gain is insufficient, the path goes to an exact subproblem or deterministic heuristic mandatory fallback; both paths finally converge into the OR decision on final convergence.">
+<div class="dg-col">
+<div class="dg-node dg-node--layer"><span class="dg-t">Formal domain model + frozen scheduling solve snapshot</span></div>
+<div class="dg-down" aria-hidden="true">↓</div>
+<div class="dg-node dg-node--layer"><span class="dg-t">1. OR builds the restricted master problem (RMP) / Benders master problem</span><span class="dg-s">Holds global hard constraints, current bounds and the convergence stopping criteria</span></div>
+<div class="dg-down">↓<span class="dg-lbl">Issues the subproblem contract with master state, dual information and business boundaries</span></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">2. Machine learning / reinforcement learning (ML / RL learned subproblem accelerator)</span><span class="dg-s">Rapidly generates or ranks candidate columns, candidate cuts, candidate subproblem solutions or warm-start hints</span></div>
+<div class="dg-down">↓<span class="dg-lbl">Submits internal candidates</span></div>
+<div class="dg-node dg-node--key dg-node--layer"><span class="dg-t">3. OR deterministic verification guard (OR Verification Guard)</span><span class="dg-s">Strictly checks domain hard-constraint feasibility, reduced cost, and the mathematical validity of Benders cut planes and bounds</span></div>
+<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
+<div class="dg-row">
+<div class="dg-group"><div class="dg-gt">Verification passed</div><div class="dg-node"><span class="dg-t">Feed back into the master problem and keep iterating fast</span></div></div>
+<div class="dg-group"><div class="dg-gt">Verification failed or candidate gain insufficient</div><div class="dg-node dg-node--key"><span class="dg-t">4. Exact subproblem or deterministic heuristic mandatory fallback (Exact Fallback)</span></div></div>
+</div>
+<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
+<div class="dg-node dg-node--layer"><span class="dg-t">5. OR decides final convergence from the certified bounds and termination conditions</span></div>
+</div>
+</div>

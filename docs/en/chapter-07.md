@@ -45,17 +45,7 @@ To eliminate "two sets of formula code" at the root, the core idea is in fact ve
 
 In `ospf-kotlin` (`fuookami.ospf.kotlin.core.frontend.expression`), a native and extensible intermediate-representation system for scalar expressions and Boolean relational expressions is already provided:
 
-<div class="dg" role="img" aria-label="The OSPF (fuookami.ospf.kotlin.core.frontend.expression) expression system, branching downward into five arms: decision variable terms (AbstractVariable) with BinVar / IntVar and URealVar / RealVar; monomials (Monomial) with LinearMonomial and QuadraticMonomial; polynomials (Polynomial) with LinearPolynomial, QuadraticPolynomial and (immutable/mutable polynomials); named intermediate symbols (Symbol) with LinearIntermediate, LinearExpressionSym and QuadraticExpression; and function-operator symbols with SlackFunction, SemiFunction and ULP / IfThen ...">
-<div class="dg-title">OSPF (fuookami.ospf.kotlin.core.frontend.expression) expression system</div>
-<div class="dg-arms"><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div><div class="dg-arm">↓</div></div>
-<div class="dg-group">
-<div class="dg-node dg-node--leaf"><span class="dg-t">Decision variable terms (AbstractVariable)</span><span class="dg-s">BinVar / IntVar</span><span class="dg-s">URealVar / RealVar</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">Monomials (Monomial)</span><span class="dg-s">LinearMonomial</span><span class="dg-s">QuadraticMonomial</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">Polynomials (Polynomial)</span><span class="dg-s">LinearPolynomial</span><span class="dg-s">QuadraticPolynomial</span><span class="dg-s">(immutable/mutable polynomials)</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">Named intermediate symbols (Symbol)</span><span class="dg-s">LinearIntermediate</span><span class="dg-s">LinearExpressionSym</span><span class="dg-s">QuadraticExpression</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">Function-operator symbols</span><span class="dg-s">SlackFunction</span><span class="dg-s">SemiFunction</span><span class="dg-s">ULP / IfThen ...</span></div>
-</div>
-</div>
+![The OSPF (fuookami.ospf.kotlin.core.frontend.expression) expression system, branching downward into five arms: decision variable terms (AbstractVariable) with BinVar / IntVar and URealVar / RealVar; monomials (Monomial) with LinearMonomial and QuadraticMonomial; polynomials (Polynomial) with LinearPolynomial, QuadraticPolynomial and (immutable/mutable polynomials); named intermediate symbols (Symbol) with LinearIntermediate, LinearExpressionSym and QuadraticExpression; and function-operator symbols with SlackFunction, SemiFunction and ULP / IfThen ...](assets/diagrams/chapter-07-1.svg)
 
 Four engineering conventions must be followed strictly at the architectural level when designing and using this `Expression IR`:
 
@@ -70,22 +60,7 @@ Four engineering conventions must be followed strictly at the architectural leve
 
 Relying on `ospf-kotlin`'s expressions and named intermediate symbols, we can build the standard architectural pattern of a **"shared business core with numeric/symbolic dual entry points"** (single-source dual entry points) in the domain layer.
 
-<div class="dg" role="img" aria-label="Domain concepts, computation rules, conversion coefficients and branching specifications (the single authoritative business convention) flow into the shared business core (Shared Core), which is then contrasted left and right with two entry points: the system-side numeric entry — input: Quantity&lt;Flt64&gt; (concrete value + unit), output: Ret&lt;Quantity&lt;Flt64&gt;&gt;; the operations-research symbolic/modeling entry — input: OSPF decision variables / upstream symbols, output: Ret&lt;Quantity&lt;LinearExpressionSymbol&gt;&gt;; the two entries then converge for automatic equivalence verification, followed by LinearMetaModel compilation and low-level solver capability checks.">
-<div class="dg-col">
-<div class="dg-node dg-node--layer"><span class="dg-t">Domain concepts, computation rules, conversion coefficients and branching specifications (the single authoritative business convention)</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Shared business core (Shared Core)</span></div>
-<div class="dg-arms"><div class="dg-arm">↓</div><div class="dg-arm">↓</div></div>
-<div class="dg-row">
-<div class="dg-node"><span class="dg-t">System-side numeric entry</span><span class="dg-s">Input: Quantity&lt;Flt64&gt; (concrete value + unit)</span><span class="dg-s">Output: Ret&lt;Quantity&lt;Flt64&gt;&gt;</span></div>
-<div class="dg-node"><span class="dg-t">Operations-research symbolic/modeling entry</span><span class="dg-s">Input: OSPF decision variables / upstream symbols</span><span class="dg-s">Output: Ret&lt;Quantity&lt;LinearExpressionSymbol&gt;&gt;</span></div>
-</div>
-<div class="dg-arms"><div class="dg-arm">↓</div><div class="dg-arm">↓</div></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Automatic equivalence verification</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">LinearMetaModel compilation and low-level solver capability checks</span></div>
-</div>
-</div>
+![Domain concepts, computation rules, conversion coefficients and branching specifications (the single authoritative business convention) flow into the shared business core (Shared Core), which is then contrasted left and right with two entry points: the system-side numeric entry — input: Quantity&lt;Flt64&gt; (concrete value + unit), output: Ret&lt;Quantity&lt;Flt64&gt;&gt;; the operations-research symbolic/modeling entry — input: OSPF decision variables / upstream symbols, output: Ret&lt;Quantity&lt;LinearExpressionSymbol&gt;&gt;; the two entries then converge for automatic equivalence verification, followed by LinearMetaModel compilation and low-level solver capability checks.](assets/diagrams/chapter-07-2.svg)
 
 As the figure shows, this architecture draws clear responsibility boundaries between the domain layer, the algorithm layer and the solver adapter layer:
 * **Domain layer (the single owner of business semantics)**: maintains exactly one authoritative set of domain concepts, computation rules, scrap coefficients and conditional branching specifications. It exposes two entry points through the shared business core. When the system side (BOM explosion, substitute-material consumption recomputation, digital-twin projected-time propagation) calls the **numeric entry**, it passes a `Quantity<Flt64>` that carries a native `PhysicalUnit` and gets the computed result directly; when the operations-research side calls the **symbolic/modeling entry**, the domain layer produces a `Quantity<LinearExpressionSymbol>` (a named intermediate symbol carrying a physical unit) that references the same coefficients and branching logic.

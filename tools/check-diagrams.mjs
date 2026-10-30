@@ -247,8 +247,63 @@ function baselineText(ref, name) {
   return null;
 }
 
+/**
+ * 图示的“可见文字”现在落在导出的 SVG 里（正文只留图片引用），
+ * 因此保真校验要把页面引用的 SVG 中 <text> 的内容也算作页面可见文字。
+ */
+function svgText(pageText) {
+  const out = [];
+  for (const m of pageText.matchAll(/!\[[^\]]*\]\((assets\/diagrams\/[^)\s]+)\)/g)) {
+    const p = path.join(DOCS, m[1]);
+    if (!fs.existsSync(p)) continue;
+    const svg = fs.readFileSync(p, 'utf8');
+    for (const t of svg.matchAll(/<text[^>]*>([\s\S]*?)<\/text>/g)) {
+      out.push(
+        t[1]
+          .replace(/&lt;/g, '<')
+          .replace(/&gt;/g, '>')
+          .replace(/&amp;/g, '&')
+          .replace(/&quot;/g, '"')
+          .replace(/&#39;/g, "'"),
+      );
+    }
+  }
+  return out.join('\n');
+}
+
 function structureOnly() {
   const bad = [];
+  const figRoot = path.join(ROOT, 'figures');
+  const dirs = fs.existsSync(figRoot)
+    ? fs.readdirSync(figRoot).filter((d) => fs.statSync(path.join(figRoot, d)).isDirectory()).sort()
+    : [];
+
+  if (dirs.length) {
+    let files = 0;
+    for (const d of dirs) {
+      const dir = path.join(figRoot, d);
+      for (const f of fs.readdirSync(dir).filter((n) => n.endsWith('.html')).sort()) {
+        const text = fs.readFileSync(path.join(dir, f), 'utf8');
+        files++;
+        const blocks = (text.match(/^<div class="dg"/gm) || []).length;
+        if (blocks !== 1) bad.push(`figures/${d}/${f}: 应恰有 1 个图示块，实际 ${blocks} 个`);
+        bad.push(...structureProblems(text, `figures/${d}/${f}`));
+      }
+    }
+    if (bad.length) {
+      console.error(`✗ 图示源码结构问题（${bad.length} 处）：`);
+      for (const b of bad.slice(0, 30)) console.error('  · ' + b);
+      if (bad.length > 30) console.error(`  … 另有 ${bad.length - 30} 处`);
+      process.exitCode = 1;
+      return;
+    }
+    console.log(
+      `✓ 图示源码结构自检通过（${dirs.length} 个语言、${files} 张图：块闭合、无空行、顶格、无 Markdown 残留）`,
+    );
+    return;
+  }
+
+  // 迁移前的回落：图示还内联在页面里
   let pages = 0;
   for (const dirRel of ALL_LANG_DIRS) {
     const dir = path.join(ROOT, dirRel);
@@ -283,7 +338,8 @@ function main() {
     const oldText = baselineText(REF, f);
     if (oldText == null) continue;
     const newText = fs.readFileSync(path.join(DOCS, f), 'utf8');
-    const newVisible = visible(newText);
+    const augText = newText + '\n' + svgText(newText);
+    const newVisible = visible(augText);
 
     const srcDiagrams = fences(oldText).filter(isDiagram);
     if (!srcDiagrams.length) continue;
@@ -332,6 +388,16 @@ function main() {
 
   // 结构自检（与丢字校验同级，始终执行，覆盖所有语言书根）
   const structural = [];
+  const figRoot = path.join(ROOT, 'figures');
+  if (fs.existsSync(figRoot)) {
+    for (const d of fs.readdirSync(figRoot).sort()) {
+      const fdir = path.join(figRoot, d);
+      if (!fs.statSync(fdir).isDirectory()) continue;
+      for (const f of fs.readdirSync(fdir).filter((n) => n.endsWith('.html')).sort()) {
+        structural.push(...structureProblems(fs.readFileSync(path.join(fdir, f), 'utf8'), `figures/${d}/${f}`));
+      }
+    }
+  }
   for (const dirRel of ALL_LANG_DIRS) {
     const dir = path.join(ROOT, dirRel);
     for (const f of fs.readdirSync(dir).filter((n) => n.endsWith('.md')).sort()) {
@@ -359,11 +425,12 @@ function main() {
       const oldText = baselineText(REF, f);
       if (oldText == null) continue;
       const newText = fs.readFileSync(path.join(DOCS, f), 'utf8');
+      const augText = newText + '\n' + svgText(newText);
       // 基线的“可见文字大海”：词元只要能在其中作为连续片段找到，就不算新增
       // （字符画里一行常被折成两行、多列交错排版，连句后在原文件里本就不连续）
       const oldBlob = visible(applyCorrections(oldText));
       const whitelist = allowed.get(f) || new Set();
-      for (const tok of tokensOf(newText)) {
+      for (const tok of tokensOf(augText)) {
         if (oldBlob.includes(tok) || whitelist.has(tok)) continue;
         added.push({ file: rel, tok });
       }

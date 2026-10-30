@@ -10,36 +10,7 @@ By this point we have assembled every theoretical piece and every core engineeri
 
 Let us return one last time to the Tuesday-morning `10:00` production scheduling storm from the opening of Chapter 1 — the scene that leaves a traditional system paralyzed — and watch how, under the **"Adaptive DOP / APS architecture"** we have built, the eight architectural layers, the three-native capabilities and the dual closed loops work together, as smoothly as flowing water, to dissolve the crisis:
 
-<div class="dg" role="img" aria-label="Panoramic collaborative architecture of the Adaptive DOP / APS: long-term vision (Adaptive Software) ↓ LLM as Runtime ↓ splits in two into user intent (LLM / agent semantic frontend) and runtime profiling (stable high-frequency patterns) → merging into the semantic intermediate representation (Query / Constraint / Flow IR) ↓ the formal domain model (carried by OSPF: domain language / type and dimension system) ↓ the semantic compiler (validation / normalization / optimization / lowering) ↓ splits in three into the deterministic system runtime (ERP/MES/WMS/TMS state and numeric computation), the OR runtime (MILP / column generation / Benders / certification) and the ML runtime (capacity and duration distribution prediction / constrained RL / parameter calibration) → merging into the digital twin and event sourcing (memory of the past / state of the present / projection of the future) ↓ controlled production execution and learning ↺ feeding back into: runtime profiling / capability promotion / SPLE product line evolution.">
-<div class="dg-title">Panoramic collaborative architecture of the Adaptive DOP / APS</div>
-<div class="dg-col">
-<div class="dg-node"><span class="dg-t">Long-term vision</span><span class="dg-s">Adaptive Software</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node"><span class="dg-t">LLM as Runtime</span></div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-group">
-<div class="dg-node dg-node--leaf"><span class="dg-t">User intent</span><span class="dg-s">(LLM / agent semantic frontend)</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">Runtime profiling</span><span class="dg-s">(stable high-frequency patterns)</span></div>
-</div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-node"><span class="dg-t">Semantic IR</span><span class="dg-s">(Query / Constraint / Flow IR)</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node"><span class="dg-t">Formal domain model</span><span class="dg-s">(carried by OSPF: domain language / type and dimension system)</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node"><span class="dg-t">Semantic compiler</span><span class="dg-s">(validation / normalization / optimization / lowering)</span></div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-group">
-<div class="dg-node dg-node--leaf"><span class="dg-t">Deterministic system runtime</span><span class="dg-s">(ERP/MES/WMS/TMS state and numeric computation)</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">OR runtime</span><span class="dg-s">(MILP / column generation / Benders / certification)</span></div>
-<div class="dg-node dg-node--leaf"><span class="dg-t">ML runtime</span><span class="dg-s">(capacity and duration distribution prediction / constrained RL / parameter calibration)</span></div>
-</div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-node"><span class="dg-t">Digital twin and event sourcing</span><span class="dg-s">(memory of the past / state of the present / projection of the future)</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node"><span class="dg-t">Controlled production execution and learning</span></div>
-<div class="dg-loop">↺ Feedback to: runtime profiling / capability promotion / SPLE product line evolution</div>
-</div>
-</div>
+![Panoramic collaborative architecture of the Adaptive DOP / APS: long-term vision (Adaptive Software) ↓ LLM as Runtime ↓ splits in two into user intent (LLM / agent semantic frontend) and runtime profiling (stable high-frequency patterns) → merging into the semantic intermediate representation (Query / Constraint / Flow IR) ↓ the formal domain model (carried by OSPF: domain language / type and dimension system) ↓ the semantic compiler (validation / normalization / optimization / lowering) ↓ splits in three into the deterministic system runtime (ERP/MES/WMS/TMS state and numeric computation), the OR runtime (MILP / column generation / Benders / certification) and the ML runtime (capacity and duration distribution prediction / constrained RL / parameter calibration) → merging into the digital twin and event sourcing (memory of the past / state of the present / projection of the future) ↓ controlled production execution and learning ↺ feeding back into: runtime profiling / capability promotion / SPLE product line evolution.](assets/diagrams/chapter-18-1.svg)
 
 In this exercise that stretches across production, supply, sales, inventory and transport, the end-to-end **seven-step adaptive closed loop** runs as follows, step by precise step:
 
@@ -91,21 +62,7 @@ We must follow one iron rule: **the long-term vision may be large, but implement
 
 Drawing on the technical dependencies set out across the book (the formal domain model of point 8 is the root of everything, and we "compile plans" before we "compile code"), we define a standardized **six-stage engineering implementation roadmap**:
 
-<div class="dg" role="img" aria-label="Six-stage engineering implementation roadmap: Stage 1, formal domain model consolidation → Stage 2, OR-Native and white-box solving → Stage 3, event sourcing and digital twin closed loop → Stage 4, ML-Native and bidirectional enhancement → Stage 5, Agent-Native and semantic frontend → Stage 6, runtime specialization and product line promotion.">
-<div class="dg-row">
-<div class="dg-node dg-node--chip">Stage 1: formal domain model consolidation</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Stage 2: OR-Native and white-box solving</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Stage 3: event sourcing and digital twin closed loop</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Stage 4: ML-Native and bidirectional enhancement</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Stage 5: Agent-Native and semantic frontend</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">Stage 6: runtime specialization and product line promotion</div>
-</div>
-</div>
+![Six-stage engineering implementation roadmap: Stage 1, formal domain model consolidation → Stage 2, OR-Native and white-box solving → Stage 3, event sourcing and digital twin closed loop → Stage 4, ML-Native and bidirectional enhancement → Stage 5, Agent-Native and semantic frontend → Stage 6, runtime specialization and product line promotion.](assets/diagrams/chapter-18-2.svg)
 
 | Implementation stage | Core build goals and key engineering tasks | Progress of the running use case | Acceptance criteria deliverable on its own | Prerequisite dependencies and core risk controls |
 | :--- | :--- | :--- | :--- | :--- |

@@ -14,17 +14,7 @@
 
 让我们回到第 4 章与第 5 章的贯穿用例——**工厂日历（Calendar）与产线 A、B 的有效产能估算场景**，看一看一个符合“机器学习原生”标准的预测闭环是如何运转的：
 
-<div class="dg" role="img" aria-label="机器学习原生预测闭环四步依次衔接：1. 领域观察事实归一化，2. 训练与推理版本冻结，3. 结构化预测快照输出，4. 准入校验与审批激活。">
-<div class="dg-row">
-<div class="dg-node"><span class="dg-t">1. 领域观察事实归一化</span><span class="dg-s">明确工作单元/合格产量/实际耗时/单位/事件时间</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">2. 训练与推理版本冻结</span><span class="dg-s">冻结特征Schema/观察窗口/标签截止点/模型制品哈希</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">3. 结构化预测快照输出</span><span class="dg-s">输出估算值+质量指标+置信区间/不确定性+血缘</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">4. 准入校验与审批激活</span><span class="dg-s">校验单位/阈值/新鲜度后激活为有效产能覆盖层</span></div>
-</div>
-</div>
+![机器学习原生预测闭环四步依次衔接：1. 领域观察事实归一化，2. 训练与推理版本冻结，3. 结构化预测快照输出，4. 准入校验与审批激活。](assets/diagrams/chapter-13-1.svg)
 
 1. **生产执行观察的领域归一化**：当 MES 上报已完工任务的执行记录时，系统首先按照领域层规则将其归一化为标准生产观察事实，显式明确工作单元（Work Unit）、合格产量、实际生产耗时、目标物理单位、业务事件发生时间（Event Time）以及历史观察窗口，绝不允许机器学习脚本自行猜测或临时拼凑业务口径。
 2. **输入与模型制品的不可变冻结**：在发起训练或在线推理时，应用层强制冻结本次计算所使用的特征模式定义（Schema）、观察窗口范围、标签成熟截止时点（防止将未来数据混入特征造成数据泄漏）、模型制品版本、运行配置以及输入内容哈希（Content Hash）；机器学习运行时只允许消费已冻结的确定性输入。
@@ -63,24 +53,7 @@
 
 我们的核心架构原则是：**绝不让强化学习直接面向业务状态下发生产动作，而是将强化学习作为第 11 章大规模分解算法（列生成与 Benders 分解）内部受严格约束的“学习型子问题加速器”**！运筹优化始终牢牢掌控主问题、硬约束边界、候选验证、上下界计算与最终收敛判定。
 
-<div class="dg" role="img" aria-label="OR 主控、RL 加速、精确兜底的协同链路：形式化领域模型 + 冻结的排产求解快照，先由运筹优化构建受限主问题或 Benders 分解主问题，再把子问题契约下发给机器学习 / 强化学习加速器，其提交的内部候选交运筹优化确定性验证守卫；验证通过则回注主问题并继续快速迭代，验证失败 或 候选改进不足则走精确子问题或确定性启发式强制兜底，两路最终汇入运筹优化判定最终收敛。">
-<div class="dg-col">
-<div class="dg-node dg-node--layer"><span class="dg-t">【形式化领域模型 + 冻结的排产求解快照】</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">1. 运筹优化构建受限主问题（RMP） / Benders 分解主问题</span><span class="dg-s">掌控全局硬约束、当前上下界（Bounds）与收敛终止标准</span></div>
-<div class="dg-down">↓<span class="dg-lbl">下发带主问题状态、对偶信息与业务边界的子问题契约</span></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">2. 机器学习 / 强化学习（ML / RL 学习型子问题加速器）</span><span class="dg-s">快速生成或排序候选列、候选割、候选子问题解或热启动提示</span></div>
-<div class="dg-down">↓<span class="dg-lbl">提交内部候选</span></div>
-<div class="dg-node dg-node--key dg-node--layer"><span class="dg-t">3. 运筹优化确定性验证守卫（OR Verification Guard）</span><span class="dg-s">严格检验领域硬约束可行性、约化成本（Reduced Cost）以及 Benders 割平面的数学有效性与上下界</span></div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-row">
-<div class="dg-group"><div class="dg-gt">【验证通过】</div><div class="dg-node"><span class="dg-t">回注主问题并继续快速迭代</span></div></div>
-<div class="dg-group"><div class="dg-gt">【验证失败 或 候选改进不足】</div><div class="dg-node dg-node--key"><span class="dg-t">4. 精确子问题或确定性启发式强制兜底（Exact Fallback）</span></div></div>
-</div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">5. 运筹优化根据经认证的上下界与终止条件判定最终收敛</span></div>
-</div>
-</div>
+![OR 主控、RL 加速、精确兜底的协同链路：形式化领域模型 + 冻结的排产求解快照，先由运筹优化构建受限主问题或 Benders 分解主问题，再把子问题契约下发给机器学习 / 强化学习加速器，其提交的内部候选交运筹优化确定性验证守卫；验证通过则回注主问题并继续快速迭代，验证失败 或 候选改进不足则走精确子问题或确定性启发式强制兜底，两路最终汇入运筹优化判定最终收敛。](assets/diagrams/chapter-13-2.svg)
 
 如上图所示，这套“OR 主控 + RL 加速 + 精确兜底”的协同链路严格死守五条工程边界：
 
@@ -102,19 +75,7 @@
 
 为此，我们构建了第三条增强闭环——**决策反馈驱动的运筹优化参数校准（Decision-Feedback-Driven OR Parameter Calibration）**。系统利用逆向优化（Inverse Optimization）、偏好学习（Preference Learning）或排序学习（Learning to Rank）等受控参数学习方法，从历史决策反馈中持续校准那些**已被领域层显式声明为“允许学习（Learnable）”的运筹参数**：
 
-<div class="dg" role="img" aria-label="决策反馈驱动的运筹参数校准闭环五步：1. 冻结输入与运筹原始求解，2. 捕获人工微调与原因分类，3. 受控训练可校准参数候选，4. 离线回放与反事实仿真验收，5. 运筹重求解与持续演进。">
-<div class="dg-row">
-<div class="dg-node"><span class="dg-t">1. 冻结输入与运筹原始求解</span><span class="dg-s">基于冻结输入与当前参数版本产出运筹优化原始基准方案</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">2. 捕获人工微调与原因分类</span><span class="dg-s">记录方案Diff、结构化原因码、审批链与后续真实执行结果</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">3. 受控训练可校准参数候选</span><span class="dg-s">仅针对稳定偏好样本，学习目标权重与软约束罚系数候选值</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">4. 离线回放与反事实仿真验收</span><span class="dg-s">在留出集上比对可行率/目标分项/人工接受率，经审批后冻结</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">5. 运筹重求解与持续演进</span><span class="dg-s">使用批准冻结的新参数版本求解，支持一键回滚基线参数</span></div>
-</div>
-</div>
+![决策反馈驱动的运筹参数校准闭环五步：1. 冻结输入与运筹原始求解，2. 捕获人工微调与原因分类，3. 受控训练可校准参数候选，4. 离线回放与反事实仿真验收，5. 运筹重求解与持续演进。](assets/diagrams/chapter-13-3.svg)
 
 为了防止参数学习把计划员的临时妥协或错误操作当成真理固化进系统，该闭环强制执行五条治理铁律：
 

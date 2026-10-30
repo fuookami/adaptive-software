@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="110" viewBox="0 0 860 110" role="img">
+<rect x="0" y="0" width="860" height="109.56" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<rect x="35.02" y="18.66" width="99.5" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="84.77" y="39.5" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">现场提出问题</text>
+<text x="144.8" y="39.32" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="169.81" y="18.66" width="99.5" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="219.56" y="39.5" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">实施顾问理解</text>
+<text x="279.59" y="39.32" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="304.61" y="18.66" width="99.5" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="354.36" y="39.5" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">产品经理确认</text>
+<text x="414.39" y="39.32" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="439.41" y="18.66" width="167.2" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="523.01" y="39.5" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">后端开发改接口与表结构</text>
+<text x="616.89" y="39.32" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="641.91" y="18.66" width="153.66" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="718.73" y="39.5" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">算法工程师改数学模型</text>
+<text x="805.84" y="39.32" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="339.92" y="56.98" width="72.42" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="376.13" y="77.99" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">联调测试</text>
+<text x="422.63" y="77.81" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="447.64" y="56.98" width="72.42" height="32.45" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="483.85" y="77.99" font-family="'Noto Sans SC'" font-size="13.5424px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">版本发布</text>
+</svg>

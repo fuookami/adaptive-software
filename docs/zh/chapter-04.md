@@ -51,21 +51,7 @@
 
 这里的“编程”，是指业务用户在表达目标、业务规则、资源约束和决策偏好的过程中，持续产生新的**“可执行业务语义”**。为了将这些开放、模糊的自然语言安全地转化为工业级软件能力，系统模仿现代编译器的精妙架构，在运行时构建了一条由六个核心环节组成的标准链路：
 
-<div class="dg" role="img" aria-label="1. 用户意图（自然语言/行为）→ 2. LLM 语义前端（理解与候选生成）→ 3. 语义中间表示（DSL / AST / 计划IR）→ 4. 语义编译器（校验/优化/降阶）→ 5. 受控执行后端（数据库/求解器/代码）→ 6. 自适应运行时（画像/JIT/失效/回退）。">
-<div class="dg-row">
-<div class="dg-node"><span class="dg-t">1. 用户意图</span><span class="dg-s">自然语言/行为</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--key"><span class="dg-t">2. LLM 语义前端</span><span class="dg-s">理解与候选生成</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">3. 语义中间表示</span><span class="dg-s">DSL / AST / 计划IR</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">4. 语义编译器</span><span class="dg-s">校验/优化/降阶</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">5. 受控执行后端</span><span class="dg-s">数据库/求解器/代码</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">6. 自适应运行时</span><span class="dg-s">画像/JIT/失效/回退</span></div>
-</div>
-</div>
+![1. 用户意图（自然语言/行为）→ 2. LLM 语义前端（理解与候选生成）→ 3. 语义中间表示（DSL / AST / 计划IR）→ 4. 语义编译器（校验/优化/降阶）→ 5. 受控执行后端（数据库/求解器/代码）→ 6. 自适应运行时（画像/JIT/失效/回退）。](assets/diagrams/chapter-04-1.svg)
 
 在这条链路中，每个组件各司其职、边界分明：
 1. **大语言模型（LLM 语义前端）**：扮演类似编译器前端（Frontend）的角色，负责将用户的自然语言、当前运行上下文、历史交互事件以及领域知识，压缩并翻译为受严格语法约束的结构化候选表示；
@@ -111,15 +97,7 @@
 
 在实际工程落地中，语义即时编译同样遵循**“分层专门化（Tiered Specialization）”**的克制原则——并不是所有热点需求都值得大动干戈去生成字节码或代码插件：
 
-<div class="dg" role="img" aria-label="分层专门化：第 0 层 通用语义规划器 / 解释器（处理长尾探索与低频请求）→ 第 1 层 参数化查询计划 / 预编译约束与流程（风险最低、覆盖 90% 热点收益）→ 第 2 层 受控编译型插件（JVM / WebAssembly）（仅在性能收益极显著且边界稳定时启用）。">
-<div class="dg-row">
-<div class="dg-node"><span class="dg-t">第 0 层</span><span class="dg-s">通用语义规划器 / 解释器</span><span class="dg-s">（处理长尾探索与低频请求）</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">第 1 层</span><span class="dg-s">参数化查询计划 / 预编译约束与流程</span><span class="dg-s">（风险最低、覆盖 90% 热点收益）</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">第 2 层</span><span class="dg-s">受控编译型插件（JVM / WebAssembly）</span><span class="dg-s">（仅在性能收益极显著且边界稳定时启用）</span></div>
-</div>
-</div>
+![分层专门化：第 0 层 通用语义规划器 / 解释器（处理长尾探索与低频请求）→ 第 1 层 参数化查询计划 / 预编译约束与流程（风险最低、覆盖 90% 热点收益）→ 第 2 层 受控编译型插件（JVM / WebAssembly）（仅在性能收益极显著且边界稳定时启用）。](assets/diagrams/chapter-04-2.svg)
 
 系统总是优先选择风险最低、可回退性最好且收益已经足够的第 1 层确定性产物（如 `查询中间表示 + 参数化查询计划`、或由 `ospf` 承载的 `预编译线性约束模板`）；只有当性能剖析证明某类超高频计算确实存在显著瓶颈、且其产品化边界已经高度稳定时，才按需升级到第 2 层的受控虚拟机插件（如隔离类加载器下的 JVM 插件或 WebAssembly 制品）。
 
@@ -135,19 +113,7 @@
 
 为了确保这条铁律在日常研发与运行中得到 100% 贯彻，系统在“大模型提出候选”与“生产环境正式执行”之间，强制设立了五道不可绕过的确定性防线：
 
-<div class="dg" role="img" aria-label="1. 候选生成 → 2. 权限与治理检查 → 3. 领域与业务检查 → 4. 仿真与结果验证 → 5. 版本化与可回退执行。">
-<div class="dg-row">
-<div class="dg-node dg-node--chip">[1. 候选生成]</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">[2. 权限与治理检查]</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">[3. 领域与业务检查]</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">[4. 仿真与结果验证]</div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node dg-node--chip">[5. 版本化与可回退执行]</div>
-</div>
-</div>
+![1. 候选生成 → 2. 权限与治理检查 → 3. 领域与业务检查 → 4. 仿真与结果验证 → 5. 版本化与可回退执行。](assets/diagrams/chapter-04-3.svg)
 
 1. **第一道防线：结构化候选隔离** —— 大语言模型和智能体只允许针对受约束的领域元数据输出结构化候选方案；任何未知字段、未授权字段、未知挂载位置或超出底层求解器/系统支持能力的表达，编译器直接拦截并返回结构化错误码，严禁静默猜测或带病放行；
 2. **第二道防线：权限、租户与预算把关** —— 系统以确定性代码校验当前发起人是谁、允许访问哪些组织与业务对象、涉及哪些敏感字段、消耗多少算力预算，以及该级别的变更是否必须经过人工审批确认；

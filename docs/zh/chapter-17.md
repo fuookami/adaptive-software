@@ -40,13 +40,7 @@
 
 因此，在我们的顶层架构中，**大语言模型运行时（LLM Runtime）**与**软件产品线工程（SPLE）**构成了完美的“探索与吸收”双轮驱动：
 
-<div class="dg" role="img" aria-label="探索与吸收双轮驱动对照：【大语言模型运行时（探索层）】提供证据给【软件产品线工程 SPLE（吸收层）】。">
-<div class="dg-row">
-<div class="dg-node"><span class="dg-t">【大语言模型运行时（探索层）】</span><span class="dg-s">面对未知、低频、表达不完整的现场新变化</span><span class="dg-s">以极低边际成本理解意图、试算并安全兜底</span><span class="dg-s">使命：低成本探索“软件还缺什么”</span></div>
-<div class="dg-edge">→<span class="dg-lbl">提供证据</span></div>
-<div class="dg-node"><span class="dg-t">【软件产品线工程 SPLE（吸收层）】</span><span class="dg-s">基于跨时间、跨客户的真实运行重复证据</span><span class="dg-s">管理共性（Commonality）与可变性（Variability）</span><span class="dg-s">使命：高可靠吸收“已被证明有效的变化”</span></div>
-</div>
-</div>
+![探索与吸收双轮驱动对照：【大语言模型运行时（探索层）】提供证据给【软件产品线工程 SPLE（吸收层）】。](assets/diagrams/chapter-17-1.svg)
 
 简言之：**大语言模型负责低成本探索未知变化，软件产品线工程负责高可靠吸收已知变化**。只有经过真实运行证据积累、形式化验证和跨场景复用证明的变化，才有资格从动态候选一步步晋升进入长期产品结构。
 
@@ -58,28 +52,7 @@
 
 当一个新需求（例如我们在前文反复演练的“多产线共用投料口容量限制”或某类特定的“排产后替代料重算流程”）在运行现场诞生后，SPLE 依据其在时间维度与客户维度上的重复证据，将其纳入一套清晰的**四级能力晋升阶梯**进行全生命周期管理：
 
-<div class="dg" role="img" aria-label="四级能力晋升漏斗：1. 运行时新变化 → 2. 可变性发现 → 3. 受控专用能力 → 4. 重复证据成立 → 5. 产品线提升 → 6. 核心架构演化，并向下沉淀为【L1：临时能力】【L2：客户专用能力】【L3：产品可变点】【L4：稳定核心能力】。">
-<div class="dg-row">
-<div class="dg-node"><span class="dg-t">1. 运行时新变化</span><span class="dg-s">用户/现场提出</span><span class="dg-s">未知新规则差异</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">2. 可变性发现</span><span class="dg-s">事件与运行画像</span><span class="dg-s">识别出重复模式</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">3. 受控专用能力</span><span class="dg-s">产生 + 验证 + 安全执行与回退</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">4. 重复证据成立</span><span class="dg-s">跨时间周期 / 跨客户持续复现</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">5. 产品线提升</span><span class="dg-s">抽象差异维度</span><span class="dg-s">形成正式可变点</span></div>
-<div class="dg-edge" aria-hidden="true">→</div>
-<div class="dg-node"><span class="dg-t">6. 核心架构演化</span><span class="dg-s">高度稳定共性</span><span class="dg-s">沉入平台标准核心</span></div>
-</div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-group">
-<div class="dg-node dg-node--leaf">【L1：临时能力】</div>
-<div class="dg-node dg-node--leaf">【L2：客户专用能力】</div>
-<div class="dg-node dg-node--leaf">【L3：产品可变点】</div>
-<div class="dg-node dg-node--leaf">【L4：稳定核心能力】</div>
-</div>
-</div>
+![四级能力晋升漏斗：1. 运行时新变化 → 2. 可变性发现 → 3. 受控专用能力 → 4. 重复证据成立 → 5. 产品线提升 → 6. 核心架构演化，并向下沉淀为【L1：临时能力】【L2：客户专用能力】【L3：产品可变点】【L4：稳定核心能力】。](assets/diagrams/chapter-17-2.svg)
 
 这四个能力层级的判定特征与产品工程处理方式严格界定如下：
 

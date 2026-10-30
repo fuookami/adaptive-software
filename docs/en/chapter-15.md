@@ -4,7 +4,7 @@
 
 In Chapter 14 we saw how a single user intent is turned into a structured candidate and compiled into mathematical constraints. But in an enterprise-grade digital operations platform (DOP / APS) that serves many users, runs at high concurrency and operates 7×24, if we are to manage hundreds or thousands of such daily interactions, and from them select the patterns that are genuinely worth precipitating into the system's long-term formal capability, we need an industrial-grade **end-to-end controlled compilation and release pipeline**, together with a **formal safety line** that cuts across the whole chain.
 
-This chapter dissects in full the **eight-step target-architecture pipeline** that runs from "one conversational interaction" to "a formal capability that can be precipitated", explains how formal methods, the digital-twin sandbox and shadow verification work together to raise the anti-hallucination guardrails, and sets out the engineering treatment of the six core runtime risks.
+This chapter dissects in full the **eight-step target-architecture pipeline** that runs from "one conversational interaction" to "a formal capability that can be precipitated", explains how formal methods, the digital-twin sandbox and shadow verification work together to raise the anti-hallucination guardrails, and sets out the engineering treatment of the eight core runtime risks.
 
 ---
 
@@ -12,25 +12,7 @@ This chapter dissects in full the **eight-step target-architecture pipeline** th
 
 In the `LLM as Runtime` target architecture, any process that is triggered by user intent and eventually leads to capability precipitation must pass strictly through the following compilation and governance pipeline made up of eight standard stages:
 
-<div class="dg" role="img" aria-label="An eight-step controlled compilation pipeline running from top to bottom: Stage 1: Collection, Stage 2: Normalization, Stage 3: Intermediate Representation, Stage 4: Verification &amp; Validation, Stage 5: Optimization &amp; Promotion Decision, Stage 6: Lowering, Stage 7: Publishing, Stage 8: Adaptation &amp; Deoptimization.">
-<div class="dg-col">
-<div class="dg-node dg-node--layer"><span class="dg-t">Stage 1: Collection</span><span class="dg-s">Collect raw user intent, tool-call traces, general-path execution results and performance-cost facts</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Stage 2: Normalization</span><span class="dg-s">Extract stable business semantic structure from raw text and interactions, stripping concrete literal parameters and sensitive business values</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Stage 3: Intermediate Representation</span><span class="dg-s">Produce a hashable, versionable structured representation (Query IR / Constraint IR / Flow IR / Param IR)</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Stage 4: Verification &amp; Validation</span><span class="dg-s">Run strict checks on types, physical units, field catalog, tenant permissions, compute budget, approval status and semantic equivalence</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Stage 5: Optimization &amp; Promotion Decision</span><span class="dg-s">Weigh call frequency, latency, resource cost, stability and expected benefit to judge whether specialization is worth it</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Stage 6: Lowering</span><span class="dg-s">Compile into parameterized query plans, prepared statements, OSPF solver constraint templates, rule plans or controlled plug-ins</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Stage 7: Publishing</span><span class="dg-s">Complete shadow verification, canary release, plan registry registration, digital signing, immutable versioning and atomic traffic switchover</span></div>
-<div class="dg-down" aria-hidden="true">↓</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Stage 8: Adaptation &amp; Deoptimization</span><span class="dg-s">Keep monitoring hit rate and benefit; roll back automatically on anomaly; invalidate precisely and recompile when schema, catalog or policy changes</span></div>
-</div>
-</div>
+![An eight-step controlled compilation pipeline running from top to bottom: Stage 1: Collection, Stage 2: Normalization, Stage 3: Intermediate Representation, Stage 4: Verification &amp; Validation, Stage 5: Optimization &amp; Promotion Decision, Stage 6: Lowering, Stage 7: Publishing, Stage 8: Adaptation &amp; Deoptimization.](assets/diagrams/chapter-15-1.svg)
 
 Let us examine the core engineering responsibility of each of the eight stages one by one:
 
@@ -49,19 +31,7 @@ Let us examine the core engineering responsibility of each of the eight stages o
 
 In the minds of many traditional software teams, "verification" tends to be equated with the integration test that runs just before code goes live. But in Adaptive Software and the `LLM as Runtime` architecture, **formal methods and runtime verification are by no means the last test gate after compilation finishes; they are the "cross-cutting trust foundation" that runs through the domain model, the domain language, event history, the digital twin, capability generation and runtime publishing**.
 
-<div class="dg" role="img" aria-label="Cross-cutting trust foundation: formal methods and runtime deterministic verification guards, cutting downward across six stages: domain model definition, domain language description, event history recording, digital-twin projection, generative compilation and runtime publishing execution.">
-<div class="dg-col">
-<div class="dg-group"><div class="dg-gt">Cross-cutting trust foundation: formal methods and runtime deterministic verification guards</div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Algebraic type and physical dimension checks</span><span class="dg-s">(Type &amp; Dimension Safety)</span></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Business invariants and pre/post-conditions</span><span class="dg-s">(Invariants &amp; Pre/Post-Conditions)</span></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Legal state-machine transitions and state-role isolation</span><span class="dg-s">(State Machine &amp; Role Isolation)</span></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Tenant isolation, field-level permissions and compute budget quotas</span><span class="dg-s">(Tenant, Auth &amp; Resource Budget)</span></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">Differential verification, property-based equivalence testing and shadow verification</span><span class="dg-s">(Differential &amp; Shadow Verification)</span></div>
-</div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-row"><div class="dg-node dg-node--leaf">Domain model definition</div><div class="dg-node dg-node--leaf">Domain language description</div><div class="dg-node dg-node--leaf">Event history recording</div><div class="dg-node dg-node--leaf">Digital-twin projection</div><div class="dg-node dg-node--leaf">Generative compilation</div><div class="dg-node dg-node--leaf">Runtime publishing execution</div></div>
-</div>
-</div>
+![Cross-cutting trust foundation: formal methods and runtime deterministic verification guards, cutting downward across six stages: domain model definition, domain language description, event history recording, digital-twin projection, generative compilation and runtime publishing execution.](assets/diagrams/chapter-15-2.svg)
 
 To ensure that dynamically produced capability never breaches a safety red line at any moment, the system enforces **six safety-boundary rules** across the whole chain:
 
@@ -97,19 +67,7 @@ When the runtime notices that a class of query or constraint pattern keeps recur
 
 The system applies a rigorous three-step sequence: **"asynchronous build + shadow verification + canary switchover"**:
 
-<div class="dg" role="img" aria-label="Shadow verification before a new specialized plan goes live: an online real business request → traffic duplicator splits into two paths; one is the general execution path (authoritative baseline) → returning production results directly to the user, the other is the newly compiled specialized candidate plan (shadow state), run asynchronously on a side path with results neither exposed externally nor written to the production database; both paths merge into an asynchronous comparator that validates result sets, status codes, permission boundaries and performance benefit.">
-<div class="dg-title">Shadow verification before a new specialized plan goes live</div>
-<div class="dg-col">
-<div class="dg-row"><div class="dg-node dg-node--chip">Online real business request</div><div class="dg-edge" aria-hidden="true">→</div><div class="dg-node dg-node--chip">Traffic duplicator</div></div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-row">
-<div class="dg-group"><div class="dg-node"><span class="dg-t">General execution path (authoritative baseline)</span></div><div class="dg-edge" aria-hidden="true">→</div><div class="dg-node"><span class="dg-t">Return production results directly to the user</span></div></div>
-<div class="dg-group"><div class="dg-node dg-node--soft"><span class="dg-t">Newly compiled specialized candidate plan (shadow state)</span><span class="dg-s">(asynchronous side-path run; results not exposed externally and not written to the production database)</span></div></div>
-</div>
-<div class="dg-arms"><div class="dg-arm" aria-hidden="true">↓</div><div class="dg-arm" aria-hidden="true">↓</div></div>
-<div class="dg-node dg-node--layer"><span class="dg-t">(asynchronous comparator: validates result sets, status codes, permission boundaries and performance benefit)</span></div>
-</div>
-</div>
+![Shadow verification before a new specialized plan goes live: an online real business request → traffic duplicator splits into two paths; one is the general execution path (authoritative baseline) → returning production results directly to the user, the other is the newly compiled specialized candidate plan (shadow state), run asynchronously on a side path with results neither exposed externally nor written to the production database; both paths merge into an asynchronous comparator that validates result sets, status codes, permission boundaries and performance benefit.](assets/diagrams/chapter-15-3.svg)
 
 1. **Build-time static and sample-based equivalence verification**: after the background asynchronous compilation job has produced the specialized plan, the plan validator first runs a differential equivalence test against it using the historical replay sample library, confirming that the specialized plan and the general path produce identical output on boundary inputs.
 2. **Shadow mode on a side path of online traffic**: once it enters release preparation, the new plan is marked `SHADOW`. When a real online request matching that semantic shape arrives, the front end is still handled 100% by the mature, reliable **general path**, which returns results to the user; at the same time the runtime asynchronously copies the same frozen input and feeds it to the **specialized candidate plan** for side-path execution (producing no external write side effects).
@@ -117,7 +75,7 @@ The system applies a rigorous three-step sequence: **"asynchronous build + shado
 
 ---
 
-## 15.4 Governing the six core runtime risks: defending against semantic drift, privilege penetration, error ossification, environmental shift, code supply-chain risk and over-specialization
+## 15.4 Governing the eight core runtime risks: defending against semantic drift, privilege penetration, error fossilization, environmental shift, code supply-chain risk, over-specialization, history and feedback distortion, and simulation mismatch
 
 In Chapter 4 we analyzed why "letting the LLM write code directly online" would die of six risks; and now that Chapters 10 to 15 have built event sourcing, the digital twin, the three natives and the controlled compilation pipeline, we can finally give the engineering treatment of an **eight-risk governance matrix** covering the whole system lifecycle (the six runtime compilation risks above, plus the two world-model risks of distorted event history and digital-twin mismatch):
 
