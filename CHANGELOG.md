@@ -4,7 +4,16 @@
 
 ## [未发布]
 
-### 新增
+### 修复
+
+- CI 部署作业前增加 GitHub Pages 预检：先请求 `GET /repos/{owner}/{repo}/pages`，把
+  `Failed to create deployment (status: 404)` 翻译成可执行指引（去 Settings → Pages 把 Source 设为
+  “GitHub Actions” 再 Re-run），并识别 `build_type` 不是 `workflow` 的 legacy 模式；401/403 等读不到配置时
+  只告警、不阻断部署。此前该错误只抛一句 404，看不出问题出在仓库设置而不是书稿。
+
+## [0.2.0] - 2026-10-29
+
+### 新增（图示与编辑器预览）
 
 - HTML 图示组件库 `styles/website.css`（`dg-*` 类名，由 `book.json` 的 `styles` 注入网站/PDF/EPUB）与规范 `tools/DIAGRAM-KIT.md`。
 - `tools/check-diagrams.mjs`：图示重绘的三道闸——`（默认）`文字保真（对比 `ascii-baseline` 标签）、`--structure`（块闭合 / 无空行 / 顶格 / 无 Markdown 残留，CI 执行）、`--strict`（反向检查，拦截重绘时新增的表述）。
@@ -26,9 +35,7 @@
 - `docs/chapter-17.md` 图示内繁体「基於」→「基于」。
 - 以上四处原文修正均在 `tools/check-diagrams.mjs` 的 `CORRECTIONS` / `AUTHORIZED_ADDITIONS` 白名单中登记了理由，避免被保真校验误报，也防止“顺手加戏”混入。
 
-## [0.2.0] - 2026-10-29
-
-### 新增
+### 新增（双语与工具链）
 
 - **中英双语**：`docs/zh/` 与 `docs/en/` 各为一本完整的书（独立 `book.json` / `SUMMARY.md` / `README.md` / `.gitbook.yaml`），
   页面文件名与导航顺序一一对应。英文侧 30 个骨架页已就位，逐页用 `<!-- i18n-status: … -->` 标注翻译进度。

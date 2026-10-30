@@ -73,6 +73,44 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      # Pages 没启用时，deploy-pages 只会抛一句 “Failed to create deployment (status: 404)”，
+      # 看不出该点哪里。这里先查一次 Pages 配置，把失败原因翻译成可执行的指引。
+      - name: 预检 GitHub Pages 是否启用（来源须为 GitHub Actions）
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -o pipefail
+          resp=$(curl -sS -w '\n%{http_code}' \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "${{ github.api_url }}/repos/${{ github.repository }}/pages")
+          code=$(printf '%s' "$resp" | tail -n 1)
+          body=$(printf '%s' "$resp" | sed '$d')
+          echo "Pages API 返回 HTTP $code"
+
+          case "$code" in
+            200)
+              build_type=$(printf '%s' "$body" \
+                | grep -o '"build_type"[[:space:]]*:[[:space:]]*"[^"]*"' \
+                | head -n 1 | sed 's/.*"\([^"]*\)"$/\1/') || true
+              if [ -n "$build_type" ] && [ "$build_type" != "workflow" ]; then
+                echo "::error title=Pages 构建来源不是 GitHub Actions::当前 build_type=${build_type}。请到 Settings → Pages → Build and deployment → Source 改成 “GitHub Actions”，保存后重跑本工作流。"
+                exit 1
+              fi
+              echo "✓ Pages 已启用，来源为 GitHub Actions（build_type=${build_type:-未知}）"
+              ;;
+            404)
+              echo "::error title=GitHub Pages 尚未启用::此仓库还没有 Pages 站点，所以无法创建部署（404）。到 https://github.com/${{ github.repository }}/settings/pages 把 Build and deployment → Source 选为 “GitHub Actions” 并保存，然后在 Actions 页面点 Re-run 重跑即可。书稿校验与构建已成功，无需重新提交代码。"
+              exit 1
+              ;;
+            401|403)
+              echo "::warning::无法读取 Pages 配置（HTTP $code），跳过预检，直接尝试部署"
+              ;;
+            *)
+              echo "::warning::Pages 预检返回 HTTP $code，跳过预检，直接尝试部署"
+              ;;
+          esac
+
       - name: 部署
         id: deployment
         uses: actions/deploy-pages@v4

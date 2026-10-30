@@ -86,6 +86,30 @@ npm run i18n           # 只看翻译进度
 
 其余贡献方式见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
+## 发布到 GitHub Pages
+
+工作流 [.github/workflows/deploy.yml](.github/workflows/deploy.yml) 发布的是 **构建产物（artifact）**，
+因此仓库的 Pages 来源必须是 “GitHub Actions”，不能是 “Deploy from a branch”。
+
+**首次启用（只需一次）**
+
+1. 打开 `https://github.com/fuookami/adaptive-software/settings/pages`
+2. **Build and deployment → Source** 选 **GitHub Actions**，保存（不需要选分支、不需要建 `gh-pages` 分支）
+3. 回到 **Actions** → 选最近一次失败的 “Deploy book to GitHub Pages” → 右上 **Re-run all jobs**
+
+地址形如 `https://fuookami.github.io/adaptive-software/`：根是语言选择页，中文在 `/zh/`，英文在 `/en/`。
+
+**两种典型失败及含义**
+
+| 报错 | 真实原因 | 处理 |
+| :--- | :--- | :--- |
+| `Failed to create deployment (status: 404) … Ensure GitHub Pages has been enabled` | 仓库还没有 Pages 站点 | 按上面三步启用；**书稿与构建是好的**，不用改代码 |
+| `Get Pages site failed … must be configured to use GitHub Actions` | Pages 已启用，但 Source 是分支而非 Actions | 把 Source 改成 “GitHub Actions” 后重跑 |
+
+工作流的部署作业现在带一道**预检**：先查 `GET /repos/{owner}/{repo}/pages`，把上述情况直接翻译成
+“该点哪个设置页”，并在日志里明确写出“构建已成功、无需重新提交”。若预检因权限读不到配置（401/403），
+只告警不阻断。
+
 ## 在 GitBook 上发布（双语）
 
 1. 推到 GitHub；
