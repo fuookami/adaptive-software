@@ -11,6 +11,17 @@
   `default` 规则（有 section 时顶层不得再列 space、每组同级恰好一个 default）、`content.directory` 不含 `..` 且真实存在。
   报错路径与 GitBook 一致（如 `site.structure.0.content.language`），一次报全而不是只报第一个。已接入 `npm run check` 与 CI。
 
+### 变更
+
+- **GitHub Pages 线上实测通过**：<https://fuookami.github.io/adaptive-software/> 的根语言选择页、`/zh/`、`/en/`
+  与图示页（`/zh/chapter-02.html`，内含 51 个 `dg` 节点）均 200，样式表 `styles/website.css` 可达，图示框线/箭头/高亮正常。
+- `tools/preview-shot.ps1` 支持直接截线上 URL（以 `http(s)://` 开头的条目），发版后验收不必先本地构建。
+- 回填线上地址并更正平台路径说明：GitBook <https://fuookami.gitbook.io/adaptive-software/>（中文空间在根，英文在 `/en/`），
+  页面路径按 `SUMMARY.md` 分组嵌套（`/part-3/chapter-12`），与 Pages 的扁平路径（`/zh/chapter-12`）不同。
+- **关闭图示在 GitBook 上的“待验证”悬念**：2026-10-30 实测，GitBook 保留图示块内文字但剥离全部标签与块结构，
+  整张图压平成一整行（`dg-*` 类消失）。结论与两条补救路径写入 README「GitBook 上的图示退化」与
+  `tools/DIAGRAM-KIT.md`「GitBook 上的兜底」；当前采用“GitBook 作文本镜像、带图阅读走 Pages”的方案。
+
 ### 修复
 
 - `gitbook-docs.yaml` 修正 4 处会导致 Git Sync `Failed to parse site configuration` 的问题：

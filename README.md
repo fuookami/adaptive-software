@@ -13,13 +13,16 @@
 
 ## 阅读入口 / Reading entry
 
-| 语言 | 在线阅读 | 源码位置 | 状态 |
-| :--- | :--- | :--- | :--- |
-| 简体中文 | <https://fuookami.github.io/adaptive-software/zh/> | [docs/zh/](docs/zh/) | ✅ 完整（18 章 + 前言 + 大纲 + 结语） |
-| English | <https://fuookami.github.io/adaptive-software/en/> | [docs/en/](docs/en/) | 🚧 骨架就绪，逐页翻译中（`npm run i18n:check` 看进度） |
-| GitBook | <https://YOUR-SPACE.gitbook.io/adaptive-software/>（TODO） | 两个 space：`docs/zh`、`docs/en` | 见下文接入说明 |
+| 语言 | 在线阅读 | 源码 |
+| :--- | :--- | :--- |
+| 简体中文 | [GitHub Pages](https://fuookami.github.io/adaptive-software/zh/) · [GitBook](https://fuookami.gitbook.io/adaptive-software/) | [docs/zh/](docs/zh/) |
+| English | [GitHub Pages](https://fuookami.github.io/adaptive-software/en/) · [GitBook](https://fuookami.gitbook.io/adaptive-software/en/) | [docs/en/](docs/en/)（翻译中） |
 
-站点根路径 `/` 是语言选择页；两语言各自是独立的一本书（独立 `book.json` / `SUMMARY.md` / `README.md`）。
+**GitHub Pages 是带图主入口**，中文站根路径是语言选择页。**GitBook 是文本镜像**：该平台会剥离图示的 HTML 标签，
+把每张图压平成一行文字，内容的可读性保留但框线与分行不再呈现。图示的实现规范与各平台差异见
+[tools/DIAGRAM-KIT.md](tools/DIAGRAM-KIT.md)。
+
+两语言各自是独立的一本书（独立 `book.json` / `SUMMARY.md` / `README.md`）。
 
 ## 这本书在讲什么
 
@@ -37,100 +40,40 @@
 
 ```text
 .
-├── README.md              # 本文件：项目首页（双语入口）
-├── gitbook-docs.yaml      # GitBook 站点结构：一个站点、两个 space（zh / en）
-├── docs/
-│   ├── zh/                # 中文版＝独立书根：book.json / SUMMARY.md / README.md / 30 个页面
-│   └── en/                # 英文版＝独立书根：与中文侧同名同序，逐页标注 i18n-status
+├── docs/zh/               # 中文版＝独立书根：book.json / SUMMARY.md / README.md / 30 个页面
+├── docs/en/               # 英文版＝独立书根：与中文侧同名同序，逐页标注 i18n-status
 ├── styles/website.css     # 图示组件库（dg-*）与站点样式的唯一真源
-├── i18n/
-│   ├── glossary.md        # 中英术语对照表（97 条，翻译契约；术语靠 PR 评审把关）
-│   └── README.md          # 翻译流程与页面状态约定
+├── i18n/                  # 术语对照表与翻译流程
+├── gitbook-docs.yaml      # GitBook 站点结构：一个站点、两个语言空间
+├── tools/                 # 切分 / 校验 / 构建 / 截图脚本
 ├── manuscript/            # 原始手稿（按卷合并），用于重新生成中文正文
-├── tools/                 # split-book / check-diagrams / check-i18n / init-en / build-site …
 └── .github/workflows/     # 校验 + 双语言构建 + GitHub Pages 部署
 ```
 
 ## 本地预览与构建
 
-前置：Node.js 18+（已在 Node 24 + honkit@5.0.1 验证）。
+前置：Node.js 18+（Honkit 5.x）。
 
 ```bash
 npm install
 npm run serve          # 中文站 http://localhost:4000
-npm run serve:en       # 英文站 http://localhost:4000
-npm run build          # 双语构建 → _book/{zh,en} + _book/index.html 语言选择页
-npm run check          # 书稿结构 + 图示 HTML 结构 + 双语一致性，三道闸一起跑
-npm run i18n           # 只看翻译进度
+npm run serve:en       # 英文站
+npm run build          # 双语构建 → _book/{zh,en} + 根语言选择页
+npm run check          # 书稿结构 + 图示结构 + 双语一致性 + GitBook 配置
+npm run i18n           # 翻译进度
 ```
-
-`npm run build` 会先把 `styles/website.css` 同步到 `docs/<lang>/styles/`（该目录已 gitignore），
-因为 Honkit 的 `styles.website` 只能指向书根内部路径。
-
-### 各环境阅读图示的表现
-
-图中的流程图/架构图是**语义化 HTML + 共用样式表**绘制的（44 张，见 [docs/zh/](docs/zh/)）：
-
-| 环境 | 效果 |
-| :--- | :--- |
-| `_book/` / GitHub Pages / `npm run serve` | ✅ 完整渲染（构建时注入样式表） |
-| VS Code Markdown 预览 | ✅ 完整渲染（[.vscode/settings.json](.vscode/settings.json) 的 `markdown.styles` 已指向样式表；改过 CSS 要重开预览页） |
-| GitHub 上直接看 `.md` | ⚠️ 有结构无样式，图示退化为按行排列的标签 + 真实箭头字符（`→ ↓ ↺`），内容仍可读 |
-| GitBook.com | ❓ 待实测：GitBook 官方 Markdown 能力清单不含原始 HTML 块，接入后请先看任意图示页；排错顺序见 [tools/DIAGRAM-KIT.md](tools/DIAGRAM-KIT.md) |
 
 ## 参与翻译
 
-先读 [i18n/README.md](i18n/README.md) 与术语表 [i18n/glossary.md](i18n/glossary.md)：
-一页一 PR，文件名与导航槽位不动，翻完把页面首行的 `i18n-status` 从 `untranslated` 改成 `translated`，
-`npm run check` 会核对两侧页面、导航、图示数量与小节数是否对齐。
+先读 [i18n/README.md](i18n/README.md) 与术语表 [i18n/glossary.md](i18n/glossary.md)：一页一 PR，文件名与导航槽位不动，
+翻完把页面首行的 `i18n-status` 从 `untranslated` 改成 `translated`，`npm run check` 会核对两侧页面、导航与图示数量是否对齐。
+其余贡献方式（正文修订、图示规范、提交流程）见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
-其余贡献方式见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+## 发布
 
-## 发布到 GitHub Pages
-
-工作流 [.github/workflows/deploy.yml](.github/workflows/deploy.yml) 发布的是 **构建产物（artifact）**，
-因此仓库的 Pages 来源必须是 “GitHub Actions”，不能是 “Deploy from a branch”。
-
-**首次启用（只需一次）**
-
-1. 打开 `https://github.com/fuookami/adaptive-software/settings/pages`
-2. **Build and deployment → Source** 选 **GitHub Actions**，保存（不需要选分支、不需要建 `gh-pages` 分支）
-3. 回到 **Actions** → 选最近一次失败的 “Deploy book to GitHub Pages” → 右上 **Re-run all jobs**
-
-地址形如 `https://fuookami.github.io/adaptive-software/`：根是语言选择页，中文在 `/zh/`，英文在 `/en/`。
-
-**两种典型失败及含义**
-
-| 报错 | 真实原因 | 处理 |
-| :--- | :--- | :--- |
-| `Failed to create deployment (status: 404) … Ensure GitHub Pages has been enabled` | 仓库还没有 Pages 站点 | 按上面三步启用；**书稿与构建是好的**，不用改代码 |
-| `Get Pages site failed … must be configured to use GitHub Actions` | Pages 已启用，但 Source 是分支而非 Actions | 把 Source 改成 “GitHub Actions” 后重跑 |
-
-工作流的部署作业现在带一道**预检**：先查 `GET /repos/{owner}/{repo}/pages`，把上述情况直接翻译成
-“该点哪个设置页”，并在日志里明确写出“构建已成功、无需重新提交”。若预检因权限读不到配置（401/403），
-只告警不阻断。
-
-## 在 GitBook 上发布（双语）
-
-1. 推到 GitHub；
-2. 站点级用 [gitbook-docs.yaml](gitbook-docs.yaml) 描述两个 space（`docs/zh` → `language: zh`、`docs/en` → `language: en`），
-   形态是**顶层平铺 space**（不套 section），因此站点 URL 就是 `/zh` 与 `/en`；每个 space 目录内的 `.gitbook.yaml`
-   指定 `readme` 与 `summary`；
-3. 在 GitBook 里开启 Git Sync 后，**首次映射会由 GitBook 回写这个文件**（`key` 一旦上线就不要再改，改了会新建 space）；
-4. 发布后把站点地址回填到本文件与 [docs/zh/README.md](docs/zh/README.md) 的 TODO 处。
-
-### 这个 YAML 有两个容易踩的坑
-
-| 坑 | 说明 |
-| :--- | :--- |
-| `content.language` 是**封闭枚举** | 简体中文是 `zh`，**不是** `zh-Hans`；繁体是 `zh-tw`。`localizedTitle` 的**键**也取自同一枚举。写错会被拒：`expected one of the enum value` |
-| `site` 只能有 `title` 与 `structure` | 站点描述要写在 GitBook 后台，写进 YAML 会被 `additionalProperties: false` 拒掉 |
-
-这两类错误以前只能在 Git Sync 时被 GitBook 一条条报出来（它还只报第一个）。
-现在 [tools/check-gitbook-yaml.mjs](tools/check-gitbook-yaml.mjs) 按[官方 schema](https://api.gitbook.com/gitbook-docs.yaml)
-在本地与 CI 校验：枚举成员、各节点必填与多余字段、`key` 全局唯一、`default` 规则（有 section 时顶层不得再列 space）、
-`content.directory` 真实存在且不含 `..`。报错路径与 GitBook 一致，例如
-`site.structure.0.content.language`。`npm run check` 与 `npm run gitbook` 都会跑它。
+- **GitHub Pages**：工作流发布构建产物，仓库 Pages 的 Source 需设为 **GitHub Actions**（不能是分支）。
+- **GitBook**：由根目录 [gitbook-docs.yaml](gitbook-docs.yaml) 声明两个语言空间，各空间目录内用 `.gitbook.yaml`
+  指定 `readme` 与 `summary`；`key` 上线后不要改名。
 
 ## 许可
 

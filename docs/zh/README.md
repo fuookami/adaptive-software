@@ -7,7 +7,10 @@
 
 > **English edition（翻译中）**：<https://fuookami.github.io/adaptive-software/en/>
 > **在线阅读（中文）**：<https://fuookami.github.io/adaptive-software/zh/> ·
-> **GitBook**：<https://YOUR-SPACE.gitbook.io/adaptive-software/>（TODO：填入你的 GitBook 空间地址）
+> **GitBook**：<https://fuookami.gitbook.io/adaptive-software/>（英文版 <https://fuookami.gitbook.io/adaptive-software/en/>）
+>
+> 提示：GitBook 会剥离图示的 HTML 标签，把每张图压平成一行文字（内容不丢、但没有框线）。**想看带图版本请走上面的
+> GitHub Pages 链接**，或在仓库内用 `npm run serve` / VS Code 预览阅读。
 
 ---
 

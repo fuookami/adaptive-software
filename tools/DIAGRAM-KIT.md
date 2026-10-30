@@ -59,19 +59,29 @@
 | VS Code Markdown 预览 | ✅ 完整彩色渲染 | 需要 `.vscode/settings.json` 里的 `"markdown.styles": ["styles/website.css"]`；预览不加载外链样式表，没有这一条就会退化成堆叠文字。改过 CSS 要重开预览页 |
 | 无任何样式的裸环境 | ✅ 完整彩色渲染 | 已用「只挂 `styles/website.css`、不挂 GitBook 主题」的页面实测：框线、分组虚线、分叉臂、回流线、图例都正常，说明样式表自足，不依赖主题 |
 | GitHub 直接阅读 `.md` | ⚠️ 有结构无样式 | GitHub 会剥掉 `class` 与外链样式表，图示退化为按行排列的标签 + 真实箭头字符，内容仍可读（这正是要求箭头用真实字符的原因） |
-| GitBook.com（Git 同步） | ❓ 待验证 | 现代 GitBook 把 Markdown 解析成自己的块模型，对原始 HTML 块的支持不保证。**接入空间后请先打开任意图示页确认**；若被当作代码块或丢弃，走下面的兜底 |
+| GitBook.com（Git 同步） | ⚠️ 已实测退化 | 2026-10-30 实测：GitBook 保留块内**文字**，但剥掉全部标签与块级结构，把整张图**压平成一行**（`dg-*` 类消失，框线与分行全丢）。内容不丢但不可视。若需要可视版本，见下方「GitBook 上的兜底」 |
 
-**本仓库的定位**：GitHub 作为源码仓库，GitHub Pages / GitBook 作为阅读入口。图示「散架」时按这个顺序排查：
-① 是否在看 `.md` 源码页（换 Pages/`npm run serve`）；② VS Code 预览是否有 `markdown.styles`（看本文件与 `.vscode/settings.json`）；
-③ CSS 是否被构建注入（`_book/docs/*.html` 里应有 `<link rel="stylesheet" href="../styles/website.css">`）；④ 图块是否被 Markdown 切断（`npm run structure`）。
+**本仓库的定位**：GitHub 作为源码仓库，**GitHub Pages 作为带图主阅读入口**，GitBook 作文本镜像。
+图示「散架」时按这个顺序排查：
+① 是否在看 `.md` 源码页或被 GitBook 代理（换 Pages / `npm run serve`）；② VS Code 预览是否有 `markdown.styles`（看本文件与 `.vscode/settings.json`）；
+③ CSS 是否被构建注入（`_book/zh/*.html`、`_book/en/*.html` 里应有指向 `styles/website.css` 的 `<link>`）；④ 图块是否被 Markdown 切断（`npm run check`）。
 
-兜底顺序（从省事到彻底）：
+## GitBook 上的兜底
 
-1. 以 Honkit 构建的 GitHub Pages 站点作为主阅读入口，GitBook 空间只作镜像；
-2. 给 `tools/` 增加一步“图示导出为 SVG”（用无头浏览器把每个 `.dg` 截图 / 导出为 `docs/assets/*.svg`），把 HTML 换成 `![](assets/…)`；
-3. 个别关键图（如第 18 章总架构图）可手工补一份 Mermaid 版作为正文备份。
+2026-10-30 已在线上空间实测（<https://fuookami.gitbook.io/adaptive-software/>）：GitBook 保留图示块的**文字**，
+但剥掉 `dg-*` 标签、`role`/`aria-label` 与全部块级结构，把整张图**压平成一整行**。以第 2 章「软件演进的四个阶段」为例，
+线上显示为「信息化把事情记录进系统→自动化让系统按规则做事→…」——内容不丢、箭头可辨，但无框线、无分行。
+因此“标签用真实字符 `→ ↓ ↺`”这条铁律的价值在这里兑现：**退化后仍是通顺的一句话**。
 
-第 2、3 项尚未实现——是否要做，取决于你在 GitBook 空间里的实测结果。
+若需要 GitBook 上也看到图，按成本从低到高：
+
+1. **接受文本镜像**（当前状态）：README 与各卷入口注明“带图阅读走 Pages”；
+2. **导图为 SVG**（彻底，代价最大）：用无头浏览器把每个 `.dg` 块渲染成 `docs/<lang>/assets/diagrams/*.svg`，
+   正文改用 `![图注](assets/diagrams/…)`。全平台一致，但失去语义化 HTML、响应式与可检索的图内标签，
+   且 44 张图 × 2 语言要维护两套资产；
+3. **关键图补 Mermaid 版**：只对第 18 章总架构图等少数几张做正文备份，混合排版。
+
+第 2、3 项尚未实现。是否要做，取决于你更看重 GitBook 上的可视性，还是正文的可维护性。
 
 > **基线标签要一起推**：`npm run diagrams` 依赖 `ascii-baseline` 标签（字符画时代的快照）。
 > 首次推送时执行 `git push origin main --follow-tags`（或 `git push origin ascii-baseline`）；

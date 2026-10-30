@@ -56,7 +56,8 @@ npm run diagrams     # 图示文字保真：与 ascii-baseline 标签逐词元�
 再加跑 `npm run diagrams`（需要本地有 `ascii-baseline` 标签）与 `npm run diagrams -- --strict`（拦截新增表述）。
 想肉眼看图示效果：`npm run build` 后
 `powershell -ExecutionPolicy Bypass -File tools/preview-shot.ps1 -Pages "zh/chapter-18.html,en/chapter-12.html"`，
-截图在 `.shots/`（页面路径相对 `_book/`）。
+截图在 `.shots/`（页面路径相对 `_book/`）。也可以直接截线上，发版后验收不必先构建：
+`-Pages https://fuookami.github.io/adaptive-software/zh/chapter-18.html`。
 
 ### 在编辑器里阅读图示
 
