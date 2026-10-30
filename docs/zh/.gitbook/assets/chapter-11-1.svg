@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="1737" viewBox="0 0 860 1737" role="img">
+<rect x="0" y="0" width="860" height="1736.72" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<rect x="275.52" y="18.66" width="308.97" height="150.66" rx="9" fill="rgb(255, 249, 242)" stroke="rgb(230, 126, 34)" stroke-width="1"/>
+<text x="429.99" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(165, 91, 27)" text-anchor="middle">【第 8 点：形式化领域模型】</text>
+<text x="430" y="68.77" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">（系统、运筹、机器学习、智能体共享领域概念）</text>
+<line x1="91.44" y1="173.48" x2="768.55" y2="173.48" stroke="rgb(164, 176, 190)" stroke-width="1"/>
+<text x="151.78" y="189.95" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="287.2" y="189.95" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="422.63" y="189.95" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="558.05" y="189.95" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="693.47" y="189.95" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="93.17" y="199" width="164" height="64.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="175.17" y="224.03" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[第 5 点]</text>
+<text x="175.17" y="249.27" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">算法与系统口径一致</text>
+<rect x="263.05" y="199" width="164.02" height="64.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="345.05" y="224.03" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[第 6 点]</text>
+<text x="345.05" y="249.27" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">动态约束安全注入</text>
+<rect x="432.94" y="199" width="164" height="64.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="514.94" y="224.03" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[第 7 点]</text>
+<text x="514.94" y="249.27" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">中间值透明可查</text>
+<rect x="602.81" y="199" width="164.02" height="64.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="684.81" y="224.03" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[第 12 点]</text>
+<text x="684.82" y="249.27" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">数字孪生动态推演</text>
+<rect x="256.05" y="269.81" width="347.89" height="64.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="294.89" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[第 15 点]</text>
+<text x="429.98" y="320.13" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">智能体业务推理</text>
+<line x1="120.66" y1="346.22" x2="120.66" y2="366.75" stroke="rgb(230, 126, 34)" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="130.92" y="360.61" font-family="'Noto Sans SC'" font-size="13.248px" font-weight="400" fill="rgb(165, 91, 27)" text-anchor="start">↺ (反向强化第 1 点与第 8 点)</text>
+<text x="422.63" y="383.28" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="390.28" width="642.3" height="64.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="415.25" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">【第 4 点：算法可被应用层白盒编排】</text>
+<text x="429.98" y="440.49" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">（避免只暴露不透明的黑盒服务接口）</text>
+<line x1="91.44" y1="459.39" x2="768.55" y2="459.39" stroke="rgb(164, 176, 190)" stroke-width="1"/>
+<text x="253.34" y="475.88" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="591.89" y="475.88" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="299.67" y="484.91" width="260.64" height="64.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="509.96" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[第 10 点]</text>
+<text x="429.99" y="535.2" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">轻量高频可仿真性</text>
+<rect x="299.67" y="555.72" width="260.64" height="64.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="580.82" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[第 6 / 7 点]</text>
+<text x="429.99" y="606.06" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">得以工程实现</text>
+<text x="422.63" y="637.21" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↑</text>
+<rect x="108.84" y="644.19" width="642.3" height="64.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="669.17" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">【第 11 点】</text>
+<text x="429.98" y="694.42" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">计划 / 预计 / 实际 + 版本快照</text>
+<line x1="91.44" y1="713.3" x2="768.55" y2="713.3" stroke="rgb(164, 176, 190)" stroke-width="1"/>
+<text x="196.92" y="729.81" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="422.63" y="729.81" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="648.33" y="729.81" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="226.72" y="738.81" width="200.34" height="64.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="326.89" y="763.89" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[第 10 点]</text>
+<text x="326.89" y="789.13" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">仿真对比</text>
+<rect x="432.94" y="738.81" width="200.34" height="64.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="533.11" y="763.89" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[第 12 点]</text>
+<text x="533.1" y="789.13" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">数字孪生推演</text>
+<rect x="256.05" y="809.63" width="347.89" height="64.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="834.75" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[第 13 点]</text>
+<text x="429.98" y="859.75" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">滚动排产与流程编排</text>
+<text x="422.63" y="891.14" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="327.31" y="898.09" width="205.38" height="150.66" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="430" y="923.1" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[第 15 点]</text>
+<text x="430" y="948.35" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">智能体推理影响范围与候选方案</text>
+<text x="422.63" y="1065.28" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="327.31" y="1072.28" width="205.38" height="150.66" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="430" y="1097.24" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[第 14 点]</text>
+<text x="430" y="1122.49" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">智能体生成动态约束与流程适配</text>
+<rect x="20.13" y="1228.08" width="845.28" height="483.38" rx="10" fill="rgba(255, 255, 255, 0.6)" fill-opacity="0.6" stroke="rgb(185, 194, 203)" stroke-width="1" stroke-dasharray="5 4"/>
+<rect x="149" y="1242.31" width="201.36" height="150.66" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="249.68" y="1267.27" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">【第 1 点：业务逻辑内聚】</text>
+<rect x="141.64" y="1395.17" width="216.08" height="150.66" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="249.68" y="1420.16" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">【第 2 点：领域与框架分离】</text>
+<rect x="156.36" y="1548.03" width="186.64" height="150.66" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="249.68" y="1573.06" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">【第 3 点：仓储接口化】</text>
+<text x="369.48" y="1475.03" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="395.98" y="1242.31" width="347.89" height="456.38" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="569.93" y="1267.27" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">[第 9 点：纯计算可测试性]</text>
+<text x="569.92" y="1292.51" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">（不启 Spring、不连库、不调远程服务直接单测）</text>
+</svg>

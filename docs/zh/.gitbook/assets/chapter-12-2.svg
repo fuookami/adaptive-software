@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="505" viewBox="0 0 860 505" role="img">
+<rect x="0" y="0" width="860" height="505" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<rect x="108.84" y="18.66" width="642.3" height="64.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">第一层：求解器与计算后端（Solver / Backend Layer）</text>
+<text x="429.98" y="68.77" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• 产出原始求解状态、变量解值、目标值、上下界与底层数学证据（IIS/对偶等）</text>
+<text x="422.63" y="100.16" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="107.13" width="642.3" height="108.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="132.13" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">第二层：OSPF 基础框架层（Base Framework Layer）</text>
+<text x="429.99" y="157.37" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• 封装统一正交的 SolveReport、稳定模型元素 ID、证据能力等级、数学模型指纹（Fingerprint）与组合求</text>
+<text x="429.98" y="177.42" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">解尝试轨迹（Attempt Trace）</text>
+<text x="429.99" y="201.37" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• 边界：只懂通用数学报告与代数诊断，不知道“哪个订单延期”“哪台设备冲突”</text>
+<text x="422.63" y="232.76" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="239.59" width="642.3" height="108.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="264.72" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">第三层：算法层与 APS/DOP 应用层（Algorithm &amp; Application Layer）</text>
+<text x="429.98" y="289.73" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• 算法层：保留数学语义，将元素 ID 映射回领域变量、约束模板、目标与中间值</text>
+<text x="429.98" y="313.68" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• 应用层：将数学证据绑定到具体业务对象（订单/产线/任务/库位）、冻结的版本快照、业务 KPI 对比结果</text>
+<text x="429.98" y="333.73" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">与租户权限边界</text>
+<text x="422.63" y="365.11" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="372.06" width="642.3" height="112.81" rx="9" fill="rgb(255, 249, 242)" stroke="rgb(230, 126, 34)" stroke-width="1"/>
+<text x="429.98" y="397.08" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(165, 91, 27)" text-anchor="middle">第四层：工作台展示层与智能体层（Presentation &amp; Agent Layer）</text>
+<text x="429.98" y="422.32" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• 在工作台可视化展示可行性、KPI 拆解、松弛量（Slack）与冲突约束集（IIS）</text>
+<text x="429.99" y="446.27" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• 智能体基于已授权的结构化证据做归纳、多方案对比与本地化业务语言说明</text>
+<text x="429.98" y="470.23" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">• 铁律：智能体严禁改写求解状态、严禁虚构 IIS、严禁用置信度覆盖硬约束！</text>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="419" viewBox="0 0 860 419" role="img">
+<rect x="0" y="0" width="860" height="418.16" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<rect x="108.84" y="18.66" width="642.3" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">领域概念、计算规则、折算系数与分支规格（唯一权威业务口径）</text>
+<text x="422.63" y="76.21" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="83.19" width="642.3" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="108.17" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">共享业务核心（Shared Core）</text>
+<line x1="91.44" y1="128.36" x2="768.55" y2="128.36" stroke="rgb(164, 176, 190)" stroke-width="1"/>
+<text x="253.34" y="144.85" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="591.89" y="144.85" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="148.66" y="153.88" width="278.39" height="108.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="287.85" y="178.94" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">系统侧数值入口</text>
+<text x="287.85" y="204.18" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">传入：Quantity&lt;Flt64&gt; (具体值+单位)</text>
+<text x="287.85" y="228.13" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">输出：Ret&lt;Quantity&lt;Flt64&gt;&gt;</text>
+<rect x="432.92" y="153.88" width="278.41" height="108.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="572.13" y="178.94" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">运筹优化侧符号/建模入口</text>
+<text x="572.13" y="204.18" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">传入：OSPF 决策变量 / 上游符号</text>
+<text x="572.12" y="228.13" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">输出：</text>
+<text x="572.13" y="248.18" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">Ret&lt;Quantity&lt;LinearExpressionSymbol&gt;&gt;</text>
+<line x1="91.44" y1="266.98" x2="768.55" y2="266.98" stroke="rgb(164, 176, 190)" stroke-width="1"/>
+<text x="253.34" y="283.33" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="591.89" y="283.33" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="292.5" width="642.3" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="317.65" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">等价性自动验证</text>
+<text x="422.63" y="350.09" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="357.03" width="642.3" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="382.06" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">LinearMetaModel 编译与底层求解器能力检查</text>
+</svg>

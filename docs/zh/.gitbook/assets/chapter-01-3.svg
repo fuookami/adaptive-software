@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="553" viewBox="0 0 860 553" role="img">
+<rect x="0" y="0" width="860" height="552.38" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<text x="429.99" y="34.7" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(29, 53, 87)" text-anchor="middle">【根问题二：新的领域能力如何进入系统？】</text>
+<rect x="108.84" y="56.19" width="642.3" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="81.17" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">用户运行时意图 / 现场行为</text>
+<text x="422.63" y="113.85" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="120.72" width="642.3" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="145.82" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">大语言模型 / 智能体语义前端</text>
+<text x="422.63" y="178.26" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="185.25" width="642.3" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="210.22" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">语义中间表示（Semantic IR）</text>
+<text x="422.63" y="242.9" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="249.78" width="642.3" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="274.87" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">类型/单位/权限校验 · 数字孪生仿真 · 语义编译</text>
+<text x="422.63" y="307.3" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="314.31" width="642.3" height="64.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="339.27" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">确定性执行能力</text>
+<text x="429.98" y="364.51" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">（查询计划 / 约束模型 / 流程计划）</text>
+<text x="422.63" y="395.9" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="402.78" width="642.3" height="41" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="427.87" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="400" fill="rgb(34, 48, 60)" text-anchor="middle">运行时画像采集 → 能力提升与专门化 → 失效回退与重新编译</text>
+<text x="422.63" y="460.3" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<rect x="108.84" y="467.31" width="642.3" height="64.94" rx="9" fill="rgb(255, 249, 242)" stroke="rgb(230, 126, 34)" stroke-width="1"/>
+<text x="429.99" y="492.27" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(165, 91, 27)" text-anchor="middle">软件产品线工程</text>
+<text x="429.98" y="517.51" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">（临时能力 → 客户专用 → 产品可变点 → 稳定核心）</text>
+</svg>

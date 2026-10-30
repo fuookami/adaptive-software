@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="144" viewBox="0 0 860 144" role="img">
+<rect x="0" y="0" width="860" height="143.84" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<rect x="20.13" y="18.66" width="178.45" height="105.06" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="109.35" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">1. 领域观察事实归一化</text>
+<text x="109.35" y="68.77" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">明确工作单元/合格产量/实</text>
+<text x="109.35" y="89.06" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">际耗时/单位/事件时间</text>
+<text x="208.86" y="75.79" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="233.88" y="18.66" width="178.47" height="105.06" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="323.1" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">2. 训练与推理版本冻结</text>
+<text x="323.11" y="68.77" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">冻结特征Schema/观察窗</text>
+<text x="323.1" y="89.06" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">口/标签截止点/模型制品哈</text>
+<text x="323.1" y="109.11" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">希</text>
+<text x="422.63" y="75.79" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="447.64" y="18.66" width="178.47" height="105.06" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="536.87" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">3. 结构化预测快照输出</text>
+<text x="536.88" y="68.77" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">输出估算值+质量指标+置</text>
+<text x="536.87" y="89.06" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">信区间/不确定性+血缘</text>
+<text x="636.39" y="75.79" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">→</text>
+<rect x="661.41" y="18.66" width="178.47" height="105.06" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="750.63" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">4. 准入校验与审批激活</text>
+<text x="750.63" y="68.77" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">校验单位/阈值/新鲜度后激</text>
+<text x="750.64" y="89.06" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">活为有效产能覆盖层</text>
+</svg>

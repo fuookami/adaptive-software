@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="423" viewBox="0 0 860 423" role="img">
+<rect x="0" y="0" width="860" height="422.38" rx="12" fill="rgb(251, 252, 254)" stroke="rgb(227, 230, 234)" stroke-width="1"/>
+<rect x="108.84" y="18.66" width="642.3" height="88.88" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="43.77" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">领域层（Domain Layer）</text>
+<text x="429.99" y="68.77" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">定义业务概念、OSPF 原生单位 (Kilogram/Hour)、计算关系与约束语义模板</text>
+<text x="429.98" y="92.73" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">铁律：领域聚合根绝不持有任何求解器变量、模型句柄或求解会话（Session）</text>
+<text x="422.63" y="124.11" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="365.25" y="137.22" font-family="'Noto Sans SC'" font-size="11.776px" font-weight="500" fill="rgb(91, 107, 123)" text-anchor="start">暴露纯计算与符号双入口</text>
+<rect x="108.84" y="144.02" width="642.3" height="108.94" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.99" y="169.04" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">算法建模层（Algorithm Layer —— 前端元模型 LinearMetaModel）</text>
+<text x="429.99" y="194.29" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">基于 OSPF 通用符号（URealVar / LinearExpressionSymbol）与内置函数算子（SemiFunction /</text>
+<text x="429.99" y="214.33" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">SlackFunction / IfThenFunction）组装单次求解元模型</text>
+<text x="429.98" y="238.29" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">不绑定任何特定商业或开源求解器的原生 API</text>
+<text x="422.63" y="269.68" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="700" fill="rgb(75, 123, 236)" text-anchor="start">↓</text>
+<text x="289.22" y="282.78" font-family="'Noto Sans SC'" font-size="11.776px" font-weight="500" fill="rgb(91, 107, 123)" text-anchor="start">调用 LinearMechanismModel(metaModel) 降阶编译</text>
+<rect x="108.84" y="289.44" width="642.3" height="112.81" rx="9" fill="rgb(255, 255, 255)" stroke="rgb(75, 123, 236)" stroke-width="1"/>
+<text x="429.98" y="314.6" font-family="'Noto Sans SC'" font-size="14.72px" font-weight="600" fill="rgb(29, 53, 87)" text-anchor="middle">OSPF 中端编译器与后端求解器插件层（LinearMechanismModel &amp; Solver Plugins）</text>
+<text x="429.99" y="339.61" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">自动递归展开所有高阶函数算子，执行同类项合并、常量折叠与阶数/能力检查</text>
+<text x="429.99" y="363.56" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">降阶生成稀疏矩阵视图并对接统一 LinearSolver 接口</text>
+<text x="429.99" y="387.51" font-family="'Noto Sans SC'" font-size="12.9536px" font-weight="400" fill="rgb(91, 107, 123)" text-anchor="middle">零业务代码改动切换 Gurobi / Cplex / SCIP / Cbc / Hexaly 等求解器插件</text>
+</svg>
